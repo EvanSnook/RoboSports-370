@@ -1,0 +1,33 @@
+Actors:
+	Player 
+		actions: 
+				-command robot (shoot, move)
+				-end turn
+				-create
+				-quit game
+
+
+	Menu Operator
+		actions:
+				-start
+				-rules
+				-stats
+				-quit
+	
+	Observer
+		actions:	
+				-spectator options (pause, next turn, vision, robot turn timer)
+
+	Time
+		actions:
+				-end turn
+
+
+	A.I.
+		actions:
+			    -command robot (shoot, move)
+
+Sub-systems:
+	Librarion
+	Interpreter (communicates between system and)
+				
