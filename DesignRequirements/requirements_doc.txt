@@ -1,0 +1,51 @@
+
+
+
+
+Robot War: Requirements Document
+Group B1
+Wynston Ramsay, Evan Snook, Adam Ronellenfitsch, 
+Matthew Frisky, and Dylan Prefontaine
+
+
+
+
+
+CMPT 370
+Professor Chris Dutchyn
+Tutorial Leader Jonathon Baxter
+
+
+
+
+
+
+
+Game Summary
+    Robot War is a two, three or six player turn-based strategy game in which the goal is to be the player with the last unit(s) standing. Each player begins on a designated tile on the board with their three units, each with slightly different properties. A scout which can move 3 spaces, has an attack range of 2, health of 1 and deals 1 damage on attack, a sniper which can move 2 spaces, has an attack range of 3, health of 2 and deals 2 damage, and a tank which can move 1 space, has an attack range of 1, health of 3 and deals 3 damage. Players can move and shoot in any order, but they cannot exceed their unit’s maximum move distance in their turn. The red player starts the game using their scout, they may move and shoot any units within its range, then the next player to reds left does the same and this continues until it is reds turn again. Red then continues by controlling his sniper unit, the other players follow in order and finally red moves their tank unit. This process repeats until there is only one colour standing who becomes the winner.
+Summarize programming task
+	The purpose of this project is for our group to experience the process of engineering a piece of software. We will be focusing on the design and proper documentation, rather than just writing the piece of software. The actual software is relatively simple for the 
+	Model view controller
+	This piece of software will be developed using a specific platform of other programs and software that meet the group’s needs. The hardware this game is designed for will be on the Tuxworld computers in the Spinks Laboratory of the University of Saskatchewan. The game will be designed, and implemented using software that help make completing a task easier. The main software used will be: GitLab for version control, JSON for structuring data, Microsoft Word for creating documents, Discord for group communication, Gliffy for sequence diagrams, Sublime for text editing, and either Netbeans or Eclipse to server as an IDE. Java and JavaSwing will be the language used to develop most of the game. The only thing that Java will not be used for is artificial intelligence decision making, which will be done with Forth. 
+
+Stakeholder identification
+	This piece of software is being built for Chris Dutchyn
+Market Assessment
+	Product will be used by us and class mates, it is required to work on one machine in the Spinks lab.
+	
+Product overview and use cases
+    Interfaces
+        Main menu, create game screen, rules screen, stats screen, game board, and end game screen.
+    System
+        Sub-Systems: Librarian, Interpreter 
+    Actors and Actions
+    	Actors are entities outside the system that change or interface the system in a particular event. Actions are 
+        Player: command robot (shoot, move), end turn, create game, quit game
+        Menu Operator: start, rules, stats, quit
+        Observer: spectator options (pause, next turn, vision, robot turn timer)
+        Time: end turn
+        Robot Librarian (A.I.): command robot (shoot, move)
+    Scenarios
+    
+    
+Executive Summary
