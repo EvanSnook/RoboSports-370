@@ -1,0 +1,16 @@
+RoboSport 370 will have various screens to display to the user depending on the scenario. The program will start with the Main Menu (Figure 1) and can branch off to other screens such as Create Game (Figure 2), Rules (Figure 3), Stats (Figure 4), In-Game screen (Figure 5), In-game options menu (Figure 6), and an end game screen (Figure 7). These images are only mock-ups only, customization and format may change as desired.  Here are the mock-ups of each interface:
+Figure 1: Main Menu
+
+	The Main Menu is the first screen the user will see when they run RoboSport 370. It will be the main branch for which the user can branch off of. There are four options that are given: Create Game, Rules, Stats, and Quit. There is nothing particularly special about any of these action; Create Game, Rules, and Stats brings up a new screen while Quit will close the program. Remember that the user will always have a way to come back to the main menu from any screen or state they are in; note that figure 5 (in game screen) uses figure 6 (in game screen options) to flow back to the main menu. Figures 2,3,4, and 7 all have the options to return to this from with either a button labeled “Back” or “Main Menu”. 
+	
+Figure 2: Create Game Screen
+
+	The Create Game screen can be brought up via the main menu (Figure 1), in-game options screen (Figure 6), and the end-game menu (Figure 7). The user has the option to choose the number of teams playing; either 2, 3, or 6 teams can be selected as a choice using radio buttons. The number of teams selected effects how many teams show up and determines the size/s of board radius selected.  If two teams are selected, then only the Red Team and Green Team options will be shown and a 5 hexagon radius will be auto-selected and radius of 7 will be grayed out. If 3 teams are selected then only the Red, Yellow, and Blue teams will be shown; a radius of 5 will be auto-selected but the user can choose either 5 or 7. Finally if the use chooses 6 teams then all 6 times will be shown as our mock-up depicts it.  There is a drop down list for each team where the user can choose if it’s controlled by a human player or with a A.I. There will be different A.I. as well that can be selected (example: A.I. – Bot1). 
+
+Figure 3: Game Rules Screen	
+
+Figure 4: Stats Screen
+
+Figure 5: In-Game Screen
+
+Figure 6: End-Game Screen:
