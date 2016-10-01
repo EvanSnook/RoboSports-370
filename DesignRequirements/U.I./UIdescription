@@ -15,7 +15,24 @@ Figure 4: Stats Screen
 
 Figure 5: Edit-Bots Screen
 
-Figure 6: In-Game Screen
+Figure 6.1: Player Point of View
+    The player is shown the game board of size 5 or 7, depending the choice of the player or the number of teams in the game. White tiles represent spaces that the player's robots can see and grey tiles represent spaces that the player's robots cannot see. All enemies on grey tiles will be hidden form the player, as the player moves robots around the game board tiles will switch from grey to white and vise versa, revealing enimies as needed. All visible robots have 1, 2, or 3 dots above them, these dots represent the robots health. The dots are will turn black when depleated and remain coloured while available. At the top of the screen there is a team turn indicator.  This displays which team is currently playing.
+
+    Players has five buttons at their disposal on the screen: a "Move" button, a "Shoot" button, an "End Turn" button, a "Rules" button, and an "Exit Match" button.
+        -The "Move" button will tell the robot to move forward.
+        -The "Shoot" button will tell the robot to shoot at the selected tile.
+        -The "End Turn" button will end that players turn and move onto the next teams turn.
+        -The "Rules" button will show the Rules Menu Screen(Figure: 3).
+        -The "Exit Match" button will leave the match without finishing it, and display the Main Menu Screen(Figure: 1).
+            
+Figure 6.2: Observer Point of View
+    The observer is shown the game board of size 5 or 7, depending the choice of the observer or the number of teams in the game. White tiles represent spaces that the CPU's robots can see and grey tiles represent spaces that the CPU's robots cannot see. All visible robots have 1, 2, or 3 dots above them, these dots represent the robots health. The dots are will turn black when depleated and remain coloured while available. At the top of the screen there is a team turn indicator.  This displays which team is currently playing.
+
+    The observer has 6 "Fog of War" check boxes, a "Robot Turn Time" slider, and two buttons; a "Rules" button, and an "Exit Match" button. 
+        -The "Fog of War" check boxes are colour codded and labeled for each team. When the "Red" box is checked you will be able to see all the tiles that the red team is able to see, the same goes for the rest of the checkboxes.
+        -The "Robot Turn Timer" slider controlls how long the robots will take to complete their turn. If slider is all the way to the left then the robots' turn will be complete almost instantly. The more the slider is to the right the longer the turns will take.
+        -The "Rules" button will show the Rules Menu Screen(Figure: 3).
+        -The "Exit Match" button will leave the match without finishing it, and display the Main Menu Screen(Figure: 1).
 
 Figure 7: End-Game Screen: 
-    The End-Game Screen is a pop-up screen that is displayed over Figure 6 (In-game screen). It occurs in the instance a game finishes and disappears when the user selects one of their three options. The screen is to display the winning team at the top as well as various stats for teams who participated in a scrolling text window. The user then has the option to create a new game which takes the user to Figure 2, return to the main menu which is Figure 1, or quit the program entirely. If the user tries to exit out the pop-up window, they will be taken to Figure 1, the main menu. 
+    The End-Game Screen is a pop-up screen that is displayed over Figure 6 (In-game screen). It occurs in the instance a game finishes and disappears when the user selects one of their three options. The screen is to display the winning team at the top as well as various stats for teams who participated in a scrolling text window. The user then has the option to create a new game which takes the user to Figure 2, return to the main menu which is Figure 1, or quit the program entirely. If the user tries to exit out the pop-up window, they will be taken to Figure 1, the main menu.
