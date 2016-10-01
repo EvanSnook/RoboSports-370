@@ -49,11 +49,6 @@ Stakeholder identification
 	once we have successfully designed our program, we will then be graded for how well we structure our code and what tools we properly make use of.
 	lastly, all of this must be completed in a very strict time frame as the class only runs for one semester and thus we must make use of our time appropriately.
 	
-Market Assessment
-	The purpose of this project is for our group to experience the process of engineering a piece of software. 
-	We will be focusing on the design and proper documentation, rather than just writing the piece of software. 
-	The actual software is relatively simple for the 
-	Product will be used by us and class mates, it is required to work on one machine in the Spinks lab.
 	
 Product overview and use cases
     Interfaces
