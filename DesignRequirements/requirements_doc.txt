@@ -43,7 +43,11 @@ Summarize programming task
 	The only thing that Java will not be used for is artificial intelligence decision making, which will be done with Forth. 
 
 Stakeholder identification
-	This piece of software is being built for Chris Dutchyn
+	This piece of software is being designed and built for Professor Chris Dutchyn for CMPT 370.
+	Our stakeholder is interested in our design process and documentation as it is a crucial part of software engineering to actually design your program before you begin to build it.
+	during this process he will be looking at which features we choose to and not to add to the program as the project is tailored so that there are certain senarios that arise that we must identify and deal with.
+	once we have successfully designed our program, we will then be graded for how well we structure our code and what tools we properly make use of.
+	lastly, all of this must be completed in a very strict time frame as the class only runs for one semester and thus we must make use of our time appropriately.
 	
 Market Assessment
 	The purpose of this project is for our group to experience the process of engineering a piece of software. 
