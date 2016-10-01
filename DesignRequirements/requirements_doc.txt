@@ -64,5 +64,10 @@ Product overview and use cases
         Robot Librarian (A.I.): command robot (shoot, move)
     Scenarios
     
-    
+Assumptions
+    - 
+Constraints
+    - networking
+    - 
+
 Executive Summary
