@@ -1,7 +1,3 @@
-
-
-
-
 Robot War: Requirements Document
 Group B1
 Wynston Ramsay, Evan Snook, Adam Ronellenfitsch, 
@@ -22,15 +18,37 @@ Tutorial Leader Jonathon Baxter
 
 
 Game Summary
-    Robot War is a two, three or six player turn-based strategy game in which the goal is to be the player with the last unit(s) standing. Each player begins on a designated tile on the board with their three units, each with slightly different properties. A scout which can move 3 spaces, has an attack range of 2, health of 1 and deals 1 damage on attack, a sniper which can move 2 spaces, has an attack range of 3, health of 2 and deals 2 damage, and a tank which can move 1 space, has an attack range of 1, health of 3 and deals 3 damage. Players can move and shoot in any order, but they cannot exceed their unit’s maximum move distance in their turn. The red player starts the game using their scout, they may move and shoot any units within its range, then the next player to reds left does the same and this continues until it is reds turn again. Red then continues by controlling his sniper unit, the other players follow in order and finally red moves their tank unit. This process repeats until there is only one colour standing who becomes the winner.
+    Robot War is a two, three or six player turn-based strategy game in which the goal is to be the player with the last unit(s) standing. 
+    Each player begins on a designated tile on the board with their three units, each with slightly different properties. 
+    A scout which can move 3 spaces, has an attack range of 2, health of 1 and deals 1 damage on attack, a sniper which can move 2 spaces, 
+    has an attack range of 3, health of 2 and deals 2 damage, and a tank which can move 1 space, has an attack range of 1, health of 3 and deals 3 damage. 
+    Players can move and shoot in any order, but they cannot exceed their unit’s maximum move distance in their turn. 
+    The red player starts the game using their scout, they may move and shoot any units within its range, then the next player to reds left does the same 
+    and this continues until it is reds turn again. Red then continues by controlling his sniper unit, the other players follow in order and finally red moves 
+    their tank unit. This process repeats until there is only one colour standing who becomes the winner.
+
 Summarize programming task
-	The purpose of this project is for our group to experience the process of engineering a piece of software. We will be focusing on the design and proper documentation, rather than just writing the piece of software. The actual software is relatively simple for the 
-	Model view controller
-	This piece of software will be developed using a specific platform of other programs and software that meet the group’s needs. The hardware this game is designed for will be on the Tuxworld computers in the Spinks Laboratory of the University of Saskatchewan. The game will be designed, and implemented using software that help make completing a task easier. The main software used will be: GitLab for version control, JSON for structuring data, Microsoft Word for creating documents, Discord for group communication, Gliffy for sequence diagrams, Sublime for text editing, and either Netbeans or Eclipse to server as an IDE. Java and JavaSwing will be the language used to develop most of the game. The only thing that Java will not be used for is artificial intelligence decision making, which will be done with Forth. 
+    RoboSport370 can be observed, played as a single player, or played with multiple people. 
+    Thus our game has an inherent need for bots with AI to fill up positions that are not occupied by an actual player in cases where you wish to observe or have a match with 2,3, or 6 players, but you do not have enough humans to play.
+    The game also has an element that is to hide parts of the board from each player. 
+    This is simple to do for an AI as they will only be able to see what their script allows them, but is different for human players as the GUI will have to hide what they are not meant to see.
+    additionally, our game will not involve networking, and so if there is more than 1 human player, the screen must be 100% hidden from both players at the end of a turn so that they may switch seats, 
+    then the player must press start turn so that neither can see information that should be hidden from them while the turn changes.
+	Our softwares arcitectural pattern will be Model View Controller where the model updates the view, and the user sees the view and uses the controller to change the model.
+	This piece of software will be developed using a specific platform of other programs and software that meet the group’s needs. 
+	The hardware this game is designed for will be on the Tuxworld computers in the Spinks Laboratory of the University of Saskatchewan. 
+	The main software used will be: GitLab for version control, JSON for structuring data, Microsoft Word for creating documents with images, 
+	Discord for group communication, Gliffy for sequence diagrams, Sublime for text editing, and either Netbeans or Eclipse to server as an IDE. 
+	Java, JavaSwing, and AspectJ will be the language used to develop most of the game. 
+	The only thing that Java will not be used for is artificial intelligence decision making, which will be done with Forth. 
 
 Stakeholder identification
 	This piece of software is being built for Chris Dutchyn
+	
 Market Assessment
+	The purpose of this project is for our group to experience the process of engineering a piece of software. 
+	We will be focusing on the design and proper documentation, rather than just writing the piece of software. 
+	The actual software is relatively simple for the 
 	Product will be used by us and class mates, it is required to work on one machine in the Spinks lab.
 	
 Product overview and use cases
