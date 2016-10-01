@@ -1,4 +1,4 @@
-Robot War: Requirements Document
+﻿Robot War: Requirements Document
 Group B1
 Wynston Ramsay, Evan Snook, Adam Ronellenfitsch, 
 Matthew Frisky, and Dylan Prefontaine
@@ -18,14 +18,17 @@ Tutorial Leader Jonathon Baxter
 
 
 Game Summary
-    Robot War is a two, three or six player turn-based strategy game in which the goal is to be the player with the last unit(s) standing. 
-    Each player begins on a designated tile on the board with their three units, each with slightly different properties. 
-    A scout which can move 3 spaces, has an attack range of 2, health of 1 and deals 1 damage on attack, a sniper which can move 2 spaces, 
-    has an attack range of 3, health of 2 and deals 2 damage, and a tank which can move 1 space, has an attack range of 1, health of 3 and deals 3 damage. 
-    Players can move and shoot in any order, but they cannot exceed their unit’s maximum move distance in their turn. 
-    The red player starts the game using their scout, they may move and shoot any units within its range, then the next player to reds left does the same 
-    and this continues until it is reds turn again. Red then continues by controlling his sniper unit, the other players follow in order and finally red moves 
-    their tank unit. This process repeats until there is only one colour standing who becomes the winner.
+    RobotSport370 is a turn-based strategy game in which the goal is to be the player with the last unit(s) standing.
+    The game supports two, three or six players and is played on a different size of board depending on the amount of players.
+    A game can consist of all human players, all AI players or any combination of the two.
+    If there are two players they must play on a size 5 board, if there are six players they must play on a size 7 board, and if there are three players they must choose between the two board sizes.
+    Each player begins on a designated tile on the board with their three units, each with slightly different properties.
+    A scout which can move 3 spaces, has an attack range of 2, health of 1 and deals 1 damage, a sniper which can move 2 spaces, has an attack range of 3, health of 2 and deals 2 damage, and a tank which can move 1 space, has an attack range of 1, health of 3 and deals 3 damage.
+    Players can move and shoot in any order, but they cannot exceed their unit’s maximum move distance in their turn but moving is not required.
+    The red player starts the game using their scout, they may move and shoot any units within its range, once red's turn is over then the next player to reds left does the same and this continues until it is reds turn again.
+    Red then continues by controlling his sniper unit, the other players follow one by one in the same order until it is red's turn again and red continues by controlling their tank unit.
+    If a player has lost a tank and it is their turn to control that tank they move the next tank instead (i.e. if red lost their scout, they will move their sniper while everyone else continues to move their scout).
+    This process repeats until there is only one colour standing.
 
 Summarize programming task
     RoboSport370 can be observed, played as a single player, or played with multiple people. 
@@ -38,7 +41,7 @@ Summarize programming task
 	This piece of software will be developed using a specific platform of other programs and software that meet the group’s needs. 
 	The hardware this game is designed for will be on the Tuxworld computers in the Spinks Laboratory of the University of Saskatchewan. 
 	The main software used will be: GitLab for version control, JSON for structuring data, Microsoft Word for creating documents with images, 
-	Discord for group communication, Gliffy for sequence diagrams, Sublime for text editing, and either Netbeans or Eclipse to server as an IDE. 
+	Discord for group communication, Gliffy for sequence diagrams, Sublime for text editing, and either Netbeans or Eclipse to serve as an IDE. 
 	Java, JavaSwing, and AspectJ will be the language used to develop most of the game. 
 	The only thing that Java will not be used for is artificial intelligence decision making, which will be done with Forth. 
 
