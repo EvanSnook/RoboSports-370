@@ -1,0 +1,47 @@
+Menu Operator
+The menu operator actor has 6 actions, that is to select the rules, select the stats, create a game, edit the bots, or to exit the game.
+
+
+Rules:
+
+As soon as the rules are selected the rules page will be displayed on the screen showing a list of all the rules for the game. The rules remain on the screen until the menu operator chooses to return to the main menu.
+
+See Fig. RulesMenuSequenceDiagram
+
+Scenario 1: Rules Is Selected         
+ 1. The rules are displayed on the screen.
+ 2. The menu operator reads the rules.
+ 3. The menu operator returns to the Main Menu.
+
+
+Create Game:
+
+When create game is selected the game creation screen is displayed containing a choice for the number of players, a list of the teams whith a choice to name/choose the robots for each team, as well as a choice for the think time for the AI. The menu operator starts by selecting the number of players, and the extra teams are grayed out and cannot be used. The menu operator then chooses which teams will be AI, and which teams will be humans. If the team is chosen to be a human player the menu operator can then input the names for each tank on the humans team. If the team is chosen to be an AI player, the menu operator can then select the robot to be used for each tank on the AI team. The menu operator also has the choice to choose the robot think time, which determines how long an AI will take to performt their turn. The menu operator then selects to either start the game or cancel all these actions and return to the main menu. 
+
+See Fig. StartGameSequenceDiagram
+
+Scenario 2: A Game Is Created Player Vs. AI
+ 1. The game creation screen is displayed.
+ 2. The Menu Operator selects 2 players for a game.
+ 3. Board size 5 is displayed.
+ 4. The menu operator chooses one human player and one AI player.
+ 5. The menu operator selects three robots for the AI team.
+ 6. The menu operator gives his/her robots names.
+ 7. The bot think time is selected.
+ 8. The game is started. 
+
+
+Stats:
+
+When the stats are selected the menu creator is taken to the stats screen. On this screen a list of robots is displayed, along with an option to sort the robots, an option to upload the stats of a robot, an option to reset the stats of a robot, a window to display the stats of the robot, an option to return to the main menu, as well as an option to stort the robots by team. The menu operator can choose to sort the robots or leave them as they are initially sorted. The menu operator can then select a robot from the list which will automatically display the stats for the robot in the window. The menu operator can then choose to upload the starts, or reset the stats for the selected robot. When they are done viewing the stats for the robots the menu operator can return to the main menu.
+
+See Fig.  StatsMenuSequenceDiagram
+
+Scenario 3: The Menu Operator uploads and deletes the stats for a robot.          
+ 1. The list of robots is displayed.
+ 2. The menu operator chooses to sort the robots A-Z.
+ 3. The menu operator selects a robot. 
+ 4. The menu operator reads the stats for the robot in the box.
+ 5. The menu operator uploads the stats for the selected robot.
+ 6. The menu operator deletes the stats for the selected robot.
+ 7. The menu operator returns to the menu.
