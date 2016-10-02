@@ -3,3 +3,6 @@ Time:
     
 A.I.:
     The A.I.'s send a script action is provoked by the interpreter. Once queried the A.I. will send a command to be issued back to the interpreter.
+    
+Exit Match sequence diagram description
+    Either a player or an observer cliked the "End Match" button. The game will be ended. No stats will be recorded. The Main Menu will be displayed.(Figure 1)
