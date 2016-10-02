@@ -1,0 +1,11 @@
+Player primary scenario:
+    1. select tile in which direction you want to move.
+    2. click move button.
+    3. select tile you want to shoot at.
+    4. click shoot button.
+    5. click end turn
+    
+Secondary scenarios:
+    a. after 2: Select a new tile and move again, repeat until no moves remain. Then continue with step 3.
+    b. after 4. If moves still reamin, select tile and click move. Then jump to step 5.
+    
