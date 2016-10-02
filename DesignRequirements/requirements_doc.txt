@@ -64,6 +64,7 @@ User Interfaces
     RoboSport 370 will have various screens to display to the user depending on the scenario. 
     The program will start with the Main Menu (Figure 1) and can branch off to other screens such as Create Game (Figure 2), Rules (Figure 3), Stats (Figure 4), In-Game screen (Figure 5), In-game options menu (Figure 6), and an end game screen (Figure 7).
     These images are only mock-ups only, customization and format may change as desired.  Here are the mock-ups of each interface:
+    
     Figure 1: Main Menu
     
     	The Main Menu is the first screen the user will see when they run RoboSport 370. It will be the main branch for which the user can branch off of. There are five options that are given: Create Game, Rules, Stats, RoboManager and Quit. There is nothing particularly special about any of these action; Create Game, Rules, Stats, and RoboManager brings up a new screen while Quit will close the program. Remember that the user will always have a way to come back to the main menu from any screen or state they are in. The five options the user has are all recorded with buttons. There is group identification in the bottom right-hand corner as well as a title to complete the main menu screen. 
@@ -107,51 +108,112 @@ User Interfaces
     Figure 8: RoboManager    
         RoboManager is can reached only from the main menu. On the left-hand side it will display a list of all robots known to the local system, and on the right is a table query of robots stored online. Inbetween the list and table are buttons to interact with all the robots; edit takes the user to the Edit Robots screen, if there is a local robot selected then it will be selected in the new screen as well. An import button will taken a selected robot from the online table and download to the local system. The export button will take a selected robot from the local list and upload it to the online table. Selecting a local robot and pressing the delete robot will remove that robot from the list. Lastly, the user can always use the back button to return to the main menu.
 
-use cases
+Actors and actions
     Actors:
-        Player : any human giving input to the game board or end game screen
-            actions: 
-                -select a tile
-                -command robot shoot
-                -command robot move
-                -access rules
-                -exit the match
-
-
-        Menu Operator : any human giving input to the menue, rules, or stats screen
+        Player - any human giving input to the game board or end game screen
+            Player actions: 
+                Select a tile
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                Command robot shoot
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                Command robot move
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                Access rules
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                Exit the match
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+    
+    
+        Menu Operator - any human giving input to the menue, rules, or stats screen
             actions:
-                -create a game
-                -access rules
-                -view stats
-                -exit the match
-                -manage robots
-
-        Observer : a human watching only AI's play the match and giving input to the game board or endgame screen
+                Create a game
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                Access rules
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                View stats
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                Exit the match
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                Manage robots
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+    
+        Observer - a human watching only AI's play the match and giving input to the game board or endgame screen
             actions:    
-                -toggle fog of war
-                -exit the match
-                -edit robot think time
-
-        Time : a non-human entity that keeps track of time for different parts of the game
+                Toggle fog of war
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                Exit the match
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+                Edit robot think time
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
+    
+        Time - a non-human entity that keeps track of time for different parts of the game
+                actions:
+                    -end turn
+    
+    
+        A.I - a non-human that is playing the game through an interpreter
             actions:
-                -end turn
-
-
-        A.I : a non-human that is playing the game through an interpreter
-            actions:
-                -send script
+                Send script
+                    -Preconditions:
+                    -Flow of Events:
+                    -Postconditions:
+                    -Errorconditions:
 
 Sub-systems:
-    Librarion
+    Librarian
     Interpreter (communicates between system and)
-    Scenarios
+
+Scenarios
+    TODO
+    
+Use cases
+    TODO
     
 Assumptions
-    - 
+    TODO
+    
 Constraints
     - networking
-
-how we are handling errors
-
+    TODO
 
 Executive Summary
+    TODO
