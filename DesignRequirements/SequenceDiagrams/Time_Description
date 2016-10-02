@@ -1,0 +1,2 @@
+Time: 
+    The time actor only has one action, that is to end a turn. As soon as a new "Play" begins, the timer is set to 0 and begins to tick. The timer then waits until it hits the turn deadline (global or set by observer), and then ends that teams play immediately. Plays can also be ended manually that is independent of time. In either case, when the play ends there will be two paths the program can take. The game will continue and begin the next play, which resets the timer or the game ends and the timer terminates. 
