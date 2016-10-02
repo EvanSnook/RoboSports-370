@@ -6,3 +6,8 @@ A.I.:
     
 Exit Match sequence diagram description
     Either a player or an observer cliked the "End Match" button. The game will be ended. No stats will be recorded. The Main Menu will be displayed.(Figure 1)
+    
+Toggle Fog of War sequence diagram
+    A fog of war check box has been clicked. If already checked, it will be unchecked hiding all the areas that only that team can see. If initially unchecked, cheking it will cause all hidden tiles for that team to be visible.
+    
+    
