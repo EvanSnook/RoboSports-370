@@ -40,43 +40,81 @@ Summarize programming task
     This is simple to do for an AI as they will only be able to see what their script allows them, but is different for human players as the GUI will have to hide what they are not meant to see.
     additionally, our game will not involve networking, and so if there is more than 1 human player, the screen must be 100% hidden from both players at the end of a turn so that they may switch seats, 
     then the player must press start turn so that neither can see information that should be hidden from them while the turn changes.
-	Our softwares arcitectural pattern will be Model View Controller where the model updates the view, and the user sees the view and uses the controller to change the model.
-	We chose this because it works well with GUI interfaces and heavy user interaction as we want to be able to choose what inputs the user gives the model so that the view does not do anything unexpected.
-	other possible arcitectures would be Presentation-Abstraction-Control and Heirarchical Model-View-Controller. 
-	However, both of these would allow for our agents to interact with eachother which is not something that we want because we want them each to manipulate just their data.
-	This piece of software will be developed using a specific platform of other programs and software that meet the group’s needs. 
-	The hardware this game is designed for will be on the Tuxworld computers in the Spinks Laboratory of the University of Saskatchewan. 
-	The main software used will be: GitLab for version control, JSON for structuring data, Microsoft Word for creating documents with images, 
-	Discord for group communication, Gliffy for sequence diagrams, Sublime for text editing, and either Netbeans or Eclipse to serve as an IDE. 
-	Java, JavaSwing, and AspectJ will be the language used to develop most of the game. 
-	The only thing that Java will not be used for is artificial intelligence decision making, which will be done with Forth. 
+    Our softwares arcitectural pattern will be Model View Controller where the model updates the view, and the user sees the view and uses the controller to change the model.
+    We chose this because it works well with GUI interfaces and heavy user interaction as we want to be able to choose what inputs the user gives the model so that the view does not do anything unexpected.
+    other possible arcitectures would be Presentation-Abstraction-Control and Heirarchical Model-View-Controller. 
+    However, both of these would allow for our agents to interact with eachother which is not something that we want because we want them each to manipulate just their data.
+    This piece of software will be developed using a specific platform of other programs and software that meet the group’s needs. 
+    The hardware this game is designed for will be on the Tuxworld computers in the Spinks Laboratory of the University of Saskatchewan. 
+    The main software used will be: GitLab for version control, JSON for structuring data, Microsoft Word for creating documents with images, 
+    Discord for group communication, Gliffy for sequence diagrams, Sublime for text editing, and either Netbeans or Eclipse to serve as an IDE. 
+    Java, JavaSwing, and AspectJ will be the language used to develop most of the game. 
+    The only thing that Java will not be used for is artificial intelligence decision making, which will be done with Forth. 
 
 Stakeholder identification
-	This piece of software is being designed and built for Professor Chris Dutchyn for CMPT 370.
-	Our stakeholder is interested in our design process and documentation as it is a crucial part of software engineering to actually design your program before you begin to build it.
-	during this process he will be looking at which features we choose to and not to add to the program as the project is tailored so that there are certain senarios that arise that we must identify and deal with.
-	once we have successfully designed our program, we will then be graded for how well we structure our code and what tools we properly make use of.
-	lastly, all of this must be completed in a very strict time frame as the class only runs for one semester and thus we must make use of our time appropriately.
-	
-	
-Product overview and use cases
-    Interfaces
-        Main menu, create game screen, rules screen, stats screen, game board, and end game screen.
-    System
-        Sub-Systems: Librarian, Interpreter 
-    Actors and Actions
-    	Actors are entities outside the system that change or interface the system in a particular event. Actions are 
-        Player: command robot (shoot, move), end turn, create game, quit game
-        Menu Operator: start, rules, stats, quit
-        Observer: spectator options (pause, next turn, vision, robot turn timer)
-        Time: end turn
-        Robot Librarian (A.I.): command robot (shoot, move)
+    This piece of software is being designed and built for Professor Chris Dutchyn for CMPT 370.
+    Our stakeholder is interested in our design process and documentation as it is a crucial part of software engineering to actually design your program before you begin to build it.
+    during this process he will be looking at which features we choose to and not to add to the program as the project is tailored so that there are certain senarios that arise that we must identify and deal with.
+    once we have successfully designed our program, we will then be graded for how well we structure our code and what tools we properly make use of.
+    lastly, all of this must be completed in a very strict time frame as the class only runs for one semester and thus we must make use of our time appropriately.
+    
+    
+
+Interfaces
+    Main menu
+        
+    create game screen
+    rules screen
+    stats screen
+    player game board
+    observer game board
+    end game screen.
+
+use cases
+    Actors:
+        Player : any human giving input to the game board or end game screen
+            actions: 
+                -select a tile
+                -command robot shoot
+                -command robot move
+                -access rules
+                -exit the match
+
+
+        Menu Operator : any human giving input to the menue, rules, or stats screen
+            actions:
+                -create a game
+                -access rules
+                -view stats
+                -exit the match
+                -manage robots
+
+        Observer : a human watching only AI's play the match and giving input to the game board or endgame screen
+            actions:    
+                -toggle fog of war
+                -exit the match
+                -edit robot think time
+
+        Time : a non-human entity that keeps track of time for different parts of the game
+            actions:
+                -end turn
+
+
+        A.I : a non-human that is playing the game through an interpreter
+            actions:
+                -send script
+
+Sub-systems:
+    Librarion
+    Interpreter (communicates between system and)
     Scenarios
     
 Assumptions
     - 
 Constraints
     - networking
-    - 
+
+how we are handling errors
+
 
 Executive Summary
