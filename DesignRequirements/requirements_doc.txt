@@ -60,15 +60,52 @@ Stakeholder identification
     
     
 
-Interfaces
-    Main menu
+User Interfaces
+    RoboSport 370 will have various screens to display to the user depending on the scenario. 
+    The program will start with the Main Menu (Figure 1) and can branch off to other screens such as Create Game (Figure 2), Rules (Figure 3), Stats (Figure 4), In-Game screen (Figure 5), In-game options menu (Figure 6), and an end game screen (Figure 7).
+    These images are only mock-ups only, customization and format may change as desired.  Here are the mock-ups of each interface:
+    Figure 1: Main Menu
+    
+    	The Main Menu is the first screen the user will see when they run RoboSport 370. It will be the main branch for which the user can branch off of. There are five options that are given: Create Game, Rules, Stats, RoboManager and Quit. There is nothing particularly special about any of these action; Create Game, Rules, Stats, and RoboManager brings up a new screen while Quit will close the program. Remember that the user will always have a way to come back to the main menu from any screen or state they are in. The five options the user has are all recorded with buttons. There is group identification in the bottom right-hand corner as well as a title to complete the main menu screen. 
+    	
+    Figure 2: Create Game Screen
+    
+    	The Create Game screen can be brought up via the main menu (Figure 1), and the end-game menu (Figure 7). The user has the option to choose the number of teams playing; either 2, 3, or 6 teams can be selected as a choice using radio buttons. The number of teams selected effects how many teams can be edited and determines the size/s of board radius selected.  If two teams are selected, then only the "Team 1" and "Team 2" options will be able to changed and a 5 hexagon radius will be auto-selected. If 3 teams are selected then only the Red, Yellow, and Blue teams will be uesed and randomly assigned; a radius of 5 will be auto-selected but the user can choose either 5 or 7. Finally if the use chooses "6 teams" then all six times will be editable as our mock-up depicts it.  There is a drop down list for each team where the user can choose if it’s controlled by a human player or by CPU. If CPU is selected for the team, each robot(Scout, Sniper, Tank) can have its own A.I. chosen through a dropdown menu. No two robots can have the same A.I. In addition, an option to change the length of robot turns (0-30 seconds). 
+    
+    Figure 3: Game Rules Screen	
+        The Game Rules Screen is has only one purpse; that is to display the rules of RoboSport 370 in a clean and organized looking scroll box. The user only has the options to scroll through the rules, or to press the back button and return to the main menu (figure 1). 
+    
+    Figure 4: Stats Screen
+        The Stats screen can only be brought up from a button in the main menu (Figure 1). The goal of the screen is to display stats from all known robots in a meaningful matter. They will be able to upload each robot's data to the server (Moodle) as well as reset them completely. The list of robots is inside a scrolling text box to help contain them and will have a sorting option to easily find a specific bot. Stats will be displayed as well in a scrolling text box that distinctly shows which robots stats is being displayed. The user has the opion to upload or reset the selected robots stats, or they can return back to the main menu (figure 1).
+    
+    Figure 5: Edit-Bots Screen
+        The Edit Bots screen allows the operator to add  or remove robots. The only way to enter this screen is through the RoboManger (figure 8) "Edit" button.The operator can leave this screen at any time using the back button, returning them to the RoboManager (figure 8). The user can select a robot from the list to edit them; editing in this case includes changing its name, team name, or its Forth code. There are three input fields to take in changes and there is a save button to override the old info with the new. Selecting a robot should autofill these fields to their current state. There is also a cancel button to undo all changes made and revert back to its previous state.
         
-    create game screen
-    rules screen
-    stats screen
-    player game board
-    observer game board
-    end game screen.
+    
+    Figure 6.1: Player Point of View
+        The player is shown the game board of size 5 or 7, depending the choice of the player or the number of teams in the game. White tiles represent spaces that the player's robots can see and grey tiles represent spaces that the player's robots cannot see. All enemies on grey tiles will be hidden form the player, as the player moves robots around the game board tiles will switch from grey to white and vise versa, revealing enimies as needed. All visible robots have 1, 2, or 3 dots above them, these dots represent the robots health. The dots are will turn black when depleated and remain coloured while available. Each robot also has a name tag, the same name that was chosen in the game creation screen. At the top of the screen there is a team turn indicator.  This displays which team is currently being manipulated.
+    
+        Players has five buttons at their disposal on the screen: a "Move" button, a "Shoot" button, an "End Turn" button, a "Rules" button, and an "Exit Match" button.
+            -The "Move" button will tell the robot to move forward.
+            -The "Shoot" button will tell the robot to shoot at the selected tile.
+            -The "End Turn" button will end that players turn and move onto the next teams turn.
+            -The "Rules" button will show the Rules Menu Screen(Figure: 3).
+            -The "Exit Match" button will leave the match without finishing it, and display the Main Menu Screen(Figure: 1).
+                
+    Figure 6.2: Observer Point of View
+        The observer is shown the game board of size 5 or 7, depending the choice of the observer or the number of teams in the game. White tiles represent spaces that the CPU's robots can see and grey tiles represent spaces that the CPU's robots cannot see. All visible robots have 1, 2, or 3 dots above them, these dots represent the robots health. The dots are will turn black when depleated and remain coloured while available. Each robot also has a name tag, the same name that was chosen in the game creation screen. At the top of the screen there is a team turn indicator.  This displays which team is currently being manipulated.
+    
+        The observer has 6 "Fog of War" check boxes, a "Robot Turn Time" slider, and two buttons; a "Rules" button, and an "Exit Match" button. 
+            -The "Fog of War" check boxes are colour codded and labeled for each team. When the "Red" box is checked you will be able to see all the tiles that the red team is able to see, the same goes for the rest of the checkboxes.
+            -The "Robot Turn Timer" slider controlls how long the robots will take to complete their turn. If slider is all the way to the left then the robots' turn will be complete almost instantly. The more the slider is to the right the longer the turns will take.
+            -The "Rules" button will show the Rules Menu Screen(Figure: 3).
+            -The "Exit Match" button will leave the match without finishing it, and display the Main Menu Screen(Figure: 1).
+    
+    Figure 7: End-Game Screen: 
+        The End-Game Screen is a pop-up screen that is displayed over Figure 6 (In-game screen). It occurs in the instance a game finishes and disappears when the user selects one of their three options. The screen is to display the winning team at the top as well as various stats for teams who participated in a scrolling text window. The user then has the option to create a new game which takes the user to Figure 2, return to the main menu which is Figure 1, or quit the program entirely. If the user tries to exit out the pop-up window, they will be taken to Figure 1, the main menu.
+        
+    Figure 8: RoboManager    
+        RoboManager is can reached only from the main menu. On the left-hand side it will display a list of all robots known to the local system, and on the right is a table query of robots stored online. Inbetween the list and table are buttons to interact with all the robots; edit takes the user to the Edit Robots screen, if there is a local robot selected then it will be selected in the new screen as well. An import button will taken a selected robot from the online table and download to the local system. The export button will take a selected robot from the local list and upload it to the online table. Selecting a local robot and pressing the delete robot will remove that robot from the list. Lastly, the user can always use the back button to return to the main menu.
 
 use cases
     Actors:
