@@ -113,90 +113,98 @@ Actors and actions
         Player - any human giving input to the game board or end game screen
             Player actions: 
                 Select a tile
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: the tile is selected
+                                    the unit is facing in the direction of the selected tile
+                    -Errorconditions: none
                 Command robot shoot
-                    -Preconditions:
+                    -Preconditions: a tile is selected
+                                    the seleceted tile is in the units range
+                                    there is atleast 1 enemy unit on the selected tile
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: damage is dealt to all units on selected tile
+                    -Errorconditions: none
                 Command robot move
-                    -Preconditions:
+                    -Preconditions: unit has moves left
+                                    hexagon that unit is moving to is on the board
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: unit moves 1 space in the direction that it is facing
+                    -Errorconditions: none
                 Access rules
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: diplay a rules window
+                    -Errorconditions: none
                 Exit the match
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
+                    -Postconditions:match ends and the user returns to the main menu
                     -Errorconditions:
     
     
-        Menu Operator - any human giving input to the menue, rules, or stats screen
+        Menu Operator - any human giving input to the menu, rules, or stats screen
             actions:
                 Create a game
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: a game is created with the options given by the menu operator
+                    -Errorconditions:none
                 Access rules
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: the rules screen is displayed
+                    -Errorconditions: none
                 View stats
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
-                Exit the match
-                    -Preconditions:
+                    -Postconditions: the stats screen is displayed
+                    -Errorconditions: none
+                Exit the game
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: the game closes
+                    -Errorconditions: none
                 Manage robots
-                    -Preconditions:
+                    -Preconditions: robot exists
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: changes were made to the robot
+                    -Errorconditions: syntax errors
     
         Observer - a human watching only AI's play the match and giving input to the game board or endgame screen
             actions:    
                 Toggle fog of war
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: fog of war is toggled on or off for the observer
+                    -Errorconditions: none
                 Exit the match
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: match ends and the observer returns to the menu
+                    -Errorconditions: none
                 Edit robot think time
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: robot think time is changes
+                    -Errorconditions: none
     
         Time - a non-human entity that keeps track of time for different parts of the game
                 actions:
-                    -end turn
+                    end turn
+                        Preconditions: timer reached 30 seconds
+                        Flow of Events:
+                        Postconditions: timer ends the players turn
+                        Errorconditions: none
     
     
         A.I - a non-human that is playing the game through an interpreter
             actions:
                 Send script
-                    -Preconditions:
+                    -Preconditions: none
                     -Flow of Events:
-                    -Postconditions:
-                    -Errorconditions:
+                    -Postconditions: robot behaves as AI says
+                    -Errorconditions: syntax errors
 
 Sub-systems:
     Librarian
