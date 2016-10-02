@@ -41,7 +41,9 @@ Summarize programming task
     additionally, our game will not involve networking, and so if there is more than 1 human player, the screen must be 100% hidden from both players at the end of a turn so that they may switch seats, 
     then the player must press start turn so that neither can see information that should be hidden from them while the turn changes.
 	Our softwares arcitectural pattern will be Model View Controller where the model updates the view, and the user sees the view and uses the controller to change the model.
-	//**sumarize other possible arcitectures**//
+	We chose this because it works well with GUI interfaces and heavy user interaction as we want to be able to choose what inputs the user gives the model so that the view does not do anything unexpected.
+	other possible arcitectures would be Presentation-Abstraction-Control and Heirarchical Model-View-Controller. 
+	However, both of these would allow for our agents to interact with eachother which is not something that we want because we want them each to manipulate just their data.
 	This piece of software will be developed using a specific platform of other programs and software that meet the group’s needs. 
 	The hardware this game is designed for will be on the Tuxworld computers in the Spinks Laboratory of the University of Saskatchewan. 
 	The main software used will be: GitLab for version control, JSON for structuring data, Microsoft Word for creating documents with images, 
