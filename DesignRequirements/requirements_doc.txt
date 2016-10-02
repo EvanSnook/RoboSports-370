@@ -24,12 +24,15 @@ Game Summary
     If there are two players they must play on a size 5 board, if there are six players they must play on a size 7 board, and if there are three players they must choose between the two board sizes.
     Each player begins on a designated tile on the board with their three units, each with slightly different properties.
     A scout which can move 3 spaces, has an attack range of 2, health of 1 and deals 1 damage, a sniper which can move 2 spaces, has an attack range of 3, health of 2 and deals 2 damage, and a tank which can move 1 space, has an attack range of 1, health of 3 and deals 3 damage.
-    Players can move and shoot in any order, but they cannot exceed their unit’s maximum move distance in their turn but moving is not required.
-    The red player starts the game using their scout, they may move and shoot any units within its range, once red's turn is over then the next player to reds left does the same and this continues until it is reds turn again.
-    Red then continues by controlling his sniper unit, the other players follow one by one in the same order until it is red's turn again and red continues by controlling their tank unit.
-    If a player has lost a tank and it is their turn to control that tank they move the next tank instead (i.e. if red lost their scout, they will move their sniper while everyone else continues to move their scout).
-    This process repeats until there is only one colour standing.
-
+    Games are sorted into different sections:
+        A play is where a player has a chance to move or shoot with one of his units, this unit is decided in order of highest movement first and lowest movement last.
+        A round is when every player has had a chance to use their unit.
+        A turn consists of when everyplayer has now had a chance to play each of their units atleast once. 
+    Players can move and shoot in any order, but they cannot exceed their unit’s maximum move distance in their turn but moving is not required and rotating a unit does not cost movement.
+    The red player starts the game using their unit with the highest movement, they may move and shoot any units within its range, once red's turn is over, the player to reds left does the same and this continues until it is reds turn again.
+    Red then continues the round by controlling his unit with the next highest movement. If a players unit is dead, the player may still make a move with their highest movement unit since their last play
+    once a player has no more units to move, the player is out of the game.
+    
 Summarize programming task
     RoboSport370 can be observed, played as a single player, or played with multiple people. 
     Thus our game has an inherent need for bots with AI to fill up positions that are not occupied by an actual player in cases where you wish to observe or have a match with 2,3, or 6 players, but you do not have enough humans to play.
@@ -38,6 +41,7 @@ Summarize programming task
     additionally, our game will not involve networking, and so if there is more than 1 human player, the screen must be 100% hidden from both players at the end of a turn so that they may switch seats, 
     then the player must press start turn so that neither can see information that should be hidden from them while the turn changes.
 	Our softwares arcitectural pattern will be Model View Controller where the model updates the view, and the user sees the view and uses the controller to change the model.
+	//**sumarize other possible arcitectures**//
 	This piece of software will be developed using a specific platform of other programs and software that meet the group’s needs. 
 	The hardware this game is designed for will be on the Tuxworld computers in the Spinks Laboratory of the University of Saskatchewan. 
 	The main software used will be: GitLab for version control, JSON for structuring data, Microsoft Word for creating documents with images, 
