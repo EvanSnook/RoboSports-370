@@ -1,0 +1,27 @@
+__Modify Robot Think Time__
+    While observing a game which contains bot players the observer has the option to modify the time in which it takes the bots to complete their actions. This is done by modifying the Robot Think Time value on the screen (Figure 6.2). The think time applies immediately after the observer finishes modifying the value and gives the observer more control over the flow of the game.
+
+Scenario 1
+ 1. A game begins with an observer and the robots begin playing.
+ 2. The observer cannot keep up with the robots movement.
+ 3. The observer modifies the Robot Think Time to a higher value
+ 4. The observer continues watching the game
+ 5. The use case ends.
+
+Scenario 2
+ 1. A game begins with an observer and the robots begin playing.
+ 2. The observer is only interested in the end-game stats.
+ 3. The observer modifies the Robot Think Time to 0
+ 4. The game finishes in a short amount of time
+ 5. The use case ends.
+
+__Modify Fog of War__
+    While observing a game the observer has the5 option to modify which team's fog of war is enabled, or to disable fog of war completely giving him the option to watch the game from one or many perspectives at a time. In Figure 6.2, the observer is able to see the red, green and yellow team's vision, while the blue, orange and purple team's vision is not fully known.
+
+Scenario 1
+ 1. The observer adds a custom robots on the Red Team 
+ 2. A game begins with an observer and the robots begin playing.
+ 3. The observer is only interested in watching his own robots performance.
+ 4. The observer checks the Red team Fog of War
+ 5. Game plays through in the perspective of the Red team
+ 6. The use case ends.
