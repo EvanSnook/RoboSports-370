@@ -1,0 +1,41 @@
+Classes
+
+Robot
+	- Attack:int
+	- Range:int
+	- Move distance:int
+	- Health:int
+	- Position:HexNode
+	- Remaining moves:int
+
+	- Shoot(HexNode)
+	- Move()
+	- Turn(int)
+	- takeDamage(int)
+	- isAlive()
+
+Time
+	- AI Think Time:int
+	- Play Timer:Timer
+	- Game Timer:Timer
+
+	- resetPlayTimer()
+	- pauseTimers()
+
+HexNode
+	- UL:HexNode
+	- UR:HexNode
+	- L:HexNode
+	- R:HexNode
+	- DL:HexNode
+	- DR:HexNode
+	- botsOnMe:Robot[]
+
+	- isEmpty
+	- USExists() … DRExists()
+
+Board
+
+HexGraph ?
+HexIter ?
+
