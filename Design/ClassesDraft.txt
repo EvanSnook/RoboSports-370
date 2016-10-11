@@ -1,0 +1,124 @@
+Model:
+
+	Robot “abstract”: 
+		-position:HexNode
+		-type
+		-remainingMoves:int
+		-attack:int
+		-range:int
+		-moveDistance:int
+		-health:int
+		-direction
+		-name
+		-stats
+		-isAlive()
+
+		tank:
+		scout:
+		sniper:
+
+		robotAI:
+			-libTeam
+			-AIStats
+			-script
+			-toJSON()
+			-robotAI(JSON)
+			-combineStats()
+			-nextCommand()
+
+	Stats:
+		-wins
+		-matches
+		-distanceTravelled
+		-damageTaken
+		-damageGiven
+		-kills
+		-deaths
+		-plays
+		-getLosses()
+		-win()
+			
+	Time:
+		-playTimer
+		-gameTimer
+		-AIThinkTime
+		-resetPlay()
+		-pauseGameTimer()
+	
+	HexNode:
+		-UL:HexNode
+		-UR:HexNode
+		-L:HexNode
+		-R:HexNode
+		-DL:HexNode
+		-DR:HexNode
+		-botOnMe:Robot[]
+		-isEmpty()
+		-existsUS … DR()
+
+	Board:
+
+	Team:
+		-color
+		-tank
+		-sniper
+		-scout
+		-enabled
+		+getters
+
+	Teams[]:
+
+	Game:
+		-board
+		-time
+		-teams[]
+	
+	Librarian:
+		-robots[]
+		-add(robot)
+		-toJSONArray()
+		-remove(robot)
+		-updateRobot()
+		
+		
+
+Controller:
+
+	gameMaster:
+		-game
+		-currentRobot
+		-playDeadline
+		-selectedTile:HexNode
+		-damageRobots(damage, destRobot)
+		
+
+	menuMaster:
+		-librarian
+
+	libMaster:
+		-librarian
+		-import(JSON)
+		-export(robotAI.toJSON())
+	
+	forthInterpreter:
+		-queue
+		-game
+		-do()
+
+
+View:
+	mainMenu:
+
+	gameCreation:
+
+	ruleScreen:
+	
+	statsScreen:
+		
+	editRobots:
+
+	roboManager:
+
+	gameScreen:
+
+	postGameScreen:
