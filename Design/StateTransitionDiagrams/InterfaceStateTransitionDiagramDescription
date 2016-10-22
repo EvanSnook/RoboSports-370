@@ -1,0 +1,12 @@
+The Program will enter into the Main Menu state where it will contain 5 buttons.
+OnQuitButtonClick() will immediately terminate the program.
+OnRulesButtonClick() will bring up a rules interface. 
+From the rules interface the only event is OnBackButtonClick() which will bring the user back to the main menu.
+OnRobotStatsButtonClick() brings up the user interface, and from there OnBackButtonClick() will bring the user back to the main menu. 
+OnRoboManagerButtonClick() the robot management user interface will be brought up where the user can manage their robot OnEditRobotButtonClick() 
+and return to the managers OnBackButtonClick() and then to the main menu with another OnBackButtonClick() event. 
+OnCreateGameButtonClick() the interface to enter data that will be used to create a game. from here OnBackButtonClick() will bring the user back to the main menu, 
+or OnStartGameButtonClick() will take the data and create a game view interface or an observer view interface for the user. 
+from game view OnIn-GameRulesButtonClick() brings up rules and then OnBackButtonClick() brings the user back into the game. 
+OnGameEnds() happens when there is only one color of robots remaining from either game view and OnMainMenuButtonClick() will bring the user back to the main menu,
+or OnQuitButtonClick() will terminate the game.
