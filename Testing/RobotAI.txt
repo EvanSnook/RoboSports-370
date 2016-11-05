@@ -1,0 +1,29 @@
+RobotAI
+	
+	Description
+		RobotAI is an extension of the Robot class that contains extra information about this robot including the Team that coded it, its previous stats and the script that created it.
+
+	Signifigance
+		public RobotAI(String json)
+		Create a RobotAI object with its corresponding JSON string
+		
+		public String getLibTeam()
+		Get the team that created this robot.
+		
+		public Stats getPreviousStats()
+		Get the statistics saved about this robot
+		
+		public String getPlayCommand()
+		Get the forth script that that will execute this robots play
+		
+		private String getInitCommand()
+		Get the command that instantiates this robots words.
+		
+		public JSONObject toJSON()
+		Get a JSONObject representation of this Robot
+		
+		public HashMap<String, String>getWords()
+		Get the map of defined words for this robot.
+
+	Testing Plan
+	-	Load robot from script
