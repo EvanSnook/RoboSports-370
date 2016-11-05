@@ -22,8 +22,25 @@ GameMaster
 		Scan returns the number of robots currently in view of the current robot.
 		
 		public void identify(int index)
-		Identify will take will push TeamColour, how far the robot is away and the direction the robot is in, as well as the robots remaining health.
+		Identify will take in an index for which robot to pick. Then it will push three things: the TeamColour, how far the robot is away and the direction the robot is in, as well as the robots remaining health, of hte robot being identified.
 
 	Testing Plan
-	-	Identify
-	-	Scan	
+	    Identify
+	        zero robots in range:
+    	        Run identify with index = -1. - nothing should be added to the stack.
+    	        Run identify with index = 0. - nothing should be added to the stack.
+    	    one robot in range:
+    	        Run identify with index = 0. the only robot's stats should be added to the stack.
+    	        Run identify with index = 1. - nothing should be added to the stack, accessing past the number of robots scanned.
+    	    three robots in range:
+    	        Run identify with index = 0. the first robot's stats should be added to the stack.
+    	        Run identify with index = 1. the second robot's stats should be added to the stack.
+    	        Run identify with index = 2. the third robot's stats should be added to the stack.
+	        Make sure Identify pushed the correct items to the stack, these include:
+	            The scanned robot's colour, the location of the robot (Range and Direction), the robots remaining health.
+	            if the index is invalid nothing should be pushed to the stack.
+	    Scan
+	        Run scan with no robots in range. - create a integer testInt and assign it the result of the scan it should be 0.
+	        Run scan with one robot in range. - create a integer testInt and assign it the result of the scan it should be 1.
+	        Run scan with three robot in range. - create a integer testInt and assign it the result of the scan it should be 3.
+	        
