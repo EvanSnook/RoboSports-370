@@ -1,0 +1,26 @@
+Librarian
+
+	Description
+		The Librarian has an array of all the robots in the system and has procedures to add, remove, update, and load in the robots to the array. It can also create a JSON file for the robots to have their information saved.
+
+	Signifigance
+		public Libarian()
+		This Method constructs a New Librarian
+		
+		public void addLocal(RobotAI robot) 
+		This method adds a robot to the array of robots
+		
+		public void removelLocal(RobotAI robot)
+		This method removes a robot from the list of robots
+		
+		public void updateLocalRobots()
+		This method updates the robots saved on the local machine
+		
+		private RobotAI[] loadLocal()
+		This method loads a robot from the local machine
+		
+		public JSONArray toJSONArray()
+		This method turns all the robot’s information into a JSON formatted file
+
+	Testing Plan
+		Everything
