@@ -1,16 +1,34 @@
 Board
 	Description
-		The Board’s main purpose is to represent a model of an abstract data type that is made up of HexNodes. In our MVC architecture, the board is a model so it is only used to store data. A board is used to hold a series of HexNodes to form a graph to represent the game board. There are two size options for the length of each side that are determined by the enumerator BoardSize; one size will be a length of 5 hexagon tiles and the other, a length of 7. All the tiles will be linked together with the known size to form a Board model. 
+		The Board’s main purpose is to represent a model of an abstract data type that is made up of HexNodes. In our MVC architecture, the board is a model so it is only used to store data. A board is used to hold a series of HexNodes to form a graph to represent the game board. There are two size options for the length of each side that are determined by the enumerator BoardSize; one size will be a length of 5 hexagon tiles and the other, a length of 7. All the tiles will be linked together with the known size to form a Board model.
+
 	Signifigance
-		
 		public void linkNode(HexNode cur, int side, HexNode other)
 		The linkNode method is used when initializing the Board to link together HexNodes. As arguments, it receives two HexNodes, “cur” and “other”, as well as an integer called side. “Cur” represents the current node that is being linked with the “other” HexNode. The Board constructor repeatedly links nodes together until the board is complete.
+		This method needs to be tested because we want to make sure that none of our nodes on the board end up being null or linked to the wrong spot because that would cause our constructor to fail.
 
 		
 		public Board(BoardSize size)
-		This is the constructor for the Board, it takes a BoardSize as input take is determined by the user. The constructor will then create a root HexNode. It uses this reference to iteratively create HexNodes that will expand from the root until the size condition is satisfied. Once the Board is created, it identifies and stores the corner HexNodes into an array of six.  
+		This is the constructor for the Board, it takes a BoardSize as input take is determined by the user. The constructor will then create a root HexNode. It uses this reference to iteratively create HexNodes that will expand from the root until the size condition is satisfied. Once the Board is created, it identifies and stores the corner HexNodes into an array of six.
+		We are testing this method because if the board is not propperly created and there are gaps or null spaces in the board, the game will not function propperly if at all.
 
 	Testing Plan
-		linkNode, Build
+		linkNode
+			cur node is null - create testNode1 as a null node and assign a non-null node testNode2 to its side 0. assert that there is an exception thrown that cur node cannot be null. We need an exception here because we can end up with errors when we try to assign things to a null reference and we need to catch and deal with that situation
+
+			other node is null - create testNode1 and assign a null node, testNode2, to the side 0 of it. assert that curnode.r == 0. This will ensure that the function does not throw an exception when other node is null and properly assigns it.
+
+			link side 0 (r) - create testNode1 and testNode2 and assign testNode2 to side 0 of testNode1. assert that testNode1.r == testNode2. We must test this because it is a lower boundary case for our integer side.
+
+			link side 3 twice (r) - create testNode1, testNode2, testNode3 and assign testNode2 to side 3 of testNode1 then reassign testNode3 to side 0 of testNode1. assert that testNode1.r == testNode2. We must test this because our board is set once it is created and we should not have to overrite nodes as that could result in some shinanigans.
+
+			link side 5 (ur) - create testNode1 and testNode2 and assign testNode2 to side 5 of testNode1. assert that testNode1.r == testNode2. We must test this because it is an upper boundary case for our integer side.
+
+		Build (constructor)
+			size is not 5 or 7 - test calling a constructor on testBoard with a size other than 5 or 7. assert that and exception was thrown and that testBoard == null. we need to do this because there is no reason for us to create a board with anything other than a size of 5 or 7.
+
+			size is 5 - test creating a testBoard of size 5 and assertthat you can travel 4 nodes away from the root node in any direction before you hit null.
+
+			size is 7 - test creating a testBoard of size 5 and assertthat you can travel 4 nodes away from the root node in any direction before you hit null.
 
 
