@@ -1,0 +1,23 @@
+RobotBuilder
+	
+	Description
+		RobotBuilder is part of the Model in our architecture, it gives us an easy interface for creating robots and modifying single aspects about them without needing a gargantuan constructor for our Robot class. 
+		
+	Signifigance
+		public Robot getTank()
+		This method sets the variables health and maxHealth, damage, range, maxMoves, and type to the default values for a tank robot. 
+		
+		public Robot getSniper()
+		This method sets the variables health and maxHealth, damage, range, maxMoves, and type to the default values for a sniper robot. 
+		
+		public Robot getScout()
+		This method sets the variables health and maxHealth, damage, range, maxMoves, and type to the default values for a scout robot. 
+		
+		public Robot build()
+		This method returns the current Robot with the new changes made to the robot’s variables.  
+		
+		public RobotAI build(JSONObject json)
+		This method returns the RobotAI with the new changes made to the robot’s variables. 
+
+	Testing Plan
+	-	Building normal Robot and AI
