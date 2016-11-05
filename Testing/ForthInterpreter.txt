@@ -1,0 +1,23 @@
+ForthInterpreter
+
+	Description
+		The ForthInterpreter will be taking in input from Robots as Strings and executing the commands on its Stack using its Words while gathering its information from the GameMaster.
+		
+	Signifigance
+		public ForthInterpreter(GameMaster gameMaster)
+		Create a forth interpreter with a reference to the current GameMaster so it can modify the game.
+
+		Public void execute(String fullCommand)
+		Execute a string that contains multiple commands.
+
+		public void execute(String fullCommand, HashMap<String, String> userDefinedWord)
+		Execute a string that contains multiple commands and may contain a user defined word.
+
+		public void executeSingle(String singleCommand)
+		Execute a single command.
+
+		public void initWords()
+		Initialize all the pre-defined Forth words
+
+	Testing Plan
+	-	Literal Words, Defining Word, Forth Word, Comments
