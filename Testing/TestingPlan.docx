@@ -1,5 +1,5 @@
 Introduction
-	
+	Following up from our Design Document we would like to make sure that implementing our project goes smoothly. For this to happen we highlighted important interactions in our system so that we can test them and understand exactly what we need from them. Doing so will reduce the amount of "speed bumps" the group will face when writing actual code for RoboSport370. As a group we decided to test: Board, ForthInterpreter, GameMaster, HexNodeTraversal, Librarian, RobotAI, and RoboBuilder. These classes are involved in the most common and most important interactions in our design; creating a safeguard for them will only strengthen our software and make implementation less tedious. 
 
 Board
 -	LinkNode
@@ -28,4 +28,3 @@ Changes
 None we’re gods.
 
 Summary
-
