@@ -25,6 +25,6 @@ RobotBuilder
 -	Building normal Robot and AI
 
 Changes
-None we’re gods.
+    After the Design Document and the feedback our group received, we did not feel the need to make any major changes to our system. The only small change we have made since then is that HexNodeTraversal is now an iterator. Also, we did not include AspectJ in our design because we are not familiar with it and were unsure about its usage. In our implementation, we may decide to use AspectJ, but there is no extra testing to be done for it; the functionality of our system will remain the same whether we decide to use this tool or not.
 
 Summary
