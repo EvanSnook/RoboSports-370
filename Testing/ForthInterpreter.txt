@@ -3,7 +3,7 @@ ForthInterpreter
 	Description
 		The ForthInterpreter will be taking in input from Robots as Strings and executing the commands on its Stack using its Words while gathering its information from the GameMaster.
 		
-	Signifigance
+	Significance
 		public ForthInterpreter(GameMaster gameMaster)
 		Create a forth interpreter with a reference to the current GameMaster so it can modify the game.
 
