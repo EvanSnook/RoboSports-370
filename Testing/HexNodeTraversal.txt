@@ -3,7 +3,7 @@ HexNodeTraversal
 	Description
 		HexNodeTraversal is used to iterate through the graph-like structure of the HexNodes. It keeps track of the root HexNode (where the traverse began), the current HexNode that is being traversed, and which linked node it is facing (see Global Direction). It provides movement through the Hexagon board by moving from HexNode to HexNode, layer by layer while preventing the traverse from leaving the boundaries.  It begins from the center and starts from the global position of 0 and works around that layer, then moves to the next layer until the entire graph has been traversed. It is an inside-out approach at traversing the Board. First layer will just be the middle so it will have the node 0. The second layer will have 0-5, the third layer will have 0-11, the fourth 0-17, the fifth 0-23, and in the case the board size is 7 the sixth layer will have 0-35. 
 
-	Signifigance
+	Significance
 		public HexNodeTraversal(HexNode root, int facing)
 		This is the constructor for the HexNodeTraversal class. It simply creates a HexNodeTraversal object, initially sets the root HexNode and the direction to start the traversal.
 		We will be testing this method so that we know whether or not the Board was properly traversed and each node was touched.
@@ -58,4 +58,3 @@ HexNodeTraversal
                 
             distanceOut is 3, distanceAround is 18
                 assert that the node returned is the 18th node in the 3rd layer. this ensures that go can go out many layers and that it can find the last node in a layer.
-            
