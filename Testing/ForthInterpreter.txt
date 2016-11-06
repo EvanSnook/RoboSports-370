@@ -4,20 +4,44 @@ ForthInterpreter
 		The ForthInterpreter will be taking in input from Robots as Strings and executing the commands on its Stack using its Words while gathering its information from the GameMaster.
 		
 	Significance
-		public ForthInterpreter(GameMaster gameMaster)
-		Create a forth interpreter with a reference to the current GameMaster so it can modify the game.
 
 		Public void execute(String fullCommand)
 		Execute a string that contains multiple commands.
-
+        we are testing this so that we can be sure that it works for all kinds of words
+        
 		public void execute(String fullCommand, HashMap<String, String> userDefinedWord)
 		Execute a string that contains multiple commands and may contain a user defined word.
-
+        We are testing this so that we can be sure that it works for all kinds of words
+        
 		public void executeSingle(String singleCommand)
 		Execute a single command.
-
-		public void initWords()
-		Initialize all the pre-defined Forth words
-
+         We are testing this so that we can be sure that it works for all kinds of words
+         
 	Testing Plan
-	-	Literal Words, Defining Word, Forth Word, Comments
+	    execute
+	        null string
+	            assert that an exception is thrown. This is necessary so that we are not executing scripts with undefiened words
+	    
+	        Literal Word
+	            assert that the command is executed.This test ensures that the functionality of Literal Words works
+	            
+	        Defining Word
+	            assert that the command is executed.This test ensures that the functionality of Defining Words works
+	            
+	        Forth Word
+	            assert that the command is executed.This test ensures that the functionality of Forth Words works
+	            
+	        Comments
+	            assert that the command is executed.This test ensures that the user can write comments in a script and still have it work
+	        
+	    executeSingle
+	    	null string
+	            assert that an exception is thrown. This is necessary so that we are not executing scripts with undefiened words
+	        Literal Word
+	            assert that the command is executed.This test ensures that the functionality of Literal Words works
+	        Defining Word
+	            assert that the command is executed.This test ensures that the functionality of Defining Words works
+	        Forth Word
+	            assert that the command is executed.This test ensures that the functionality of Forth Words works
+	        Comments
+	            assert that the command is executed.This test ensures that the user can write comments in a script and still have it work
