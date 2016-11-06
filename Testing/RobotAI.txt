@@ -26,4 +26,8 @@ RobotAI
 		Get the map of defined words for this robot.
 
 	Testing Plan
-	    Strat by sending a JSON script as a string into the RobotAI constructor, then check if the Robot was constructed as planned.(all words are properly defined)
+	    testRobotAI = RobotAI("SomeJSON")
+	    
+	    someJSON is a valid script - The InitCommand and the play words must be defined. All the defined words in the script must be in the words variable. A mailbox must be defined. 
+	    someJSON is an invalid script - maaking sure we catch an invalid script using a thrown exception.
+	        all scripts must have initCommand as well as play words defined after construction.
