@@ -3,7 +3,7 @@ Librarian
 	Description
 		The Librarian has an array of all the robots in the system and has procedures to add, remove, update, and load in the robots to the list. It can also create a JSON file for the robots to have their information saved.
 
-	Signifigance
+	Significance
 		public Libarian()
 		This Method constructs a New Librarian
 		
