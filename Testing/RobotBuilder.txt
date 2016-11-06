@@ -6,11 +6,17 @@ RobotBuilder
 	Significance
 		public Robot build()
 		    This method returns the current Robot with the new changes made to the robot’s variables. We assume that the RobotBuilder constructor calls the right function depending what on the boolean value of "isAI" passed as a parameter. For Robot build to be called it, false needs to be passed as a parameter. If this method is called it will create a Robot object, so we must make sure that it meets the needs of a regular Robot since we are using a builder class. 
-		
+		    Testing this method ensures that a robot is built with no null values
+		    
 		public RobotAI build(JSONObject json)
 		    This method returns the RobotAI with the new changes made to the robot’s variables. We assume that the RobotBuilder constructor calls the right function depending what on the boolean value of "isAI" passed as a parameter. For RobotAI build to be called it, true needs to be passed as a parameter. Since we are using a builder to create a RobotAI object, we need to assure that a "normal" RobotAI is created. Essentially making sure that the object instantiates a complete RobotAI class. 
-
+            Testing this method ensures that a robot is built with no null values
+            
 	Testing Plan
 	    Robot build
-	        
+	        build a robot with all null variables
+	            assert that an excetion is thrown for each variable. This ensures that we do not end up with a robot that has any null values.
+
 	    RobotAI build
+	        build a robot with all null variables
+	            assert that an excetion is thrown for each variable. This ensures that we do not end up with a robot that has any null values.
