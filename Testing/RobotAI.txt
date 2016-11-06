@@ -26,4 +26,4 @@ RobotAI
 		Get the map of defined words for this robot.
 
 	Testing Plan
-	-	Load robot from script
+	    Strat by sending a JSON script as a string into the RobotAI constructor, then check if the Robot was constructed as planned.(all words are properly defined)
