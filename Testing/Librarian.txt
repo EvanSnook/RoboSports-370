@@ -1,14 +1,14 @@
 Librarian
 
 	Description
-		The Librarian has an array of all the robots in the system and has procedures to add, remove, update, and load in the robots to the array. It can also create a JSON file for the robots to have their information saved.
+		The Librarian has an array of all the robots in the system and has procedures to add, remove, update, and load in the robots to the list. It can also create a JSON file for the robots to have their information saved.
 
 	Signifigance
 		public Libarian()
 		This Method constructs a New Librarian
 		
 		public void addLocal(RobotAI robot) 
-		This method adds a robot to the array of robots
+		This method adds a robot to the list of robots
 		
 		public void removeLocal(RobotAI robot)
 		This method removes a robot from the list of robots
@@ -23,4 +23,43 @@ Librarian
 		This method turns all the robot’s information into a JSON formatted file
 
 	Testing Plan
-		Everything
+		Librarian
+		    
+
+		addLocal
+		    robot is null - nothing should be added to the list, an exception should be thrown
+
+		    robot is identical to a robot already in the list - nothing should be added to the list 
+
+		    list is empty - a new list should be created containing the robot
+
+		    list exists with robots already added  - the robot should be added to the end of the list
+
+		removeLocal
+		    list is empty - nothing should happen to the list
+			
+		    list has 1 robot - robot should be removed
+
+		    robot is at the end of the list - robot should be removed
+
+	            robot is at the beginning of the list - robot should be removed, the remaining robots should be moved
+	
+		    robot is in the middle of the list - robot should be removed, the remaining robots should be moved to account for this 
+
+		    robot is null - nothing should happen, an exception should be thrown
+
+	    	    robot does not exist in the list - nothing should happen
+
+		updateLocalRobots
+		    run with no robots saved to the local machine - nothing should be changed
+
+		    run with 1 robot saved to the local machine - one robot should be updated 
+
+		    run with multiple robots saved to the local machine - multiple robots should be updated
+
+		    run with multiple robots saved to the local machine but only one has changed - only one robot should be updated 
+
+		loadLocal
+		    
+
+		toJSONArray
