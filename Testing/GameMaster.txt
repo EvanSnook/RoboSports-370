@@ -3,26 +3,12 @@ GameMaster
 	Description
 		GameMaster is the controller of the overall game mechanics such as: controlling robots, (turning, shooting, firing, scanning and identifying) and communicates with the ForthInterpreter to execute commands for the RobotAI.  
 	Signifigance
-		public GameMaster(Game game)
-		The constructor for the GameMaster takes in the Game it will be controlling.
-		
-		public void damageTile(int damage, HexNode<T> node)
-		DamageTile takes in an integer for how much damage to do and a HexNode for which tile to damage.  Damage will be the robots damage and HexNode will be the selectedTile.
-		
-		public void moveRobot()
-		MoveRobot moves the robot one tile in the direction that he is facing if it can
-		
-		public Team getCurrentTeam()
-		GetCurrentTeam will ask the curRobot for his colour attribute. 
-		
-		public void turnRobot()
-		Rotate the robot one unit clockwise.
 		
 		public int scan()
-		Scan returns the number of robots currently in view of the current robot.
+		Scan returns the number of robots currently in view of the current robot. This fuction is crutial for AI robots to know their surroundings. Therefor it is necessary to test this function thoroughly.
 		
 		public void identify(int index)
-		Identify will take in an index for which robot to pick. Then it will push three things: the TeamColour, how far the robot is away and the direction the robot is in, as well as the robots remaining health, of hte robot being identified.
+		Identify will take in an index for which robot to pick. Then it will push three things: the TeamColour, how far the robot is away and the direction the robot is in, as well as the robots remaining health, of hte robot being identified.  Identify, simmilar to Scan must be tested thoroughly. Test buy checking what ends up on the stack and if there should be something on the stack at that time.
 
 	Testing Plan
 	    Identify
@@ -39,8 +25,8 @@ GameMaster
 	        Make sure Identify pushed the correct items to the stack, these include:
 	            The scanned robot's colour, the location of the robot (Range and Direction), the robots remaining health.
 	            if the index is invalid nothing should be pushed to the stack.
+	            
 	    Scan
 	        Run scan with no robots in range. - create a integer testInt and assign it the result of the scan it should be 0.
 	        Run scan with one robot in range. - create a integer testInt and assign it the result of the scan it should be 1.
 	        Run scan with three robot in range. - create a integer testInt and assign it the result of the scan it should be 3.
-	        
