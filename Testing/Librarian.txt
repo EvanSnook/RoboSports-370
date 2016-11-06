@@ -23,9 +23,6 @@ Librarian
 		This method turns all the robot’s information into a JSON formatted file
 
 	Testing Plan
-		Librarian
-		    
-
 		addLocal
 		    robot is null - nothing should be added to the list, an exception should be thrown
 
@@ -53,13 +50,21 @@ Librarian
 		updateLocalRobots
 		    run with no robots saved to the local machine - nothing should be changed
 
-		    run with 1 robot saved to the local machine - one robot should be updated 
+		    run with 1 robot saved to the local machine - one robot should be updated
 
 		    run with multiple robots saved to the local machine - multiple robots should be updated
 
 		    run with multiple robots saved to the local machine but only one has changed - only one robot should be updated 
 
 		loadLocal
-		    
+		    load a robot that is null - an exception should be thrown
 
+		    load a fully functioning robot - robot should be loaded
+		    
 		toJSONArray
+		    run with robot missing information - an exception should be thrown
+
+		    run with fully functioning robot - JSON formatted file should be created
+
+		    run with robot that already has a JSON formatted file - file should be overwritten
+		    
