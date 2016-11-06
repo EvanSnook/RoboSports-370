@@ -11,18 +11,6 @@ HexNodeTraversal
 		public void go(int distanceOut, int distanceAround)
 		Go is a method that traverses to a hexnode. Distance out being which layer it is on and distance around being the index of the node on that layer.
 		Testing this method to ensure that we are reaching the proper layers and nodes.
-		
-		public void next();
-		Moves the current node to the next node in the traversal.
-		//not finctionality?
-		
-		private void out();
-		Moves the currentNode one layer outwards from the current position. 
-		//not functionality?
-		
-		private void rotate();
-		Turns the facing direction one more to the right (Adds 1). It needs to check that it is facing a valid HexNode and that it does not rotate more than 6 times (0-5), it should reset back to zero in this instance. 
-        //not functionality?
         
 	Testing Plan
 		Functionality
