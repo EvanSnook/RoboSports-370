@@ -3,21 +3,14 @@ RobotBuilder
 	Description
 		RobotBuilder is part of the Model in our architecture, it gives us an easy interface for creating robots and modifying single aspects about them without needing a gargantuan constructor for our Robot class. 
 		
-	Signifigance
-		public Robot getTank()
-		This method sets the variables health and maxHealth, damage, range, maxMoves, and type to the default values for a tank robot. 
-		
-		public Robot getSniper()
-		This method sets the variables health and maxHealth, damage, range, maxMoves, and type to the default values for a sniper robot. 
-		
-		public Robot getScout()
-		This method sets the variables health and maxHealth, damage, range, maxMoves, and type to the default values for a scout robot. 
-		
+	Significance
 		public Robot build()
-		This method returns the current Robot with the new changes made to the robot’s variables.  
+		    This method returns the current Robot with the new changes made to the robot’s variables. We assume that the RobotBuilder constructor calls the right function depending what on the boolean value of "isAI" passed as a parameter. For Robot build to be called it, false needs to be passed as a parameter. If this method is called it will create a Robot object, so we must make sure that it meets the needs of a regular Robot since we are using a builder class. 
 		
 		public RobotAI build(JSONObject json)
-		This method returns the RobotAI with the new changes made to the robot’s variables. 
+		    This method returns the RobotAI with the new changes made to the robot’s variables. We assume that the RobotBuilder constructor calls the right function depending what on the boolean value of "isAI" passed as a parameter. For RobotAI build to be called it, true needs to be passed as a parameter. Since we are using a builder to create a RobotAI object, we need to assure that a "normal" RobotAI is created. Essentially making sure that the object instantiates a complete RobotAI class. 
 
 	Testing Plan
-	-	Building normal Robot and AI
+	    public Robot built()
+	        
+	    public RobotAI build(JSONObject json)
