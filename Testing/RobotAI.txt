@@ -3,7 +3,7 @@ RobotAI
 	Description
 		RobotAI is an extension of the Robot class that contains extra information about this robot including the Team that coded it, its previous stats and the script that created it.
 
-	Signifigance
+	Significance
 		public RobotAI(String json)
 		Create a RobotAI object with its corresponding JSON string
 		
