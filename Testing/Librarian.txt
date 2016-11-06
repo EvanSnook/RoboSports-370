@@ -10,7 +10,7 @@ Librarian
 		public void addLocal(RobotAI robot) 
 		This method adds a robot to the array of robots
 		
-		public void removelLocal(RobotAI robot)
+		public void removeLocal(RobotAI robot)
 		This method removes a robot from the list of robots
 		
 		public void updateLocalRobots()
