@@ -2,7 +2,7 @@ GameMaster
 
 	Description
 		GameMaster is the controller of the overall game mechanics such as: controlling robots, (turning, shooting, firing, scanning and identifying) and communicates with the ForthInterpreter to execute commands for the RobotAI.  
-	Signifigance
+	Significance
 		
 		public int scan()
 		Scan returns the number of robots currently in view of the current robot. This fuction is crutial for AI robots to know their surroundings. Therefor it is necessary to test this function thoroughly.
