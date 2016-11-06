@@ -2,7 +2,7 @@ Board
 	Description
 		The Board’s main purpose is to represent a model of an abstract data type that is made up of HexNodes. In our MVC architecture, the board is a model so it is only used to store data. A board is used to hold a series of HexNodes to form a graph to represent the game board. There are two size options for the length of each side that are determined by the enumerator BoardSize; one size will be a length of 5 hexagon tiles and the other, a length of 7. All the tiles will be linked together with the known size to form a Board model.
 
-	Signifigance
+	Significance
 		public void linkNode(HexNode cur, int side, HexNode other)
 		The linkNode method is used when initializing the Board to link together HexNodes. As arguments, it receives two HexNodes, “cur” and “other”, as well as an integer called side. “Cur” represents the current node that is being linked with the “other” HexNode. The Board constructor repeatedly links nodes together until the board is complete.
 		This method needs to be tested because we want to make sure that none of our nodes on the board end up being null or linked to the wrong spot because that would cause our constructor to fail.
@@ -30,5 +30,3 @@ Board
 			size is 5 - test creating a testBoard of size 5 and assertthat you can travel 4 nodes away from the root node in any direction before you hit null.
 
 			size is 7 - test creating a testBoard of size 5 and assertthat you can travel 4 nodes away from the root node in any direction before you hit null.
-
-
