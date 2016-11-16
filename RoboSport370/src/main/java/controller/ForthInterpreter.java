@@ -1,16 +1,28 @@
 package controller;
 
-import model.Word;
-import model.ForthExecuter;
-import org.omg.CORBA.DynAnyPackage.Invalid;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.security.InvalidParameterException;
-import java.util.*;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EmptyStackException;
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.Stack;
+
+import model.ForthExecuter;
+import model.Word;
 
 
 public class ForthInterpreter {
+
+    public static void main(String[] args) {
+        ForthInterpreter interpreter = new ForthInterpreter();
+        interpreter.execute("1 1 <> if 1 else 0 then", null);
+
+        System.out.println(interpreter.getStack());
+    }
+
     /**
      * A list of pre-defined {@link Word}'s
      */
@@ -24,7 +36,7 @@ public class ForthInterpreter {
      * Instantiate a new {@link ForthInterpreter}
      */
     public ForthInterpreter() {
-        this.words = null;//initWords();
+        this.words = initWords();
         this.stack = new Stack<>();
     }
 
@@ -40,7 +52,20 @@ public class ForthInterpreter {
      *              user defined words for replacement in the {@code commandString}
      */
     public void execute(final String commandString, final HashMap<String, String> userDefined) {
-        throw new NotImplementedException();
+        Optional<Word> w = words.stream()
+                .filter(word -> word.isTrigger(commandString))
+                .findFirst();
+
+        if(!w.isPresent()) {
+            if(!commandString.isEmpty())
+                System.err.println("Parsing Error: " + commandString);
+            return;
+        }
+
+        w.get().execute();
+
+        String nextCommand = commandString.replaceFirst(w.get().getTrigger() + " *", "");
+        execute(nextCommand, userDefined);
     }
 
     /**
@@ -52,16 +77,27 @@ public class ForthInterpreter {
         ArrayList<Word> result = new ArrayList<>();
 
         //<editor-fold desc="Literal Words">
-        Word literalInteger = new Word("(^(\\+|-)[0-9]*)", matches -> {
-            stack.push(matches[0]);
+
+        /*
+         * Integers: written as decimal numbers (with or without a leading sign (+ or -)
+         */
+        Word literalInteger = new Word("((\\+|-)?[0-9]{1,})", matches -> {
+            stack.push(matches[1]);
         });
 
+        /*
+         * Strings: written as sequences of characters (including whitespace) initiated
+         * by the special token ." and ended by the next "
+         */
         Word literalString = new Word("\\.\"([^\"]*)\"", matches -> {
-            stack.push(matches[0]);
+            stack.push(matches[1]);
         });
 
+        /*
+         * Booleans: written as the special tokens, true and false
+         */
         Word literalBoolean = new Word("(true|false)", matches -> {
-            stack.push(matches[0]);
+            stack.push(matches[1]);
         });
 
         result.add(literalInteger);
@@ -70,7 +106,7 @@ public class ForthInterpreter {
         //</editor-fold>
 
         //<editor-fold desc="Comments">
-        Word comment = new Word("\\([\\)", matches -> {
+        Word comment = new Word("\\(.*\\)", matches -> {
             // Do nothing with comments
         });
 
@@ -78,16 +114,20 @@ public class ForthInterpreter {
         //</editor-fold>
 
         //<editor-fold desc="Stack Words">
+
+        // drop ( v -- ) —remove the value at the top of the stack
         Word stackDrop = new Word("drop", matches -> {
             if(verifyStack('v'))
                 stack.pop();
         });
 
+        // dup ( v -- v v ) —duplicate the value at the top of the stack
         Word stackDup = new Word("dup", matches -> {
             if(verifyStack('v'))
                 stack.push(stack.peek());
         });
 
+        // swap ( v2 v1 -- v2 v1 ) —swap the two values at the top of the stack
         Word stackSwap = new Word("swap", matches -> {
             if(verifyStack('v', 'v')){
                 String v1 = stack.pop();
@@ -97,14 +137,15 @@ public class ForthInterpreter {
             }
         });
 
+        // rot ( v3 v2 v1 -- v3 v1 v2 ) —rotate the top three stack elements
         Word stackRot = new Word("rot", matches -> {
             if(verifyStack('v', 'v', 'v')){
                 String v1 = stack.pop();
                 String v2 = stack.pop();
                 String v3 = stack.pop();
-                stack.push(v3);
-                stack.push(v1);
                 stack.push(v2);
+                stack.push(v1);
+                stack.push(v3);
             }
         });
 
@@ -114,7 +155,176 @@ public class ForthInterpreter {
         result.add(stackRot);
         //</editor-fold>
 
-        throw new NotImplementedException();
+        //<editor-fold desc="Arithmetic">
+
+        /*
+         * + ( i i -- i) —add the two integers, pushing their sum on the stack
+         */
+        Word stackAdd = new Word("\\+", matches -> {
+            if(verifyStack('i', 'i')){
+                int i1 = Integer.valueOf(stack.pop());
+                int i2 = Integer.valueOf(stack.pop());
+                int addOutput = i1 + i2;
+                stack.push(String.valueOf(addOutput));
+            }
+        });
+
+        /*
+         * - ( i2 i1 -- i ) —subtract the top integer from the next, pushing their
+         * difference (i2-i1) on the stack
+         */
+        Word stackSubtract = new Word("-", matches -> {
+            if(verifyStack('i', 'i')){
+                int i1 = Integer.valueOf(stack.pop());
+                int i2 = Integer.valueOf(stack.pop());
+                int subtractOutput = i2 - i1;
+                stack.push(String.valueOf(subtractOutput));
+            }
+        });
+
+        /*
+         * * ( i i -- i ) —multiply the two top integers, pushing their product on the stack
+         */
+        Word stackMultiply = new Word("\\*", matches -> {
+            if(verifyStack('i', 'i')){
+                int i1 = Integer.valueOf(stack.pop());
+                int i2 = Integer.valueOf(stack.pop());
+                int multiplyOutput = i2 * i1;
+                stack.push(String.valueOf(multiplyOutput));
+            }
+        });
+
+        /*
+         * /mod ( iv ie -- iq ir) —divide the top integer into the next, pushing
+         * the remainder and quotient
+         */
+        Word stackMod = new Word("/mod", matches -> {
+            if(verifyStack('i', 'i')){
+                int ie = Integer.valueOf(stack.pop());
+                int iv = Integer.valueOf(stack.pop());
+                int iq = Math.floorDiv(iv, ie);
+                int ir = iv % ie;
+                stack.push(String.valueOf(ir));
+                stack.push(String.valueOf(iq));
+            }
+        });
+
+        result.add(stackAdd);
+        result.add(stackSubtract);
+        result.add(stackMultiply);
+        result.add(stackMod);
+        //</editor-fold>
+
+        //<editor-fold desc="Comparison">
+        // < ( i2 i1 -- b ) —i2 is less than i1
+        Word compareLT = new Word("<", matches -> {
+            if(verifyStack('i', 'i')){
+                int i1 = Integer.valueOf(stack.pop());
+                int i2 = Integer.valueOf(stack.pop());
+                stack.push(String.valueOf(i2 < i1));
+            }
+        });
+
+        // <= ( i2 i1 -- b ) —i2 is not more than i1
+        Word compareLTE = new Word("<=", matches -> {
+            if(verifyStack('i', 'i')) {
+                int i1 = Integer.valueOf(stack.pop());
+                int i2 = Integer.valueOf(stack.pop());
+                stack.push(String.valueOf(i2 <= i1));
+            }
+        });
+
+        // = ( v2 v1 -- b ) —v2 equals v1
+        Word compareE = new Word("=", matches -> {
+            String v1 = stack.pop();
+            String v2 = stack.pop();
+            stack.push(String.valueOf(v1.equals(v2)));
+        });
+
+        // <> ( v2 v1 -- b ) —v2 is different from v1
+        Word compareNE = new Word("<>", matches -> {
+            String v1 = stack.pop();
+            String v2 = stack.pop();
+            stack.push(String.valueOf(!v1.equals(v2)));
+        });
+
+        // => ( i2 i1 -- b ) —i2 is at least i1
+        Word compareGTE = new Word("=>", matches -> {
+            if(verifyStack('i', 'i')) {
+                int i1 = Integer.valueOf(stack.pop());
+                int i2 = Integer.valueOf(stack.pop());
+                stack.push(String.valueOf(i2 >= i1));
+            }
+        });
+
+        // > ( i2 i1 -- b ) —i2 is more than i1
+        Word compareGT = new Word(">", matches -> {
+            if(verifyStack('i', 'i')) {
+                int i1 = Integer.valueOf(stack.pop());
+                int i2 = Integer.valueOf(stack.pop());
+                stack.push(String.valueOf(i2 > i1));
+            }
+        });
+
+        result.add(compareLT);
+        result.add(compareLTE);
+        result.add(compareE);
+        result.add(compareNE);
+        result.add(compareGTE);
+        result.add(compareGT);
+        //</editor-fold>
+
+        //<editor-fold desc="Logic and Control">
+
+        // and ( b b -- b ) —false if either boolean is false, true otherwise
+        Word logicAnd = new Word("and", matches -> {
+            if(verifyStack('b', 'b')){
+                boolean b1 = Boolean.valueOf(stack.pop());
+                boolean b2 = Boolean.valueOf(stack.pop());
+                stack.push(String.valueOf(b1 == b2));
+            }
+        });
+
+        // or ( b b -- b ) —true if either boolean is true, false otherwise
+        Word logicOr = new Word("or", matches -> {
+            if(verifyStack('b', 'b')){
+                boolean b1 = Boolean.valueOf(stack.pop());
+                boolean b2 = Boolean.valueOf(stack.pop());
+                stack.push(String.valueOf(b1 != b2));
+            }
+        });
+
+        // invert ( b -- b ) —invert the given boolean
+        Word logicInvert = new Word("invert", matches -> {
+            if(verifyStack('b')){
+                boolean b = Boolean.valueOf(stack.pop());
+                stack.push(String.valueOf(!b));
+            }
+        });
+
+        // if .. else .. then
+        Word logicIfElseThen = new Word("if (.*?) else (.*?) then", matches -> {
+            if(verifyStack('b')){
+                boolean boolCheck = Boolean.valueOf(stack.pop());
+                Arrays.stream(matches).forEach(System.out::println);
+                if(boolCheck)
+                    execute(matches[1], null);
+                else
+                    execute(matches[2], null);
+            }
+        });
+
+        result.add(logicAnd);
+        result.add(logicOr);
+        result.add(logicInvert);
+        result.add(logicIfElseThen);
+        //</editor-fold>
+
+
+        // iStart iEnd do BODY loop
+        // begin BODY until
+
+        return result;
     }
 
     /**
