@@ -1,6 +1,7 @@
 package model;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Word {
     /**
@@ -24,7 +25,8 @@ public class Word {
      *              the {@link ForthExecuter} that will execute this word when it is triggered.
      */
     public Word(final String trigger, final ForthExecuter executer){
-        throw new NotImplementedException();
+        this.trigger = trigger;
+        this.executer = executer;
     }
 
     /**
@@ -35,14 +37,28 @@ public class Word {
      *          {@code false} otherwise.
      */
     public boolean isTrigger(final String string) {
-        throw new NotImplementedException();
+        match = null;
+
+        Matcher m = Pattern.compile("^" + trigger).matcher(string);
+
+        if(m.find()){
+            match = new String[m.groupCount()+1];
+            for(int i=0; i<m.groupCount()+1; i++)
+                match[i] = m.group(i);
+            return true;
+        }
+        return false;
+    }
+
+    public String getTrigger(){
+        return this.trigger;
     }
 
     /**
      * Executes this words {@link ForthExecuter}
      */
     public void execute(){
-        throw new NotImplementedException();
+        executer.executeForth(match);
     }
 }
 
