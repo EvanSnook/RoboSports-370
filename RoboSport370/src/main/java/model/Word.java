@@ -4,11 +4,11 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Word {
     /**
-     * A regular expression {@code String} that will trigger this word.
+     * A regular expression {@link String} that will trigger this word.
      */
     private String trigger;
     /**
-     * The {@code ForthExecuter} that is execute when this word is triggered.
+     * The {@link ForthExecuter} that is execute when this word is triggered.
      */
     private ForthExecuter executer;
     /**
@@ -17,21 +17,20 @@ public class Word {
     private String[] match;
 
     /**
-     * Creates a new {@code Word}
+     * Creates a new {@link Word}
      * @param trigger
-     *              A regular expression {@code String} that will trigger this word
+     *              A regular expression {@link String} that will trigger this word
      * @param executer
-     *              The {@code ForthExecuter} that will execute this word when it
-     *              is triggered.
+     *              the {@link ForthExecuter} that will execute this word when it is triggered.
      */
     public Word(final String trigger, final ForthExecuter executer){
         throw new NotImplementedException();
     }
 
     /**
-     * Checks if a {@code String} will trigger this word
+     * Checks if a {@link String} will trigger this word
      * @param string
-     *              The {@code String} to check
+     *              The {@link String} to check
      * @return  {@code true} if the string is a trigger,
      *          {@code false} otherwise.
      */
@@ -40,7 +39,7 @@ public class Word {
     }
 
     /**
-     * Executes this words {@code ForthExecuter}
+     * Executes this words {@link ForthExecuter}
      */
     public void execute(){
         throw new NotImplementedException();
