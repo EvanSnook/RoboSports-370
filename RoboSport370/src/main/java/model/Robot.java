@@ -21,7 +21,7 @@ public class Robot {
 
     public Robot(){}
 
-    public RobotBuilder getBuilder(boolean isAI){
+    public static RobotBuilder getBuilder(boolean isAI){
         return new RobotBuilder(isAI);
     }
 
@@ -136,5 +136,23 @@ public class Robot {
     public void startPlay(){
         // TODO Robot.startPlay
         throw new NotImplementedException();
+    }
+
+    @Override
+    public String toString() {
+        return "Robot{" +
+                "health=" + health +
+                ", maxHealth=" + maxHealth +
+                ", damage=" + damage +
+                ", range=" + range +
+                ", maxMove=" + maxMove +
+                ", type=" + type +
+                ", position=" + position +
+                ", remainingMoves=" + remainingMoves +
+                ", name='" + name + '\'' +
+                ", stats=" + stats +
+                ", facing=" + facing +
+                ", colour=" + colour +
+                '}';
     }
 }
