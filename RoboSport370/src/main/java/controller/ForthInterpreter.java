@@ -1,5 +1,6 @@
 package controller;
 
+import sun.plugin.dom.exception.InvalidStateException;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.security.InvalidParameterException;
@@ -18,7 +19,7 @@ public class ForthInterpreter {
 
     public static void main(String[] args) {
         ForthInterpreter interpreter = new ForthInterpreter();
-        interpreter.execute("1 1 <> if 1 else 0 then", null);
+        interpreter.execute("1 1 5 do dup loop", null);
 
         System.out.println(interpreter.getStack());
     }
@@ -307,6 +308,7 @@ public class ForthInterpreter {
             if(verifyStack('b')){
                 boolean boolCheck = Boolean.valueOf(stack.pop());
                 Arrays.stream(matches).forEach(System.out::println);
+                // TODO fix null
                 if(boolCheck)
                     execute(matches[1], null);
                 else
@@ -320,9 +322,33 @@ public class ForthInterpreter {
         result.add(logicIfElseThen);
         //</editor-fold>
 
-
+        //<editor-fold desc="Loops">
         // iStart iEnd do BODY loop
+        Word loopFor = new Word("do (.*?) loop", matches -> {
+            if(verifyStack('i', 'i')){
+                int iEnd = Integer.valueOf(stack.pop());
+                int iStart = Integer.valueOf(stack.pop());
+                String loopBody = matches[1];
+                for(int i=iStart; i<iEnd; i++){
+                    // TODO fix null
+                    execute(loopBody, null);
+                }
+            }
+        });
+
         // begin BODY until
+        Word loopWhile = new Word("begin (.*?) until", matches -> {
+            String loopBody = matches[1];
+            do{
+                execute(loopBody, null);
+                if(stack.empty() || !verifyStack('b'))
+                    throw new InvalidStateException("No boolean found on stack for begin .. until loop!");
+            } while(Boolean.valueOf(stack.pop()));
+        });
+
+        result.add(loopFor);
+        result.add(loopWhile);
+        //</editor-fold>
 
         return result;
     }
