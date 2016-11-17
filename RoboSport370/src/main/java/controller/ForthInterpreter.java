@@ -1,27 +1,23 @@
 package controller;
 
-import sun.plugin.dom.exception.InvalidStateException;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
-import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.EmptyStackException;
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.Stack;
-
 import model.ForthExecuter;
 import model.Word;
+import sun.plugin.dom.exception.InvalidStateException;
+
+import java.security.InvalidParameterException;
+import java.util.*;
 
 
 public class ForthInterpreter {
 
     public static void main(String[] args) {
-        ForthInterpreter interpreter = new ForthInterpreter();
-        interpreter.execute("1 1 5 do dup loop", null);
+        HashMap<String, String> definedWords = new HashMap<>();
 
-        System.out.println(interpreter.getStack());
+        ForthInterpreter interpreter = new ForthInterpreter();
+        interpreter.execute(": test body with multiple things ;", definedWords);
+
+        System.out.println("stack: " + interpreter.getStack());
+        System.out.println("definedWords: " + definedWords);
     }
 
     /**
@@ -52,7 +48,7 @@ public class ForthInterpreter {
      * @param userDefined
      *              user defined words for replacement in the {@code commandString}
      */
-    public void execute(final String commandString, final HashMap<String, String> userDefined) {
+    public void execute(final String commandString, HashMap<String, String> userDefined) {
         Optional<Word> w = words.stream()
                 .filter(word -> word.isTrigger(commandString))
                 .findFirst();
@@ -63,7 +59,7 @@ public class ForthInterpreter {
             return;
         }
 
-        w.get().execute();
+        w.get().execute(userDefined);
 
         String nextCommand = commandString.replaceFirst(w.get().getTrigger() + " *", "");
         execute(nextCommand, userDefined);
@@ -82,7 +78,7 @@ public class ForthInterpreter {
         /*
          * Integers: written as decimal numbers (with or without a leading sign (+ or -)
          */
-        Word literalInteger = new Word("((\\+|-)?[0-9]{1,})", matches -> {
+        Word literalInteger = new Word("((\\+|-)?[0-9]{1,})", (userDefined, matches) -> {
             stack.push(matches[1]);
         });
 
@@ -90,14 +86,14 @@ public class ForthInterpreter {
          * Strings: written as sequences of characters (including whitespace) initiated
          * by the special token ." and ended by the next "
          */
-        Word literalString = new Word("\\.\"([^\"]*)\"", matches -> {
+        Word literalString = new Word("\\.\"([^\"]*)\"", (userDefined, matches) -> {
             stack.push(matches[1]);
         });
 
         /*
          * Booleans: written as the special tokens, true and false
          */
-        Word literalBoolean = new Word("(true|false)", matches -> {
+        Word literalBoolean = new Word("(true|false)", (userDefined, matches) -> {
             stack.push(matches[1]);
         });
 
@@ -106,8 +102,16 @@ public class ForthInterpreter {
         result.add(literalBoolean);
         //</editor-fold>
 
+        //<editor-fold desc="Defining Words">
+        Word definingWord = new Word(": ((.*?) )(.*?) ;", (userDefined, matches) -> {
+            userDefined.put(matches[2], matches[3]);
+        });
+
+        result.add(definingWord);
+        //</editor-fold>
+
         //<editor-fold desc="Comments">
-        Word comment = new Word("\\(.*\\)", matches -> {
+        Word comment = new Word("\\(.*\\)", (userDefined, matches) -> {
             // Do nothing with comments
         });
 
@@ -117,19 +121,19 @@ public class ForthInterpreter {
         //<editor-fold desc="Stack Words">
 
         // drop ( v -- ) —remove the value at the top of the stack
-        Word stackDrop = new Word("drop", matches -> {
+        Word stackDrop = new Word("drop", (userDefined, matches) -> {
             if(verifyStack('v'))
                 stack.pop();
         });
 
         // dup ( v -- v v ) —duplicate the value at the top of the stack
-        Word stackDup = new Word("dup", matches -> {
+        Word stackDup = new Word("dup", (userDefined, matches) -> {
             if(verifyStack('v'))
                 stack.push(stack.peek());
         });
 
         // swap ( v2 v1 -- v2 v1 ) —swap the two values at the top of the stack
-        Word stackSwap = new Word("swap", matches -> {
+        Word stackSwap = new Word("swap", (userDefined, matches) -> {
             if(verifyStack('v', 'v')){
                 String v1 = stack.pop();
                 String v2 = stack.pop();
@@ -139,7 +143,7 @@ public class ForthInterpreter {
         });
 
         // rot ( v3 v2 v1 -- v3 v1 v2 ) —rotate the top three stack elements
-        Word stackRot = new Word("rot", matches -> {
+        Word stackRot = new Word("rot", (userDefined, matches) -> {
             if(verifyStack('v', 'v', 'v')){
                 String v1 = stack.pop();
                 String v2 = stack.pop();
@@ -161,7 +165,7 @@ public class ForthInterpreter {
         /*
          * + ( i i -- i) —add the two integers, pushing their sum on the stack
          */
-        Word stackAdd = new Word("\\+", matches -> {
+        Word stackAdd = new Word("\\+", (userDefined, matches) -> {
             if(verifyStack('i', 'i')){
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
@@ -174,7 +178,7 @@ public class ForthInterpreter {
          * - ( i2 i1 -- i ) —subtract the top integer from the next, pushing their
          * difference (i2-i1) on the stack
          */
-        Word stackSubtract = new Word("-", matches -> {
+        Word stackSubtract = new Word("-", (userDefined, matches) -> {
             if(verifyStack('i', 'i')){
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
@@ -186,7 +190,7 @@ public class ForthInterpreter {
         /*
          * * ( i i -- i ) —multiply the two top integers, pushing their product on the stack
          */
-        Word stackMultiply = new Word("\\*", matches -> {
+        Word stackMultiply = new Word("\\*", (userDefined, matches) -> {
             if(verifyStack('i', 'i')){
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
@@ -199,7 +203,7 @@ public class ForthInterpreter {
          * /mod ( iv ie -- iq ir) —divide the top integer into the next, pushing
          * the remainder and quotient
          */
-        Word stackMod = new Word("/mod", matches -> {
+        Word stackMod = new Word("/mod", (userDefined, matches) -> {
             if(verifyStack('i', 'i')){
                 int ie = Integer.valueOf(stack.pop());
                 int iv = Integer.valueOf(stack.pop());
@@ -218,7 +222,7 @@ public class ForthInterpreter {
 
         //<editor-fold desc="Comparison">
         // < ( i2 i1 -- b ) —i2 is less than i1
-        Word compareLT = new Word("<", matches -> {
+        Word compareLT = new Word("<", (userDefined, matches) -> {
             if(verifyStack('i', 'i')){
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
@@ -227,7 +231,7 @@ public class ForthInterpreter {
         });
 
         // <= ( i2 i1 -- b ) —i2 is not more than i1
-        Word compareLTE = new Word("<=", matches -> {
+        Word compareLTE = new Word("<=", (userDefined, matches) -> {
             if(verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
@@ -236,21 +240,21 @@ public class ForthInterpreter {
         });
 
         // = ( v2 v1 -- b ) —v2 equals v1
-        Word compareE = new Word("=", matches -> {
+        Word compareE = new Word("=", (userDefined, matches) -> {
             String v1 = stack.pop();
             String v2 = stack.pop();
             stack.push(String.valueOf(v1.equals(v2)));
         });
 
         // <> ( v2 v1 -- b ) —v2 is different from v1
-        Word compareNE = new Word("<>", matches -> {
+        Word compareNE = new Word("<>", (userDefined, matches) -> {
             String v1 = stack.pop();
             String v2 = stack.pop();
             stack.push(String.valueOf(!v1.equals(v2)));
         });
 
         // => ( i2 i1 -- b ) —i2 is at least i1
-        Word compareGTE = new Word("=>", matches -> {
+        Word compareGTE = new Word("=>", (userDefined, matches) -> {
             if(verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
@@ -259,7 +263,7 @@ public class ForthInterpreter {
         });
 
         // > ( i2 i1 -- b ) —i2 is more than i1
-        Word compareGT = new Word(">", matches -> {
+        Word compareGT = new Word(">", (userDefined, matches) -> {
             if(verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
@@ -278,7 +282,7 @@ public class ForthInterpreter {
         //<editor-fold desc="Logic and Control">
 
         // and ( b b -- b ) —false if either boolean is false, true otherwise
-        Word logicAnd = new Word("and", matches -> {
+        Word logicAnd = new Word("and", (userDefined, matches) -> {
             if(verifyStack('b', 'b')){
                 boolean b1 = Boolean.valueOf(stack.pop());
                 boolean b2 = Boolean.valueOf(stack.pop());
@@ -287,7 +291,7 @@ public class ForthInterpreter {
         });
 
         // or ( b b -- b ) —true if either boolean is true, false otherwise
-        Word logicOr = new Word("or", matches -> {
+        Word logicOr = new Word("or", (userDefined, matches) -> {
             if(verifyStack('b', 'b')){
                 boolean b1 = Boolean.valueOf(stack.pop());
                 boolean b2 = Boolean.valueOf(stack.pop());
@@ -296,7 +300,7 @@ public class ForthInterpreter {
         });
 
         // invert ( b -- b ) —invert the given boolean
-        Word logicInvert = new Word("invert", matches -> {
+        Word logicInvert = new Word("invert", (userDefined, matches) -> {
             if(verifyStack('b')){
                 boolean b = Boolean.valueOf(stack.pop());
                 stack.push(String.valueOf(!b));
@@ -304,7 +308,7 @@ public class ForthInterpreter {
         });
 
         // if .. else .. then
-        Word logicIfElseThen = new Word("if (.*?) else (.*?) then", matches -> {
+        Word logicIfElseThen = new Word("if (.*?) else (.*?) then", (userDefined, matches) -> {
             if(verifyStack('b')){
                 boolean boolCheck = Boolean.valueOf(stack.pop());
                 Arrays.stream(matches).forEach(System.out::println);
@@ -324,7 +328,7 @@ public class ForthInterpreter {
 
         //<editor-fold desc="Loops">
         // iStart iEnd do BODY loop
-        Word loopFor = new Word("do (.*?) loop", matches -> {
+        Word loopFor = new Word("do (.*?) loop", (userDefined, matches) -> {
             if(verifyStack('i', 'i')){
                 int iEnd = Integer.valueOf(stack.pop());
                 int iStart = Integer.valueOf(stack.pop());
@@ -337,7 +341,7 @@ public class ForthInterpreter {
         });
 
         // begin BODY until
-        Word loopWhile = new Word("begin (.*?) until", matches -> {
+        Word loopWhile = new Word("begin (.*?) until", (userDefined, matches) -> {
             String loopBody = matches[1];
             do{
                 execute(loopBody, null);

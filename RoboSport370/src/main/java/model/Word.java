@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -57,8 +58,8 @@ public class Word {
     /**
      * Executes this words {@link ForthExecuter}
      */
-    public void execute(){
-        executer.executeForth(match);
+    public void execute(HashMap<String, String> userDefinedWords){
+        executer.executeForth(userDefinedWords, match);
     }
 }
 
