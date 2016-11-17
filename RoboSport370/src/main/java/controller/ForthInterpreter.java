@@ -444,6 +444,19 @@ public class ForthInterpreter {
         return true;
     }
 
+    /**
+     * A helper function for {@code do ... loop}s in forth
+     * <p>
+     * This function takes in the body of a loop and replaces all of the
+     * occurrences of {@code I} in the string, leaving any I's that are in
+     * nested loops within the body.
+     *
+     * @param s
+     *              the body of a for loop
+     * @param interval
+     *              the current interval of the for loop
+     * @return a {@link String} with all of the I's replaced
+     */
     private String nestedForLoop(String s, int interval){
         StringBuilder result = new StringBuilder();
         String replaceWith = String.valueOf(interval);
