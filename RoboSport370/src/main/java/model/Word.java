@@ -58,8 +58,8 @@ public class Word {
     /**
      * Executes this words {@link ForthExecuter}
      */
-    public void execute(HashMap<String, String> userDefinedWords){
-        executer.executeForth(userDefinedWords, match);
+    public void execute(){
+        executer.executeForth(match);
     }
 }
 
