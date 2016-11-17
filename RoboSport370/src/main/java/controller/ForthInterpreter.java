@@ -1,13 +1,22 @@
 package controller;
 
-import model.ForthExecuter;
-import model.Word;
 import sun.plugin.dom.exception.InvalidStateException;
 
 import java.security.InvalidParameterException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EmptyStackException;
+import java.util.HashMap;
+import java.util.Optional;
+import java.util.Random;
+import java.util.Stack;
+import java.util.function.ToIntFunction;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.IntStream;
+
+import model.ForthExecuter;
+import model.Word;
 
 public class ForthInterpreter {
 
@@ -336,25 +345,8 @@ public class ForthInterpreter {
                 int iStart = Integer.valueOf(stack.pop());
                 String loopBody = matches[1];
 
-                // TODO fix for for { for{} i for {} }
-                // Recursively check group1 and group2
-                // Make this garbage a function
                 for(int i=iStart; i<=iEnd; i++){
-                    Pattern p = Pattern.compile("(.*? )(do .* loop)( .*)( ;)?");
-                    Matcher m = p.matcher(loopBody);
-
-                    String tempLoopBody = "";
-
-                    if(m.find()){
-                        String innerLoop = m.group(2);
-                        String group1 = m.group(1).replaceAll(" I ", " " + String.valueOf(i) + " ");
-                        String group3 = m.group(3).replaceAll(" I ", " " + String.valueOf(i) + " ");
-                        tempLoopBody = String.format("%s%s%s%s",
-                                group1, innerLoop, group3, (m.group(4) != null ? m.group(4) : ""));
-                    } else {
-                        tempLoopBody = loopBody.replaceAll(" I ", " " + String.valueOf(i) + " ");
-                    }
-                    execute(tempLoopBody.trim(), userDefined);
+                    execute(nestedForLoop(loopBody, i).trim(), userDefined);
                 }
             }
         });
@@ -450,6 +442,62 @@ public class ForthInterpreter {
         }
 
         return true;
+    }
+
+    private String nestedForLoop(String s, int interval){
+        StringBuilder result = new StringBuilder();
+        String replaceWith = String.valueOf(interval);
+
+        ArrayList<Integer> doLocations = new ArrayList<>();
+        ArrayList<Integer> loopLocations = new ArrayList<>();
+
+        // Get indexes where every "do" is located
+        {
+            String temp = s;
+            while(temp.matches(".*? do .*")){
+                int index = temp.indexOf(" do ")+1; // Start of do word
+                temp = temp.replaceFirst(" do ", " -- ");
+                doLocations.add(index);
+            }
+        }
+
+        // Get indexes where every "loop" is located
+        {
+            String temp = s;
+            while(temp.matches(".*? loop .*")){
+                int index = temp.indexOf(" loop ")+5; // End of loop word
+                temp = temp.replaceFirst(" loop ", " ---- ");
+                loopLocations.add(index);
+            }
+        }
+
+        // Layer of the loops at a given index
+        // If the layer is 0 it is not in an inner loop
+        int loopLayersAtIndex[] = new int[s.length()];
+        {
+            int innerLoopLayer = 0;
+
+            for (int i = 0; i < s.length(); i++) {
+                if(doLocations.contains(i))
+                    innerLoopLayer++;
+                else if(loopLocations.contains(i))
+                    innerLoopLayer--;
+
+                loopLayersAtIndex[i] = innerLoopLayer;
+            }
+        }
+
+        for(int i=0; i<s.length(); i++) {
+            if (loopLayersAtIndex[i] == 0){
+                if (s.charAt(i) == 'I') {
+                    result.append(replaceWith);
+                    continue;
+                }
+            }
+            result.append(s.charAt(i));
+        }
+
+        return result.toString();
     }
 
     public Stack<String> getStack() {
