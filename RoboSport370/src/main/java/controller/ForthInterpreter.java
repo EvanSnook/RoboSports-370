@@ -7,14 +7,13 @@ import sun.plugin.dom.exception.InvalidStateException;
 import java.security.InvalidParameterException;
 import java.util.*;
 
-
 public class ForthInterpreter {
 
     public static void main(String[] args) {
         HashMap<String, String> definedWords = new HashMap<>();
 
         ForthInterpreter interpreter = new ForthInterpreter();
-        interpreter.execute(": test body with multiple things ;", definedWords);
+        interpreter.execute("1 100 do 5 random . loop", definedWords);
 
         System.out.println("stack: " + interpreter.getStack());
         System.out.println("definedWords: " + definedWords);
@@ -106,6 +105,8 @@ public class ForthInterpreter {
         Word definingWord = new Word(": ((.*?) )(.*?) ;", (userDefined, matches) -> {
             userDefined.put(matches[2], matches[3]);
         });
+
+        // TODO detect when the definedwords are being used
 
         result.add(definingWord);
         //</editor-fold>
@@ -312,11 +313,10 @@ public class ForthInterpreter {
             if(verifyStack('b')){
                 boolean boolCheck = Boolean.valueOf(stack.pop());
                 Arrays.stream(matches).forEach(System.out::println);
-                // TODO fix null
                 if(boolCheck)
-                    execute(matches[1], null);
+                    execute(matches[1], userDefined);
                 else
-                    execute(matches[2], null);
+                    execute(matches[2], userDefined);
             }
         });
 
@@ -334,8 +334,7 @@ public class ForthInterpreter {
                 int iStart = Integer.valueOf(stack.pop());
                 String loopBody = matches[1];
                 for(int i=iStart; i<iEnd; i++){
-                    // TODO fix null
-                    execute(loopBody, null);
+                    execute(loopBody, userDefined);
                 }
             }
         });
@@ -352,6 +351,31 @@ public class ForthInterpreter {
 
         result.add(loopFor);
         result.add(loopWhile);
+        //</editor-fold>
+
+        //<editor-fold desc="Variables">
+        Word variable = new Word("variable (.*) ;", ((userDefinedWords, matches) -> {
+            // TODO forth variables
+            // ? Add variable hashmap to RobotAI & pass RobotAI instead of userDefinedWords
+        }));
+        //</editor-fold>
+
+        //<editor-fold desc="Miscellanea">
+        Word miscPrint = new Word("\\.", ((userDefinedWords, matches) -> {
+            if(verifyStack('v'))
+                System.out.println(stack.pop());
+        }));
+
+        Word miscRandom = new Word("random", ((userDefinedWords, matches) -> {
+            if(verifyStack('i')) {
+                int i1 = Integer.valueOf(stack.pop()) + 1;
+                int random = new Random().nextInt(i1);
+                stack.push(String.valueOf(random));
+            }
+        }));
+
+        result.add(miscPrint);
+        result.add(miscRandom);
         //</editor-fold>
 
         return result;
@@ -385,7 +409,8 @@ public class ForthInterpreter {
                         Integer.parseInt(temp.pop());
                         break;
                     case 's':
-                        // TODO unsure how to check this
+                        // Everythings a string! ha
+                        System.err.println("verifyStack always true for strings");
                         break;
                     case 'b':
                         Boolean.parseBoolean(temp.pop());
@@ -394,7 +419,7 @@ public class ForthInterpreter {
                         temp.pop(); // Throws EmptyStackException if there is no item
                         break;
                     case 'l':
-                        // TODO unsure how to check this
+                        System.err.println("verifyStack always true for locations");
                         break;
                     default:
                         throw new InvalidParameterException(current + " is not a valid type");
