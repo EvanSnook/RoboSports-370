@@ -79,7 +79,7 @@ public class RobotBuilder {
     }
 
     public RobotAI build(JSONObject json){
-//        ((RobotAI) r).?
-        throw new NotImplementedException();
+        ((RobotAI) r).load(json);
+        return ((RobotAI) r);
     }
 }
