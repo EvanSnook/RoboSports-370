@@ -6,6 +6,8 @@ import sun.plugin.dom.exception.InvalidStateException;
 
 import java.security.InvalidParameterException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ForthInterpreter {
 
@@ -13,7 +15,7 @@ public class ForthInterpreter {
         HashMap<String, String> definedWords = new HashMap<>();
 
         ForthInterpreter interpreter = new ForthInterpreter();
-        interpreter.execute("1 100 do 5 random . loop", definedWords);
+        interpreter.execute("1 3 do 1 2 do I loop I loop", definedWords);
 
         System.out.println("stack: " + interpreter.getStack());
         System.out.println("definedWords: " + definedWords);
@@ -327,20 +329,38 @@ public class ForthInterpreter {
         //</editor-fold>
 
         //<editor-fold desc="Loops">
-        // iStart iEnd do BODY loop
-        Word loopFor = new Word("do (.*?) loop", (userDefined, matches) -> {
+        // ( iStart iEnd -- ) do BODY loop
+        Word loopFor = new Word("do( .* )loop( ;)?", (userDefined, matches) -> {
             if(verifyStack('i', 'i')){
                 int iEnd = Integer.valueOf(stack.pop());
                 int iStart = Integer.valueOf(stack.pop());
                 String loopBody = matches[1];
-                for(int i=iStart; i<iEnd; i++){
-                    execute(loopBody, userDefined);
+
+                // TODO fix for for { for{} i for {} }
+                // Recursively check group1 and group2
+                // Make this garbage a function
+                for(int i=iStart; i<=iEnd; i++){
+                    Pattern p = Pattern.compile("(.*? )(do .* loop)( .*)( ;)?");
+                    Matcher m = p.matcher(loopBody);
+
+                    String tempLoopBody = "";
+
+                    if(m.find()){
+                        String innerLoop = m.group(2);
+                        String group1 = m.group(1).replaceAll(" I ", " " + String.valueOf(i) + " ");
+                        String group3 = m.group(3).replaceAll(" I ", " " + String.valueOf(i) + " ");
+                        tempLoopBody = String.format("%s%s%s%s",
+                                group1, innerLoop, group3, (m.group(4) != null ? m.group(4) : ""));
+                    } else {
+                        tempLoopBody = loopBody.replaceAll(" I ", " " + String.valueOf(i) + " ");
+                    }
+                    execute(tempLoopBody.trim(), userDefined);
                 }
             }
         });
 
         // begin BODY until
-        Word loopWhile = new Word("begin (.*?) until", (userDefined, matches) -> {
+        Word loopWhile = new Word("begin (.*) until", (userDefined, matches) -> {
             String loopBody = matches[1];
             do{
                 execute(loopBody, null);
