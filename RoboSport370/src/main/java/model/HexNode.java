@@ -1,16 +1,27 @@
 package model;
 
-public class HexNode<E>{
-    private HexNode<E> r;
-    private HexNode<E> dr;
-    private HexNode<E> dl;
-    private HexNode<E> l;
-    private HexNode<E> ul;
-    private HexNode<E> ur;
-    private E value;
+import java.util.ArrayList;
 
-    public HexNode(E value){
-        this.value = value;
+public class HexNode{
+    private HexNode r;
+    private HexNode dr;
+    private HexNode dl;
+    private HexNode l;
+    private HexNode ul;
+    private HexNode ur;
+    private ArrayList<Robot> value;
+    private String label;
+
+    public HexNode(){
+        this.value = new ArrayList<>();
+    }
+
+    public void setLabel(String label){
+        this.label = label;
+    }
+
+    public String getLabel(){
+        return this.label;
     }
 
     public HexNode get(int side){
@@ -114,7 +125,7 @@ public class HexNode<E>{
         this.ur = ur;
     }
 
-    private E getValue(){
+    private ArrayList<Robot> getValue(){
         return value;
     }
 
@@ -133,12 +144,12 @@ public class HexNode<E>{
                         "\n" +
                         "     %s     %s\n",
                 value,
-                (ul == null) ? "xxxx" : ul.getValue(),
-                (ur == null) ? "xxxx" : ur.getValue(),
-                (l == null) ? "xxxx" : l.getValue(),
-                (r == null) ? "xxxx" : r.getValue(),
-                (dl == null) ? "xxxx" : dl.getValue(),
-                (dr == null) ? "xxxx" : dr.getValue()
+                (ul == null) ? "xxxx" : ul.getLabel(),
+                (ur == null) ? "xxxx" : ur.getLabel(),
+                (l == null) ? "xxxx" : l.getLabel(),
+                (r == null) ? "xxxx" : r.getLabel(),
+                (dl == null) ? "xxxx" : dl.getLabel(),
+                (dr == null) ? "xxxx" : dr.getLabel()
         );
     }
 }
