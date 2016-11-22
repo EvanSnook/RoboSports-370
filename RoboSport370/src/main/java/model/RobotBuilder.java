@@ -15,18 +15,24 @@ public class RobotBuilder {
     }
 
     public RobotBuilder getTank(){
-        // TODO set Tank Defaults
-        return this;
+        return this.setDamage(3)
+                .setHealth(3)
+                .setMoves(1)
+                .setRange(1);
     }
 
     public RobotBuilder getScout(){
-        // TODO set Scout Defaults
-        return this;
+        return this.setDamage(1)
+                .setHealth(1)
+                .setMoves(3)
+                .setRange(2);
     }
 
     public RobotBuilder getSniper(){
-        // TODO set Sniper Defaults
-        return this;
+        return this.setDamage(2)
+                .setHealth(2)
+                .setMoves(2)
+                .setRange(3);
     }
 
     public RobotBuilder setHealth(int health){
