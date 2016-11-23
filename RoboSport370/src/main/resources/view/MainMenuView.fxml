@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -10,5 +11,10 @@
       <Button fx:id="CreateGameButton" layoutX="189.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="3.0" prefWidth="223.0" text="Create Games" />
       <Button fx:id="RoboManagerButton" layoutX="189.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="3.0" prefWidth="223.0" text="RoboManager" />
       <Button fx:id="QuitButton" layoutX="189.0" layoutY="291.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="3.0" prefWidth="223.0" text="Quit" />
+      <Label layoutX="93.0" layoutY="54.0" text="RoboSport  370">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
