@@ -2,8 +2,6 @@ package model;
 
 import org.json.simple.JSONObject;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import model.enums.RobotType;
 import model.enums.TeamColour;
 
@@ -35,27 +33,27 @@ public class RobotBuilder {
                 .setRange(3);
     }
 
-    public RobotBuilder setHealth(int health){
+    private RobotBuilder setHealth(int health){
         r.setHealth(health);
         return this;
     }
 
-    public RobotBuilder setDamage(int damage){
+    private RobotBuilder setDamage(int damage){
         r.setDamage(damage);
         return this;
     }
 
-    public RobotBuilder setRange(int range){
+    private RobotBuilder setRange(int range){
         r.setRange(range);
         return this;
     }
 
-    public RobotBuilder setMoves(int moves){
+    private RobotBuilder setMoves(int moves){
         r.setMaxMove(moves);
         return this;
     }
 
-    public RobotBuilder setType(RobotType type){
+    private RobotBuilder setType(RobotType type){
         r.setType(type);
         return this;
     }
