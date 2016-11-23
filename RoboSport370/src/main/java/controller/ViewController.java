@@ -1,36 +1,44 @@
 package controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ViewController extends Application{
+public class ViewController{
+    private Stage view;
+    private Stage rulesStage;
+    private Scene currentScene;
+    private Scene mainMenuScene;
 
-// this class doe not need constructor because it is application and uses start
-//    ViewController(){
-//        mainMenu = new MainMenu();
-//    }
+    public ViewController() {}
 
-    public void start(Stage view){
+    public void setStage(Stage stage) {
+        this.view = stage;
+        this.mainMenuScene = stage.getScene();
+        this.currentScene = mainMenuScene;
+    }
+
+    public void showRules(MouseEvent mouseEvent) {
+        if(rulesStage != null) {
+            rulesStage.show();
+            return;
+        }
         try {
-            StackPane page = FXMLLoader.load(ViewController.class.getResource("/view/MainMenuView.fxml"));
-            Scene scene = new Scene(page);
-            view.setScene(scene);
-            view.setTitle("Main Menu");
-            view.show();
-        } catch (Exception ex) {
-            Logger.getLogger(ViewController.class.getName()).log(Level.SEVERE, null, ex);
+            Stage rulesStage = new Stage();
+            Parent rulesMain = FXMLLoader.load(ViewController.class.getResource("/view/RulesView.fxml"));
+            rulesStage.setScene(new Scene(rulesMain));
+            rulesStage.initModality(Modality.NONE);
+
+            rulesStage.initOwner(((Node)mouseEvent.getSource()).getScene().getWindow());
+            rulesStage.show();
+
+            this.rulesStage = rulesStage;
+        } catch (Exception ex){
+            ex.printStackTrace();
         }
     }
-
-    public void GoToRules(){
-
-    }
-
-
 }
