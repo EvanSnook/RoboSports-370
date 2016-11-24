@@ -5,13 +5,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewController">
    <children>
-      <Button fx:id="BackButton" layoutX="14.0" layoutY="349.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="98.0" text="Back" />
-      <Button fx:id="NewRobotButton" layoutX="14.0" layoutY="295.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="98.0" text="New Robot" />
-      <Button fx:id="SaveButton" layoutX="226.0" layoutY="355.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Save" />
-      <Button fx:id="CancelButton" layoutX="402.0" layoutY="355.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Cancel" />
+      <Button fx:id="BackButton" layoutX="14.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#showMainMenu" prefHeight="38.0" prefWidth="98.0" text="Back" />
+      <Button fx:id="NewRobotButton" layoutX="14.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#createNewRobot" prefHeight="38.0" prefWidth="98.0" text="New Robot" />
+      <Button fx:id="SaveButton" layoutX="226.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#saveRobot" prefHeight="25.0" prefWidth="98.0" text="Save" />
+      <Button fx:id="CancelButton" layoutX="402.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#cancelRobot" prefHeight="25.0" prefWidth="98.0" text="Cancel" />
       <TextField fx:id="NameTextField" layoutX="275.0" layoutY="100.0" promptText="Robot Name" />
       <Label layoutX="225.0" layoutY="104.0" text="Name:" />
       <TextField fx:id="TeamTextField" layoutX="275.0" layoutY="132.0" promptText="Robot Team" />
