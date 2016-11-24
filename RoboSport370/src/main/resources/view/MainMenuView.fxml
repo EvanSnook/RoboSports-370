@@ -9,12 +9,13 @@
    <children>
       <Button fx:id="RulesButton" layoutX="189.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="25.0" prefWidth="223.0" text="Rules" />
       <Button fx:id="CreateGameButton" layoutX="189.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="3.0" prefWidth="223.0" text="Create Games" />
-      <Button fx:id="RoboManagerButton" layoutX="189.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="3.0" prefWidth="223.0" text="RoboManager" />
-      <Button fx:id="QuitButton" layoutX="189.0" layoutY="291.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="3.0" prefWidth="223.0" text="Quit" />
+      <Button fx:id="RoboManagerButton" layoutX="189.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="3.0" prefWidth="223.0" text="RoboManager" />
+      <Button fx:id="QuitButton" layoutX="189.0" layoutY="333.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="3.0" prefWidth="223.0" text="Quit" />
       <Label layoutX="93.0" layoutY="54.0" text="RoboSport  370">
          <font>
             <Font size="60.0" />
          </font>
       </Label>
+      <Button fx:id="StatsButton" layoutX="189.0" layoutY="261.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="3.0" prefWidth="223.0" text="Stats" />
    </children>
 </Pane>
