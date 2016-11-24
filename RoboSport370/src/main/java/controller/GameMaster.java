@@ -6,10 +6,6 @@ import javafx.scene.input.MouseEvent;
 // TODO GameMaster Class
 public class GameMaster {
 
-    private void linkNodesToPolygons(){
-
-    }
-
     public void hexNodeClicked(MouseEvent mouseEvent) {
         System.out.println(((Node) mouseEvent.getSource()).getId());
     }
