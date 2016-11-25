@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewController">
+   <children>
+      <Label layoutX="111.0" text="RoboManager">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="82.0" text="Local Robots" />
+      <Label layoutX="214.0" layoutY="82.0" text="Online Robots" />
+      <Button fx:id="BackButton" layoutX="24.0" layoutY="352.0" mnemonicParsing="false" onMouseClicked="#showMainMenu" prefHeight="34.0" prefWidth="75.0" text="Back" />
+      <Button fx:id="EditButton" layoutX="129.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#editRobot" prefHeight="25.0" prefWidth="75.0" text="Edit" />
+      <Button fx:id="ImportButton" layoutX="129.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#importRobot" prefHeight="25.0" prefWidth="75.0" text="Import" />
+      <Button fx:id="ExportButton" layoutX="129.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#exportRobot" prefHeight="25.0" prefWidth="75.0" text="Export" />
+      <Button fx:id="DeleteButton" layoutX="129.0" layoutY="259.0" mnemonicParsing="false" onMouseClicked="#deleteRobot" prefHeight="25.0" prefWidth="75.0" text="Delete" />
+      <ListView fx:id="LocalRobotsListView" layoutX="24.0" layoutY="101.0" prefHeight="200.0" prefWidth="97.0" />
+      <ListView fx:id="OnlineRobotsListView" layoutX="214.0" layoutY="101.0" prefHeight="200.0" prefWidth="340.0" />
+   </children>
+</Pane>

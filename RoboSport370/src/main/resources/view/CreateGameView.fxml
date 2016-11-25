@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onScroll="#UpdateRobotThinkTimeLabel" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewController">
+   <children>
+      <Label layoutX="126.0" text="Game Creation">
+         <font>
+            <Font size="60.0" />
+         </font>
+      </Label>
+      <Label layoutX="12.0" layoutY="99.0" text="Number of Teams" />
+      <Label layoutX="15.0" layoutY="200.0" text="Board Radius" />
+      <Label layoutX="15.0" layoutY="268.0" text="Robot Think Time" />
+      <Label layoutX="148.0" layoutY="107.0" text="Team 1" />
+      <Label fx:id="ScoutLabel1" layoutX="153.0" layoutY="130.0" text="Scout" />
+      <Label fx:id="SniperLabel1" layoutX="151.0" layoutY="148.0" text="Sniper" />
+      <Label fx:id="TankLabel1" layoutX="157.0" layoutY="164.0" text="Tank" />
+      <TextField fx:id="ScoutTextField1" layoutX="190.0" layoutY="129.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="SniperTextField1" layoutX="190.0" layoutY="147.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TankTextField1" layoutX="190.0" layoutY="164.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TankTextField2" layoutX="324.0" layoutY="164.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="SniperTextField2" layoutX="324.0" layoutY="147.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="ScoutTextField2" layoutX="324.0" layoutY="130.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <Label fx:id="TankLabel2" layoutX="286.0" layoutY="164.0" text="Tank" />
+      <Label fx:id="SniperLabel2" layoutX="285.0" layoutY="148.0" text="Sniper" />
+      <Label fx:id="ScoutLabel2" layoutX="284.0" layoutY="130.0" text="Scout" />
+      <Label layoutX="280.0" layoutY="107.0" text="Team 2" />
+      <TextField fx:id="TankTextField3" layoutX="474.0" layoutY="165.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="SniperTextField3" layoutX="474.0" layoutY="148.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="ScoutTextField3" layoutX="474.0" layoutY="130.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <Label fx:id="TankLabel3" layoutX="441.0" layoutY="165.0" text="Tank" />
+      <Label fx:id="SniperLabe3" layoutX="435.0" layoutY="149.0" text="Sniper" />
+      <Label fx:id="ScoutLabe3" layoutX="437.0" layoutY="131.0" text="Scout" />
+      <Label layoutX="434.0" layoutY="107.0" text="Team 3" />
+      <Label layoutX="434.0" layoutY="245.0" text="Team 6" />
+      <Label fx:id="ScoutLabel6" layoutX="437.0" layoutY="269.0" text="Scout" />
+      <Label fx:id="SniperLabel6" layoutX="435.0" layoutY="287.0" text="Sniper" />
+      <Label fx:id="TankLabel6" layoutX="441.0" layoutY="303.0" text="Tank" />
+      <TextField fx:id="ScoutTextField6" layoutX="474.0" layoutY="268.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="SniperTextField6" layoutX="474.0" layoutY="286.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TankTextField6" layoutX="474.0" layoutY="303.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <Label layoutX="280.0" layoutY="245.0" text="Team 5" />
+      <Label fx:id="ScoutLabel5" layoutX="284.0" layoutY="268.0" text="Scout" />
+      <Label fx:id="SniperLabel5" layoutX="285.0" layoutY="286.0" text="Sniper" />
+      <Label fx:id="TankLabel5" layoutX="286.0" layoutY="302.0" text="Tank" />
+      <TextField fx:id="ScoutTextField5" layoutX="324.0" layoutY="268.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="SniperTextField5" layoutX="324.0" layoutY="285.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TankTextField5" layoutX="324.0" layoutY="302.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TankTextField4" layoutX="190.0" layoutY="302.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="SniperTextField4" layoutX="190.0" layoutY="285.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="ScoutTextField4" layoutX="190.0" layoutY="267.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <Label fx:id="TankLabel4" layoutX="157.0" layoutY="302.0" text="Tank" />
+      <Label fx:id="SniperLabel4" layoutX="151.0" layoutY="286.0" text="Sniper" />
+      <Label fx:id="ScoutLabel4" layoutX="153.0" layoutY="268.0" text="Scout" />
+      <Label layoutX="148.0" layoutY="245.0" text="Team 4" />
+      <Slider fx:id="RobotThinkTimeSlider" layoutX="18.0" layoutY="295.0" majorTickUnit="5.0" max="30.0" minorTickCount="1" onScroll="#updateRobotThinkTimeValueLabel" prefHeight="14.0" prefWidth="93.0" snapToTicks="true" />
+      <Button fx:id="BackButton" layoutX="18.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#showMainMenu" prefHeight="33.0" prefWidth="87.0" text="Back" />
+      <Button fx:id="StartButton" layoutX="501.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#createGame" prefHeight="33.0" prefWidth="87.0" text="Start" />
+      <Label fx:id="RobotThinkTimeValueLabel" layoutX="56.0" layoutY="311.0" text="0s" />
+      <VBox layoutX="15.0" layoutY="117.0" prefHeight="71.0" prefWidth="70.0">
+         <children>
+            <RadioButton fx:id="TeamsRadioButton" mnemonicParsing="false" selected="true" text="2 Teams" />
+            <RadioButton fx:id="Teams3RadioButton" mnemonicParsing="false" text="3 Teams" />
+            <RadioButton fx:id="Teams6RadioButton" mnemonicParsing="false" text="6 Teams" />
+         </children>
+      </VBox>
+      <VBox layoutX="18.0" layoutY="220.0" prefHeight="46.0" prefWidth="87.0">
+         <children>
+            <RadioButton fx:id="Hexagons5RadioButton" mnemonicParsing="false" selected="true" text="5 Hexagons" />
+            <RadioButton fx:id="Hexagons7RadioButton" mnemonicParsing="false" text="7 Hexagons" />
+         </children>
+      </VBox>
+      <ToggleButton fx:id="ToggleButton1" layoutX="190.0" layoutY="105.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="70.0" text="Human" />
+      <ToggleButton fx:id="ToggleButton2" layoutX="324.0" layoutY="105.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
+      <ToggleButton fx:id="ToggleButton3" layoutX="474.0" layoutY="103.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
+      <ToggleButton fx:id="ToggleButton4" layoutX="190.0" layoutY="241.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
+      <ToggleButton fx:id="ToggleButton5" layoutX="324.0" layoutY="241.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
+      <ToggleButton fx:id="ToggleButton6" layoutX="474.0" layoutY="241.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
+   </children>
+</Pane>

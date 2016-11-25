@@ -34,6 +34,16 @@ public class Team {
         throw new NotImplementedException();
     }
 
+    public int remainingRobots(){
+        int robotCount = 0;
+
+        if(!scout.isAlive()) robotCount++;
+        if(!sniper.isAlive()) robotCount++;
+        if(!tank.isAlive()) robotCount++;
+
+        return robotCount;
+    }
+
     public TeamColour getColour() {
         return colour;
     }
