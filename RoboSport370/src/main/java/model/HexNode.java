@@ -221,21 +221,21 @@ public class HexNode{
      * @return true if it can contain robots
      */
     private boolean canContainRobots() {
-        return (robots == null);
+        return (robots != null);
     }
 
     @Override
     public String toString() {
         return String.format(
                 "\n" +
-                        " Node %s\n" +
+                        " Node %s (%s)\n" +
                         "-------------------------\n" +
                         "     %s      %s\n" +
                         "\n" +
                         "  %s            %s\n" +
                         "\n" +
                         "     %s     %s\n",
-                getLabel(),
+                getLabel(), String.valueOf(canContainRobots()),
                 (ul == null) ? "xxxx" : ul.getLabel(),
                 (ur == null) ? "xxxx" : ur.getLabel(),
                 (l == null) ? "xxxx" : l.getLabel(),

@@ -20,9 +20,10 @@ public class Board {
         HexNode currentNode = root;
 
         // Loop for Layer
-        for(int curSize=1; curSize <= size; curSize++){
+        for(int curSize=1; curSize <= size+3; curSize++){
+            boolean canHoldRobots = (curSize<=size);
             // Create the 0th node for this layer to the right of current node
-            HexNode newLayerNode = new HexNode();
+            HexNode newLayerNode = new HexNode(canHoldRobots);
             newLayerNode.setLabel("L" + curSize + "N0");
 
             linkNode(currentNode, 0, newLayerNode);
@@ -31,7 +32,7 @@ public class Board {
             int facing = 2;
             // Creating nodes for this layer
             for(int i=1; i<=(curSize*6)-1; i++) {
-                HexNode newNode = new HexNode();
+                HexNode newNode = new HexNode(canHoldRobots);
                 newNode.setLabel("L" + curSize + "N" + i);
 
                 // Create next node and link
