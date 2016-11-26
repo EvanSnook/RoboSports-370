@@ -14,10 +14,15 @@ import java.util.function.ToIntFunction;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import model.ForthExecuter;
+import model.HexNode;
+import model.HexNodeIterator;
 import model.RobotAI;
 import model.Word;
+import model.enums.RobotType;
+import model.enums.TeamColour;
 
 public class ForthInterpreter {
 
@@ -392,6 +397,130 @@ public class ForthInterpreter {
         result.add(miscRandom);
         //</editor-fold>
 
+        //<editor-fold desc="Robot Status">
+        Word robotHealth = new Word("health", matches -> {
+            int maxHealth = gameMaster.getCurrentRobot().getMaxHealth();
+            stack.push(String.valueOf(maxHealth));
+        });
+
+        Word robotHealthLeft = new Word("healthLeft", matches -> {
+            int health = gameMaster.getCurrentRobot().getHealth();
+            stack.push(String.valueOf(health));
+        });
+
+        Word robotMoves = new Word("moves", matches -> {
+            int maxMoves = gameMaster.getCurrentRobot().getMaxMove();
+            stack.push(String.valueOf(maxMoves));
+        });
+
+        Word robotMovesLeft = new Word("movesLeft", matches -> {
+            int remainingMoves = gameMaster.getCurrentRobot().getRemainingMoves();
+            stack.push(String.valueOf(remainingMoves));
+        });
+
+        Word robotAttack = new Word("attack", matches -> {
+            int damage = gameMaster.getCurrentRobot().getDamage();
+            stack.push(String.valueOf(damage));
+        });
+
+        Word robotRange = new Word("range", matches -> {
+            int range = gameMaster.getCurrentRobot().getRange();
+            stack.push(String.valueOf(range));
+        });
+
+        Word robotTeam = new Word("team", matches -> {
+            TeamColour team = gameMaster.getCurrentRobot().getColour();
+            stack.push(String.valueOf(team));
+        });
+
+        Word robotType = new Word("type", matches -> {
+            RobotType type = gameMaster.getCurrentRobot().getType();
+            stack.push(String.valueOf(type));
+        });
+
+        result.add(robotHealth);
+        result.add(robotHealthLeft);
+        result.add(robotMoves);
+        result.add(robotMovesLeft);
+        result.add(robotAttack);
+        result.add(robotRange);
+        result.add(robotTeam);
+        result.add(robotType);
+        //</editor-fold>
+
+        //<editor-fold desc="Robot Actions">
+        // Turn 1 to the right
+        Word robotTurn = new Word("turn!", matches -> {
+            // TODO turn robot
+        });
+
+        // Move forward 1 space
+        Word robotMove = new Word("move!", matches -> {
+            // TODO move robot
+        });
+
+        // shoot! ( id ir -- ) —fires the robot’s weapon at the space which is
+        // at distance ir and direction id
+        Word robotShoot = new Word("shoot!", matches -> {
+            if(verifyStack('i', 'i')){
+                // Distance
+                int ir = Integer.valueOf(stack.pop());
+                // Index
+                int id = Integer.valueOf(stack.pop());
+
+                // TODO shoot tile
+            }
+        });
+
+        // check! ( i -- s ) pops a given direction, and pushes a string describing
+        // the adjacent space in that direction
+        Word robotCheck = new Word("check!", matches -> {
+            if(verifyStack('i')){
+                int i = Integer.valueOf(stack.pop());
+
+                RobotAI robot = (RobotAI) gameMaster.getCurrentRobot();
+                int globalFacing = (i + robot.getFacing()) % 6;
+
+                HexNode checkPosition = robot.getPosition().get(globalFacing);
+
+                if(!checkPosition.canContainRobots())
+                    stack.push("OUT OF BOUNDS");
+                else if(!checkPosition.isEmpty())
+                    stack.push("OCCUPIED");
+                else
+                    stack.push("EMPTY");
+            }
+        });
+
+        Word robotScan = new Word("scan!", matches -> {
+            RobotAI robot = (RobotAI) gameMaster.getCurrentRobot();
+            int range = robot.getRange();
+            int count = 0;
+
+            HexNodeIterator iterator = new HexNodeIterator(robot.getPosition());
+
+            // TODO is this the corrent range?
+            while(iterator.hasNext() && iterator.getCurrentLayer() <= range){
+                HexNode current = iterator.next();
+
+                if(!current.isEmpty())
+                    count += current.getRobots().size();
+            }
+
+            stack.push(String.valueOf(count));
+        });
+
+        Word robotIdentify = new Word("identify!", matches -> {
+            // TODO identify!
+        });
+
+        result.add(robotShoot);
+        result.add(robotCheck);
+        result.add(robotScan);
+        result.add(robotIdentify);
+        //</editor-fold>
+
+        // TODO Mailbox
 
         return result;
     }

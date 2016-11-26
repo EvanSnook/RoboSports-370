@@ -208,11 +208,11 @@ public class HexNode{
         this.hexagon = hexagon;
     }
 
-    private LinkedList<Robot> getRobots(){
+    public LinkedList<Robot> getRobots(){
         return robots;
     }
 
-    private boolean isEmpty(){
+    public boolean isEmpty(){
         return robots.isEmpty();
     }
 
@@ -220,7 +220,7 @@ public class HexNode{
      * Whether or not this {@link HexNode} was created to contain {@link Robot}s
      * @return true if it can contain robots
      */
-    private boolean canContainRobots() {
+    public boolean canContainRobots() {
         return (robots != null);
     }
 
