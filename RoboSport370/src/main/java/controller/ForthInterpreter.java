@@ -16,13 +16,14 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 import model.ForthExecuter;
+import model.RobotAI;
 import model.Word;
 
 public class ForthInterpreter {
 
     public static void main(String[] args) {
-
-        ForthInterpreter interpreter = new ForthInterpreter();
+        GameMaster gameMaster = new GameMaster();
+        ForthInterpreter interpreter = new ForthInterpreter(gameMaster);
         interpreter.execute("1 3 do 1 2 do I loop I loop");
 
         System.out.println("stack: " + interpreter.getStack());
@@ -32,17 +33,21 @@ public class ForthInterpreter {
      * A list of pre-defined {@link Word}'s
      */
     private ArrayList<Word> words;
+
     /**
      * The stack the {@link ForthInterpreter} will alter
      */
     private Stack<String> stack;
 
+    private GameMaster gameMaster;
+
     /**
      * Instantiate a new {@link ForthInterpreter}
      */
-    public ForthInterpreter() {
+    public ForthInterpreter(GameMaster gameMaster) {
         this.words = initWords();
         this.stack = new Stack<>();
+        this.gameMaster = gameMaster;
     }
 
     /**
@@ -110,9 +115,8 @@ public class ForthInterpreter {
 
         //<editor-fold desc="Defining Words">
         Word definingWord = new Word(": ((.*?) )(.*?) ;", matches -> {
-            // TODO GameMaster class
-            // need gameMaster.currentRobot.userDefinedWords()
-            // userDefined.put(matches[2], matches[3]);
+            RobotAI currentRobot = (RobotAI) gameMaster.getCurrentRobot();
+            currentRobot.getUserDefinedWords().put(matches[2], matches[3]);
         });
 
         // TODO detect when the definedwords are being used
@@ -387,6 +391,7 @@ public class ForthInterpreter {
         result.add(miscPrint);
         result.add(miscRandom);
         //</editor-fold>
+
 
         return result;
     }

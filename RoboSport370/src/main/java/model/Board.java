@@ -22,7 +22,7 @@ public class Board {
         for(int curSize=1; curSize <= size; curSize++){
             // Create the 0th node for this layer to the right of current node
             HexNode newLayerNode = new HexNode();
-            newLayerNode.setLabel(curSize + ",0");
+            newLayerNode.setLabel("L" + curSize + "N0");
 
             linkNode(currentNode, 0, newLayerNode);
             currentNode = currentNode.getR();
@@ -31,7 +31,7 @@ public class Board {
             // Creating nodes for this layer
             for(int i=1; i<=(curSize*6)-1; i++) {
                 HexNode newNode = new HexNode();
-                newNode.setLabel(curSize + "," + i);
+                newNode.setLabel("L" + curSize + "N" + i);
 
                 // Create next node and link
                 linkNode(currentNode, facing, newNode);
@@ -101,7 +101,6 @@ public class Board {
         HexNode current = getRoot();
 
         while(current.get(side) != null){
-            System.out.println(current.toDebugString());
             current = current.get(side);
         }
         return current;
