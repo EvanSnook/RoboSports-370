@@ -1,6 +1,8 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
+
+import javafx.scene.shape.Polygon;
 
 public class HexNode{
     private HexNode r;
@@ -9,11 +11,12 @@ public class HexNode{
     private HexNode l;
     private HexNode ul;
     private HexNode ur;
-    private ArrayList<Robot> value;
+    private LinkedList<Robot> robots;
+    private Polygon hexagon;
     private String label;
 
     public HexNode(){
-        this.value = new ArrayList<>();
+        this.robots = new LinkedList<>();
     }
 
     public void setLabel(String label){
@@ -125,12 +128,20 @@ public class HexNode{
         this.ur = ur;
     }
 
-    private ArrayList<Robot> getValue(){
-        return value;
+    public Polygon getHexagon() {
+        return hexagon;
+    }
+
+    public void setHexagon(Polygon hexagon) {
+        this.hexagon = hexagon;
+    }
+
+    private LinkedList<Robot> getRobots(){
+        return robots;
     }
 
     private boolean isEmpty(){
-        return value == null;
+        return robots == null;
     }
 
     public String toDebugString() {
@@ -143,7 +154,7 @@ public class HexNode{
                         "  %s            %s\n" +
                         "\n" +
                         "     %s     %s\n",
-                value,
+                robots,
                 (ul == null) ? "xxxx" : ul.getLabel(),
                 (ur == null) ? "xxxx" : ur.getLabel(),
                 (l == null) ? "xxxx" : l.getLabel(),
