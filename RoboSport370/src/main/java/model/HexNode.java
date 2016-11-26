@@ -5,20 +5,76 @@ import java.util.LinkedList;
 import javafx.scene.shape.Polygon;
 
 public class HexNode{
+    /**
+     * The node to the right of this {@link HexNode}
+     */
     private HexNode r;
+
+    /**
+     * The node to the bottom-right of this {@link HexNode}
+     */
     private HexNode dr;
+
+    /**
+     * The node to the bottom-left of this {@link HexNode}
+     */
     private HexNode dl;
+
+    /**
+     * The node to the left of this {@link HexNode}
+     */
     private HexNode l;
+
+    /**
+     * The node to the top-left of this {@link HexNode}
+     */
     private HexNode ul;
+
+    /**
+     * The node to the top-right of this {@link HexNode}
+     */
     private HexNode ur;
+
+    /**
+     * The list of robots residing on this {@link HexNode}
+     */
     private LinkedList<Robot> robots;
+
+    /**
+     * A reference to the {@link Polygon} on the game board
+     */
     private Polygon hexagon;
+
+    /**
+     * A label to identify this {@link HexNode}
+     */
     private String label;
 
+    /**
+     * Construct a new {@link HexNode} with the ability to hold {@link Robot}s
+     */
     public HexNode(){
-        this.robots = new LinkedList<>();
+        this(true);
     }
 
+    /**
+     * Construct a new {@link HexNode} without the ability to hold {@link Robot}s
+     * <p>
+     * This constructor is used for {@link HexNode}s that reside outside of the visible game board.
+     * @param willHoldRobots
+     *              if true, the {@link LinkedList} that contains the {@link Robot}s will be
+     *              instantiated to an empty {@link LinkedList}
+     */
+    public HexNode(boolean willHoldRobots){
+        if(willHoldRobots)
+            this.robots = new LinkedList<>();
+    }
+
+    /**
+     * Set a label for this {@link HexNode}
+     * @param label
+     *              the desired label
+     */
     public void setLabel(String label){
         this.label = label;
     }
@@ -27,6 +83,18 @@ public class HexNode{
         return this.label;
     }
 
+    /**
+     * Get the {@link HexNode} on the specified {@code side}
+     * @param side
+     *              an {@link Integer} denoting the side desired
+     *              <p>{@code 0} - right
+     *              <p>{@code 1} - down-right
+     *              <p>{@code 2} - down-left
+     *              <p>{@code 3} - left
+     *              <p>{@code 4} - top-left
+     *              <p>{@code 5} - top-right
+     * @return the {@link HexNode} on the desired {@code side}, or {@code null}
+     */
     public HexNode get(int side){
         switch(side){
             case 0:
@@ -46,6 +114,19 @@ public class HexNode{
         }
     }
 
+    /**
+     * Set the {@link HexNode} on the specified {@code side}
+     * @param side
+     *              an {@link Integer} denoting the side desired
+     *              <p>{@code 0} - right
+     *              <p>{@code 1} - down-right
+     *              <p>{@code 2} - down-left
+     *              <p>{@code 3} - left
+     *              <p>{@code 4} - top-left
+     *              <p>{@code 5} - top-right
+     * @param node
+     *              the {@link HexNode} to be added to the {@code side} of this {@link HexNode}
+     */
     public void set(int side, HexNode node){
         switch(side){
             case 0:
@@ -69,15 +150,6 @@ public class HexNode{
             default:
                 break;
         }
-    }
-
-    public int getOccupiedSides(){
-        int count = 0;
-        for(int i=0; i<=5; i++)
-            if(get(i) != null)
-                count++;
-
-        return count;
     }
 
     public HexNode getR() {
@@ -141,10 +213,19 @@ public class HexNode{
     }
 
     private boolean isEmpty(){
-        return robots == null;
+        return robots.isEmpty();
     }
 
-    public String toDebugString() {
+    /**
+     * Whether or not this {@link HexNode} was created to contain {@link Robot}s
+     * @return true if it can contain robots
+     */
+    private boolean canContainRobots() {
+        return (robots == null);
+    }
+
+    @Override
+    public String toString() {
         return String.format(
                 "\n" +
                         " Node %s\n" +
