@@ -16,6 +16,7 @@ public class Board {
         int size = boardSize.getValue();
 
         HexNode root = new HexNode();
+        root.setLabel("L0N0");
         HexNode currentNode = root;
 
         // Loop for Layer
