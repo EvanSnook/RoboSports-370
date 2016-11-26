@@ -235,7 +235,7 @@ public class HexNode{
                         "  %s            %s\n" +
                         "\n" +
                         "     %s     %s\n",
-                robots,
+                getLabel(),
                 (ul == null) ? "xxxx" : ul.getLabel(),
                 (ur == null) ? "xxxx" : ur.getLabel(),
                 (l == null) ? "xxxx" : l.getLabel(),
