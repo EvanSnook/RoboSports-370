@@ -8,15 +8,13 @@ import model.PublicViewController;
 
 public class CreateGameController {
     @FXML
-    private Slider RobotThinkTimeSlider;
-
+    private Slider robotThinkTimeSlider;
     @FXML
-    private Label RobotThinkTimeValueLabel;
-
+    private Label robotThinkTimeValueLabel;
 
     public void updateRobotThinkTimeValueLabel(/*MouseEvent mouseEvent*/){
         System.out.println("Im called!");
-        RobotThinkTimeValueLabel.setText(String.valueOf(RobotThinkTimeSlider.getValue()));
+        robotThinkTimeValueLabel.setText(String.valueOf(robotThinkTimeSlider.getValue()));
     }
 
     public void createGame(/*MouseEvent mouseEvent*/){
