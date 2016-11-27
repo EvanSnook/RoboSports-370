@@ -20,8 +20,33 @@ public class Game {
     }
 
     private List<Team> initTeams(int teamCount){
-        // TODO Game.InitTeams()
-        throw new NotImplementedException();
+        if(teamCount == 2){
+            teams.add(new Team (TeamColour.RED, true));
+            teams.add(new Team (TeamColour.GREEN, true));
+            teams.add(new Team (TeamColour.YELLOW, false));
+            teams.add(new Team (TeamColour.BLUE, false));
+            teams.add(new Team (TeamColour.ORANGE, false));
+            teams.add(new Team (TeamColour.PURPLE, false));
+        }
+        else if(teamCount == 3){
+            teams.add(new Team (TeamColour.RED, true));
+            teams.add(new Team (TeamColour.GREEN, false));
+            teams.add(new Team (TeamColour.YELLOW, true));
+            teams.add(new Team (TeamColour.BLUE, true));
+            teams.add(new Team (TeamColour.ORANGE, false));
+            teams.add(new Team (TeamColour.PURPLE, false));
+        }
+        else if(teamCount == 6){
+            teams.add(new Team (TeamColour.RED, true));
+            teams.add(new Team (TeamColour.GREEN, true));
+            teams.add(new Team (TeamColour.YELLOW, true));
+            teams.add(new Team (TeamColour.BLUE, true));
+            teams.add(new Team (TeamColour.ORANGE, true));
+            teams.add(new Team (TeamColour.PURPLE, true));
+        }
+        else {
+            System.err.printLn("Team count value is invalid.");
+        }
     }
 
     public Team getTeam(TeamColour colour){
