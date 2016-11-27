@@ -108,7 +108,7 @@ public class ViewController{
             rulesStage.initOwner(((Node)mouseEvent.getSource()).getScene().getWindow());
             rulesStage.show();
 
-            rulesStage = rulesStage;
+            this.rulesStage = rulesStage;
         } catch (IOException ex){
             ex.printStackTrace();
         }

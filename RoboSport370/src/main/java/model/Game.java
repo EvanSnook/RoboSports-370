@@ -15,7 +15,8 @@ public class Game {
     public Game(BoardSize boardSize, int teamCount){
         this.board = new Board(boardSize);
         this.teams = initTeams(teamCount);
-        this.gameTime = new GameTime();
+        // TODO Replace with RobotThingTime in milliseconds
+        this.gameTime = new GameTime(10000);
     }
 
     private List<Team> initTeams(int teamCount){
