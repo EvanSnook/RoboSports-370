@@ -52,8 +52,36 @@ public class Team {
      * @return the next {@link Robot} to play, or null if they are all dead
      */
     public Robot getNextRobot() {
-        // TODO Team.getNextRobot()
-        throw new NotImplementedException();
+        if(lastRobot == scout && sniper.isAlive()){
+            return sniper;
+        }
+        else if(lastRobot == scout && !sniper.isAlive() && tank.isAlive()){
+            return tank;
+        }
+        else if(lastRobot == scout && !sniper.isAlive() && !tank.isAlive() && scout.isAlive()){
+            return scout;
+        }
+        else if(lastRobot == sniper && tank.isAlive()){
+            return tank;
+        }
+        else if(lastRobot == sniper && !tank.isAlive() && scout.isAlive()){
+            return scout;
+        }
+        else if(lastRobot == sniper && !tank.isAlive() && !scout.isAlive() && sniper.isAlive()){
+            return sniper;
+        }
+        else if(lastRobot == tank && scout.isAlive()){
+            return scout;
+        }
+        else if(lastRobot == tank && !scout.isAlive() && sniper.isAlive()){
+            return sniper;
+        }
+        else if(lastRobot == tank && !scout.isAlive() && sniper.isAlive() && tank.isAlive()){
+            return tank;
+        }
+        else {
+            return null;
+        }
     }
 
     /**
