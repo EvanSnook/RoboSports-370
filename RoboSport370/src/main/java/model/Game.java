@@ -26,6 +26,7 @@ public class Game {
 
     public Team getTeam(TeamColour colour){
         return teams.stream()
+                .filter(Team::isEnabled)
                 .filter(t -> t.getColour().equals(colour))
                 .findFirst()
                 .orElse(null);
@@ -33,6 +34,7 @@ public class Game {
 
     public int getRemainingTeams(){
         return (int) teams.stream()
+                .filter(Team::isEnabled)
                 .filter(t -> t.remainingRobots() > 0)
                 .count();
     }
