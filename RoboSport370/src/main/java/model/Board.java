@@ -21,7 +21,7 @@ public class Board {
 
         // Loop for Layer
         for(int curSize=1; curSize <= size+3; curSize++){
-            boolean canHoldRobots = (curSize<=size);
+            boolean canHoldRobots = (curSize<size);
             // Create the 0th node for this layer to the right of current node
             HexNode newLayerNode = new HexNode(canHoldRobots);
             newLayerNode.setLabel("L" + curSize + "N0");

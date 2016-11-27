@@ -1,7 +1,5 @@
 package controller.view;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import model.PublicViewController;
 

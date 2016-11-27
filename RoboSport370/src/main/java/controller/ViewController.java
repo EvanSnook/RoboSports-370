@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import controller.view.CreateGameController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -9,7 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.PublicGameMaster;
 import model.PublicViewController;
+import model.enums.BoardSize;
 
 public class ViewController{
     private static Stage view;
@@ -24,13 +27,10 @@ public class ViewController{
 
     public ViewController() {
         PublicViewController.setInstance(this);
-        try {
-            createGameScene = new Scene(loadFxml("/view/CreateGameView.fxml"));
-            statsScene = new Scene(loadFxml("/view/RobotStats.fxml"));
-            robotManagerScene = new Scene(loadFxml("/view/RobotManagerView.fxml"));
-        } catch (IOException ex){
-            ex.printStackTrace();
-        }
+
+        createGameScene = new Scene(loadFxml("/view/CreateGameView.fxml"));
+        statsScene = new Scene(loadFxml("/view/RobotStats.fxml"));
+        robotManagerScene = new Scene(loadFxml("/view/RobotManagerView.fxml"));
     }
 
     public void setStage(Stage stage) {
@@ -45,6 +45,10 @@ public class ViewController{
         view.setScene(scene);
     }
 
+    public Scene getCurrentScene() {
+        return currentScene;
+    }
+
     /**
      * Set the scene of the ViewController
      * <p>
@@ -52,7 +56,9 @@ public class ViewController{
      *     {@code MAIN_MENU}<br>
      *     {@code CREATE_GAME}<br>
      *     {@code ROBOT_MANAGER}<br>
-     *     {@code ROBOT_STATS}
+     *     {@code ROBOT_STATS}<br>
+     *     {@code SMALL_BOARD}<br>
+     *     {@code MEDIUM_BOARD}
      * @param sceneName
      *              the name of the scene from above
      */
@@ -70,8 +76,30 @@ public class ViewController{
             case "ROBOT_STATS":
                 setScene(statsScene);
                 break;
+            case "SMALL_BOARD":
+                createGame(BoardSize.SMALL);
+                break;
+            case "MEDIUM_BOARD":
+                createGame(BoardSize.MEDIUM);
+                break;
             default:
                 System.err.println("Unknown scene: " + sceneName);
+        }
+    }
+
+    public void createGame(BoardSize size){
+        String sizeString = size.equals(BoardSize.SMALL) ? "Small" : "Medium";
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/GameView" + sizeString + "Board.fxml"));
+            Parent parent = fxmlLoader.load();
+            GameMaster gm = fxmlLoader.getController();
+
+            PublicGameMaster.setInstance(gm);
+
+            setScene(new Scene(parent));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -99,22 +127,23 @@ public class ViewController{
             rulesStage.show();
             return;
         }
-        try {
-            Stage rulesStage = new Stage();
-            Parent rulesMain = loadFxml("/view/RulesView.fxml");
-            rulesStage.setScene(new Scene(rulesMain));
-            rulesStage.initModality(Modality.NONE);
+        Stage rulesStage = new Stage();
+        Parent rulesMain = loadFxml("/view/RulesView.fxml");
+        rulesStage.setScene(new Scene(rulesMain));
+        rulesStage.initModality(Modality.NONE);
 
-            rulesStage.initOwner(((Node)mouseEvent.getSource()).getScene().getWindow());
-            rulesStage.show();
+        rulesStage.initOwner(((Node)mouseEvent.getSource()).getScene().getWindow());
+        rulesStage.show();
 
-            this.rulesStage = rulesStage;
-        } catch (IOException ex){
-            ex.printStackTrace();
-        }
+        this.rulesStage = rulesStage;
     }
 
-    private static Parent loadFxml(String fxmlURL) throws IOException{
-        return FXMLLoader.load(ViewController.class.getResource(fxmlURL));
+    private static Parent loadFxml(String fxmlURL){
+        try{
+            return FXMLLoader.load(ViewController.class.getResource(fxmlURL));
+        } catch (IOException ex){
+            ex.printStackTrace();
+            return null;
+        }
     }
 }

@@ -1,7 +1,5 @@
 package model;
 
-import javax.swing.text.View;
-
 import controller.ViewController;
 
 public class PublicViewController {

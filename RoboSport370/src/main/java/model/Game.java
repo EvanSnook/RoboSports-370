@@ -2,6 +2,7 @@ package model;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.enums.BoardSize;
@@ -20,34 +21,35 @@ public class Game {
     }
 
     private List<Team> initTeams(int teamCount){
+        ArrayList<Team> result = new ArrayList<>();
         if(teamCount == 2){
-            teams.add(new Team (TeamColour.RED, true));
-            teams.add(new Team (TeamColour.GREEN, true));
-            teams.add(new Team (TeamColour.YELLOW, false));
-            teams.add(new Team (TeamColour.BLUE, false));
-            teams.add(new Team (TeamColour.ORANGE, false));
-            teams.add(new Team (TeamColour.PURPLE, false));
+            result.add(new Team (TeamColour.RED, true));
+            result.add(new Team (TeamColour.GREEN, true));
+            result.add(new Team (TeamColour.YELLOW, false));
+            result.add(new Team (TeamColour.BLUE, false));
+            result.add(new Team (TeamColour.ORANGE, false));
+            result.add(new Team (TeamColour.PURPLE, false));
         }
         else if(teamCount == 3){
-            teams.add(new Team (TeamColour.RED, true));
-            teams.add(new Team (TeamColour.GREEN, false));
-            teams.add(new Team (TeamColour.YELLOW, true));
-            teams.add(new Team (TeamColour.BLUE, true));
-            teams.add(new Team (TeamColour.ORANGE, false));
-            teams.add(new Team (TeamColour.PURPLE, false));
+            result.add(new Team (TeamColour.RED, true));
+            result.add(new Team (TeamColour.GREEN, false));
+            result.add(new Team (TeamColour.YELLOW, true));
+            result.add(new Team (TeamColour.BLUE, true));
+            result.add(new Team (TeamColour.ORANGE, false));
+            result.add(new Team (TeamColour.PURPLE, false));
         }
         else if(teamCount == 6){
-            teams.add(new Team (TeamColour.RED, true));
-            teams.add(new Team (TeamColour.GREEN, true));
-            teams.add(new Team (TeamColour.YELLOW, true));
-            teams.add(new Team (TeamColour.BLUE, true));
-            teams.add(new Team (TeamColour.ORANGE, true));
-            teams.add(new Team (TeamColour.PURPLE, true));
+            result.add(new Team (TeamColour.RED, true));
+            result.add(new Team (TeamColour.GREEN, true));
+            result.add(new Team (TeamColour.YELLOW, true));
+            result.add(new Team (TeamColour.BLUE, true));
+            result.add(new Team (TeamColour.ORANGE, true));
+            result.add(new Team (TeamColour.PURPLE, true));
         }
         else {
             System.err.println("Team count value is invalid.");
         }
-        return teams;
+        return result;
     }
 
     public Team getTeam(TeamColour colour){
