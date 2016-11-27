@@ -2,26 +2,31 @@ package controller;
 
 import java.io.IOException;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.PublicViewController;
 
 public class ViewController{
     private static Stage view;
-    private static Stage rulesStage;
-    private static Scene currentScene;
+    private Stage rulesStage;
+    private Scene currentScene;
 
-    private static Scene mainMenuScene;
-    private static Scene createGameScene;
-    private static Scene statsScene;
-    private static Scene robotManagerScene;
+    private Scene mainMenuScene;
+    private Scene createGameScene;
+    private Scene statsScene;
+    private Scene robotManagerScene;
 
-    static{
+    public ViewController() {
+        PublicViewController.setInstance(this);
         try {
             if(createGameScene == null)
                 createGameScene = new Scene(loadFxml("/view/CreateGameView.fxml"));
@@ -32,9 +37,6 @@ public class ViewController{
         } catch (IOException ex){
             ex.printStackTrace();
         }
-    }
-
-    public ViewController() {
     }
 
     public void setStage(Stage stage) {
@@ -48,6 +50,16 @@ public class ViewController{
         view.setScene(scene);
     }
 
+    public void setScene(String sceneName){
+        switch(sceneName){
+            case "MAIN_MENU":
+                setScene(mainMenuScene);
+                break;
+            default:
+                System.err.println("Unknown scene: " + sceneName);
+        }
+    }
+
     //universal actions
     public void showMainMenu(/*MouseEvent mouseEvent*/){
         setScene(mainMenuScene);
@@ -55,15 +67,6 @@ public class ViewController{
 
     public void quit(/*MouseEvent mouseEvent*/){
         System.exit(0);
-    }
-
-    //CreateGame Actions
-    public void updateRobotThinkTimeValueLabel(/*MouseEvent mouseEvent*/){
-
-    }
-
-    public void createGame(/*MouseEvent mouseEvent*/){
-
     }
 
     //EditRobot Actions
@@ -79,7 +82,6 @@ public class ViewController{
 
     }
 
-    //MainMenu Actions
     public void showCreateGame(/*MouseEvent mouseEvent*/){
         setScene(createGameScene);
     }
@@ -112,37 +114,7 @@ public class ViewController{
         setScene(robotManagerScene);
     }
 
-    //RoboManager Actions
-    public void editRobot(/*MouseEvent mouseEvent*/){
-
-    }
-
-    public void importRobot(/*MouseEvent mouseEvent*/){
-
-    }
-
-    public void exportRobot(/*MouseEvent mouseEvent*/){
-
-    }
-
-    public void deleteRobot(/*MouseEvent mouseEvent*/){
-
-    }
-
-    //Stats Actions
-    public void uploadStats(/*MouseEvent mouseEvent*/){
-
-    }
-
-    public void resetStats(/*MouseEvent mouseEvent*/){
-
-    }
-
     private static Parent loadFxml(String fxmlURL) throws IOException{
         return FXMLLoader.load(ViewController.class.getResource(fxmlURL));
-    }
-
-    // TODO What is this?
-    public void updateRobotThinkTimeLabel(ScrollEvent scrollEvent) {
     }
 }
