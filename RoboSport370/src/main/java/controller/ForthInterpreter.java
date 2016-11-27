@@ -111,8 +111,7 @@ public class ForthInterpreter {
 
         //<editor-fold desc="Defining Words">
         Word definingWord = new Word(": ((.*?) )(.*?) ;", matches -> {
-            RobotAI currentRobot = (RobotAI) gameMaster.getCurrentRobot();
-            currentRobot.getUserDefinedWords().put(matches[2], matches[3]);
+            getCurrentRobot().getUserDefinedWords().put(matches[2], matches[3]);
         });
 
         // TODO detect when the definedwords are being used
@@ -364,10 +363,36 @@ public class ForthInterpreter {
         //</editor-fold>
 
         //<editor-fold desc="Variables">
-        Word variable = new Word("variable (.*) ;", (matches -> {
-            // TODO forth variables
-            // ? Add variable hashmap to RobotAI & pass RobotAI instead of userDefinedWords
+        Word variableDefine = new Word("variable ([^ ]{1,})", (matches -> {
+            getCurrentRobot().getUserDefinedVariables().put(matches[1], "0");
         }));
+
+        // TODO Test this.. (Currently Disabled)
+        Word variableUsage = new Word("(\\?|!)", (matches -> {
+            if(verifyStack('l')){
+                ArrayList<String> definedVariables =
+                        new ArrayList<>(getCurrentRobot().getUserDefinedVariables().keySet());
+
+                String variable = stack.pop();
+                String action = matches[1];
+
+                if (!definedVariables.contains(variable)) {
+                    System.out.println("Variable \"" + variable + "\" is not declared");
+                    return;
+                }
+
+                if(action.equals("?")){
+                    stack.push(getCurrentRobot().getUserDefinedVariables().get(variable));
+                } else if (action.equals("!")){
+                    if(verifyStack('v')) {
+                        getCurrentRobot().getUserDefinedVariables().put(variable, stack.pop());
+                    }
+                }
+            }
+        }));
+
+        result.add(variableDefine);
+//        result.add(variableUsage);
         //</editor-fold>
 
         //<editor-fold desc="Miscellanea">
@@ -469,7 +494,7 @@ public class ForthInterpreter {
             if(verifyStack('i')){
                 int i = Integer.valueOf(stack.pop());
 
-                RobotAI robot = (RobotAI) gameMaster.getCurrentRobot();
+                RobotAI robot = getCurrentRobot();
                 int globalFacing = (i + robot.getFacing()) % 6;
 
                 HexNode checkPosition = robot.getPosition().get(globalFacing);
@@ -484,11 +509,10 @@ public class ForthInterpreter {
         });
 
         Word robotScan = new Word("scan!", matches -> {
-            RobotAI robot = (RobotAI) gameMaster.getCurrentRobot();
-            int range = robot.getRange();
+            int range = getCurrentRobot().getRange();
             int count = 0;
 
-            HexNodeIterator iterator = new HexNodeIterator(robot.getPosition());
+            HexNodeIterator iterator = new HexNodeIterator(getCurrentRobot().getPosition());
 
             // TODO is this the corrent range?
             while(iterator.hasNext() && iterator.getCurrentLayer() <= range){
@@ -514,6 +538,14 @@ public class ForthInterpreter {
         // TODO Mailbox
 
         return result;
+    }
+
+    /**
+     * Get the current robot making their turn
+     * @return the current robot
+     */
+    private RobotAI getCurrentRobot(){
+        return (RobotAI) gameMaster.getCurrentRobot();
     }
 
     /**
