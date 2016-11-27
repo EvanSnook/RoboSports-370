@@ -45,8 +45,9 @@ public class Game {
             teams.add(new Team (TeamColour.PURPLE, true));
         }
         else {
-            System.err.printLn("Team count value is invalid.");
+            System.err.println("Team count value is invalid.");
         }
+        return teams;
     }
 
     public Team getTeam(TeamColour colour){
