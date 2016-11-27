@@ -25,15 +25,6 @@ import model.enums.RobotType;
 import model.enums.TeamColour;
 
 public class ForthInterpreter {
-
-    public static void main(String[] args) {
-        GameMaster gameMaster = new GameMaster();
-        ForthInterpreter interpreter = new ForthInterpreter(gameMaster);
-        interpreter.execute("1 3 do 1 2 do I loop I loop");
-
-        System.out.println("stack: " + interpreter.getStack());
-    }
-
     /**
      * A list of pre-defined {@link Word}'s
      */
