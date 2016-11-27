@@ -13,6 +13,11 @@ public class GameMaster {
     private Robot currentRobot;
     private ForthInterpreter interpreter;
 
+    public GameMaster(Game newGame){
+        game = newGame;
+        game.getGameTime().getPlayTimer().addActionListener( e-> {});
+    }
+
     public void hexNodeClicked(MouseEvent mouseEvent) {
         // TODO link the Polygon to the HexNode
         // set selectedNode

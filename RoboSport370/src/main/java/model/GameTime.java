@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.Timer;
 
 // TODO GameTime Class
-public class GameTime implements ActionListener{
+public class GameTime {
 
     private int robotThinkTime;
     private Timer playTimer;
@@ -15,7 +15,7 @@ public class GameTime implements ActionListener{
 
     public GameTime(int think){
         robotThinkTime = think;
-        playTimer = new Timer(playerTimeLimitMilliS, this);
+        playTimer = new Timer(playerTimeLimitMilliS, null);
         startGameinMilliS = System.currentTimeMillis();
     }
 
@@ -62,9 +62,7 @@ public class GameTime implements ActionListener{
         playTimer.start();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //end the players turn.
-        //TODO
+    public Timer getPlayTimer() {
+        return playTimer;
     }
 }
