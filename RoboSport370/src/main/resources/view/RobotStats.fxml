@@ -7,7 +7,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewController">
    <children>
-      <Button fx:id="BackButton" layoutX="24.0" layoutY="345.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" text="Back" />
+      <Button fx:id="BackButton" layoutX="24.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#showMainMenu" prefHeight="32.0" prefWidth="70.0" text="Back" />
       <Button fx:id="UploadStatsButton" layoutX="24.0" layoutY="263.0" mnemonicParsing="false" onMouseClicked="#uploadStats" prefHeight="32.0" prefWidth="93.0" text="Upload Stats" />
       <Button fx:id="ResetStatsButton" layoutX="24.0" layoutY="304.0" mnemonicParsing="false" onMouseClicked="#resetStats" prefHeight="32.0" prefWidth="93.0" text="Reset Stats" />
       <ListView layoutX="131.0" layoutY="89.0" prefHeight="247.0" prefWidth="93.0" />
