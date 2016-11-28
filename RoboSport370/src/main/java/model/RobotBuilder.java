@@ -62,11 +62,6 @@ public class RobotBuilder {
         return this;
     }
 
-    public RobotBuilder setName(String name) {
-        r.setName(name);
-        return this;
-    }
-
     public RobotBuilder setFacing(int facing) {
         r.setFacing(facing);
         return this;

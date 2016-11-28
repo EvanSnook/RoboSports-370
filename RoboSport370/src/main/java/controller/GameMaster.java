@@ -1,10 +1,6 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -104,27 +100,6 @@ public class GameMaster {
     }
 
     private void initRobots(){
-        // TODO hardlink images
-        for(TeamColour colour : TeamColour.values()){
-            for(RobotType type : RobotType.values()){
-                String imageString = "";
-
-                imageString += colour.toString().toLowerCase();
-                imageString += type.toString().charAt(0) + type.toString().toLowerCase().substring(1);
-
-                ImageView robotView = (ImageView) gameContainer.lookup("#" + imageString);
-
-                imageString += ".PNG";
-
-                robotView.setImage(new Image(getClass().getResource("/images/" + imageString).toString()));
-
-                robotView.setFitWidth(game.getBoard().getSize().equals(BoardSize.SMALL) ?
-                        SMALL_ROBOT_WIDTH : MEDIUM_ROBOT_WIDTH);
-                robotView.setFitHeight(game.getBoard().getSize().equals(BoardSize.SMALL) ?
-                        SMALL_ROBOT_HEIGHT : MEDIUM_ROBOT_HEIGHT);
-            }
-        }
-
         for(Team t : game.getTeams()){
             ImageView scoutView =
                     (ImageView) gameContainer.lookup("#" + t.getScout().getRobotString());

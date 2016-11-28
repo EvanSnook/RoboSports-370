@@ -42,11 +42,7 @@ public class CreateGameController {
     }
 
     public void createGame(MouseEvent mouseEvent) {
-        if (getBoardSize().equals(BoardSize.SMALL)) {
-            PublicViewController.getInstance().setScene("SMALL_BOARD");
-        } else {
-            PublicViewController.getInstance().setScene("MEDIUM_BOARD");
-        }
+        PublicViewController.getInstance().createGame(getBoardSize());
 
         PublicGameMaster.getInstance().setGame(new Game(getBoardSize(), getNumTeams()));
     }

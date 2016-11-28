@@ -84,12 +84,6 @@ public class ViewController {
             case "ROBOT_STATS":
                 setScene(statsScene);
                 break;
-            case "SMALL_BOARD":
-                createGame(BoardSize.SMALL);
-                break;
-            case "MEDIUM_BOARD":
-                createGame(BoardSize.MEDIUM);
-                break;
             default:
                 System.err.println("Unknown scene: " + sceneName);
         }
