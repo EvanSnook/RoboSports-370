@@ -50,11 +50,16 @@ public class CreateGameController {
 
         Game game = new Game(getBoardSize(), getNumTeams());
 
-        // TODO instantiate all of the robots in the teams
-        if(getNumTeams() == 2){
-            Team redTeam = game.getTeam(TeamColour.RED);
-            Team greenTeam = game.getTeam(TeamColour.GREEN);
+        Team redTeam = game.getTeam(TeamColour.RED);
+        Team yellowTeam = game.getTeam(TeamColour.YELLOW);
+        Team blueTeam = game.getTeam(TeamColour.BLUE);
+        Team greenTeam = game.getTeam(TeamColour.GREEN);
+        Team purpleTeam = game.getTeam(TeamColour.PURPLE);
+        Team orangeTeam = game.getTeam(TeamColour.ORANGE);
 
+        // TODO instantiate all of the robots in the teams
+        // TODO Move this to separate function
+        if(getNumTeams() == 2){
             redTeam.setScout(Robot.getBuilder(false).getScout().build());
             redTeam.setSniper(Robot.getBuilder(false).getSniper().build());
             redTeam.setTank(Robot.getBuilder(false).getTank().build());
@@ -63,9 +68,7 @@ public class CreateGameController {
             greenTeam.setSniper(Robot.getBuilder(false).getSniper().build());
             greenTeam.setTank(Robot.getBuilder(false).getTank().build());
         } else if(getNumTeams() == 3){
-
         } else if(getNumTeams() == 6){
-
         }
 
         PublicGameMaster.getInstance().setGame(game);
