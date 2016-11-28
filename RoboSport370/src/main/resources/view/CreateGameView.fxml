@@ -136,21 +136,21 @@
       <Button layoutX="501.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#createGame" prefHeight="33.0" prefWidth="87.0" text="Start" />
       <Label fx:id="robotThinkTimeValueLabel" layoutX="56.0" layoutY="311.0" text="0s" />
       <VBox layoutX="15.0" layoutY="117.0" prefHeight="71.0" prefWidth="70.0">
-          <fx:define>
-              <ToggleGroup fx:id="teamGroup"/>
-          </fx:define>
          <children>
-            <RadioButton fx:id="teams2RadioButton" mnemonicParsing="false" selected="true" text="2 Teams" toggleGroup="$teamGroup" />
+            <RadioButton fx:id="teams2RadioButton" mnemonicParsing="false" selected="true" text="2 Teams">
+               <toggleGroup>
+                  <ToggleGroup fx:id="teamGroup" />
+               </toggleGroup></RadioButton>
             <RadioButton fx:id="teams3RadioButton" mnemonicParsing="false" text="3 Teams" toggleGroup="$teamGroup" />
             <RadioButton fx:id="teams6RadioButton" mnemonicParsing="false" text="6 Teams" toggleGroup="$teamGroup" />
          </children>
       </VBox>
       <VBox layoutX="18.0" layoutY="220.0" prefHeight="46.0" prefWidth="87.0">
-          <fx:define>
-              <ToggleGroup fx:id="boardGroup"/>
-          </fx:define>
          <children>
-            <RadioButton fx:id="hexagons5RadioButton" mnemonicParsing="false" selected="true" text="5 Hexagons" toggleGroup="$boardGroup" />
+            <RadioButton fx:id="hexagons5RadioButton" mnemonicParsing="false" selected="true" text="5 Hexagons">
+               <toggleGroup>
+                  <ToggleGroup fx:id="boardGroup" />
+               </toggleGroup></RadioButton>
             <RadioButton fx:id="hexagons7RadioButton" mnemonicParsing="false" text="7 Hexagons" toggleGroup="$boardGroup" />
          </children>
       </VBox>

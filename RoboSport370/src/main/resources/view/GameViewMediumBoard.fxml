@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
+<?import javafx.scene.image.ImageView?>
 <Pane fx:id="gameContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameMaster">
    <children>
       <Polygon fx:id="L6N18" fill="WHITE" layoutX="228.0" layoutY="407.0" onMouseClicked="#hexNodeClicked" stroke="BLACK" strokeType="INSIDE">
@@ -2038,5 +2039,23 @@
             <Double fx:value="-18.75" />
          </points>
       </Polygon>
+      <ImageView fx:id="blueScout" fitHeight="50.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blueSniper" fitHeight="50.0" fitWidth="60.0" layoutX="73.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="blueTank" fitHeight="50.0" fitWidth="60.0" layoutX="132.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="redScout" fitHeight="50.0" fitWidth="60.0" layoutX="14.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="redTank" fitHeight="50.0" fitWidth="60.0" layoutX="132.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="redSniper" fitHeight="50.0" fitWidth="60.0" layoutX="73.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="greenSniper" fitHeight="50.0" fitWidth="60.0" layoutX="73.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="greenScout" fitHeight="50.0" fitWidth="60.0" layoutX="14.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="greenTank" fitHeight="50.0" fitWidth="60.0" layoutX="132.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="yellowScout" fitHeight="50.0" fitWidth="60.0" layoutX="14.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="purpleSniper" fitHeight="50.0" fitWidth="60.0" layoutX="73.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="yellowTank" fitHeight="50.0" fitWidth="60.0" layoutX="132.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="orangeSniper" fitHeight="50.0" fitWidth="60.0" layoutX="73.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="orangeScout" fitHeight="50.0" fitWidth="60.0" layoutX="14.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="purpleScout" fitHeight="50.0" fitWidth="60.0" layoutX="14.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="orangeTank" fitHeight="50.0" fitWidth="60.0" layoutX="132.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="yellowSniper" fitHeight="50.0" fitWidth="60.0" layoutX="73.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="purpleTank" fitHeight="50.0" fitWidth="60.0" layoutX="132.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

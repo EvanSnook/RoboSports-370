@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.image.ImageView;
 import model.enums.RobotType;
 import model.enums.TeamColour;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -13,10 +14,10 @@ public class Robot {
     private RobotType type;
     private HexNode position;
     private int remainingMoves;
-    private String name;
     private Stats stats;
     private int facing;
     private TeamColour colour;
+    private ImageView robotImage;
 
     public Robot() {
     }
@@ -89,14 +90,6 @@ public class Robot {
         this.remainingMoves = remainingMoves;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Stats getStats() {
         return stats;
     }
@@ -119,6 +112,23 @@ public class Robot {
 
     public void setColour(TeamColour colour) {
         this.colour = colour;
+    }
+
+    public void setRobotImage(ImageView robotImage) {
+        this.robotImage = robotImage;
+    }
+
+    public ImageView getRobotImage(){
+        return robotImage;
+    }
+
+    public String getRobotString() {
+        String imageString = "";
+
+        imageString += colour.toString().toLowerCase();
+        imageString += type.toString().charAt(0) + type.toString().toLowerCase().substring(1);
+
+        return imageString;
     }
 
     public void consumeMove() {
@@ -149,7 +159,6 @@ public class Robot {
                 ", type=" + type +
                 ", position=" + position +
                 ", remainingMoves=" + remainingMoves +
-                ", name='" + name + '\'' +
                 ", stats=" + stats +
                 ", facing=" + facing +
                 ", colour=" + colour +

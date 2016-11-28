@@ -5,6 +5,7 @@ import model.enums.TeamColour;
 
 public class Board {
     private HexNode root;
+    private BoardSize size;
 
     /**
      * Construct a new board model of a given {@link BoardSize}
@@ -12,6 +13,7 @@ public class Board {
      * @param boardSize the size of the board to be created
      */
     public Board(BoardSize boardSize) {
+        this.size = boardSize;
         int size = boardSize.getValue();
 
         HexNode root = new HexNode();
@@ -126,6 +128,10 @@ public class Board {
             default:
                 return getCorner(0);
         }
+    }
+
+    public BoardSize getSize() {
+        return size;
     }
 
     public HexNode getRoot() {

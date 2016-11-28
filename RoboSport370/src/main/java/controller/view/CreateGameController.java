@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import model.Game;
 import model.PublicGameMaster;
@@ -22,6 +23,13 @@ public class CreateGameController {
     public RadioButton hexagons5RadioButton;
     @FXML
     public RadioButton hexagons7RadioButton;
+
+    public ToggleButton toggleButton1;
+    public ToggleButton toggleButton2;
+    public ToggleButton toggleButton3;
+    public ToggleButton toggleButton4;
+    public ToggleButton toggleButton5;
+    public ToggleButton toggleButton6;
 
     @FXML
     private Slider robotThinkTimeSlider;
