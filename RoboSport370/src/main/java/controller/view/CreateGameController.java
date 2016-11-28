@@ -9,7 +9,11 @@ import javafx.scene.input.MouseEvent;
 import model.Game;
 import model.PublicGameMaster;
 import model.PublicViewController;
+import model.Robot;
+import model.RobotBuilder;
+import model.Team;
 import model.enums.BoardSize;
+import model.enums.TeamColour;
 
 public class CreateGameController {
     @FXML
@@ -44,7 +48,27 @@ public class CreateGameController {
     public void createGame(MouseEvent mouseEvent) {
         PublicViewController.getInstance().createGame(getBoardSize());
 
-        PublicGameMaster.getInstance().setGame(new Game(getBoardSize(), getNumTeams()));
+        Game game = new Game(getBoardSize(), getNumTeams());
+
+        // TODO instantiate all of the robots in the teams
+        if(getNumTeams() == 2){
+            Team redTeam = game.getTeam(TeamColour.RED);
+            Team greenTeam = game.getTeam(TeamColour.GREEN);
+
+            redTeam.setScout(Robot.getBuilder(false).getScout().build());
+            redTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            redTeam.setTank(Robot.getBuilder(false).getTank().build());
+
+            greenTeam.setScout(Robot.getBuilder(false).getScout().build());
+            greenTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            greenTeam.setTank(Robot.getBuilder(false).getTank().build());
+        } else if(getNumTeams() == 3){
+
+        } else if(getNumTeams() == 6){
+
+        }
+
+        PublicGameMaster.getInstance().setGame(game);
     }
 
     public void showMainMenu(MouseEvent mouseEvent) {

@@ -19,11 +19,6 @@ import model.enums.TeamColour;
 
 // TODO GameMaster Class
 public class GameMaster {
-    private final int SMALL_ROBOT_WIDTH = 60;
-    private final int SMALL_ROBOT_HEIGHT = 50;
-    private final int MEDIUM_ROBOT_WIDTH = 45;
-    private final int MEDIUM_ROBOT_HEIGHT = 35;
-
     private final String FOG_COLOUR = "#DDD";
     private final String DEFAULT_COLOUR = "WHITE";
     private final String SELECTED_COLOUR = "#AAA";
@@ -101,12 +96,23 @@ public class GameMaster {
 
     private void initRobots(){
         for(Team t : game.getTeams()){
+
+            String colour = t.getColour().toString().toLowerCase();
+
             ImageView scoutView =
-                    (ImageView) gameContainer.lookup("#" + t.getScout().getRobotString());
+                    (ImageView) gameContainer.lookup("#" + colour + "Scout");
             ImageView sniperView =
-                    (ImageView) gameContainer.lookup("#" + t.getSniper().getRobotString());
+                    (ImageView) gameContainer.lookup("#" + colour + "Sniper");
             ImageView tankView =
-                    (ImageView) gameContainer.lookup("#" + t.getTank().getRobotString());
+                    (ImageView) gameContainer.lookup("#" + colour + "Tank");
+
+            // If the team is disabled, disable the ImageView
+            if(!t.isEnabled()){
+                scoutView.setVisible(false);
+                sniperView.setVisible(false);
+                tankView.setVisible(false);
+                continue;
+            }
 
             t.getScout().setRobotImage(scoutView);
             t.getSniper().setRobotImage(sniperView);
