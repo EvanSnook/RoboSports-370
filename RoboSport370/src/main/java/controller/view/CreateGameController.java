@@ -1,7 +1,6 @@
 package controller.view;
 
 import javafx.fxml.FXML;
-import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
@@ -29,13 +28,13 @@ public class CreateGameController {
     @FXML
     private Label robotThinkTimeValueLabel;
 
-    public void updateRobotThinkTimeValueLabel(/*MouseEvent mouseEvent*/){
+    public void updateRobotThinkTimeValueLabel(/*MouseEvent mouseEvent*/) {
         System.out.println("Im called!");
         robotThinkTimeValueLabel.setText(String.valueOf(robotThinkTimeSlider.getValue()));
     }
 
     public void createGame(MouseEvent mouseEvent) {
-        if(getBoardSize().equals(BoardSize.SMALL)){
+        if (getBoardSize().equals(BoardSize.SMALL)) {
             PublicViewController.getInstance().setScene("SMALL_BOARD");
         } else {
             PublicViewController.getInstance().setScene("MEDIUM_BOARD");
@@ -48,16 +47,16 @@ public class CreateGameController {
         PublicViewController.getInstance().setScene("MAIN_MENU");
     }
 
-    private int getNumTeams(){
+    private int getNumTeams() {
         return teams2RadioButton.selectedProperty().get() ? 2 :
                 (teams3RadioButton.selectedProperty().get() ? 3 : 6);
     }
 
-    private BoardSize getBoardSize(){
+    private BoardSize getBoardSize() {
         return hexagons5RadioButton.selectedProperty().get() ? BoardSize.SMALL : BoardSize.MEDIUM;
     }
 
-    public Game getGame(){
+    public Game getGame() {
         return new Game(getBoardSize(), getNumTeams());
     }
 }

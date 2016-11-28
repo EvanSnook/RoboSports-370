@@ -8,7 +8,7 @@ public class EndGameController {
     @FXML
     public ListView gameOverviewListView;
 
-    public void quit(/*MouseEvent mouseEvent*/){
+    public void quit(/*MouseEvent mouseEvent*/) {
         System.exit(0);
     }
 

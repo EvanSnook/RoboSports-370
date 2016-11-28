@@ -17,15 +17,15 @@ public class EditRobotController {
     @FXML
     public ListView robotsListView;
 
-    public void createNewRobot(/*MouseEvent mouseEvent*/){
+    public void createNewRobot(/*MouseEvent mouseEvent*/) {
 
     }
 
-    public void saveRobot(/*MouseEvent mouseEvent*/){
+    public void saveRobot(/*MouseEvent mouseEvent*/) {
 
     }
 
-    public void cancelRobot(/*MouseEvent mouseEvent*/){
+    public void cancelRobot(/*MouseEvent mouseEvent*/) {
 
     }
 

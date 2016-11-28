@@ -12,11 +12,11 @@ public class Stats {
     private int kills;
     private int deaths;
 
-    public Stats(){
+    public Stats() {
 
     }
 
-    public Stats(JSONObject json){
+    public Stats(JSONObject json) {
         // TODO Stats(JSONOBject)
         // Don't know what is JSON looks like
     }
@@ -53,41 +53,41 @@ public class Stats {
         return deaths;
     }
 
-    public int getLosses(){
+    public int getLosses() {
         return matches - wins;
     }
 
-    public void addMatch(boolean wonMatch){
-        if(wonMatch)
+    public void addMatch(boolean wonMatch) {
+        if (wonMatch)
             wins++;
         matches++;
     }
 
-    public void addDistanceTraveled(){
+    public void addDistanceTraveled() {
         distanceTraveled++;
     }
 
-    public void addDamageTaken(int damage){
+    public void addDamageTaken(int damage) {
         damageTaken += damage;
     }
 
-    public void addDamageGiven(int damage){
+    public void addDamageGiven(int damage) {
         damageGiven += damage;
     }
 
-    public void addPlay(){
+    public void addPlay() {
         plays++;
     }
 
-    public void addKill(){
+    public void addKill() {
         kills++;
     }
 
-    public void addDeath(){
+    public void addDeath() {
         deaths++;
     }
 
-    public void mergeStats(Stats other){
+    public void mergeStats(Stats other) {
         this.wins += other.getWins();
         this.matches += other.getMatches();
         this.distanceTraveled += other.getDistanceTraveled();

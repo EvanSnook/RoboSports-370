@@ -6,11 +6,11 @@ public enum BoardSize {
 
     private int size;
 
-    BoardSize(int size){
+    BoardSize(int size) {
         this.size = size;
     }
 
-    public int getValue(){
+    public int getValue() {
         return this.size;
     }
 }

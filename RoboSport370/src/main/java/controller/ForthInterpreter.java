@@ -1,28 +1,12 @@
 package controller;
 
+import model.*;
+import model.enums.RobotType;
+import model.enums.TeamColour;
 import sun.plugin.dom.exception.InvalidStateException;
 
 import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.EmptyStackException;
-import java.util.HashMap;
-import java.util.Optional;
-import java.util.Random;
-import java.util.Stack;
-import java.util.function.ToIntFunction;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import model.ForthExecuter;
-import model.HexNode;
-import model.HexNodeIterator;
-import model.RobotAI;
-import model.Word;
-import model.enums.RobotType;
-import model.enums.TeamColour;
+import java.util.*;
 
 public class ForthInterpreter {
     /**
@@ -52,16 +36,15 @@ public class ForthInterpreter {
      * Takes a {@code commandString} and isolates the next {@link Word} and performs the
      * {@link Word}'s {@link ForthExecuter}.
      *
-     * @param commandString
-     *              command(s) to send to the {@link ForthInterpreter}
+     * @param commandString command(s) to send to the {@link ForthInterpreter}
      */
     public void execute(final String commandString) {
         Optional<Word> w = words.stream()
                 .filter(word -> word.isTrigger(commandString))
                 .findFirst();
 
-        if(!w.isPresent()) {
-            if(!commandString.isEmpty())
+        if (!w.isPresent()) {
+            if (!commandString.isEmpty())
                 System.err.println("Parsing Error: " + commandString);
             return;
         }
@@ -131,19 +114,19 @@ public class ForthInterpreter {
 
         // drop ( v -- ) —remove the value at the top of the stack
         Word stackDrop = new Word("drop", matches -> {
-            if(verifyStack('v'))
+            if (verifyStack('v'))
                 stack.pop();
         });
 
         // dup ( v -- v v ) —duplicate the value at the top of the stack
         Word stackDup = new Word("dup", matches -> {
-            if(verifyStack('v'))
+            if (verifyStack('v'))
                 stack.push(stack.peek());
         });
 
         // swap ( v2 v1 -- v2 v1 ) —swap the two values at the top of the stack
         Word stackSwap = new Word("swap", matches -> {
-            if(verifyStack('v', 'v')){
+            if (verifyStack('v', 'v')) {
                 String v1 = stack.pop();
                 String v2 = stack.pop();
                 stack.push(v1);
@@ -153,7 +136,7 @@ public class ForthInterpreter {
 
         // rot ( v3 v2 v1 -- v3 v1 v2 ) —rotate the top three stack elements
         Word stackRot = new Word("rot", matches -> {
-            if(verifyStack('v', 'v', 'v')){
+            if (verifyStack('v', 'v', 'v')) {
                 String v1 = stack.pop();
                 String v2 = stack.pop();
                 String v3 = stack.pop();
@@ -175,7 +158,7 @@ public class ForthInterpreter {
          * + ( i i -- i) —add the two integers, pushing their sum on the stack
          */
         Word stackAdd = new Word("\\+", matches -> {
-            if(verifyStack('i', 'i')){
+            if (verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
                 int addOutput = i1 + i2;
@@ -188,7 +171,7 @@ public class ForthInterpreter {
          * difference (i2-i1) on the stack
          */
         Word stackSubtract = new Word("-", matches -> {
-            if(verifyStack('i', 'i')){
+            if (verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
                 int subtractOutput = i2 - i1;
@@ -200,7 +183,7 @@ public class ForthInterpreter {
          * * ( i i -- i ) —multiply the two top integers, pushing their product on the stack
          */
         Word stackMultiply = new Word("\\*", matches -> {
-            if(verifyStack('i', 'i')){
+            if (verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
                 int multiplyOutput = i2 * i1;
@@ -213,7 +196,7 @@ public class ForthInterpreter {
          * the remainder and quotient
          */
         Word stackMod = new Word("/mod", matches -> {
-            if(verifyStack('i', 'i')){
+            if (verifyStack('i', 'i')) {
                 int ie = Integer.valueOf(stack.pop());
                 int iv = Integer.valueOf(stack.pop());
                 int iq = Math.floorDiv(iv, ie);
@@ -232,7 +215,7 @@ public class ForthInterpreter {
         //<editor-fold desc="Comparison">
         // < ( i2 i1 -- b ) —i2 is less than i1
         Word compareLT = new Word("<", matches -> {
-            if(verifyStack('i', 'i')){
+            if (verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
                 stack.push(String.valueOf(i2 < i1));
@@ -241,7 +224,7 @@ public class ForthInterpreter {
 
         // <= ( i2 i1 -- b ) —i2 is not more than i1
         Word compareLTE = new Word("<=", matches -> {
-            if(verifyStack('i', 'i')) {
+            if (verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
                 stack.push(String.valueOf(i2 <= i1));
@@ -264,7 +247,7 @@ public class ForthInterpreter {
 
         // => ( i2 i1 -- b ) —i2 is at least i1
         Word compareGTE = new Word("=>", matches -> {
-            if(verifyStack('i', 'i')) {
+            if (verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
                 stack.push(String.valueOf(i2 >= i1));
@@ -273,7 +256,7 @@ public class ForthInterpreter {
 
         // > ( i2 i1 -- b ) —i2 is more than i1
         Word compareGT = new Word(">", matches -> {
-            if(verifyStack('i', 'i')) {
+            if (verifyStack('i', 'i')) {
                 int i1 = Integer.valueOf(stack.pop());
                 int i2 = Integer.valueOf(stack.pop());
                 stack.push(String.valueOf(i2 > i1));
@@ -292,7 +275,7 @@ public class ForthInterpreter {
 
         // and ( b b -- b ) —false if either boolean is false, true otherwise
         Word logicAnd = new Word("and", matches -> {
-            if(verifyStack('b', 'b')){
+            if (verifyStack('b', 'b')) {
                 boolean b1 = Boolean.valueOf(stack.pop());
                 boolean b2 = Boolean.valueOf(stack.pop());
                 stack.push(String.valueOf(b1 == b2));
@@ -301,7 +284,7 @@ public class ForthInterpreter {
 
         // or ( b b -- b ) —true if either boolean is true, false otherwise
         Word logicOr = new Word("or", matches -> {
-            if(verifyStack('b', 'b')){
+            if (verifyStack('b', 'b')) {
                 boolean b1 = Boolean.valueOf(stack.pop());
                 boolean b2 = Boolean.valueOf(stack.pop());
                 stack.push(String.valueOf(b1 != b2));
@@ -310,7 +293,7 @@ public class ForthInterpreter {
 
         // invert ( b -- b ) —invert the given boolean
         Word logicInvert = new Word("invert", matches -> {
-            if(verifyStack('b')){
+            if (verifyStack('b')) {
                 boolean b = Boolean.valueOf(stack.pop());
                 stack.push(String.valueOf(!b));
             }
@@ -318,10 +301,10 @@ public class ForthInterpreter {
 
         // if .. else .. then
         Word logicIfElseThen = new Word("if (.*?) else (.*?) then", matches -> {
-            if(verifyStack('b')){
+            if (verifyStack('b')) {
                 boolean boolCheck = Boolean.valueOf(stack.pop());
                 Arrays.stream(matches).forEach(System.out::println);
-                if(boolCheck)
+                if (boolCheck)
                     execute(matches[1]);
                 else
                     execute(matches[2]);
@@ -337,12 +320,12 @@ public class ForthInterpreter {
         //<editor-fold desc="Loops">
         // ( iStart iEnd -- ) do BODY loop
         Word loopFor = new Word("do( .* )loop( ;)?", matches -> {
-            if(verifyStack('i', 'i')){
+            if (verifyStack('i', 'i')) {
                 int iEnd = Integer.valueOf(stack.pop());
                 int iStart = Integer.valueOf(stack.pop());
                 String loopBody = matches[1];
 
-                for(int i=iStart; i<=iEnd; i++){
+                for (int i = iStart; i <= iEnd; i++) {
                     execute(nestedForLoop(loopBody, i).trim());
                 }
             }
@@ -351,11 +334,11 @@ public class ForthInterpreter {
         // begin BODY until
         Word loopWhile = new Word("begin (.*) until", matches -> {
             String loopBody = matches[1];
-            do{
+            do {
                 execute(loopBody);
-                if(stack.empty() || !verifyStack('b'))
+                if (stack.empty() || !verifyStack('b'))
                     throw new InvalidStateException("No boolean found on stack for begin .. until loop!");
-            } while(Boolean.valueOf(stack.pop()));
+            } while (Boolean.valueOf(stack.pop()));
         });
 
         result.add(loopFor);
@@ -369,7 +352,7 @@ public class ForthInterpreter {
 
         // TODO Test this.. (Currently Disabled)
         Word variableUsage = new Word("(\\?|!)", (matches -> {
-            if(verifyStack('l')){
+            if (verifyStack('l')) {
                 ArrayList<String> definedVariables =
                         new ArrayList<>(getCurrentRobot().getUserDefinedVariables().keySet());
 
@@ -381,10 +364,10 @@ public class ForthInterpreter {
                     return;
                 }
 
-                if(action.equals("?")){
+                if (action.equals("?")) {
                     stack.push(getCurrentRobot().getUserDefinedVariables().get(variable));
-                } else if (action.equals("!")){
-                    if(verifyStack('v')) {
+                } else if (action.equals("!")) {
+                    if (verifyStack('v')) {
                         getCurrentRobot().getUserDefinedVariables().put(variable, stack.pop());
                     }
                 }
@@ -397,12 +380,12 @@ public class ForthInterpreter {
 
         //<editor-fold desc="Miscellanea">
         Word miscPrint = new Word("\\.", (matches -> {
-            if(verifyStack('v'))
+            if (verifyStack('v'))
                 System.out.println(stack.pop());
         }));
 
         Word miscRandom = new Word("random", (matches -> {
-            if(verifyStack('i')) {
+            if (verifyStack('i')) {
                 int i1 = Integer.valueOf(stack.pop()) + 1;
                 int random = new Random().nextInt(i1);
                 stack.push(String.valueOf(random));
@@ -478,7 +461,7 @@ public class ForthInterpreter {
         // shoot! ( id ir -- ) —fires the robot’s weapon at the space which is
         // at distance ir and direction id
         Word robotShoot = new Word("shoot!", matches -> {
-            if(verifyStack('i', 'i')){
+            if (verifyStack('i', 'i')) {
                 // Distance
                 int ir = Integer.valueOf(stack.pop());
                 // Index
@@ -491,7 +474,7 @@ public class ForthInterpreter {
         // check! ( i -- s ) pops a given direction, and pushes a string describing
         // the adjacent space in that direction
         Word robotCheck = new Word("check!", matches -> {
-            if(verifyStack('i')){
+            if (verifyStack('i')) {
                 int i = Integer.valueOf(stack.pop());
 
                 RobotAI robot = getCurrentRobot();
@@ -499,9 +482,9 @@ public class ForthInterpreter {
 
                 HexNode checkPosition = robot.getPosition().get(globalFacing);
 
-                if(!checkPosition.canContainRobots())
+                if (!checkPosition.canContainRobots())
                     stack.push("OUT OF BOUNDS");
-                else if(!checkPosition.isEmpty())
+                else if (!checkPosition.isEmpty())
                     stack.push("OCCUPIED");
                 else
                     stack.push("EMPTY");
@@ -515,10 +498,10 @@ public class ForthInterpreter {
             HexNodeIterator iterator = new HexNodeIterator(getCurrentRobot().getPosition());
 
             // TODO is this the corrent range?
-            while(iterator.hasNext() && iterator.getCurrentLayer() <= range){
+            while (iterator.hasNext() && iterator.getCurrentLayer() <= range) {
                 HexNode current = iterator.next();
 
-                if(!current.isEmpty())
+                if (!current.isEmpty())
                     count += current.getRobots().size();
             }
 
@@ -542,9 +525,10 @@ public class ForthInterpreter {
 
     /**
      * Get the current robot making their turn
+     *
      * @return the current robot
      */
-    private RobotAI getCurrentRobot(){
+    private RobotAI getCurrentRobot() {
         return (RobotAI) gameMaster.getCurrentRobot();
     }
 
@@ -558,18 +542,17 @@ public class ForthInterpreter {
      * {@code v} - any <br>
      * {@code l} - location
      *
-     * @param types
-     *              array of types that
+     * @param types array of types that
      * @return true if all of the types match up
      */
-    public boolean verifyStack(final char ... types){
-        if(types.length > this.stack.size())
+    public boolean verifyStack(final char... types) {
+        if (types.length > this.stack.size())
             return false;
 
         @SuppressWarnings("unchecked")
         Stack<String> temp = (Stack<String>) this.stack.clone();
 
-        for(char current : types){
+        for (char current : types) {
             try {
                 switch (current) {
                     case 'i':
@@ -591,7 +574,7 @@ public class ForthInterpreter {
                     default:
                         throw new InvalidParameterException(current + " is not a valid type");
                 }
-            } catch (EmptyStackException | InvalidParameterException | NumberFormatException ex){
+            } catch (EmptyStackException | InvalidParameterException | NumberFormatException ex) {
                 return false;
             }
         }
@@ -606,13 +589,11 @@ public class ForthInterpreter {
      * occurrences of {@code I} in the string, leaving any I's that are in
      * nested loops within the body.
      *
-     * @param s
-     *              the body of a for loop
-     * @param interval
-     *              the current interval of the for loop
+     * @param s        the body of a for loop
+     * @param interval the current interval of the for loop
      * @return a {@link String} with all of the I's replaced
      */
-    private String nestedForLoop(String s, int interval){
+    private String nestedForLoop(String s, int interval) {
         StringBuilder result = new StringBuilder();
         String replaceWith = String.valueOf(interval);
 
@@ -622,8 +603,8 @@ public class ForthInterpreter {
         // Get indexes where every "do" is located
         {
             String temp = s;
-            while(temp.matches(".*? do .*")){
-                int index = temp.indexOf(" do ")+1; // Start of do word
+            while (temp.matches(".*? do .*")) {
+                int index = temp.indexOf(" do ") + 1; // Start of do word
                 temp = temp.replaceFirst(" do ", " -- ");
                 doLocations.add(index);
             }
@@ -632,8 +613,8 @@ public class ForthInterpreter {
         // Get indexes where every "loop" is located
         {
             String temp = s;
-            while(temp.matches(".*? loop .*")){
-                int index = temp.indexOf(" loop ")+5; // End of loop word
+            while (temp.matches(".*? loop .*")) {
+                int index = temp.indexOf(" loop ") + 5; // End of loop word
                 temp = temp.replaceFirst(" loop ", " ---- ");
                 loopLocations.add(index);
             }
@@ -646,17 +627,17 @@ public class ForthInterpreter {
             int innerLoopLayer = 0;
 
             for (int i = 0; i < s.length(); i++) {
-                if(doLocations.contains(i))
+                if (doLocations.contains(i))
                     innerLoopLayer++;
-                else if(loopLocations.contains(i))
+                else if (loopLocations.contains(i))
                     innerLoopLayer--;
 
                 loopLayersAtIndex[i] = innerLoopLayer;
             }
         }
 
-        for(int i=0; i<s.length(); i++) {
-            if (loopLayersAtIndex[i] == 0){
+        for (int i = 0; i < s.length(); i++) {
+            if (loopLayersAtIndex[i] == 0) {
                 if (s.charAt(i) == 'I') {
                     result.append(replaceWith);
                     continue;

@@ -1,9 +1,8 @@
 package model;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import model.enums.RobotType;
 import model.enums.TeamColour;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Robot {
     private int health;
@@ -19,9 +18,10 @@ public class Robot {
     private int facing;
     private TeamColour colour;
 
-    public Robot(){}
+    public Robot() {
+    }
 
-    public static RobotBuilder getBuilder(boolean isAI){
+    public static RobotBuilder getBuilder(boolean isAI) {
         return new RobotBuilder(isAI);
     }
 
@@ -29,111 +29,111 @@ public class Robot {
         return health;
     }
 
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
-    public int getDamage(){
-        return this.damage;
-    }
-
-    public int getRange() {
-        return range;
-    }
-
-    public int getMaxMove() {
-        return maxMove;
-    }
-
-    public RobotType getType() {
-        return type;
-    }
-
-    public HexNode getPosition() {
-        return position;
-    }
-
-    public int getRemainingMoves() {
-        return remainingMoves;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Stats getStats() {
-        return stats;
-    }
-
-    public int getFacing() {
-        return facing;
-    }
-
-    public TeamColour getColour() {
-        return colour;
-    }
-
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
     }
 
-    public void setDamage(int damage){
+    public int getDamage() {
+        return this.damage;
+    }
+
+    public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public int getRange() {
+        return range;
     }
 
     public void setRange(int range) {
         this.range = range;
     }
 
+    public int getMaxMove() {
+        return maxMove;
+    }
+
     public void setMaxMove(int maxMove) {
         this.maxMove = maxMove;
+    }
+
+    public RobotType getType() {
+        return type;
     }
 
     public void setType(RobotType type) {
         this.type = type;
     }
 
+    public HexNode getPosition() {
+        return position;
+    }
+
     public void setPosition(HexNode position) {
         this.position = position;
+    }
+
+    public int getRemainingMoves() {
+        return remainingMoves;
     }
 
     public void setRemainingMoves(int remainingMoves) {
         this.remainingMoves = remainingMoves;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Stats getStats() {
+        return stats;
     }
 
     public void setStats(Stats stats) {
         this.stats = stats;
     }
 
+    public int getFacing() {
+        return facing;
+    }
+
     public void setFacing(int facing) {
         this.facing = facing;
+    }
+
+    public TeamColour getColour() {
+        return colour;
     }
 
     public void setColour(TeamColour colour) {
         this.colour = colour;
     }
 
-    public void consumeMove(){
+    public void consumeMove() {
         remainingMoves--;
     }
 
-    public boolean isAlive(){
+    public boolean isAlive() {
         return health > 0;
     }
 
-    public void takeDamage(int amount){
+    public void takeDamage(int amount) {
         this.health = Math.max(0, this.health - amount);
     }
 
-    public void startPlay(){
+    public void startPlay() {
         // TODO Robot.startPlay
         throw new NotImplementedException();
     }

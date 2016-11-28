@@ -11,19 +11,19 @@ public class RobotManagerController {
     @FXML
     public ListView onlineRobotsListView;
 
-    public void editRobot(/*MouseEvent mouseEvent*/){
+    public void editRobot(/*MouseEvent mouseEvent*/) {
 
     }
 
-    public void importRobot(/*MouseEvent mouseEvent*/){
+    public void importRobot(/*MouseEvent mouseEvent*/) {
 
     }
 
-    public void exportRobot(/*MouseEvent mouseEvent*/){
+    public void exportRobot(/*MouseEvent mouseEvent*/) {
 
     }
 
-    public void deleteRobot(/*MouseEvent mouseEvent*/){
+    public void deleteRobot(/*MouseEvent mouseEvent*/) {
 
     }
 

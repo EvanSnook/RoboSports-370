@@ -1,8 +1,5 @@
 package controller;
 
-import java.io.IOException;
-
-import controller.view.CreateGameController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,7 +11,9 @@ import model.PublicGameMaster;
 import model.PublicViewController;
 import model.enums.BoardSize;
 
-public class ViewController{
+import java.io.IOException;
+
+public class ViewController {
     private static Stage view;
     private Stage rulesStage;
     private Scene currentScene;
@@ -33,13 +32,22 @@ public class ViewController{
         robotManagerScene = new Scene(loadFxml("/view/RobotManagerView.fxml"));
     }
 
+    private static Parent loadFxml(String fxmlURL) {
+        try {
+            return FXMLLoader.load(ViewController.class.getResource(fxmlURL));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
     public void setStage(Stage stage) {
         view = stage;
         mainMenuScene = stage.getScene();
         currentScene = mainMenuScene;
     }
 
-    public void setScene(Scene scene){
+    public void setScene(Scene scene) {
         previousScene = currentScene;
         currentScene = scene;
         view.setScene(scene);
@@ -52,18 +60,18 @@ public class ViewController{
     /**
      * Set the scene of the ViewController
      * <p>
-     *     Available scenes include the following<br>
-     *     {@code MAIN_MENU}<br>
-     *     {@code CREATE_GAME}<br>
-     *     {@code ROBOT_MANAGER}<br>
-     *     {@code ROBOT_STATS}<br>
-     *     {@code SMALL_BOARD}<br>
-     *     {@code MEDIUM_BOARD}
-     * @param sceneName
-     *              the name of the scene from above
+     * Available scenes include the following<br>
+     * {@code MAIN_MENU}<br>
+     * {@code CREATE_GAME}<br>
+     * {@code ROBOT_MANAGER}<br>
+     * {@code ROBOT_STATS}<br>
+     * {@code SMALL_BOARD}<br>
+     * {@code MEDIUM_BOARD}
+     *
+     * @param sceneName the name of the scene from above
      */
-    public void setScene(String sceneName){
-        switch(sceneName){
+    public void setScene(String sceneName) {
+        switch (sceneName) {
             case "MAIN_MENU":
                 setScene(mainMenuScene);
                 break;
@@ -87,7 +95,7 @@ public class ViewController{
         }
     }
 
-    public void createGame(BoardSize size){
+    public void createGame(BoardSize size) {
         String sizeString = size.equals(BoardSize.SMALL) ? "Small" : "Medium";
 
         try {
@@ -106,24 +114,24 @@ public class ViewController{
     /**
      * Close the game
      */
-    public void quit(/*MouseEvent mouseEvent*/){
+    public void quit(/*MouseEvent mouseEvent*/) {
         System.exit(0);
     }
 
-    public void showCreateGame(/*MouseEvent mouseEvent*/){
+    public void showCreateGame(/*MouseEvent mouseEvent*/) {
         setScene("CREATE_GAME");
     }
 
-    public void showStats(/*MouseEvent mouseEvent*/){
+    public void showStats(/*MouseEvent mouseEvent*/) {
         setScene("ROBOT_STATS");
     }
 
-    public void showRoboManager(/*MouseEvent mouseEvent*/){
+    public void showRoboManager(/*MouseEvent mouseEvent*/) {
         setScene("ROBOT_MANAGER");
     }
 
     public void showRules(MouseEvent mouseEvent) {
-        if(rulesStage != null) {
+        if (rulesStage != null) {
             rulesStage.show();
             return;
         }
@@ -132,18 +140,9 @@ public class ViewController{
         rulesStage.setScene(new Scene(rulesMain));
         rulesStage.initModality(Modality.NONE);
 
-        rulesStage.initOwner(((Node)mouseEvent.getSource()).getScene().getWindow());
+        rulesStage.initOwner(((Node) mouseEvent.getSource()).getScene().getWindow());
         rulesStage.show();
 
         this.rulesStage = rulesStage;
-    }
-
-    private static Parent loadFxml(String fxmlURL){
-        try{
-            return FXMLLoader.load(ViewController.class.getResource(fxmlURL));
-        } catch (IOException ex){
-            ex.printStackTrace();
-            return null;
-        }
     }
 }
