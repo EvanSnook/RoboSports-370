@@ -18,118 +18,118 @@
       <Label layoutX="15.0" layoutY="200.0" text="Board Radius" />
       <Label layoutX="15.0" layoutY="268.0" text="Robot Think Time" />
       <Label layoutX="148.0" layoutY="107.0" text="Team 1" />
-      <Label layoutX="153.0" layoutY="130.0" text="Scout" />
-      <Label layoutX="151.0" layoutY="148.0" text="Sniper" />
-      <Label layoutX="157.0" layoutY="164.0" text="Tank" />
-      <TextField fx:id="scoutTextField1" layoutX="190.0" layoutY="129.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <Label layoutX="152.0" layoutY="139.0" text="Scout" />
+      <Label layoutX="150.0" layoutY="164.0" text="Sniper" />
+      <Label layoutX="155.0" layoutY="192.0" text="Tank" />
+      <TextField fx:id="scoutTextField1" layoutX="190.0" layoutY="138.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="sniperTextField1" layoutX="190.0" layoutY="147.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="sniperTextField1" layoutX="190.0" layoutY="164.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="tankTextField1" layoutX="190.0" layoutY="164.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="tankTextField1" layoutX="190.0" layoutY="191.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="tankTextField2" layoutX="324.0" layoutY="164.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="tankTextField2" layoutX="324.0" layoutY="191.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="sniperTextField2" layoutX="324.0" layoutY="147.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="sniperTextField2" layoutX="324.0" layoutY="165.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="scoutTextField2" layoutX="324.0" layoutY="130.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="scoutTextField2" layoutX="324.0" layoutY="138.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <Label layoutX="286.0" layoutY="164.0" text="Tank" />
-      <Label layoutX="285.0" layoutY="148.0" text="Sniper" />
-      <Label layoutX="284.0" layoutY="130.0" text="Scout" />
+      <Label layoutX="286.0" layoutY="192.0" text="Tank" />
+      <Label layoutX="285.0" layoutY="166.0" text="Sniper" />
+      <Label layoutX="284.0" layoutY="141.0" text="Scout" />
       <Label layoutX="280.0" layoutY="107.0" text="Team 2" />
-      <TextField fx:id="tankTextField3" layoutX="474.0" layoutY="165.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="tankTextField3" layoutX="474.0" layoutY="191.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="sniperTextField3" layoutX="474.0" layoutY="148.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="sniperTextField3" layoutX="474.0" layoutY="164.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="scoutTextField3" layoutX="474.0" layoutY="130.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="scoutTextField3" layoutX="474.0" layoutY="139.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <Label layoutX="441.0" layoutY="165.0" text="Tank" />
-      <Label layoutX="435.0" layoutY="149.0" text="Sniper" />
-      <Label layoutX="437.0" layoutY="131.0" text="Scout" />
+      <Label layoutX="440.0" layoutY="192.0" text="Tank" />
+      <Label layoutX="436.0" layoutY="166.0" text="Sniper" />
+      <Label layoutX="437.0" layoutY="141.0" text="Scout" />
       <Label layoutX="434.0" layoutY="107.0" text="Team 3" />
       <Label layoutX="434.0" layoutY="245.0" text="Team 6" />
-      <Label layoutX="437.0" layoutY="269.0" text="Scout" />
-      <Label layoutX="435.0" layoutY="287.0" text="Sniper" />
-      <Label layoutX="441.0" layoutY="303.0" text="Tank" />
-      <TextField fx:id="scoutTextField6" layoutX="474.0" layoutY="268.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <Label layoutX="437.0" layoutY="279.0" text="Scout" />
+      <Label layoutX="435.0" layoutY="304.0" text="Sniper" />
+      <Label layoutX="439.0" layoutY="329.0" text="Tank" />
+      <TextField fx:id="scoutTextField6" layoutX="474.0" layoutY="278.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="sniperTextField6" layoutX="474.0" layoutY="286.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="sniperTextField6" layoutX="474.0" layoutY="303.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="tankTextField6" layoutX="474.0" layoutY="303.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="tankTextField6" layoutX="474.0" layoutY="328.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
       <Label layoutX="280.0" layoutY="245.0" text="Team 5" />
-      <Label layoutX="284.0" layoutY="268.0" text="Scout" />
-      <Label layoutX="285.0" layoutY="286.0" text="Sniper" />
-      <Label layoutX="286.0" layoutY="302.0" text="Tank" />
-      <TextField fx:id="scoutTextField5" layoutX="324.0" layoutY="268.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <Label layoutX="287.0" layoutY="279.0" text="Scout" />
+      <Label layoutX="285.0" layoutY="304.0" text="Sniper" />
+      <Label layoutX="286.0" layoutY="329.0" text="Tank" />
+      <TextField fx:id="scoutTextField5" layoutX="324.0" layoutY="278.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="sniperTextField5" layoutX="324.0" layoutY="285.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="sniperTextField5" layoutX="324.0" layoutY="303.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="tankTextField5" layoutX="324.0" layoutY="302.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="tankTextField5" layoutX="324.0" layoutY="328.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="tankTextField4" layoutX="190.0" layoutY="302.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="tankTextField4" layoutX="190.0" layoutY="328.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="sniperTextField4" layoutX="190.0" layoutY="285.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="sniperTextField4" layoutX="190.0" layoutY="302.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="scoutTextField4" layoutX="190.0" layoutY="267.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
+      <TextField fx:id="scoutTextField4" layoutX="190.0" layoutY="278.0" prefHeight="9.0" prefWidth="70.0" promptText="name">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <Label layoutX="157.0" layoutY="302.0" text="Tank" />
-      <Label layoutX="151.0" layoutY="286.0" text="Sniper" />
-      <Label layoutX="153.0" layoutY="268.0" text="Scout" />
+      <Label layoutX="155.0" layoutY="329.0" text="Tank" />
+      <Label layoutX="150.0" layoutY="304.0" text="Sniper" />
+      <Label layoutX="153.0" layoutY="279.0" text="Scout" />
       <Label layoutX="148.0" layoutY="245.0" text="Team 4" />
       <Slider fx:id="robotThinkTimeSlider" layoutX="18.0" layoutY="295.0" majorTickUnit="5.0" max="30.0" minorTickCount="1" prefHeight="14.0" prefWidth="93.0" snapToTicks="true" />
       <Button layoutX="18.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#showMainMenu" prefHeight="33.0" prefWidth="87.0" text="Back" />
