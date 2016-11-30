@@ -2,19 +2,16 @@
 
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.EndGameController">
-   <children>
       <Label layoutX="140.0" text="X Team Wins!">
          <font>
             <Font size="60.0" />
          </font>
       </Label>
-      <ListView fx:id="gameOverviewListView" layoutX="78.0" layoutY="97.0" prefHeight="173.0" prefWidth="471.0" />
+      <ListView layoutX="78.0" layoutY="97.0" prefHeight="173.0" prefWidth="471.0" />
       <Button layoutX="185.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#showMainMenu" prefHeight="25.0" prefWidth="206.0" text="Main Menu" />
       <Button layoutX="185.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="25.0" prefWidth="206.0" text="Quit" />
       <Label layoutX="78.0" layoutY="80.0" text="Game Overview" underline="true" />
-   </children>
 </Pane>
