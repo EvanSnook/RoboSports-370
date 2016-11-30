@@ -130,4 +130,24 @@ public class GameMaster {
             current.setHexagon((Polygon) gameContainer.lookup("#" + current.getLabel()));
             current.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
         }}
+
+    public void showRules(/*MouseEvent mouseEvent*/) {
+
+    }
+
+    public void robotMove(){
+
+    }
+
+    public void robotShoot(){
+
+    }
+
+    public void endTurn(){
+
+    }
+
+    public void endMatch(){
+
+    }
 }
