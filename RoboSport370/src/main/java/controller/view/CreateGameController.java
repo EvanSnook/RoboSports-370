@@ -6,6 +6,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import model.Game;
 import model.PublicGameMaster;
 import model.PublicViewController;
@@ -28,22 +29,37 @@ public class CreateGameController {
     @FXML
     public RadioButton hexagons7RadioButton;
 
+    @FXML
     public ToggleButton toggleButton1;
+    @FXML
     public ToggleButton toggleButton2;
+    @FXML
     public ToggleButton toggleButton3;
+    @FXML
     public ToggleButton toggleButton4;
+    @FXML
     public ToggleButton toggleButton5;
+    @FXML
     public ToggleButton toggleButton6;
+
+    @FXML
+    public HBox Team1Box;
+    @FXML
+    public HBox Team2Box;
+    @FXML
+    public HBox Team3Box;
+    @FXML
+    public HBox Team4Box;
+    @FXML
+    public HBox Team5Box;
+    @FXML
+    public HBox Team6Box;
+
 
     @FXML
     private Slider robotThinkTimeSlider;
     @FXML
     private Label robotThinkTimeValueLabel;
-
-    public void updateRobotThinkTimeValueLabel(/*MouseEvent mouseEvent*/) {
-        System.out.println("Im called!");
-        robotThinkTimeValueLabel.setText(String.valueOf(robotThinkTimeSlider.getValue()));
-    }
 
     public void createGame(MouseEvent mouseEvent) {
         PublicViewController.getInstance().createGame(getBoardSize());
@@ -89,5 +105,41 @@ public class CreateGameController {
 
     public Game getGame() {
         return new Game(getBoardSize(), getNumTeams());
+    }
+
+    public void updateThinkTimeLabel(){
+        int value = (int)robotThinkTimeSlider.getValue();
+        String s = value + "s";
+        robotThinkTimeValueLabel.setText(s);
+    }
+    public void changeVisibleTeams(){
+            Team1Box.setVisible(false);
+            Team2Box.setVisible(false);
+            Team3Box.setVisible(false);
+            Team4Box.setVisible(false);
+            Team5Box.setVisible(false);
+            Team6Box.setVisible(false);
+        switch(getNumTeams()){
+            case 6:
+                Team4Box.setVisible(true);
+                Team5Box.setVisible(true);
+                Team6Box.setVisible(true);
+            case 3:
+                Team3Box.setVisible(true);
+            case 2:
+                Team1Box.setVisible(true);
+                Team2Box.setVisible(true);
+
+        }
+    }
+
+    public void togglePlayer(MouseEvent mouseEvent ){
+        ToggleButton tb = (ToggleButton)mouseEvent.getSource();
+        if(tb.isSelected() == true){
+            tb.setText("AI");
+        }
+        else{
+            tb.setText("Human");
+        }
     }
 }
