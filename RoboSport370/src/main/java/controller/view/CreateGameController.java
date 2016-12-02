@@ -147,6 +147,7 @@ public class CreateGameController {
         String s = value + "s";
         robotThinkTimeValueLabel.setText(s);
     }
+
     public void changeVisibleTeams(){
         if(getNumTeams() == 2) {
             Team1Box.setVisible(true);
