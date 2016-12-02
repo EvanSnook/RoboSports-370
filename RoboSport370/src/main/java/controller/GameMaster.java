@@ -1,5 +1,7 @@
 package controller;
 
+import com.sun.xml.internal.ws.wsdl.writer.document.StartWithExtensionsType;
+
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -63,7 +65,6 @@ public class GameMaster {
      * @param mouseEvent a mouse event
      */
     public void hexNodeClicked(MouseEvent mouseEvent) {
-
         HexNodeIterator iterator = new HexNodeIterator(game.getBoard().getRoot());
         while ((iterator.getCurrentNode().getLabel().compareTo(((Node) mouseEvent.getSource()).getId())) != 0) {
             if (iterator.hasNext()) {
@@ -149,10 +150,37 @@ public class GameMaster {
     }
 
     public void endTurn(){
-
+        makeFoggyOut();
     }
 
     public void endMatch(){
 
+    }
+
+    /**
+     * Clears an area of some radius
+     * @param start  the not to start at.
+     * @param radius number of nodes out not counting the center.
+     */
+    private void clearAreaFog(HexNode start, int radius){
+
+        HexNodeIterator iterator = new HexNodeIterator(start, 0);
+        while(iterator.getCurrentLayer()>= radius){
+            if(iterator.getCurrentNode().getRobots() != null){
+                iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
+            }
+            iterator.next();
+        }
+    }
+
+    private void makeFoggyOut(){
+        HexNodeIterator iterator = new HexNodeIterator(game.getBoard().getRoot(), 0);
+        int radius = game.getBoard().getSize().getValue();
+        while(iterator.getCurrentLayer()>= radius){
+            if(iterator.getCurrentNode().getRobots() != null){
+                iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(FOG_COLOUR));
+            }
+            iterator.next();
+        }
     }
 }
