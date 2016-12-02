@@ -50,6 +50,8 @@ public class Team {
      * @return the next {@link Robot} to play, or null if they are all dead
      */
     public Robot getNextRobot() {
+        if(!enabled) return null;
+
         if (lastRobot == scout && sniper.isAlive()) {
             return sniper;
         } else if (lastRobot == scout && !sniper.isAlive() && tank.isAlive()) {
