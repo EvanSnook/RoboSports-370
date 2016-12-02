@@ -55,7 +55,6 @@ public class CreateGameController {
     @FXML
     public HBox Team6Box;
 
-
     @FXML
     private Slider robotThinkTimeSlider;
     @FXML
@@ -83,8 +82,44 @@ public class CreateGameController {
             greenTeam.setScout(Robot.getBuilder(false).getScout().build());
             greenTeam.setSniper(Robot.getBuilder(false).getSniper().build());
             greenTeam.setTank(Robot.getBuilder(false).getTank().build());
+
         } else if(getNumTeams() == 3){
+            redTeam.setScout(Robot.getBuilder(false).getScout().build());
+            redTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            redTeam.setTank(Robot.getBuilder(false).getTank().build());
+
+            yellowTeam.setScout(Robot.getBuilder(false).getScout().build());
+            yellowTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            yellowTeam.setTank(Robot.getBuilder(false).getTank().build());
+
+            blueTeam.setScout(Robot.getBuilder(false).getScout().build());
+            blueTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            blueTeam.setTank(Robot.getBuilder(false).getTank().build());
+
         } else if(getNumTeams() == 6){
+            redTeam.setScout(Robot.getBuilder(false).getScout().build());
+            redTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            redTeam.setTank(Robot.getBuilder(false).getTank().build());
+
+            greenTeam.setScout(Robot.getBuilder(false).getScout().build());
+            greenTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            greenTeam.setTank(Robot.getBuilder(false).getTank().build());
+
+            yellowTeam.setScout(Robot.getBuilder(false).getScout().build());
+            yellowTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            yellowTeam.setTank(Robot.getBuilder(false).getTank().build());
+
+            blueTeam.setScout(Robot.getBuilder(false).getScout().build());
+            blueTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            blueTeam.setTank(Robot.getBuilder(false).getTank().build());
+
+            orangeTeam.setScout(Robot.getBuilder(false).getScout().build());
+            orangeTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            orangeTeam.setTank(Robot.getBuilder(false).getTank().build());
+
+            purpleTeam.setScout(Robot.getBuilder(false).getScout().build());
+            purpleTeam.setSniper(Robot.getBuilder(false).getSniper().build());
+            purpleTeam.setTank(Robot.getBuilder(false).getTank().build());
         }
 
         PublicGameMaster.getInstance().setGame(game);
@@ -135,7 +170,7 @@ public class CreateGameController {
 
     public void togglePlayer(MouseEvent mouseEvent ){
         ToggleButton tb = (ToggleButton)mouseEvent.getSource();
-        if(tb.isSelected() == true){
+        if(tb.isSelected()){
             tb.setText("AI");
         }
         else{
