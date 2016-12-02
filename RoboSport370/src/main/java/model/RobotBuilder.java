@@ -15,21 +15,24 @@ public class RobotBuilder {
         return this.setDamage(3)
                 .setHealth(3)
                 .setMoves(1)
-                .setRange(1);
+                .setRange(1)
+                .setType(RobotType.TANK);
     }
 
     public RobotBuilder getScout() {
         return this.setDamage(1)
                 .setHealth(1)
                 .setMoves(3)
-                .setRange(2);
+                .setRange(2)
+                .setType(RobotType.SCOUT);
     }
 
     public RobotBuilder getSniper() {
         return this.setDamage(2)
                 .setHealth(2)
                 .setMoves(2)
-                .setRange(3);
+                .setRange(3)
+                .setType(RobotType.SNIPER);
     }
 
     private RobotBuilder setHealth(int health) {

@@ -73,55 +73,54 @@ public class CreateGameController {
         Team orangeTeam = game.getTeam(TeamColour.ORANGE);
 
         // TODO instantiate all of the robots in the teams
-        // TODO Move this to separate function
+        // TODO Move this to separate functions
         if(getNumTeams() == 2){
-            redTeam.setScout(Robot.getBuilder(false).getScout().build());
-            redTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            redTeam.setTank(Robot.getBuilder(false).getTank().build());
+            redTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.RED).build());
+            redTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.RED).build());
+            redTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.RED).build());
 
-            greenTeam.setScout(Robot.getBuilder(false).getScout().build());
-            greenTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            greenTeam.setTank(Robot.getBuilder(false).getTank().build());
+            greenTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.GREEN).build());
+            greenTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.GREEN).build());
+            greenTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.GREEN).build());
 
         } else if(getNumTeams() == 3){
-            redTeam.setScout(Robot.getBuilder(false).getScout().build());
-            redTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            redTeam.setTank(Robot.getBuilder(false).getTank().build());
+            redTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.RED).build());
+            redTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.RED).build());
+            redTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.RED).build());
 
-            yellowTeam.setScout(Robot.getBuilder(false).getScout().build());
-            yellowTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            yellowTeam.setTank(Robot.getBuilder(false).getTank().build());
+            yellowTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.YELLOW).build());
+            yellowTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.YELLOW).build());
+            yellowTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.YELLOW).build());
 
-            blueTeam.setScout(Robot.getBuilder(false).getScout().build());
-            blueTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            blueTeam.setTank(Robot.getBuilder(false).getTank().build());
+            blueTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.BLUE).build());
+            blueTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.BLUE).build());
+            blueTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.BLUE).build());
 
         } else if(getNumTeams() == 6){
-            redTeam.setScout(Robot.getBuilder(false).getScout().build());
-            redTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            redTeam.setTank(Robot.getBuilder(false).getTank().build());
+            redTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.RED).build());
+            redTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.RED).build());
+            redTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.RED).build());
 
-            greenTeam.setScout(Robot.getBuilder(false).getScout().build());
-            greenTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            greenTeam.setTank(Robot.getBuilder(false).getTank().build());
+            greenTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.GREEN).build());
+            greenTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.GREEN).build());
+            greenTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.GREEN).build());
 
-            yellowTeam.setScout(Robot.getBuilder(false).getScout().build());
-            yellowTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            yellowTeam.setTank(Robot.getBuilder(false).getTank().build());
+            yellowTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.YELLOW).build());
+            yellowTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.YELLOW).build());
+            yellowTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.YELLOW).build());
 
-            blueTeam.setScout(Robot.getBuilder(false).getScout().build());
-            blueTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            blueTeam.setTank(Robot.getBuilder(false).getTank().build());
+            blueTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.BLUE).build());
+            blueTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.BLUE).build());
+            blueTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.BLUE).build());
 
-            orangeTeam.setScout(Robot.getBuilder(false).getScout().build());
-            orangeTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            orangeTeam.setTank(Robot.getBuilder(false).getTank().build());
+            orangeTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.ORANGE).build());
+            orangeTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.ORANGE).build());
+            orangeTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.ORANGE).build());
 
-            purpleTeam.setScout(Robot.getBuilder(false).getScout().build());
-            purpleTeam.setSniper(Robot.getBuilder(false).getSniper().build());
-            purpleTeam.setTank(Robot.getBuilder(false).getTank().build());
+            purpleTeam.setScout(Robot.getBuilder(false).getScout().setTeamColour(TeamColour.PURPLE).build());
+            purpleTeam.setSniper(Robot.getBuilder(false).getSniper().setTeamColour(TeamColour.PURPLE).build());
+            purpleTeam.setTank(Robot.getBuilder(false).getTank().setTeamColour(TeamColour.PURPLE).build());
         }
-
         PublicGameMaster.getInstance().setGame(game);
     }
 
