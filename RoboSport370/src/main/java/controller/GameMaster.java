@@ -122,6 +122,7 @@ public class GameMaster {
         linkPolygonsToHexNodes();
         initRobots();
         initStartTiles();
+        currentRobot = game.getTeam(TeamColour.RED).getScout();
     }
 
     /**
@@ -247,85 +248,88 @@ public class GameMaster {
         Team returnTeam = null;
         System.out.println(currentRobot);
         //who's turn is it currently.
+
         switch(currentRobot.getColour()){
             case RED:
                 //Who's turn is it going to be.
-                if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.PURPLE);
                 } else {/*Red is only alivr*/}
                 break;
             case ORANGE:
-                if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.PURPLE);
-                } else if(game.getTeam(TeamColour.RED).isEnabled()) {
+                } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
                     returnTeam = game.getTeam(TeamColour.RED);
                 } else {/*Orange is only alive*/}
                 break;
             case BLUE:
-                if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.PURPLE);
-                } else if(game.getTeam(TeamColour.RED).isEnabled()) {
+                } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
                     returnTeam = game.getTeam(TeamColour.RED);
-                } else if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                 returnTeam = game.getTeam(TeamColour.ORANGE);
                 } else {/*Blue is only alive*/}
                 break;
             case GREEN:
-               if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+               if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.PURPLE);
-                } else if(game.getTeam(TeamColour.RED).isEnabled()) {
+                } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
                     returnTeam = game.getTeam(TeamColour.RED);
-                } else if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
                      returnTeam = game.getTeam(TeamColour.BLUE);
                 } else {/*Green is only alive*/}
                 break;
             case YELLOW:
-                if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.PURPLE);
-                } else if(game.getTeam(TeamColour.RED).isEnabled()) {
+                } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
                     returnTeam = game.getTeam(TeamColour.RED);
-                } else if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.GREEN);
                 } else {/*Yellow is only alive*/                }
                 break;
             case PURPLE:
-                if(game.getTeam(TeamColour.RED).isEnabled()) {
+                if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
                     returnTeam = game.getTeam(TeamColour.RED);
-                } else if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.YELLOW);
                 } else {/*Purple is only alive*/}
+                break;
+            default:
                 break;
         }
         return returnTeam;

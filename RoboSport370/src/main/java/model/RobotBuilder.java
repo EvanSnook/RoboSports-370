@@ -34,6 +34,7 @@ public class RobotBuilder {
 
     private RobotBuilder setHealth(int health) {
         r.setHealth(health);
+        r.setMaxHealth(health);
         return this;
     }
 
