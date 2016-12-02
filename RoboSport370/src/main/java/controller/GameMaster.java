@@ -36,10 +36,75 @@ public class GameMaster {
     @FXML
     public Pane gameContainer;
 
+    //medium board corners
+    @FXML
+    public Polygon L6N0;
+    @FXML
+    public Polygon L6N6;
+    @FXML
+    public Polygon L6N12;
+    @FXML
+    public Polygon L6N18;
+    @FXML
+    public Polygon L6N24;
+    @FXML
+    public Polygon L6N30;
+
+    //small board corners
+    @FXML
+    public Polygon L4N0;
+    @FXML
+    public Polygon L4N4;
+    @FXML
+    public Polygon L4N8;
     @FXML
     public Polygon L4N12;
     @FXML
-    public Polygon L4N0;
+    public Polygon L4N16;
+    @FXML
+    public Polygon L4N20;
+
+    @FXML
+    public ImageView redScout;
+    @FXML
+    public ImageView redSniper;
+    @FXML
+    public ImageView redTank;
+
+    @FXML
+    public ImageView orangeScout;
+    @FXML
+    public ImageView orangeSniper;
+    @FXML
+    public ImageView orangeTank;
+
+    @FXML
+    public ImageView yellowScout;
+    @FXML
+    public ImageView yellowSniper;
+    @FXML
+    public ImageView yellowTank;
+
+    @FXML
+    public ImageView greenScout;
+    @FXML
+    public ImageView greenSniper;
+    @FXML
+    public ImageView greenTank;
+
+    @FXML
+    public ImageView blueScout;
+    @FXML
+    public ImageView blueSniper;
+    @FXML
+    public ImageView blueTank;
+
+    @FXML
+    public ImageView purplecout;
+    @FXML
+    public ImageView purpleSniper;
+    @FXML
+    public ImageView purpleTank;
 
     public GameMaster() {}
 
@@ -56,9 +121,8 @@ public class GameMaster {
 
         linkPolygonsToHexNodes();
         initRobots();
+        initStartTiles();
     }
-
-
 
     /**
      * Iterators through the board until it finds the selected Polygon that matches the event ID
@@ -131,6 +195,23 @@ public class GameMaster {
         }
     }
 
+    private void initStartTiles(){
+
+        for(Team t : game.getTeams()){
+
+            String colour = t.getColour().toString().toLowerCase();
+
+            ImageView startView =
+                    (ImageView) gameContainer.lookup("#" + colour + "Start");
+
+            // If the team is disabled, disable the ImageView
+            if(!t.isEnabled()){
+                startView.setVisible(false);
+                continue;
+            }
+        }
+    }
+
     private void linkPolygonsToHexNodes(){
         HexNodeIterator iterator = new HexNodeIterator(game.getBoard().getRoot());
         while (iterator.hasNext()) {
@@ -161,7 +242,6 @@ public class GameMaster {
 //        currentRobot = nextTeam.getNextRobot();
 
     }
-
 
     public Team getNextTeam(){
         Team returnTeam = null;

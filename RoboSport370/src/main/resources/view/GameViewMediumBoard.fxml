@@ -11,32 +11,32 @@
 
 <Pane fx:id="gameContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="814.0" prefWidth="1202.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameMaster">
    <children>
-      <ImageView fitHeight="100.0" fitWidth="81.0" layoutX="745.0" layoutY="27.0">
+      <ImageView fx:id="yellowStart" fitHeight="100.0" fitWidth="81.0" layoutX="745.0" layoutY="27.0" pickOnBounds="true">
          <image>
             <Image url="@../images/yellowStart.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="81.0" layoutX="931.0" layoutY="357.0">
+      <ImageView fx:id="greenStart" fitHeight="100.0" fitWidth="81.0" layoutX="931.0" layoutY="357.0" pickOnBounds="true">
          <image>
             <Image url="@../images/greenStart.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="81.0" layoutX="744.0" layoutY="694.0">
+      <ImageView fx:id="blueStart" fitHeight="100.0" fitWidth="81.0" layoutX="744.0" layoutY="694.0" pickOnBounds="true">
          <image>
             <Image url="@../images/blueStart.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="81.0" layoutX="374.0" layoutY="694.0">
+      <ImageView fx:id="purpleStart" fitHeight="100.0" fitWidth="81.0" layoutX="374.0" layoutY="694.0" pickOnBounds="true">
          <image>
             <Image url="@../images/purpleStart.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="81.0" layoutX="189.0" layoutY="357.0">
+      <ImageView fx:id="redStart" fitHeight="100.0" fitWidth="81.0" layoutX="189.0" layoutY="357.0" pickOnBounds="true">
          <image>
             <Image url="@../images/redStart.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="100.0" fitWidth="81.0" layoutX="374.0" layoutY="27.0">
+      <ImageView fx:id="orangeStart" fitHeight="100.0" fitWidth="81.0" layoutX="374.0" layoutY="27.0" pickOnBounds="true">
          <image>
             <Image url="@../images/orangeStart.png" />
          </image>
@@ -2154,7 +2154,7 @@
          <image>
             <Image url="@../images/redSniper.PNG" />
          </image></ImageView>
-      <ImageView fx:id="redScout" fitHeight="40.0" fitWidth="50.0" layoutX="197.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="redScout" fitHeight="40.0" fitWidth="50.0" layoutX="197.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/redScout.PNG" />
          </image></ImageView>
