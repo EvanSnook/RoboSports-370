@@ -34,11 +34,16 @@ public class GameMaster {
     @FXML
     public Pane gameContainer;
 
+    @FXML
+    public Polygon L4N12;
+    @FXML
+    public Polygon L4N0;
+
     public GameMaster() {}
 
     /**
      * The real constructor..
-     * @param game
+     * @param game - a game
      */
     public void setGame(Game game) {
         GameMaster.game = game;
