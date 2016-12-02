@@ -1,5 +1,6 @@
 package controller;
 
+import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
 import com.sun.xml.internal.ws.wsdl.writer.document.StartWithExtensionsType;
 
 import javafx.fxml.FXML;
@@ -21,9 +22,10 @@ import model.enums.TeamColour;
 
 // TODO GameMaster Class
 public class GameMaster {
-    private final String FOG_COLOUR = "#DDD";
-    private final String DEFAULT_COLOUR = "WHITE";
-    private final String SELECTED_COLOUR = "#AAA";
+    //solid colours range from 0x000000ff to 0xffffffff (Black to White)
+    private final String FOG_COLOUR = "0xddddddff";//grey
+    private final String DEFAULT_COLOUR = "0xffffffff";//white
+    private final String SELECTED_COLOUR = "0xaaaaaaff";//dark grey
 
     private static Game game;
 
@@ -78,10 +80,13 @@ public class GameMaster {
     }
 
     public void selectTile(HexNode node) {
-        if (selectedNode != null)
-            selectedNode.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
-        selectedNode = node;
-        selectedNode.getHexagon().setFill(Paint.valueOf(SELECTED_COLOUR));
+        if(!node.getHexagon().getFill().toString().equals(FOG_COLOUR)) {
+            //set the previously selected node to white
+            if (selectedNode != null)
+                selectedNode.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
+            selectedNode = node;
+            selectedNode.getHexagon().setFill(Paint.valueOf(SELECTED_COLOUR));
+        }
     }
 
     public Game getGame() {
@@ -151,6 +156,99 @@ public class GameMaster {
 
     public void endTurn(){
         makeFoggyOut();
+        //pass on to the lext player
+//        Team nextTeam = getNextTeam();
+//        currentRobot = nextTeam.getNextRobot();
+
+    }
+
+
+    public Team getNextTeam(){
+        Team returnTeam = null;
+        System.out.println(currentRobot);
+        //who's turn is it currently.
+        switch(currentRobot.getColour()){
+            case RED:
+                //Who's turn is it going to be.
+                if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.ORANGE);
+                } else if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.BLUE);
+                } else if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.GREEN);
+                } else if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.YELLOW);
+                } else if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.PURPLE);
+                } else {/*Red is only alivr*/}
+                break;
+            case ORANGE:
+                if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.BLUE);
+                } else if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.GREEN);
+                } else if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.YELLOW);
+                } else if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.PURPLE);
+                } else if(game.getTeam(TeamColour.RED).isEnabled()) {
+                    returnTeam = game.getTeam(TeamColour.RED);
+                } else {/*Orange is only alive*/}
+                break;
+            case BLUE:
+                if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.GREEN);
+                } else if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.YELLOW);
+                } else if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.PURPLE);
+                } else if(game.getTeam(TeamColour.RED).isEnabled()) {
+                    returnTeam = game.getTeam(TeamColour.RED);
+                } else if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                returnTeam = game.getTeam(TeamColour.ORANGE);
+                } else {/*Blue is only alive*/}
+                break;
+            case GREEN:
+               if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.YELLOW);
+                } else if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.PURPLE);
+                } else if(game.getTeam(TeamColour.RED).isEnabled()) {
+                    returnTeam = game.getTeam(TeamColour.RED);
+                } else if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.ORANGE);
+                } else if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                     returnTeam = game.getTeam(TeamColour.BLUE);
+                } else {/*Green is only alive*/}
+                break;
+            case YELLOW:
+                if(game.getTeam(TeamColour.PURPLE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.PURPLE);
+                } else if(game.getTeam(TeamColour.RED).isEnabled()) {
+                    returnTeam = game.getTeam(TeamColour.RED);
+                } else if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.ORANGE);
+                } else if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.BLUE);
+                } else if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.GREEN);
+                } else {/*Yellow is only alive*/                }
+                break;
+            case PURPLE:
+                if(game.getTeam(TeamColour.RED).isEnabled()) {
+                    returnTeam = game.getTeam(TeamColour.RED);
+                } else if(game.getTeam(TeamColour.ORANGE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.ORANGE);
+                } else if(game.getTeam(TeamColour.BLUE).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.BLUE);
+                } else if(game.getTeam(TeamColour.GREEN).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.GREEN);
+                } else if(game.getTeam(TeamColour.YELLOW).isEnabled()){
+                    returnTeam = game.getTeam(TeamColour.YELLOW);
+                } else {/*Purple is only alive*/}
+                break;
+        }
+        return returnTeam;
     }
 
     public void endMatch(){
@@ -163,21 +261,27 @@ public class GameMaster {
      * @param radius number of nodes out not counting the center.
      */
     private void clearAreaFog(HexNode start, int radius){
-
-        HexNodeIterator iterator = new HexNodeIterator(start, 0);
-        while(iterator.getCurrentLayer()>= radius){
-            if(iterator.getCurrentNode().getRobots() != null){
-                iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
+        if(radius>5){
+            System.out.println("radius too big must be less than 5 was: " + radius);
+        }else{
+            HexNodeIterator iterator = new HexNodeIterator(start, 0);
+            while(iterator.getCurrentLayer() < radius) {
+                if (iterator.getCurrentNode().getRobots() != null) {
+                    iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
+                }
+                iterator.next();
             }
-            iterator.next();
         }
     }
 
+    /**
+     * Makes the entire board foggy
+     */
     private void makeFoggyOut(){
         HexNodeIterator iterator = new HexNodeIterator(game.getBoard().getRoot(), 0);
         int radius = game.getBoard().getSize().getValue();
-        while(iterator.getCurrentLayer()>= radius){
-            if(iterator.getCurrentNode().getRobots() != null){
+        while(iterator.getCurrentLayer() < radius){
+            if(iterator.getCurrentNode().canContainRobots()){
                 iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(FOG_COLOUR));
             }
             iterator.next();
