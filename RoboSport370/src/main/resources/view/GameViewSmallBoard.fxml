@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
@@ -10,6 +11,16 @@
 
 <Pane fx:id="gameContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="777.0" prefWidth="1174.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameMaster">
    <children>
+      <ImageView fitHeight="126.0" fitWidth="100.0" layoutX="834.0" layoutY="326.0">
+         <image>
+            <Image url="@../images/greenStart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="126.0" fitWidth="100.0" layoutX="248.0" layoutY="326.0">
+         <image>
+            <Image url="@../images/redStart.png" />
+         </image>
+      </ImageView>
       <Polygon fx:id="L0N0" fill="WHITE" layoutX="587.0" layoutY="389.0" onMouseClicked="#hexNodeClicked" stroke="BLACK" strokeType="INSIDE">
         <points>
           <Double fx:value="-37.5" />
@@ -127,7 +138,7 @@
             <Double fx:value="-22.5" />
          </points>
       </Polygon>
-      <Polygon fx:id="L4N0" fill="WHITE" layoutX="883.0" layoutY="389.0" onMouseClicked="#hexNodeClicked" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="L4N0" fill="WHITE" layoutX="883.0" layoutY="389.0" onMouseClicked="#hexNodeClicked" opacity="0.33" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="-37.5" />
             <Double fx:value="22.5" />
@@ -143,7 +154,7 @@
             <Double fx:value="-22.5" />
          </points>
       </Polygon>
-      <Polygon fx:id="L4N12" fill="WHITE" layoutX="291.0" layoutY="389.0" onMouseClicked="#hexNodeClicked" stroke="BLACK" strokeType="INSIDE">
+      <Polygon fx:id="L4N12" fill="WHITE" layoutX="291.0" layoutY="389.0" onMouseClicked="#hexNodeClicked" opacity="0.33" stroke="BLACK" strokeType="INSIDE">
          <points>
             <Double fx:value="-37.5" />
             <Double fx:value="22.5" />
@@ -995,7 +1006,7 @@
          <image>
             <Image url="@../images/blueScout.PNG" />
          </image></ImageView>
-      <ImageView fx:id="blueSniper" fitHeight="50.0" fitWidth="60.0" layoutX="73.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="blueSniper" fitHeight="50.0" fitWidth="60.0" layoutX="91.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../images/blueSniper.PNG" />
       </image></ImageView>
@@ -1003,27 +1014,15 @@
    <image>
       <Image url="@../images/blueTank.PNG" />
    </image></ImageView>
-      <ImageView fx:id="redScout" fitHeight="50.0" fitWidth="60.0" layoutX="14.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
-<image>
-<Image url="@../images/redScout.PNG" />
-</image></ImageView>
-      <ImageView fx:id="redTank" fitHeight="50.0" fitWidth="60.0" layoutX="132.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="redTank" fitHeight="50.0" fitWidth="60.0" layoutX="269.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
 <image>
 <Image url="@../images/redTank.PNG" />
 </image></ImageView>
-      <ImageView fx:id="redSniper" fitHeight="50.0" fitWidth="60.0" layoutX="73.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="redSniper" fitHeight="50.0" fitWidth="60.0" layoutX="254.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
 <image>
 <Image url="@../images/redSniper.PNG" />
 </image></ImageView>
-      <ImageView fx:id="greenSniper" fitHeight="50.0" fitWidth="60.0" layoutX="73.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
-<image>
-<Image url="@../images/greenSniper.PNG" />
-</image></ImageView>
-      <ImageView fx:id="greenScout" fitHeight="50.0" fitWidth="60.0" layoutX="14.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
-<image>
-<Image url="@../images/greenScout.PNG" />
-</image></ImageView>
-      <ImageView fx:id="greenTank" fitHeight="50.0" fitWidth="60.0" layoutX="132.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="greenTank" fitHeight="50.0" fitWidth="60.0" layoutX="877.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
 <image>
 <Image url="@../images/greenTank.PNG" />
 </image></ImageView>
@@ -1075,5 +1074,17 @@
       <Button layoutX="986.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#endMatch" prefHeight="63.0" prefWidth="108.0" text="End Match" />
       <Label layoutX="958.0" layoutY="70.0" text="Turn Timer" />
       <Label layoutX="954.0" layoutY="40.0" text="Game Timer" />
+      <ImageView fx:id="redScout" fitHeight="50.0" fitWidth="60.0" layoutX="239.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+<image>
+<Image url="@../images/redScout.PNG" />
+</image></ImageView>
+      <ImageView fx:id="greenScout" fitHeight="50.0" fitWidth="60.0" layoutX="861.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+<image>
+<Image url="@../images/greenScout.PNG" />
+</image></ImageView>
+      <ImageView fx:id="greenSniper" fitHeight="50.0" fitWidth="60.0" layoutX="847.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
+<image>
+<Image url="@../images/greenSniper.PNG" />
+</image></ImageView>
    </children>
 </Pane>

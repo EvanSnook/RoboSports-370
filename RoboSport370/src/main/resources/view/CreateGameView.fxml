@@ -33,12 +33,12 @@
             </VBox>
             <VBox layoutX="18.0" layoutY="220.0" prefHeight="46.0" prefWidth="87.0">
                <children>
-                        <RadioButton fx:id="hexagons5RadioButton" mnemonicParsing="false" selected="true" text="5 Hexagons">
+                        <RadioButton fx:id="hexagons5RadioButton" mnemonicParsing="false" text="5 Hexagons" visible="false">
                            <toggleGroup>
                               <ToggleGroup fx:id="boardGroup" />
                            </toggleGroup>
                   </RadioButton>
-                        <RadioButton fx:id="hexagons7RadioButton" mnemonicParsing="false" text="7 Hexagons" toggleGroup="$boardGroup" />
+                        <RadioButton fx:id="hexagons7RadioButton" mnemonicParsing="false" selected="true" text="7 Hexagons" toggleGroup="$boardGroup" />
                </children>
             </VBox>
       <HBox fx:id="Team1Box" layoutX="111.0" layoutY="69.0" onKeyPressed="#changeVisibleTeams" onMouseClicked="#changeVisibleTeams" prefHeight="131.0" prefWidth="134.0">

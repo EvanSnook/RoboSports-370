@@ -148,23 +148,37 @@ public class CreateGameController {
         robotThinkTimeValueLabel.setText(s);
     }
     public void changeVisibleTeams(){
-            Team1Box.setVisible(false);
-            Team2Box.setVisible(false);
+        if(getNumTeams() == 2) {
+            Team1Box.setVisible(true);
+            Team2Box.setVisible(true);
             Team3Box.setVisible(false);
             Team4Box.setVisible(false);
             Team5Box.setVisible(false);
             Team6Box.setVisible(false);
-        switch(getNumTeams()){
-            case 6:
-                Team4Box.setVisible(true);
-                Team5Box.setVisible(true);
-                Team6Box.setVisible(true);
-            case 3:
-                Team3Box.setVisible(true);
-            case 2:
-                Team1Box.setVisible(true);
-                Team2Box.setVisible(true);
-
+            hexagons5RadioButton.setVisible(true);
+            hexagons7RadioButton.setVisible(false);
+            hexagons5RadioButton.setSelected(true);
+        }
+        if(getNumTeams() == 3) {
+            Team1Box.setVisible(true);
+            Team2Box.setVisible(true);
+            Team3Box.setVisible(true);
+            Team4Box.setVisible(false);
+            Team5Box.setVisible(false);
+            Team6Box.setVisible(false);
+            hexagons5RadioButton.setVisible(true);
+            hexagons7RadioButton.setVisible(true);
+        }
+        if(getNumTeams() == 6) {
+            Team1Box.setVisible(true);
+            Team2Box.setVisible(true);
+            Team3Box.setVisible(true);
+            Team4Box.setVisible(true);
+            Team5Box.setVisible(true);
+            Team6Box.setVisible(true);
+            hexagons5RadioButton.setVisible(false);
+            hexagons7RadioButton.setVisible(true);
+            hexagons7RadioButton.setSelected(true);
         }
     }
 
