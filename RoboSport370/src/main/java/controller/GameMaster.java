@@ -5,6 +5,7 @@ import com.sun.xml.internal.ws.wsdl.writer.document.StartWithExtensionsType;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -37,46 +38,7 @@ public class GameMaster {
     public Pane gameContainer;
 
     @FXML
-    public ImageView redScout;
-    @FXML
-    public ImageView redSniper;
-    @FXML
-    public ImageView redTank;
-
-    @FXML
-    public ImageView orangeScout;
-    @FXML
-    public ImageView orangeSniper;
-    @FXML
-    public ImageView orangeTank;
-
-    @FXML
-    public ImageView yellowScout;
-    @FXML
-    public ImageView yellowSniper;
-    @FXML
-    public ImageView yellowTank;
-
-    @FXML
-    public ImageView greenScout;
-    @FXML
-    public ImageView greenSniper;
-    @FXML
-    public ImageView greenTank;
-
-    @FXML
-    public ImageView blueScout;
-    @FXML
-    public ImageView blueSniper;
-    @FXML
-    public ImageView blueTank;
-
-    @FXML
-    public ImageView purpleScout;
-    @FXML
-    public ImageView purpleSniper;
-    @FXML
-    public ImageView purpleTank;
+    public TextArea OutputBox;
 
     public GameMaster() {}
 
@@ -114,6 +76,8 @@ public class GameMaster {
         }
 
         selectTile(iterator.getCurrentNode());
+        OutputBox.setText(iterator.getCurrentNode().toString());
+
     }
 
     public void selectTile(HexNode node) {
@@ -124,6 +88,10 @@ public class GameMaster {
             selectedNode = node;
             selectedNode.getHexagon().setFill(Paint.valueOf(SELECTED_COLOUR));
         }
+    }
+
+    public void robotClicked(MouseEvent mouseEvent){
+        OutputBox.setText(mouseEvent.);
     }
 
     public Game getGame() {
