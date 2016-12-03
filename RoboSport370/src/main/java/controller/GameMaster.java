@@ -240,6 +240,8 @@ public class GameMaster {
             Team nextTeam = getNextTeam();
             currentRobot = nextTeam.getNextRobot();
         }
+        currentRobot.setRemainingMoves(currentRobot.getMaxMove());
+
         // clear the fog
         clearAreaFog(game.getTeam(currentRobot.getColour()).getScout().getPosition(), game.getTeam(currentRobot.getColour()).getScout().getRange());
         clearAreaFog(game.getTeam(currentRobot.getColour()).getSniper().getPosition(), game.getTeam(currentRobot.getColour()).getSniper().getRange());
