@@ -243,9 +243,16 @@ public class GameMaster {
         currentRobot.setRemainingMoves(currentRobot.getMaxMove());
 
         // clear the fog
-        clearAreaFog(game.getTeam(currentRobot.getColour()).getScout().getPosition(), game.getTeam(currentRobot.getColour()).getScout().getRange());
-        clearAreaFog(game.getTeam(currentRobot.getColour()).getSniper().getPosition(), game.getTeam(currentRobot.getColour()).getSniper().getRange());
-        clearAreaFog(game.getTeam(currentRobot.getColour()).getTank().getPosition(), game.getTeam(currentRobot.getColour()).getTank().getRange());
+        if(game.getTeam(currentRobot.getColour()).getScout().isAlive()){
+            clearAreaFog(game.getTeam(currentRobot.getColour()).getScout().getPosition(), game.getTeam(currentRobot.getColour()).getScout().getRange());
+        }
+        if(game.getTeam(currentRobot.getColour()).getSniper().isAlive()) {
+            clearAreaFog(game.getTeam(currentRobot.getColour()).getSniper().getPosition(), game.getTeam(currentRobot.getColour()).getSniper().getRange());
+        }
+        if(game.getTeam(currentRobot.getColour()).getTank().isAlive()) {
+            clearAreaFog(game.getTeam(currentRobot.getColour()).getTank().getPosition(), game.getTeam(currentRobot.getColour()).getTank().getRange());
+        }
+
     }
 
     public Team getNextTeam(){
@@ -299,7 +306,9 @@ public class GameMaster {
                 if (iterator.getCurrentNode().canContainRobots()) {
                     iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
                     for(Robot robot : iterator.getCurrentNode().getRobots()){
-                        robot.getRobotImage().setVisible(true);
+                        if(robot.isAlive()) {
+                            robot.getRobotImage().setVisible(true);
+                        }
                     }
                 }
                 iterator.next();
