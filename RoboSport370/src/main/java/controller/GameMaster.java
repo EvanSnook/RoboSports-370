@@ -172,11 +172,10 @@ public class GameMaster {
 
         for(Team t : game.getTeams()){
 
-            String lowerColour = t.getColour().toString().toLowerCase();
-            String upperColour = t.getColour().toString().toUpperCase();
+            String colour = t.getColour().toString().toLowerCase();
 
             ImageView startView =
-                    (ImageView) gameContainer.lookup("#" + lowerColour + "Start");
+                    (ImageView) gameContainer.lookup("#" + colour + "Start");
 
             // If the team is disabled, disable the ImageView
             if(!t.isEnabled()){
