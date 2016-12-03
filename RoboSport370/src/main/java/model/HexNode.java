@@ -1,7 +1,6 @@
 package model;
 
 import javafx.scene.shape.Polygon;
-
 import java.util.LinkedList;
 
 public class HexNode {
@@ -68,6 +67,10 @@ public class HexNode {
     public HexNode(boolean willHoldRobots) {
         if (willHoldRobots)
             this.robots = new LinkedList<>();
+    }
+
+    public boolean isFoggy(){
+        return (hexagon.getFill().toString().equals("0xddddddff"));
     }
 
     public void addRobot(Robot r){

@@ -141,6 +141,8 @@ public class Robot {
 
     public void takeDamage(int amount) {
         this.health = Math.max(0, this.health - amount);
+        if(!isAlive())
+            robotImage.setVisible(false);
     }
 
     public void startPlay() {
@@ -162,6 +164,14 @@ public class Robot {
                 ", stats=" + stats +
                 ", facing=" + facing +
                 ", colour=" + colour +
+                '}';
+    }
+    public String toOutput() {
+        return colour + " " + type + "{" +
+                "health=" + health +
+                ", damage=" + damage +
+                ", range=" + range +
+                ", remainingMoves=" + remainingMoves +
                 '}';
     }
 }

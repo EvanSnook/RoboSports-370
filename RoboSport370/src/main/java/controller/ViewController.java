@@ -27,12 +27,15 @@ public class ViewController {
     private Scene statsScene;
     private Scene robotManagerScene;
 
+    private Scene endGameScene;
+
     public ViewController() {
         PublicViewController.setInstance(this);
 
         createGameScene = new Scene(loadFxml("/view/CreateGameView.fxml"));
         statsScene = new Scene(loadFxml("/view/RobotStats.fxml"));
         robotManagerScene = new Scene(loadFxml("/view/RobotManagerView.fxml"));
+        endGameScene = new Scene(loadFxml("/view/EndGameView.fxml"));
     }
 
     private static Parent loadFxml(String fxmlURL) {
@@ -69,7 +72,8 @@ public class ViewController {
      * {@code ROBOT_MANAGER}<br>
      * {@code ROBOT_STATS}<br>
      * {@code SMALL_BOARD}<br>
-     * {@code MEDIUM_BOARD}
+     * {@code MEDIUM_BOARD}<br>
+     * {@code END_GAME}
      *
      * @param sceneName the name of the scene from above
      */
@@ -86,6 +90,9 @@ public class ViewController {
                 break;
             case "ROBOT_STATS":
                 setScene(statsScene);
+                break;
+            case "END_GAME":
+                setScene(endGameScene);
                 break;
             default:
                 System.err.println("Unknown scene: " + sceneName);

@@ -16,7 +16,6 @@ import model.HexNode;
 import model.HexNodeIterator;
 import model.Robot;
 import model.Team;
-import model.enums.BoardSize;
 import model.enums.TeamColour;
 
 // TODO GameMaster Class
@@ -37,9 +36,6 @@ public class GameMaster {
 
     @FXML
     public Button robotShoot;
-
-    @FXML
-    public Button robotMove;
 
     @FXML
     public TextArea OutputBox;
@@ -83,27 +79,6 @@ public class GameMaster {
         selectTile(iterator.getCurrentNode());
         OutputBox.setText(iterator.getCurrentNode().toString());
 
-
-
-        //set robot to face selected node
-        if(getCurrentRobot().getPosition().getR() == getSelectedNode()){
-                getCurrentRobot().setFacing(0);
-        }
-        else if(getCurrentRobot().getPosition().getDR() == getSelectedNode()){
-            getCurrentRobot().setFacing(1);
-        }
-        else if(getCurrentRobot().getPosition().getDL() == getSelectedNode()){
-            getCurrentRobot().setFacing(2);
-        }
-        else if(getCurrentRobot().getPosition().getL() == getSelectedNode()){
-            getCurrentRobot().setFacing(3);
-        }
-        else if(getCurrentRobot().getPosition().getUL() == getSelectedNode()){
-            getCurrentRobot().setFacing(4);
-        }
-        else if(getCurrentRobot().getPosition().getUR() == getSelectedNode()){
-            getCurrentRobot().setFacing(5);
-        }
     }
 
     public void selectTile(HexNode node) {
@@ -213,62 +188,6 @@ public class GameMaster {
     }
 
     public void robotMove(){
-        int xBuffer = 24;
-        int yBuffer = 21;
-        if (getCurrentRobot().getFacing() == 0 && getCurrentRobot().getPosition().getR().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
-            getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
-            getCurrentRobot().setPosition(getCurrentRobot().getPosition().getR());
-            getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-        }
-        else if (getCurrentRobot().getFacing() == 1 && getCurrentRobot().getPosition().getDR().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
-            getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
-            getCurrentRobot().setPosition(getCurrentRobot().getPosition().getDR());
-            getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
-
-        }
-        else if (getCurrentRobot().getFacing() == 2 && getCurrentRobot().getPosition().getDL().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
-            getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
-            getCurrentRobot().setPosition(getCurrentRobot().getPosition().getDL());
-            getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
-
-        }
-        else if (getCurrentRobot().getFacing() == 3 && getCurrentRobot().getPosition().getL().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
-            getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
-            getCurrentRobot().setPosition(getCurrentRobot().getPosition().getL());
-            getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
-        }
-        else if (getCurrentRobot().getFacing() == 4 && getCurrentRobot().getPosition().getUL().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
-            getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
-            getCurrentRobot().setPosition(getCurrentRobot().getPosition().getUL());
-            getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
-        }
-        else if (getCurrentRobot().getFacing() == 5 && getCurrentRobot().getPosition().getUR().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
-            getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
-            getCurrentRobot().setPosition(getCurrentRobot().getPosition().getUR());
-            getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
-
-        }
-        if(getCurrentRobot().getRemainingMoves() < 1){
-            robotMove.setDisable(true);
-        }
-        return;
 
     }
 
