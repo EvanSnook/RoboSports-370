@@ -52,6 +52,18 @@ public class Team {
     public Robot getNextRobot() {
         if(!enabled) return null;
 
+        if(lastRobot == null){
+            if(scout.isAlive()){
+                return scout;
+            }
+            if(sniper.isAlive()){
+                return sniper;
+            }
+            if(tank.isAlive()){
+                return tank;
+            }
+            return null;
+        }
         if (lastRobot == scout && sniper.isAlive()) {
             return sniper;
         } else if (lastRobot == scout && !sniper.isAlive() && tank.isAlive()) {

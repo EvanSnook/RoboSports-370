@@ -186,27 +186,24 @@ public class GameMaster {
     public void endTurn(){
         makeFoggyOut();
         //TODO hide all robots
+        startPlay();
     }
 
     public void startPlay(){
         if(currentRobot == null){
-            currentRobot = game.getTeam(TeamColour.RED).getScout(); //get the red scout because its first round
-            clearAreaFog(game.getTeam(TeamColour.RED).getScout().getPosition(),game.getTeam(TeamColour.RED).getScout().getRange());
-            clearAreaFog(game.getTeam(TeamColour.RED).getSniper().getPosition(),game.getTeam(TeamColour.RED).getSniper().getRange());
-            clearAreaFog(game.getTeam(TeamColour.RED).getTank().getPosition(),game.getTeam(TeamColour.RED).getTank().getRange());
+            currentRobot = game.getTeam(TeamColour.RED).getScout();
         } else {
-            Team nextTeam = getNextTeam();//get the next team
-            currentRobot = nextTeam.getNextRobot();//get the next robot in order
-            // clear the fog
-            clearAreaFog(nextTeam.getScout().getPosition(), nextTeam.getScout().getRange());
-            clearAreaFog(nextTeam.getSniper().getPosition(), nextTeam.getSniper().getRange());
-            clearAreaFog(nextTeam.getTank().getPosition(), nextTeam.getTank().getRange());
+            Team nextTeam = getNextTeam();
+            currentRobot = nextTeam.getNextRobot();
         }
+        // clear the fog
+        clearAreaFog(game.getTeam(currentRobot.getColour()).getScout().getPosition(), game.getTeam(currentRobot.getColour()).getScout().getRange());
+        clearAreaFog(game.getTeam(currentRobot.getColour()).getSniper().getPosition(), game.getTeam(currentRobot.getColour()).getSniper().getRange());
+        clearAreaFog(game.getTeam(currentRobot.getColour()).getTank().getPosition(), game.getTeam(currentRobot.getColour()).getTank().getRange());
     }
 
     public Team getNextTeam(){
         Team returnTeam = null;
-        System.out.println(currentRobot);
         //who's turn is it currently.
 
         switch(currentRobot.getColour()){
@@ -310,7 +307,7 @@ public class GameMaster {
         }else{
             HexNodeIterator iterator = new HexNodeIterator(start, 0);
             while(iterator.getCurrentLayer() < radius) {
-                if (iterator.getCurrentNode().getRobots() != null) {
+                if (iterator.getCurrentNode().canContainRobots()) {
                     iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
                 }
                 iterator.next();
