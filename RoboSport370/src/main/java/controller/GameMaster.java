@@ -92,9 +92,6 @@ public class GameMaster {
 
     public void robotClicked(MouseEvent mouseEvent){
         for(Team t : game.getTeams()) {
-
-            String colour = t.getColour().toString().toLowerCase();
-
             if (mouseEvent.getSource() == t.getScout().getRobotImage()) {
                 OutputBox.setText(t.getScout().toString());
             } else if (mouseEvent.getSource() == t.getSniper().getRobotImage()) {
@@ -330,6 +327,7 @@ public class GameMaster {
      * Makes the entire board foggy
      */
     private void makeFoggyOut(){
+        selectedNode = null;
         HexNodeIterator iterator = new HexNodeIterator(game.getBoard().getRoot(), 0);
         int radius = game.getBoard().getSize().getValue();
         while(iterator.getCurrentLayer() < radius){
