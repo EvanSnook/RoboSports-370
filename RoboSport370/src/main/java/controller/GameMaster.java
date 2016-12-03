@@ -1,21 +1,14 @@
 package controller;
 
-import java.util.Iterator;
-
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import model.Game;
 import model.HexNode;
 import model.HexNodeIterator;
@@ -24,7 +17,6 @@ import model.Robot;
 import model.Team;
 import model.enums.TeamColour;
 
-// TODO GameMaster Class
 public class GameMaster {
     //solid colours range from 0x000000ff to 0xffffffff (Black to White)
     public static final String FOG_COLOUR = "0xddddddff";//grey
@@ -52,10 +44,12 @@ public class GameMaster {
     @FXML
     public TextArea RobotBox;
 
-    public GameMaster() {}
+    public GameMaster() {
+    }
 
     /**
      * The real constructor..
+     *
      * @param game - a game
      */
     public void setGame(Game game) {
@@ -93,55 +87,54 @@ public class GameMaster {
         setRobotFacing();
     }
 
-    public void setRobotFacing(){
+    public void setRobotFacing() {
         //set robot to face selected node
-        if(getCurrentRobot().getPosition().getR() == getSelectedNode())
+        if (getCurrentRobot().getPosition().getR() == getSelectedNode())
             getCurrentRobot().setFacing(0);
-        else if(getCurrentRobot().getPosition().getDR() == getSelectedNode())
+        else if (getCurrentRobot().getPosition().getDR() == getSelectedNode())
             getCurrentRobot().setFacing(1);
-        else if(getCurrentRobot().getPosition().getDL() == getSelectedNode())
+        else if (getCurrentRobot().getPosition().getDL() == getSelectedNode())
             getCurrentRobot().setFacing(2);
-        else if(getCurrentRobot().getPosition().getL() == getSelectedNode())
+        else if (getCurrentRobot().getPosition().getL() == getSelectedNode())
             getCurrentRobot().setFacing(3);
-        else if(getCurrentRobot().getPosition().getUL() == getSelectedNode())
+        else if (getCurrentRobot().getPosition().getUL() == getSelectedNode())
             getCurrentRobot().setFacing(4);
-        else if(getCurrentRobot().getPosition().getUR() == getSelectedNode())
+        else if (getCurrentRobot().getPosition().getUR() == getSelectedNode())
             getCurrentRobot().setFacing(5);
         getCurrentRobot().getRobotImage().setRotate((currentRobot.getFacing() * 60));
     }
 
-    public void updateRobotBox(){
+    public void updateRobotBox() {
         RobotBox.setText(currentRobot.toString());
     }
 
-    public void outputTile(){
-        if(selectedNode != null){
-            if (!selectedNode.isFoggy()){
+    public void outputTile() {
+        if (selectedNode != null) {
+            if (!selectedNode.isFoggy()) {
                 String output = "";
-                for (Robot r: selectedNode.getRobots()) {
+                for (Robot r : selectedNode.getRobots()) {
                     output += r.toOutput() + "\n";
                 }
                 OutputBox.setText(output + selectedNode.toString());
-            }
-            else {
+            } else {
                 OutputBox.setText(selectedNode.toString());
             }
         }
     }
 
     public void selectTile(HexNode node) {
-        if(!node.getHexagon().getFill().toString().equals(FOG_COLOUR)) {
+        if (!node.getHexagon().getFill().toString().equals(FOG_COLOUR)) {
             //set the previously selected node to white
             if (selectedNode != null)
                 selectedNode.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
             selectedNode = node;
-            selectedNode.getHexagon().setFill(Paint.valueOf(SELECTED_COLOUR));
+            selectedNode.getHexagon().setFill(Paint.valueOf(currentRobot.getColour().toString().toUpperCase()));
         }
     }
 
-    public void robotClicked(MouseEvent mouseEvent){
-        for(Team t : game.getTeams()) {
-            if(t.isEnabled()) {
+    public void robotClicked(MouseEvent mouseEvent) {
+        for (Team t : game.getTeams()) {
+            if (t.isEnabled()) {
                 if (mouseEvent.getSource() == t.getScout().getRobotImage()) {
                     selectTile(t.getScout().getPosition());
                 } else if (mouseEvent.getSource() == t.getSniper().getRobotImage()) {
@@ -171,8 +164,8 @@ public class GameMaster {
         return interpreter;
     }
 
-    private void initRobots(){
-        for(Team t : game.getTeams()){
+    private void initRobots() {
+        for (Team t : game.getTeams()) {
 
             String colour = t.getColour().toString().toLowerCase();
 
@@ -184,7 +177,7 @@ public class GameMaster {
                     (ImageView) gameContainer.lookup("#" + colour + "Tank");
 
             // If the team is disabled, disable the ImageView
-            if(!t.isEnabled()){
+            if (!t.isEnabled()) {
                 scoutView.setVisible(false);
                 sniperView.setVisible(false);
                 tankView.setVisible(false);
@@ -197,9 +190,9 @@ public class GameMaster {
         }
     }
 
-    private void initStartTiles(){
+    private void initStartTiles() {
 
-        for(Team t : game.getTeams()){
+        for (Team t : game.getTeams()) {
 
             String colour = t.getColour().toString().toLowerCase();
 
@@ -207,22 +200,22 @@ public class GameMaster {
                     (ImageView) gameContainer.lookup("#" + colour + "Start");
 
             // If the team is disabled, disable the ImageView
-            if(!t.isEnabled()){
+            if (!t.isEnabled()) {
                 startView.setVisible(false);
                 game.getBoard().getCorner(t.getColour()).getHexagon().setOpacity(1.00);
                 continue;
             }
 
             game.getBoard().getCorner(t.getColour()).addRobot(t.getScout());
-            t.getScout().setPosition( game.getBoard().getCorner(t.getColour()));
+            t.getScout().setPosition(game.getBoard().getCorner(t.getColour()));
             game.getBoard().getCorner(t.getColour()).addRobot(t.getSniper());
-            t.getSniper().setPosition( game.getBoard().getCorner(t.getColour()));
+            t.getSniper().setPosition(game.getBoard().getCorner(t.getColour()));
             game.getBoard().getCorner(t.getColour()).addRobot(t.getTank());
-            t.getTank().setPosition( game.getBoard().getCorner(t.getColour()));
+            t.getTank().setPosition(game.getBoard().getCorner(t.getColour()));
         }
     }
 
-    private void linkPolygonsToHexNodes(){
+    private void linkPolygonsToHexNodes() {
         HexNodeIterator iterator = new HexNodeIterator(game.getBoard().getRoot());
         while (iterator.hasNext()) {
             HexNode current = iterator.next();
@@ -234,43 +227,38 @@ public class GameMaster {
         }
     }
 
-    public void showRules(MouseEvent mouseEvent){
+    public void showRules(MouseEvent mouseEvent) {
         PublicViewController.getInstance().showRules(mouseEvent);
     }
 
-    public void robotMove(){
+    public void robotMove() {
         int xBuffer = 24;
         int yBuffer = 21;
 
-        if(!currentRobot.getPosition().get(currentRobot.getFacing()).canContainRobots())
+        if (!currentRobot.getPosition().get(currentRobot.getFacing()).canContainRobots())
             return;
 
         if (getCurrentRobot().getFacing() == 0 && getCurrentRobot().getPosition().getR().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getR());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-        }
-        else if (getCurrentRobot().getFacing() == 1 && getCurrentRobot().getPosition().getDR().canContainRobots()) {
+        } else if (getCurrentRobot().getFacing() == 1 && getCurrentRobot().getPosition().getDR().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getDR());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-        }
-        else if (getCurrentRobot().getFacing() == 2 && getCurrentRobot().getPosition().getDL().canContainRobots()) {
+        } else if (getCurrentRobot().getFacing() == 2 && getCurrentRobot().getPosition().getDL().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getDL());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-        }
-        else if (getCurrentRobot().getFacing() == 3 && getCurrentRobot().getPosition().getL().canContainRobots()) {
+        } else if (getCurrentRobot().getFacing() == 3 && getCurrentRobot().getPosition().getL().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getL());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-        }
-        else if (getCurrentRobot().getFacing() == 4 && getCurrentRobot().getPosition().getUL().canContainRobots()) {
+        } else if (getCurrentRobot().getFacing() == 4 && getCurrentRobot().getPosition().getUL().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getUL());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-        }
-        else if (getCurrentRobot().getFacing() == 5 && getCurrentRobot().getPosition().getUR().canContainRobots()) {
+        } else if (getCurrentRobot().getFacing() == 5 && getCurrentRobot().getPosition().getUR().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getUR());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
@@ -282,27 +270,29 @@ public class GameMaster {
         getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
         getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
 
-        if(getCurrentRobot().getRemainingMoves() < 1){
+        if (getCurrentRobot().getRemainingMoves() < 1) {
             robotMove.setDisable(true);
         }
         draw();
         return;
     }
 
-    public void robotShoot(){
-        if(getSelectedNode() != null){
+    public void robotShoot() {
+        if (getSelectedNode() != null) {
             getSelectedNode().getRobots().forEach(r -> r.takeDamage(getCurrentRobot().getDamage()));
 
             robotShoot.setDisable(true);
         } else {
             robotShoot.setDisable(true);
         }
-        if(game.getRemainingTeams() == 1){
+        if (game.getRemainingTeams() == 1) {
             PublicViewController.getInstance().setScene("END_GAME");
         }
+
+        draw();
     }
 
-    public void endTurn(){
+    public void endTurn() {
         selectTile(game.getBoard().getCorner(getNextTeam().getColour()));
         outputTile();
         startPlay();
@@ -310,8 +300,8 @@ public class GameMaster {
         robotShoot.setDisable(false);
     }
 
-    public void startPlay(){
-        if(currentRobot == null){
+    public void startPlay() {
+        if (currentRobot == null) {
             currentRobot = game.getTeam(TeamColour.RED).getNextRobot();
         } else {
             Team nextTeam = getNextTeam();
@@ -321,30 +311,30 @@ public class GameMaster {
         draw();
     }
 
-    public void draw(){
+    public void draw() {
         makeFoggyOut();
 
-        if(game.getTeam(currentRobot.getColour()).getScout().isAlive()){
+        if (game.getTeam(currentRobot.getColour()).getScout().isAlive()) {
             clearAreaFog(game.getTeam(currentRobot.getColour()).getScout().getPosition(), game.getTeam(currentRobot.getColour()).getScout().getRange());
             game.getTeam(currentRobot.getColour()).getScout().getRobotImage().setVisible(true);
         }
-        if(game.getTeam(currentRobot.getColour()).getSniper().isAlive()) {
+        if (game.getTeam(currentRobot.getColour()).getSniper().isAlive()) {
             clearAreaFog(game.getTeam(currentRobot.getColour()).getSniper().getPosition(), game.getTeam(currentRobot.getColour()).getSniper().getRange());
             game.getTeam(currentRobot.getColour()).getSniper().getRobotImage().setVisible(true);
         }
-        if(game.getTeam(currentRobot.getColour()).getTank().isAlive()) {
+        if (game.getTeam(currentRobot.getColour()).getTank().isAlive()) {
             clearAreaFog(game.getTeam(currentRobot.getColour()).getTank().getPosition(), game.getTeam(currentRobot.getColour()).getTank().getRange());
             game.getTeam(currentRobot.getColour()).getTank().getRobotImage().setVisible(true);
         }
         updateRobotBox();
     }
 
-    public Team getNextTeam(){
+    public Team getNextTeam() {
         Team returnTeam = null;
         //who's turn is it currently.
         TeamColour[] colour = TeamColour.values();
         int index = 0;
-        switch(currentRobot.getColour()){
+        switch (currentRobot.getColour()) {
             case RED:
                 index = 0;
                 break;
@@ -364,7 +354,7 @@ public class GameMaster {
                 index = 5;
                 break;
         }
-        while(returnTeam == null) {
+        while (returnTeam == null) {
             Team t = game.getTeam(colour[++index % 6]);
             if (!t.isEnabled() || t.remainingRobots() == 0) continue;
             returnTeam = t;
@@ -372,24 +362,25 @@ public class GameMaster {
         return returnTeam;
     }
 
-    public void endMatch(){
+    public void endMatch() {
         PublicViewController.getInstance().setScene("END_GAME");
     }
 
     /**
      * Clears an area of some radius
+     *
      * @param start  the not to start at.
      * @param radius number of nodes out not counting the center.
      */
-    private void clearAreaFog(HexNode start, int radius){
-        if(radius>5){
+    private void clearAreaFog(HexNode start, int radius) {
+        if (radius > 5) {
             System.out.println("radius too big must be less than 5 was: " + radius);
-        }else{
+        } else {
             HexNodeIterator iterator = new HexNodeIterator(start, 0);
-            while(iterator.getCurrentLayer() <= radius) {
+            while (iterator.getCurrentLayer() <= radius) {
                 if (iterator.getCurrentNode().canContainRobots()) {
                     iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
-                    if(iterator.getCurrentNode().canContainRobots()){
+                    if (iterator.getCurrentNode().canContainRobots()) {
                         iterator.getCurrentNode().getRobots().stream()
                                 .filter(Robot::isAlive)
                                 .forEach(r -> r.getRobotImage().setVisible(true));
@@ -403,14 +394,14 @@ public class GameMaster {
     /**
      * Makes the entire board foggy
      */
-    private void makeFoggyOut(){
+    private void makeFoggyOut() {
         selectedNode = null;
         HexNodeIterator iterator = new HexNodeIterator(game.getBoard().getRoot(), 0);
         int radius = game.getBoard().getSize().getValue();
-        while(iterator.getCurrentLayer() <= radius){
-            if(iterator.getCurrentNode().canContainRobots()){
+        while (iterator.getCurrentLayer() <= radius) {
+            if (iterator.getCurrentNode().canContainRobots()) {
                 iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(FOG_COLOUR));
-                for(Robot robot : iterator.getCurrentNode().getRobots()){
+                for (Robot robot : iterator.getCurrentNode().getRobots()) {
                     robot.getRobotImage().setVisible(false);
                 }
             }

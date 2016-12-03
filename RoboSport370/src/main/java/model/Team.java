@@ -80,7 +80,7 @@ public class Team {
         } else if (lastRobot == tank && !scout.isAlive() && sniper.isAlive()) {
             lastRobot = sniper;
             return sniper;
-        } else if (lastRobot == tank && !scout.isAlive() && sniper.isAlive() && tank.isAlive()) {
+        } else if (lastRobot == tank && !scout.isAlive() && !sniper.isAlive() && tank.isAlive()) {
             lastRobot = tank;
             return tank;
         } else {
