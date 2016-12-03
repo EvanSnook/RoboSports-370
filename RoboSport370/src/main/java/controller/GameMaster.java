@@ -1,12 +1,11 @@
 package controller;
 
-import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
-import com.sun.xml.internal.ws.wsdl.writer.document.StartWithExtensionsType;
+import java.util.Iterator;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -17,8 +16,6 @@ import model.HexNode;
 import model.HexNodeIterator;
 import model.Robot;
 import model.Team;
-import model.enums.BoardSize;
-import model.enums.RobotType;
 import model.enums.TeamColour;
 
 // TODO GameMaster Class
@@ -36,6 +33,9 @@ public class GameMaster {
 
     @FXML
     public Pane gameContainer;
+
+    @FXML
+    public Button robotShoot;
 
     @FXML
     public TextArea OutputBox;
@@ -188,6 +188,20 @@ public class GameMaster {
     }
 
     public void robotShoot(){
+        if(getSelectedNode() != null){
+            Iterator iterator = getSelectedNode().getRobots().iterator();
+            while(iterator.hasNext()){
+                getSelectedNode().getRobots().element().takeDamage(getCurrentRobot().getDamage());
+                iterator.next();
+            }
+            robotShoot.setDisable(true);
+            return;
+        }
+        else {
+            robotShoot.setDisable(true);
+            return;
+        }
+
 
     }
 
@@ -195,6 +209,7 @@ public class GameMaster {
         makeFoggyOut();
         //TODO hide all robots
         startPlay();
+        robotShoot.setDisable(false);
     }
 
     public void startPlay(){
