@@ -215,7 +215,7 @@ public class GameMaster {
         if(getSelectedNode() != null){
             Iterator iterator = getSelectedNode().getRobots().iterator();
             while(iterator.hasNext()){
-                getSelectedNode().getRobots().element().takeDamage(getCurrentRobot().getDamage());
+                getSelectedNode().getRobots().forEach(r -> r.takeDamage(getCurrentRobot().getDamage()));
                 iterator.next();
             }
             robotShoot.setDisable(true);
