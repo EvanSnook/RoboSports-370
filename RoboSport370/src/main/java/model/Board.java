@@ -99,9 +99,10 @@ public class Board {
     private HexNode getCorner(int side) {
         HexNode current = getRoot();
 
-        while (current.get(side) != null) {
+        for(int i=0; i<size.getValue()-1; i++){
             current = current.get(side);
         }
+
         return current;
     }
 
@@ -114,17 +115,17 @@ public class Board {
     public HexNode getCorner(TeamColour colour) {
         switch (colour) {
             case RED:
-                return getCorner(0);
-            case ORANGE:
-                return getCorner(1);
-            case BLUE:
-                return getCorner(2);
-            case GREEN:
                 return getCorner(3);
-            case YELLOW:
+            case ORANGE:
                 return getCorner(4);
-            case PURPLE:
+            case BLUE:
+                return getCorner(1);
+            case GREEN:
+                return getCorner(0);
+            case YELLOW:
                 return getCorner(5);
+            case PURPLE:
+                return getCorner(2);
             default:
                 return getCorner(0);
         }

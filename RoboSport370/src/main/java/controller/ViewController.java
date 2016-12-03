@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -11,7 +12,9 @@ import model.PublicGameMaster;
 import model.PublicViewController;
 import model.enums.BoardSize;
 
+
 import java.io.IOException;
+import java.net.URL;
 
 public class ViewController {
     private static Stage view;
@@ -135,6 +138,7 @@ public class ViewController {
         rulesStage.initModality(Modality.NONE);
 
         rulesStage.initOwner(((Node) mouseEvent.getSource()).getScene().getWindow());
+        rulesStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/redScout.PNG")));
         rulesStage.show();
 
         this.rulesStage = rulesStage;
