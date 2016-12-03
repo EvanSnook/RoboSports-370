@@ -62,6 +62,7 @@ public class GameMaster {
         linkPolygonsToHexNodes();
         initRobots();
         initStartTiles();
+        makeFoggyOut();
         startPlay();
     }
 
@@ -171,7 +172,7 @@ public class GameMaster {
             t.getScout().setPosition( game.getBoard().getCorner(t.getColour()));
             game.getBoard().getCorner(t.getColour()).addRobot(t.getSniper());
             t.getSniper().setPosition( game.getBoard().getCorner(t.getColour()));
-            game.getBoard().getCorner(t.getColour()).addRobot(t.getScout());
+            game.getBoard().getCorner(t.getColour()).addRobot(t.getTank());
             t.getTank().setPosition( game.getBoard().getCorner(t.getColour()));
         }
     }
@@ -243,23 +244,23 @@ public class GameMaster {
                 //Who's turn is it going to be.
                 if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.GREEN);
                 } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.YELLOW);
+                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.GREEN);
+                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.BLUE);
                 } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.PURPLE);
                 } else {/*Red is only alivr*/}
                 break;
             case ORANGE:
-                if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.BLUE);
+                if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.YELLOW);
                 } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.YELLOW);
+                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.BLUE);
                 } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.PURPLE);
                 } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
@@ -267,42 +268,43 @@ public class GameMaster {
                 } else {/*Orange is only alive*/}
                 break;
             case BLUE:
-                if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.PURPLE);
+                if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
+                returnTeam = game.getTeam(TeamColour.PURPLE);
                 } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
-                    returnTeam = game.getTeam(TeamColour.RED);
+                returnTeam = game.getTeam(TeamColour.RED);
                 } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                 returnTeam = game.getTeam(TeamColour.ORANGE);
+                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.YELLOW);
+                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.GREEN);
                 } else {/*Blue is only alive*/}
                 break;
             case GREEN:
-               if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.YELLOW);
+                if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.BLUE);
                 } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.PURPLE);
                 } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
                     returnTeam = game.getTeam(TeamColour.RED);
                 } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                     returnTeam = game.getTeam(TeamColour.BLUE);
+                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
+                        returnTeam = game.getTeam(TeamColour.YELLOW);
                 } else {/*Green is only alive*/}
                 break;
             case YELLOW:
-                if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
+                if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.GREEN);
+                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.BLUE);
+                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.PURPLE);
                 } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
                     returnTeam = game.getTeam(TeamColour.RED);
                 } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.GREEN);
+
                 } else {/*Yellow is only alive*/                }
                 break;
             case PURPLE:
@@ -310,12 +312,12 @@ public class GameMaster {
                     returnTeam = game.getTeam(TeamColour.RED);
                 } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.GREEN);
                 } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
                     returnTeam = game.getTeam(TeamColour.YELLOW);
+                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.GREEN);
+                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
+                    returnTeam = game.getTeam(TeamColour.BLUE);
                 } else {/*Purple is only alive*/}
                 break;
             default:
@@ -338,9 +340,12 @@ public class GameMaster {
             System.out.println("radius too big must be less than 5 was: " + radius);
         }else{
             HexNodeIterator iterator = new HexNodeIterator(start, 0);
-            while(iterator.getCurrentLayer() < radius) {
+            while(iterator.getCurrentLayer() <= radius) {
                 if (iterator.getCurrentNode().canContainRobots()) {
                     iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
+                    for(Robot robot : iterator.getCurrentNode().getRobots()){
+                        robot.getRobotImage().setVisible(true);
+                    }
                 }
                 iterator.next();
             }
@@ -354,9 +359,12 @@ public class GameMaster {
         selectedNode = null;
         HexNodeIterator iterator = new HexNodeIterator(game.getBoard().getRoot(), 0);
         int radius = game.getBoard().getSize().getValue();
-        while(iterator.getCurrentLayer() < radius){
+        while(iterator.getCurrentLayer() <= radius){
             if(iterator.getCurrentNode().canContainRobots()){
                 iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(FOG_COLOUR));
+                for(Robot robot : iterator.getCurrentNode().getRobots()){
+                    robot.getRobotImage().setVisible(false);
+                }
             }
             iterator.next();
         }
