@@ -213,20 +213,16 @@ public class GameMaster {
 
     public void robotShoot(){
         if(getSelectedNode() != null){
-            Iterator iterator = getSelectedNode().getRobots().iterator();
-            while(iterator.hasNext()){
-                getSelectedNode().getRobots().element().takeDamage(getCurrentRobot().getDamage());
-                iterator.next();
-            }
+            getSelectedNode().getRobots().forEach(r -> r.takeDamage(getCurrentRobot().getDamage()));
+
             robotShoot.setDisable(true);
-            return;
-        }
-        else {
+        } else {
             robotShoot.setDisable(true);
-            return;
         }
 
-
+        if(game.getRemainingTeams() == 1){
+            PublicViewController.getInstance().setScene("END_GAME");
+        }
     }
 
     public void endTurn(){
