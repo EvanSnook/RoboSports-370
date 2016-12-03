@@ -83,16 +83,18 @@ public class GameMaster {
         }
 
         selectTile(iterator.getCurrentNode());
-
-        if(!iterator.getCurrentNode().isFoggy()) {
+        outputTile();
+    }
+    public void outputTile(){
+        if(!selectedNode.isFoggy()) {
             String output = "";
-            for (Robot r: iterator.getCurrentNode().getRobots()) {
+            for (Robot r: selectedNode.getRobots()) {
                 output += r.toOutput() + "\n";
             }
-            OutputBox.setText(output + iterator.getCurrentNode().toString());
+            OutputBox.setText(output + selectedNode.toString());
         }
         else {
-            OutputBox.setText(iterator.getCurrentNode().toString());
+            OutputBox.setText(selectedNode.toString());
         }
     }
 
@@ -116,6 +118,7 @@ public class GameMaster {
                 } else if (mouseEvent.getSource() == t.getTank().getRobotImage()) {
                     selectTile(t.getTank().getPosition());
                 }
+                outputTile();
             }
         }
     }
