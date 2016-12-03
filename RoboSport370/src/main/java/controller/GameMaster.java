@@ -148,16 +148,19 @@ public class GameMaster {
 
         for(Team t : game.getTeams()){
 
-            String colour = t.getColour().toString().toLowerCase();
+            String lowerColour = t.getColour().toString().toLowerCase();
+            String upperColour = t.getColour().toString().toUpperCase();
 
             ImageView startView =
-                    (ImageView) gameContainer.lookup("#" + colour + "Start");
+                    (ImageView) gameContainer.lookup("#" + lowerColour + "Start");
 
             // If the team is disabled, disable the ImageView
             if(!t.isEnabled()){
                 startView.setVisible(false);
+                game.getBoard().getCorner(t.getColour()).getHexagon().setOpacity(1.00);
                 continue;
             }
+            
             game.getBoard().getCorner(t.getColour()).addRobot(t.getScout());
             t.getScout().setPosition( game.getBoard().getCorner(t.getColour()));
             game.getBoard().getCorner(t.getColour()).addRobot(t.getSniper());
