@@ -1,9 +1,12 @@
 package controller;
 
+import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
+import com.sun.xml.internal.ws.wsdl.writer.document.StartWithExtensionsType;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import java.util.Iterator;
 import javafx.scene.Node;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -14,6 +17,8 @@ import model.HexNode;
 import model.HexNodeIterator;
 import model.Robot;
 import model.Team;
+import model.enums.BoardSize;
+import model.enums.RobotType;
 import model.enums.TeamColour;
 
 // TODO GameMaster Class
@@ -33,49 +38,7 @@ public class GameMaster {
     public Pane gameContainer;
 
     @FXML
-    public Button robotShoot;
-
-    @FXML
-    public ImageView redScout;
-    @FXML
-    public ImageView redSniper;
-    @FXML
-    public ImageView redTank;
-
-    @FXML
-    public ImageView orangeScout;
-    @FXML
-    public ImageView orangeSniper;
-    @FXML
-    public ImageView orangeTank;
-
-    @FXML
-    public ImageView yellowScout;
-    @FXML
-    public ImageView yellowSniper;
-    @FXML
-    public ImageView yellowTank;
-
-    @FXML
-    public ImageView greenScout;
-    @FXML
-    public ImageView greenSniper;
-    @FXML
-    public ImageView greenTank;
-
-    @FXML
-    public ImageView blueScout;
-    @FXML
-    public ImageView blueSniper;
-    @FXML
-    public ImageView blueTank;
-
-    @FXML
-    public ImageView purpleScout;
-    @FXML
-    public ImageView purpleSniper;
-    @FXML
-    public ImageView purpleTank;
+    public TextArea OutputBox;
 
     public GameMaster() {}
 
@@ -113,6 +76,8 @@ public class GameMaster {
         }
 
         selectTile(iterator.getCurrentNode());
+        OutputBox.setText(iterator.getCurrentNode().toString());
+
     }
 
     public void selectTile(HexNode node) {
@@ -122,6 +87,21 @@ public class GameMaster {
                 selectedNode.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
             selectedNode = node;
             selectedNode.getHexagon().setFill(Paint.valueOf(SELECTED_COLOUR));
+        }
+    }
+
+    public void robotClicked(MouseEvent mouseEvent){
+        for(Team t : game.getTeams()) {
+
+            String colour = t.getColour().toString().toLowerCase();
+
+            if (mouseEvent.getSource() == t.getScout().getRobotImage()) {
+                OutputBox.setText(t.getScout().toString());
+            } else if (mouseEvent.getSource() == t.getSniper().getRobotImage()) {
+                OutputBox.setText(t.getSniper().toString());
+            } else if (mouseEvent.getSource() == t.getTank().getRobotImage()) {
+                OutputBox.setText(t.getTank().toString());
+            }
         }
     }
 
@@ -199,7 +179,8 @@ public class GameMaster {
 
             current.setHexagon((Polygon) gameContainer.lookup("#" + current.getLabel()));
             current.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
-        }}
+        }
+    }
 
     public void showRules(/*MouseEvent mouseEvent*/) {
 
@@ -210,45 +191,30 @@ public class GameMaster {
     }
 
     public void robotShoot(){
-        if(getSelectedNode() != null){
-            Iterator iterator = getSelectedNode().getRobots().iterator();
-            while(iterator.hasNext()){
-                getSelectedNode().getRobots().element().takeDamage(getCurrentRobot().getDamage());
-                iterator.next();
-            }
-            robotShoot.setDisable(true);
-            return;
-        }
-        else {
-            robotShoot.setDisable(true);
-            return;
-        }
+
     }
 
     public void endTurn(){
         makeFoggyOut();
         //TODO hide all robots
+        startPlay();
     }
 
     public void startPlay(){
         if(currentRobot == null){
-            currentRobot = game.getTeam(TeamColour.RED).getScout(); //get the red scout because its first round
-            clearAreaFog(game.getTeam(TeamColour.RED).getScout().getPosition(),game.getTeam(TeamColour.RED).getScout().getRange());
-            clearAreaFog(game.getTeam(TeamColour.RED).getSniper().getPosition(),game.getTeam(TeamColour.RED).getSniper().getRange());
-            clearAreaFog(game.getTeam(TeamColour.RED).getTank().getPosition(),game.getTeam(TeamColour.RED).getTank().getRange());
+            currentRobot = game.getTeam(TeamColour.RED).getScout();
         } else {
-            Team nextTeam = getNextTeam();//get the next team
-            currentRobot = nextTeam.getNextRobot();//get the next robot in order
-            // clear the fog
-            clearAreaFog(nextTeam.getScout().getPosition(), nextTeam.getScout().getRange());
-            clearAreaFog(nextTeam.getSniper().getPosition(), nextTeam.getSniper().getRange());
-            clearAreaFog(nextTeam.getTank().getPosition(), nextTeam.getTank().getRange());
+            Team nextTeam = getNextTeam();
+            currentRobot = nextTeam.getNextRobot();
         }
+        // clear the fog
+        clearAreaFog(game.getTeam(currentRobot.getColour()).getScout().getPosition(), game.getTeam(currentRobot.getColour()).getScout().getRange());
+        clearAreaFog(game.getTeam(currentRobot.getColour()).getSniper().getPosition(), game.getTeam(currentRobot.getColour()).getSniper().getRange());
+        clearAreaFog(game.getTeam(currentRobot.getColour()).getTank().getPosition(), game.getTeam(currentRobot.getColour()).getTank().getRange());
     }
 
     public Team getNextTeam(){
         Team returnTeam = null;
-        System.out.println(currentRobot);
         //who's turn is it currently.
 
         switch(currentRobot.getColour()){
@@ -352,7 +318,7 @@ public class GameMaster {
         }else{
             HexNodeIterator iterator = new HexNodeIterator(start, 0);
             while(iterator.getCurrentLayer() < radius) {
-                if (iterator.getCurrentNode().getRobots() != null) {
+                if (iterator.getCurrentNode().canContainRobots()) {
                     iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
                 }
                 iterator.next();
