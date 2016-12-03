@@ -86,15 +86,17 @@ public class GameMaster {
         outputTile();
     }
     public void outputTile(){
-        if(!selectedNode.isFoggy()) {
-            String output = "";
-            for (Robot r: selectedNode.getRobots()) {
-                output += r.toOutput() + "\n";
+        if(selectedNode != null){
+            if (!selectedNode.isFoggy()){
+                String output = "";
+                for (Robot r: selectedNode.getRobots()) {
+                    output += r.toOutput() + "\n";
+                }
+                OutputBox.setText(output + selectedNode.toString());
             }
-            OutputBox.setText(output + selectedNode.toString());
-        }
-        else {
-            OutputBox.setText(selectedNode.toString());
+            else {
+                OutputBox.setText(selectedNode.toString());
+            }
         }
     }
 
@@ -118,6 +120,7 @@ public class GameMaster {
                 } else if (mouseEvent.getSource() == t.getTank().getRobotImage()) {
                     selectTile(t.getTank().getPosition());
                 }
+
                 outputTile();
             }
         }
@@ -231,7 +234,8 @@ public class GameMaster {
 
     public void endTurn(){
         makeFoggyOut();
-        //TODO hide all robots
+        selectTile(game.getBoard().getCorner(getNextTeam().getColour()));
+        outputTile();
         startPlay();
         robotShoot.setDisable(false);
     }
