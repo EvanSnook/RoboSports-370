@@ -49,6 +49,9 @@ public class GameMaster {
     @FXML
     public TextArea OutputBox;
 
+    @FXML
+    public TextArea RobotBox;
+
     public GameMaster() {}
 
     /**
@@ -110,6 +113,10 @@ public class GameMaster {
         else if(getCurrentRobot().getPosition().getUR() == getSelectedNode()){
             getCurrentRobot().setFacing(5);
         }
+    }
+
+    public void updateRobotBox(){
+        RobotBox.setText(currentRobot.toString());
     }
 
     public void outputTile(){
@@ -342,6 +349,7 @@ public class GameMaster {
             clearAreaFog(game.getTeam(currentRobot.getColour()).getTank().getPosition(), game.getTeam(currentRobot.getColour()).getTank().getRange());
             game.getTeam(currentRobot.getColour()).getTank().getRobotImage().setVisible(true);
         }
+        updateRobotBox();
     }
 
     public Team getNextTeam(){
