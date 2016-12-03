@@ -49,6 +49,9 @@ public class GameMaster {
     @FXML
     public TextArea OutputBox;
 
+    @FXML
+    public TextArea RobotBox;
+
     public GameMaster() {}
 
     /**
@@ -105,6 +108,10 @@ public class GameMaster {
         else if(getCurrentRobot().getPosition().getUR() == getSelectedNode())
             getCurrentRobot().setFacing(5);
         getCurrentRobot().getRobotImage().setRotate((currentRobot.getFacing() * 60));
+    }
+
+    public void updateRobotBox(){
+        RobotBox.setText(currentRobot.toString());
     }
 
     public void outputTile(){
@@ -275,6 +282,8 @@ public class GameMaster {
         if(getCurrentRobot().getRemainingMoves() < 1){
             robotMove.setDisable(true);
         }
+        draw();
+        return;
     }
 
     public void robotShoot(){
@@ -291,7 +300,6 @@ public class GameMaster {
     }
 
     public void endTurn(){
-        makeFoggyOut();
         selectTile(game.getBoard().getCorner(getNextTeam().getColour()));
         outputTile();
         startPlay();
@@ -307,14 +315,25 @@ public class GameMaster {
             currentRobot = nextTeam.getNextRobot();
         }
         currentRobot.setRemainingMoves(currentRobot.getMaxMove());
+        draw();
+    }
 
-        // clear the fog
-        if(game.getTeam(currentRobot.getColour()).getScout().isAlive())
+    public void draw(){
+        makeFoggyOut();
+
+        if(game.getTeam(currentRobot.getColour()).getScout().isAlive()){
             clearAreaFog(game.getTeam(currentRobot.getColour()).getScout().getPosition(), game.getTeam(currentRobot.getColour()).getScout().getRange());
-        if(game.getTeam(currentRobot.getColour()).getSniper().isAlive())
+            game.getTeam(currentRobot.getColour()).getScout().getRobotImage().setVisible(true);
+        }
+        if(game.getTeam(currentRobot.getColour()).getSniper().isAlive()) {
             clearAreaFog(game.getTeam(currentRobot.getColour()).getSniper().getPosition(), game.getTeam(currentRobot.getColour()).getSniper().getRange());
-        if(game.getTeam(currentRobot.getColour()).getTank().isAlive())
+            game.getTeam(currentRobot.getColour()).getSniper().getRobotImage().setVisible(true);
+        }
+        if(game.getTeam(currentRobot.getColour()).getTank().isAlive()) {
             clearAreaFog(game.getTeam(currentRobot.getColour()).getTank().getPosition(), game.getTeam(currentRobot.getColour()).getTank().getRange());
+            game.getTeam(currentRobot.getColour()).getTank().getRobotImage().setVisible(true);
+        }
+        updateRobotBox();
     }
 
     public Team getNextTeam(){
@@ -367,11 +386,6 @@ public class GameMaster {
             while(iterator.getCurrentLayer() <= radius) {
                 if (iterator.getCurrentNode().canContainRobots()) {
                     iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
-                    for(Robot robot : iterator.getCurrentNode().getRobots()){
-                        if(robot.isAlive()) {
-                            robot.getRobotImage().setVisible(true);
-                        }
-                    }
                 }
                 iterator.next();
             }
