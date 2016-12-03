@@ -122,7 +122,7 @@ public class GameMaster {
         linkPolygonsToHexNodes();
         initRobots();
         initStartTiles();
-        currentRobot = game.getTeam(TeamColour.RED).getScout();
+        startPlay();
     }
 
     /**
@@ -238,10 +238,23 @@ public class GameMaster {
 
     public void endTurn(){
         makeFoggyOut();
-        //pass on to the lext player
-//        Team nextTeam = getNextTeam();
-//        currentRobot = nextTeam.getNextRobot();
+        //TODO hide all robots
+    }
 
+    public void startPlay(){
+        if(currentRobot == null){
+            currentRobot = game.getTeam(TeamColour.RED).getScout(); //get the red scout because its first round
+            clearAreaFog(game.getTeam(TeamColour.RED).getScout().getPosition(),game.getTeam(TeamColour.RED).getScout().getRange());
+            clearAreaFog(game.getTeam(TeamColour.RED).getSniper().getPosition(),game.getTeam(TeamColour.RED).getSniper().getRange());
+            clearAreaFog(game.getTeam(TeamColour.RED).getTank().getPosition(),game.getTeam(TeamColour.RED).getTank().getRange());
+        } else {
+            Team nextTeam = getNextTeam();//get the next team
+            currentRobot = nextTeam.getNextRobot();//get the next robot in order
+            // clear the fog
+            clearAreaFog(nextTeam.getScout().getPosition(), nextTeam.getScout().getRange());
+            clearAreaFog(nextTeam.getSniper().getPosition(), nextTeam.getSniper().getRange());
+            clearAreaFog(nextTeam.getTank().getPosition(), nextTeam.getTank().getRange());
+        }
     }
 
     public Team getNextTeam(){
