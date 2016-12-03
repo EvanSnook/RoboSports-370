@@ -30,6 +30,6 @@ public class EditRobotController {
     }
 
     public void showMainMenu(MouseEvent mouseEvent) {
-        PublicViewController.getInstance().setScene("MAIN_MENU");
+        PublicViewController.getInstance().setScene("ROBOT_MANAGER");
     }
 }

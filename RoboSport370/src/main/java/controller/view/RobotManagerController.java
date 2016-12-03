@@ -12,7 +12,7 @@ public class RobotManagerController {
     public ListView onlineRobotsListView;
 
     public void editRobot(/*MouseEvent mouseEvent*/) {
-
+        PublicViewController.getInstance().setScene("EDIT_ROBOTS");
     }
 
     public void importRobot(/*MouseEvent mouseEvent*/) {
