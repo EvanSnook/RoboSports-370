@@ -36,33 +36,6 @@ public class GameMaster {
     @FXML
     public Pane gameContainer;
 
-    //medium board corners
-    @FXML
-    public Polygon L6N0;
-    @FXML
-    public Polygon L6N6;
-    @FXML
-    public Polygon L6N12;
-    @FXML
-    public Polygon L6N18;
-    @FXML
-    public Polygon L6N24;
-    @FXML
-    public Polygon L6N30;
-
-    //small board corners
-    @FXML
-    public Polygon L4N0;
-    @FXML
-    public Polygon L4N4;
-    @FXML
-    public Polygon L4N8;
-    @FXML
-    public Polygon L4N12;
-    @FXML
-    public Polygon L4N16;
-    @FXML
-    public Polygon L4N20;
 
     @FXML
     public ImageView redScout;
@@ -100,7 +73,7 @@ public class GameMaster {
     public ImageView blueTank;
 
     @FXML
-    public ImageView purplecout;
+    public ImageView purpleScout;
     @FXML
     public ImageView purpleSniper;
     @FXML
@@ -123,6 +96,7 @@ public class GameMaster {
         initRobots();
         initStartTiles();
         currentRobot = game.getTeam(TeamColour.RED).getScout();
+
     }
 
     /**
@@ -193,6 +167,7 @@ public class GameMaster {
             t.getScout().setRobotImage(scoutView);
             t.getSniper().setRobotImage(sniperView);
             t.getTank().setRobotImage(tankView);
+
         }
     }
 
@@ -210,6 +185,12 @@ public class GameMaster {
                 startView.setVisible(false);
                 continue;
             }
+            game.getBoard().getCorner(t.getColour()).addRobot(t.getScout());
+            t.getScout().setPosition( game.getBoard().getCorner(t.getColour()));
+            game.getBoard().getCorner(t.getColour()).addRobot(t.getSniper());
+            t.getSniper().setPosition( game.getBoard().getCorner(t.getColour()));
+            game.getBoard().getCorner(t.getColour()).addRobot(t.getScout());
+            t.getTank().setPosition( game.getBoard().getCorner(t.getColour()));
         }
     }
 

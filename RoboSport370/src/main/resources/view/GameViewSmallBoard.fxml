@@ -36,7 +36,7 @@
             <Image url="@../images/greenStart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="radStart" fitHeight="118.0" fitWidth="100.0" layoutX="241.0" layoutY="330.0">
+      <ImageView fx:id="redStart" fitHeight="118.0" fitWidth="100.0" layoutX="241.0" layoutY="330.0">
          <image>
             <Image url="@../images/redStart.png" />
          </image>

@@ -70,6 +70,15 @@ public class HexNode {
             this.robots = new LinkedList<>();
     }
 
+    public void addRobot(Robot r){
+        robots.add(r);
+        System.out.print(getRobots());
+    }
+
+    public void removeRobot(Robot r){
+        robots.remove(r);
+    }
+
     public String getLabel() {
         return this.label;
     }
