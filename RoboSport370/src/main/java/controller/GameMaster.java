@@ -213,11 +213,9 @@ public class GameMaster {
 
     public void robotShoot(){
         if(getSelectedNode() != null){
-            Iterator iterator = getSelectedNode().getRobots().iterator();
-            while(iterator.hasNext()){
-                getSelectedNode().getRobots().forEach(r -> r.takeDamage(getCurrentRobot().getDamage()));
-                iterator.next();
-            }
+
+            getSelectedNode().getRobots().forEach(r -> r.takeDamage(getCurrentRobot().getDamage()));
+
             robotShoot.setDisable(true);
             return;
         }
@@ -231,7 +229,6 @@ public class GameMaster {
 
     public void endTurn(){
         makeFoggyOut();
-        //TODO hide all robots
         startPlay();
         robotShoot.setDisable(false);
     }
