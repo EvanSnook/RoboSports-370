@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -26,6 +27,7 @@ public class Start extends Application {
             Scene scene = new Scene(mainMenu);
             view.setScene(scene);
             view.setTitle("RoboSport370");
+            view.getIcons().add(new Image(getClass().getResourceAsStream("/images/redScout.PNG")));
             view.show();
 
             fxmlLoader.<ViewController>getController().setStage(view);
