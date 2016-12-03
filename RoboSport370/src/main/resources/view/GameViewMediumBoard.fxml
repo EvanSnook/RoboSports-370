@@ -2085,78 +2085,79 @@
             <Font size="53.0" />
          </font>
       </Label>
-      <ImageView fx:id="purpleTank" fitHeight="40.0" fitWidth="50.0" layoutX="397.0" layoutY="717.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="purpleTank" fitHeight="40.0" fitWidth="50.0" layoutX="397.0" layoutY="717.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/purpleTank.PNG" />
          </image></ImageView>
-      <ImageView fx:id="purpleSniper" fitHeight="40.0" fitWidth="50.0" layoutX="389.0" layoutY="717.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="purpleSniper" fitHeight="40.0" fitWidth="50.0" layoutX="389.0" layoutY="717.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/purpleSniper.PNG" />
          </image></ImageView>
-      <ImageView fx:id="purpleScout" fitHeight="40.0" fitWidth="50.0" layoutX="382.0" layoutY="717.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="purpleScout" fitHeight="40.0" fitWidth="50.0" layoutX="382.0" layoutY="717.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/purpleScout.PNG" />
          </image></ImageView>
-      <ImageView fx:id="blueTank" fitHeight="40.0" fitWidth="50.0" layoutX="769.0" layoutY="717.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="blueTank" fitHeight="40.0" fitWidth="50.0" layoutX="769.0" layoutY="717.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/blueTank.PNG" />
          </image></ImageView>
-      <ImageView fx:id="blueSniper" fitHeight="40.0" fitWidth="50.0" layoutX="762.0" layoutY="717.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="blueSniper" fitHeight="40.0" fitWidth="50.0" layoutX="762.0" layoutY="717.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/blueSniper.PNG" />
          </image></ImageView>
 
-      <ImageView fx:id="blueScout" fitHeight="40.0" fitWidth="50.0" layoutX="754.0" layoutY="717.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="blueScout" fitHeight="40.0" fitWidth="50.0" layoutX="754.0" layoutY="717.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/blueScout.PNG" />
          </image></ImageView>
-      <ImageView fx:id="greenTank" fitHeight="40.0" fitWidth="50.0" layoutX="954.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="greenTank" fitHeight="40.0" fitWidth="50.0" layoutX="954.0" layoutY="387.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/greenTank.PNG" />
          </image></ImageView>
-      <ImageView fx:id="greenSniper" fitHeight="40.0" fitWidth="50.0" layoutX="947.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="greenSniper" fitHeight="40.0" fitWidth="50.0" layoutX="947.0" layoutY="387.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/greenSniper.PNG" />
          </image></ImageView>
-      <ImageView fx:id="greenScout" fitHeight="40.0" fitWidth="50.0" layoutX="940.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="greenScout" fitHeight="40.0" fitWidth="50.0" layoutX="940.0" layoutY="387.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/greenScout.PNG" />
          </image></ImageView>
-      <ImageView fx:id="yellowTank" fitHeight="40.0" fitWidth="50.0" layoutX="769.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="yellowTank" fitHeight="40.0" fitWidth="50.0" layoutX="769.0" layoutY="57.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/yellowTank.PNG" />
          </image></ImageView>
-      <ImageView fx:id="yellowSniper" fitHeight="40.0" fitWidth="50.0" layoutX="761.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="yellowSniper" fitHeight="40.0" fitWidth="50.0" layoutX="761.0" layoutY="57.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/yellowSniper.PNG" />
          </image></ImageView>
-      <ImageView fx:id="yellowScout" fitHeight="40.0" fitWidth="50.0" layoutX="754.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="yellowScout" fitHeight="40.0" fitWidth="50.0" layoutX="754.0" layoutY="57.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/yellowScout.PNG" />
          </image></ImageView>
-      <ImageView fx:id="orangeTank" fitHeight="40.0" fitWidth="50.0" layoutX="397.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="orangeTank" fitHeight="40.0" fitWidth="50.0" layoutX="397.0" layoutY="57.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/orangeTank.PNG" />
          </image></ImageView>
-      <ImageView fx:id="orangeSniper" fitHeight="40.0" fitWidth="50.0" layoutX="390.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="orangeSniper" fitHeight="40.0" fitWidth="50.0" layoutX="390.0" layoutY="57.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/orangeSniper.PNG" />
          </image></ImageView>
-      <ImageView fx:id="orangeScout" fitHeight="40.0" fitWidth="50.0" layoutX="382.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="orangeScout" fitHeight="40.0" fitWidth="50.0" layoutX="382.0" layoutY="57.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/orangeScout.PNG" />
          </image></ImageView>
-      <ImageView fx:id="redTank" fitHeight="40.0" fitWidth="50.0" layoutX="211.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="redTank" fitHeight="40.0" fitWidth="50.0" layoutX="211.0" layoutY="385.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/redTank.PNG" />
          </image></ImageView>
-      <ImageView fx:id="redSniper" fitHeight="40.0" fitWidth="50.0" layoutX="203.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="redSniper" fitHeight="40.0" fitWidth="50.0" layoutX="203.0" layoutY="385.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/redSniper.PNG" />
          </image></ImageView>
-      <ImageView fx:id="redScout" fitHeight="40.0" fitWidth="50.0" layoutX="197.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="redScout" fitHeight="40.0" fitWidth="50.0" layoutX="197.0" layoutY="387.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/redScout.PNG" />
          </image></ImageView>
+      <TextArea fx:id="OutputBox" layoutX="14.0" layoutY="13.0" prefHeight="297.0" prefWidth="225.0" />
    </children>
 </Pane>

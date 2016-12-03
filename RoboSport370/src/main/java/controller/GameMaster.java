@@ -91,7 +91,18 @@ public class GameMaster {
     }
 
     public void robotClicked(MouseEvent mouseEvent){
-        OutputBox.setText(mouseEvent.);
+        for(Team t : game.getTeams()) {
+
+            String colour = t.getColour().toString().toLowerCase();
+
+            if (mouseEvent.getSource() == t.getScout().getRobotImage()) {
+                OutputBox.setText(t.getScout().toString());
+            } else if (mouseEvent.getSource() == t.getSniper().getRobotImage()) {
+                OutputBox.setText(t.getSniper().toString());
+            } else if (mouseEvent.getSource() == t.getTank().getRobotImage()) {
+                OutputBox.setText(t.getTank().toString());
+            }
+        }
     }
 
     public Game getGame() {
