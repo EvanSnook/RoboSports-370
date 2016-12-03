@@ -99,12 +99,14 @@ public class GameMaster {
 
     public void robotClicked(MouseEvent mouseEvent){
         for(Team t : game.getTeams()) {
-            if (mouseEvent.getSource() == t.getScout().getRobotImage()) {
-                OutputBox.setText(t.getScout().toString());
-            } else if (mouseEvent.getSource() == t.getSniper().getRobotImage()) {
-                OutputBox.setText(t.getSniper().toString());
-            } else if (mouseEvent.getSource() == t.getTank().getRobotImage()) {
-                OutputBox.setText(t.getTank().toString());
+            if(t.isEnabled()) {
+                if (mouseEvent.getSource() == t.getScout().getRobotImage()) {
+                    OutputBox.setText(t.getScout().toString());
+                } else if (mouseEvent.getSource() == t.getSniper().getRobotImage()) {
+                    OutputBox.setText(t.getSniper().toString());
+                } else if (mouseEvent.getSource() == t.getTank().getRobotImage()) {
+                    OutputBox.setText(t.getTank().toString());
+                }
             }
         }
     }

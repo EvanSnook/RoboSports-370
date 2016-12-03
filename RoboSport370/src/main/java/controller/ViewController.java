@@ -93,6 +93,7 @@ public class ViewController {
                 break;
             case "END_GAME":
                 setScene(endGameScene);
+                break;
             default:
                 System.err.println("Unknown scene: " + sceneName);
         }
