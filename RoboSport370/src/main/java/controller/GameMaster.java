@@ -92,24 +92,19 @@ public class GameMaster {
 
     public void setRobotFacing(){
         //set robot to face selected node
-        if(getCurrentRobot().getPosition().getR() == getSelectedNode()){
+        if(getCurrentRobot().getPosition().getR() == getSelectedNode())
             getCurrentRobot().setFacing(0);
-        }
-        else if(getCurrentRobot().getPosition().getDR() == getSelectedNode()){
+        else if(getCurrentRobot().getPosition().getDR() == getSelectedNode())
             getCurrentRobot().setFacing(1);
-        }
-        else if(getCurrentRobot().getPosition().getDL() == getSelectedNode()){
+        else if(getCurrentRobot().getPosition().getDL() == getSelectedNode())
             getCurrentRobot().setFacing(2);
-        }
-        else if(getCurrentRobot().getPosition().getL() == getSelectedNode()){
+        else if(getCurrentRobot().getPosition().getL() == getSelectedNode())
             getCurrentRobot().setFacing(3);
-        }
-        else if(getCurrentRobot().getPosition().getUL() == getSelectedNode()){
+        else if(getCurrentRobot().getPosition().getUL() == getSelectedNode())
             getCurrentRobot().setFacing(4);
-        }
-        else if(getCurrentRobot().getPosition().getUR() == getSelectedNode()){
+        else if(getCurrentRobot().getPosition().getUR() == getSelectedNode())
             getCurrentRobot().setFacing(5);
-        }
+        getCurrentRobot().getRobotImage().setRotate((currentRobot.getFacing() * 60));
     }
 
     public void outputTile(){
@@ -239,60 +234,47 @@ public class GameMaster {
     public void robotMove(){
         int xBuffer = 24;
         int yBuffer = 21;
-        if (getCurrentRobot().getFacing() == 0 && getCurrentRobot().getPosition().getR().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
+
+        if (getCurrentRobot().getFacing() == 0 && getCurrentRobot().getPosition().getR().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getR());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
         }
-        else if (getCurrentRobot().getFacing() == 1 && getCurrentRobot().getPosition().getDR().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
+        else if (getCurrentRobot().getFacing() == 1 && getCurrentRobot().getPosition().getDR().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getDR());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
-
         }
-        else if (getCurrentRobot().getFacing() == 2 && getCurrentRobot().getPosition().getDL().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
+        else if (getCurrentRobot().getFacing() == 2 && getCurrentRobot().getPosition().getDL().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getDL());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
-
         }
-        else if (getCurrentRobot().getFacing() == 3 && getCurrentRobot().getPosition().getL().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
+        else if (getCurrentRobot().getFacing() == 3 && getCurrentRobot().getPosition().getL().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getL());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
         }
-        else if (getCurrentRobot().getFacing() == 4 && getCurrentRobot().getPosition().getUL().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
+        else if (getCurrentRobot().getFacing() == 4 && getCurrentRobot().getPosition().getUL().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getUL());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
         }
-        else if (getCurrentRobot().getFacing() == 5 && getCurrentRobot().getPosition().getUR().canContainRobots() != false) {
-            getCurrentRobot().consumeMove();
+        else if (getCurrentRobot().getFacing() == 5 && getCurrentRobot().getPosition().getUR().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getUR());
             getCurrentRobot().getPosition().addRobot(getCurrentRobot());
-            getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
-            getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
-
+        } else {
+            // Don't do anything because we can't move there
         }
+
+        getCurrentRobot().consumeMove();
+        getCurrentRobot().getRobotImage().setLayoutX(getCurrentRobot().getPosition().getHexagon().getLayoutX() - xBuffer);
+        getCurrentRobot().getRobotImage().setLayoutY(getCurrentRobot().getPosition().getHexagon().getLayoutY() - yBuffer);
+
         if(getCurrentRobot().getRemainingMoves() < 1){
             robotMove.setDisable(true);
         }
-        return;
     }
 
     public void robotShoot(){
@@ -313,12 +295,13 @@ public class GameMaster {
         selectTile(game.getBoard().getCorner(getNextTeam().getColour()));
         outputTile();
         startPlay();
+        robotMove.setDisable(false);
         robotShoot.setDisable(false);
     }
 
     public void startPlay(){
         if(currentRobot == null){
-            currentRobot = game.getTeam(TeamColour.RED).getScout();
+            currentRobot = game.getTeam(TeamColour.RED).getNextRobot();
         } else {
             Team nextTeam = getNextTeam();
             currentRobot = nextTeam.getNextRobot();
@@ -326,15 +309,12 @@ public class GameMaster {
         currentRobot.setRemainingMoves(currentRobot.getMaxMove());
 
         // clear the fog
-        if(game.getTeam(currentRobot.getColour()).getScout().isAlive()){
+        if(game.getTeam(currentRobot.getColour()).getScout().isAlive())
             clearAreaFog(game.getTeam(currentRobot.getColour()).getScout().getPosition(), game.getTeam(currentRobot.getColour()).getScout().getRange());
-        }
-        if(game.getTeam(currentRobot.getColour()).getSniper().isAlive()) {
+        if(game.getTeam(currentRobot.getColour()).getSniper().isAlive())
             clearAreaFog(game.getTeam(currentRobot.getColour()).getSniper().getPosition(), game.getTeam(currentRobot.getColour()).getSniper().getRange());
-        }
-        if(game.getTeam(currentRobot.getColour()).getTank().isAlive()) {
+        if(game.getTeam(currentRobot.getColour()).getTank().isAlive())
             clearAreaFog(game.getTeam(currentRobot.getColour()).getTank().getPosition(), game.getTeam(currentRobot.getColour()).getTank().getRange());
-        }
     }
 
     public Team getNextTeam(){
@@ -364,7 +344,7 @@ public class GameMaster {
         }
         while(returnTeam == null) {
             Team t = game.getTeam(colour[++index % 6]);
-            if (!t.isEnabled() || t.getNextRobot() == null) continue;
+            if (!t.isEnabled() || t.remainingRobots() == 0) continue;
             returnTeam = t;
         }
         return returnTeam;

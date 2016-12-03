@@ -50,37 +50,38 @@ public class Team {
      * @return the next {@link Robot} to play, or null if they are all dead
      */
     public Robot getNextRobot() {
-        if(!enabled) return null;
+        if (!enabled) return null;
 
-        if(lastRobot == null){
-            if(scout.isAlive()){
-                return scout;
-            }
-            if(sniper.isAlive()){
-                return sniper;
-            }
-            if(tank.isAlive()){
-                return tank;
-            }
-            return null;
+        if (lastRobot == null){
+            lastRobot = scout;
+            return scout;
         }
         if (lastRobot == scout && sniper.isAlive()) {
+            lastRobot = sniper;
             return sniper;
         } else if (lastRobot == scout && !sniper.isAlive() && tank.isAlive()) {
+            lastRobot = tank;
             return tank;
         } else if (lastRobot == scout && !sniper.isAlive() && !tank.isAlive() && scout.isAlive()) {
+            lastRobot = scout;
             return scout;
         } else if (lastRobot == sniper && tank.isAlive()) {
+            lastRobot = tank;
             return tank;
         } else if (lastRobot == sniper && !tank.isAlive() && scout.isAlive()) {
+            lastRobot = scout;
             return scout;
         } else if (lastRobot == sniper && !tank.isAlive() && !scout.isAlive() && sniper.isAlive()) {
+            lastRobot = sniper;
             return sniper;
         } else if (lastRobot == tank && scout.isAlive()) {
+            lastRobot = scout;
             return scout;
         } else if (lastRobot == tank && !scout.isAlive() && sniper.isAlive()) {
+            lastRobot = sniper;
             return sniper;
         } else if (lastRobot == tank && !scout.isAlive() && sniper.isAlive() && tank.isAlive()) {
+            lastRobot = tank;
             return tank;
         } else {
             return null;
