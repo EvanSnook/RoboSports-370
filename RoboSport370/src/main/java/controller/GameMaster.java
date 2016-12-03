@@ -232,90 +232,32 @@ public class GameMaster {
     public Team getNextTeam(){
         Team returnTeam = null;
         //who's turn is it currently.
-
+        TeamColour[] colour = TeamColour.values();
+        int index = 0;
         switch(currentRobot.getColour()){
             case RED:
-                //Who's turn is it going to be.
-                if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.PURPLE);
-                } else {/*Red is only alivr*/}
+                index = 0;
                 break;
             case ORANGE:
-                if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.PURPLE);
-                } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
-                    returnTeam = game.getTeam(TeamColour.RED);
-                } else {/*Orange is only alive*/}
-                break;
-            case BLUE:
-                if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
-                returnTeam = game.getTeam(TeamColour.PURPLE);
-                } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
-                returnTeam = game.getTeam(TeamColour.RED);
-                } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
-                returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.GREEN);
-                } else {/*Blue is only alive*/}
-                break;
-            case GREEN:
-                if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.PURPLE);
-                } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
-                    returnTeam = game.getTeam(TeamColour.RED);
-                } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
-                        returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else {/*Green is only alive*/}
+                index = 1;
                 break;
             case YELLOW:
-                if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.BLUE);
-                } else if(game.getTeam(TeamColour.PURPLE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.PURPLE);
-                } else if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
-                    returnTeam = game.getTeam(TeamColour.RED);
-                } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.ORANGE);
-
-                } else {/*Yellow is only alive*/                }
+                index = 2;
+                break;
+            case GREEN:
+                index = 3;
+                break;
+            case BLUE:
+                index = 4;
                 break;
             case PURPLE:
-                if(game.getTeam(TeamColour.RED).getNextRobot() != null) {
-                    returnTeam = game.getTeam(TeamColour.RED);
-                } else if(game.getTeam(TeamColour.ORANGE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.ORANGE);
-                } else if(game.getTeam(TeamColour.YELLOW).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.YELLOW);
-                } else if(game.getTeam(TeamColour.GREEN).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.GREEN);
-                } else if(game.getTeam(TeamColour.BLUE).getNextRobot() != null){
-                    returnTeam = game.getTeam(TeamColour.BLUE);
-                } else {/*Purple is only alive*/}
+                index = 5;
                 break;
-            default:
-                break;
+        }
+        while(returnTeam == null) {
+            Team t = game.getTeam(colour[++index % 6]);
+            if (!t.isEnabled() || t.getNextRobot() == null) continue;
+            returnTeam = t;
         }
         return returnTeam;
     }
