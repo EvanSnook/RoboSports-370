@@ -72,7 +72,7 @@ public class HexNode {
 
     public void addRobot(Robot r){
         robots.add(r);
-        System.out.print(getRobots());
+        r.setPosition(this);
     }
 
     public void removeRobot(Robot r){

@@ -36,7 +36,6 @@ public class GameMaster {
     @FXML
     public Pane gameContainer;
 
-
     @FXML
     public ImageView redScout;
     @FXML
@@ -201,7 +200,8 @@ public class GameMaster {
 
             current.setHexagon((Polygon) gameContainer.lookup("#" + current.getLabel()));
             current.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
-        }}
+        }
+    }
 
     public void showRules(/*MouseEvent mouseEvent*/) {
 
