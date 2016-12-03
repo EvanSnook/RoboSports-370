@@ -386,6 +386,11 @@ public class GameMaster {
             while(iterator.getCurrentLayer() <= radius) {
                 if (iterator.getCurrentNode().canContainRobots()) {
                     iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
+                    if(iterator.getCurrentNode().canContainRobots()){
+                        iterator.getCurrentNode().getRobots().stream()
+                                .filter(Robot::isAlive)
+                                .forEach(r -> r.getRobotImage().setVisible(true));
+                    }
                 }
                 iterator.next();
             }
