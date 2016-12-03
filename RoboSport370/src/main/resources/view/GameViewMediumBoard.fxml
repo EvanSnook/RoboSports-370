@@ -2079,7 +2079,7 @@
       <Button layoutX="1026.0" layoutY="484.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="63.0" prefWidth="108.0" text="Rules" />
       <Button layoutX="44.0" layoutY="667.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="108.0" text="End Turn" />
       <Button fx:id="robotShoot" layoutX="44.0" layoutY="578.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="108.0" text="Shoot" />
-      <Button layoutX="41.0" layoutY="489.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="108.0" text="Move" />
+      <Button fx:id="robotShoot" layoutX="41.0" layoutY="489.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="108.0" text="Move" />
       <Label layoutX="489.0" layoutY="-13.0" text="Red's Turn">
          <font>
             <Font size="53.0" />
