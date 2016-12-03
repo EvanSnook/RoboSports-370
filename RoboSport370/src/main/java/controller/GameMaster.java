@@ -4,16 +4,22 @@ import java.util.Iterator;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.Game;
 import model.HexNode;
 import model.HexNodeIterator;
+import model.PublicViewController;
 import model.Robot;
 import model.Team;
 import model.enums.TeamColour;
@@ -183,8 +189,8 @@ public class GameMaster {
         }
     }
 
-    public void showRules(/*MouseEvent mouseEvent*/) {
-
+    public void showRules(MouseEvent mouseEvent){
+        PublicViewController.getInstance().showRules(mouseEvent);
     }
 
     public void robotMove(){
@@ -263,7 +269,7 @@ public class GameMaster {
     }
 
     public void endMatch(){
-
+        PublicViewController.getInstance().setScene("END_GAME");
     }
 
     /**
