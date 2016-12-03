@@ -292,6 +292,7 @@ public class GameMaster {
         if(getCurrentRobot().getRemainingMoves() < 1){
             robotMove.setDisable(true);
         }
+        draw();
         return;
     }
 
@@ -309,7 +310,6 @@ public class GameMaster {
     }
 
     public void endTurn(){
-        makeFoggyOut();
         selectTile(game.getBoard().getCorner(getNextTeam().getColour()));
         outputTile();
         startPlay();
@@ -324,16 +324,23 @@ public class GameMaster {
             currentRobot = nextTeam.getNextRobot();
         }
         currentRobot.setRemainingMoves(currentRobot.getMaxMove());
+        draw();
+    }
 
-        // clear the fog
+    public void draw(){
+        makeFoggyOut();
+
         if(game.getTeam(currentRobot.getColour()).getScout().isAlive()){
             clearAreaFog(game.getTeam(currentRobot.getColour()).getScout().getPosition(), game.getTeam(currentRobot.getColour()).getScout().getRange());
+            game.getTeam(currentRobot.getColour()).getScout().getRobotImage().setVisible(true);
         }
         if(game.getTeam(currentRobot.getColour()).getSniper().isAlive()) {
             clearAreaFog(game.getTeam(currentRobot.getColour()).getSniper().getPosition(), game.getTeam(currentRobot.getColour()).getSniper().getRange());
+            game.getTeam(currentRobot.getColour()).getSniper().getRobotImage().setVisible(true);
         }
         if(game.getTeam(currentRobot.getColour()).getTank().isAlive()) {
             clearAreaFog(game.getTeam(currentRobot.getColour()).getTank().getPosition(), game.getTeam(currentRobot.getColour()).getTank().getRange());
+            game.getTeam(currentRobot.getColour()).getTank().getRobotImage().setVisible(true);
         }
     }
 
@@ -387,11 +394,6 @@ public class GameMaster {
             while(iterator.getCurrentLayer() <= radius) {
                 if (iterator.getCurrentNode().canContainRobots()) {
                     iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
-                    for(Robot robot : iterator.getCurrentNode().getRobots()){
-                        if(robot.isAlive()) {
-                            robot.getRobotImage().setVisible(true);
-                        }
-                    }
                 }
                 iterator.next();
             }
