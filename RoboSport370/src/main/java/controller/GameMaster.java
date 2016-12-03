@@ -86,17 +86,15 @@ public class GameMaster {
         outputTile();
     }
     public void outputTile(){
-        if(selectedNode != null){
-            if (!selectedNode.isFoggy()){
-                String output = "";
-                for (Robot r: selectedNode.getRobots()) {
-                    output += r.toOutput() + "\n";
-                }
-                OutputBox.setText(output + selectedNode.toString());
+        if(!selectedNode.isFoggy()) {
+            String output = "";
+            for (Robot r: selectedNode.getRobots()) {
+                output += r.toOutput() + "\n";
             }
-            else {
-                OutputBox.setText(selectedNode.toString());
-            }
+            OutputBox.setText(output + selectedNode.toString());
+        }
+        else {
+            OutputBox.setText(selectedNode.toString());
         }
     }
 
@@ -120,7 +118,6 @@ public class GameMaster {
                 } else if (mouseEvent.getSource() == t.getTank().getRobotImage()) {
                     selectTile(t.getTank().getPosition());
                 }
-
                 outputTile();
             }
         }
@@ -234,8 +231,7 @@ public class GameMaster {
 
     public void endTurn(){
         makeFoggyOut();
-        selectTile(game.getBoard().getCorner(getNextTeam().getColour()));
-        outputTile();
+        //TODO hide all robots
         startPlay();
         robotShoot.setDisable(false);
     }
@@ -318,7 +314,7 @@ public class GameMaster {
      * Makes the entire board foggy
      */
     private void makeFoggyOut(){
-
+        selectedNode = null;
         HexNodeIterator iterator = new HexNodeIterator(game.getBoard().getRoot(), 0);
         int radius = game.getBoard().getSize().getValue();
         while(iterator.getCurrentLayer() <= radius){

@@ -141,6 +141,8 @@ public class Robot {
 
     public void takeDamage(int amount) {
         this.health = Math.max(0, this.health - amount);
+        if(!isAlive())
+            robotImage.setVisible(false);
     }
 
     public void startPlay() {
