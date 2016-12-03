@@ -164,4 +164,12 @@ public class Robot {
                 ", colour=" + colour +
                 '}';
     }
+    public String toOutput() {
+        return colour + " " + type + "{" +
+                "health=" + health +
+                ", damage=" + damage +
+                ", range=" + range +
+                ", remainingMoves=" + remainingMoves +
+                '}';
+    }
 }

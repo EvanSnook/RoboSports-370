@@ -27,9 +27,9 @@ import model.enums.TeamColour;
 // TODO GameMaster Class
 public class GameMaster {
     //solid colours range from 0x000000ff to 0xffffffff (Black to White)
-    private final String FOG_COLOUR = "0xddddddff";//grey
-    private final String DEFAULT_COLOUR = "0xffffffff";//white
-    private final String SELECTED_COLOUR = "0xaaaaaaff";//dark grey
+    public static final String FOG_COLOUR = "0xddddddff";//grey
+    public static final String DEFAULT_COLOUR = "0xffffffff";//white
+    public static final String SELECTED_COLOUR = "0xaaaaaaff";//dark grey
 
     private static Game game;
 
@@ -83,8 +83,17 @@ public class GameMaster {
         }
 
         selectTile(iterator.getCurrentNode());
-        OutputBox.setText(iterator.getCurrentNode().toString());
 
+        if(!iterator.getCurrentNode().isFoggy()) {
+            String output = "";
+            for (Robot r: iterator.getCurrentNode().getRobots()) {
+                output += r.toOutput() + "\n";
+            }
+            OutputBox.setText(output + iterator.getCurrentNode().toString());
+        }
+        else {
+            OutputBox.setText(iterator.getCurrentNode().toString());
+        }
     }
 
     public void selectTile(HexNode node) {
@@ -101,11 +110,11 @@ public class GameMaster {
         for(Team t : game.getTeams()) {
             if(t.isEnabled()) {
                 if (mouseEvent.getSource() == t.getScout().getRobotImage()) {
-                    OutputBox.setText(t.getScout().toString());
+                    selectTile(t.getScout().getPosition());
                 } else if (mouseEvent.getSource() == t.getSniper().getRobotImage()) {
-                    OutputBox.setText(t.getSniper().toString());
+                    selectTile(t.getSniper().getPosition());
                 } else if (mouseEvent.getSource() == t.getTank().getRobotImage()) {
-                    OutputBox.setText(t.getTank().toString());
+                    selectTile(t.getTank().getPosition());
                 }
             }
         }
