@@ -3,12 +3,14 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Text;
 import model.Game;
 import model.HexNode;
 import model.HexNodeIterator;
@@ -43,6 +45,9 @@ public class GameMaster {
 
     @FXML
     public TextArea RobotBox;
+
+    @FXML
+    public Label TurnLabel;
 
     public GameMaster() {
     }
@@ -294,6 +299,7 @@ public class GameMaster {
 
     public void endTurn() {
         selectTile(game.getBoard().getCorner(getNextTeam().getColour()));
+        TurnLabel.setText(getNextTeam().getColour().toString() + "'s Turn");
         outputTile();
         startPlay();
         robotMove.setDisable(false);
