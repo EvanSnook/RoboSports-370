@@ -242,6 +242,9 @@ public class GameMaster {
         int xBuffer = 24;
         int yBuffer = 21;
 
+        if(!currentRobot.getPosition().get(currentRobot.getFacing()).canContainRobots())
+            return;
+
         if (getCurrentRobot().getFacing() == 0 && getCurrentRobot().getPosition().getR().canContainRobots()) {
             getCurrentRobot().getPosition().removeRobot(getCurrentRobot());
             getCurrentRobot().setPosition(getCurrentRobot().getPosition().getR());
