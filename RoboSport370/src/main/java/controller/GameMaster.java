@@ -437,6 +437,9 @@ public class GameMaster {
         }
     }
 
+    /**
+     * Colours the tiles within the range of the current robot
+     */
     private void colourRange(){
         selectedNode = null;
         HexNodeIterator iterator = new HexNodeIterator(currentRobot.getPosition());
