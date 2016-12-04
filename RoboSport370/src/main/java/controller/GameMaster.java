@@ -60,6 +60,9 @@ public class GameMaster {
     @FXML
     public Label CurrentRobotHealth;
 
+    @FXML
+    public Label CurrentRobotMoves;
+
     public GameMaster() {
     }
 
@@ -126,6 +129,7 @@ public class GameMaster {
         CurrentRobotHealth.setText(String.valueOf(currentRobot.getHealth()));
         CurrentRobotRange.setText(String.valueOf(currentRobot.getRange()));
         CurrentRobotDamage.setText(String.valueOf(currentRobot.getDamage()));
+        CurrentRobotMoves.setText(String.valueOf(currentRobot.getRemainingMoves()));
     }
 
     public void outputTile() {

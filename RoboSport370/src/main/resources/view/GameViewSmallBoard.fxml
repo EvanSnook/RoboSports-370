@@ -1112,9 +1112,11 @@
       <Label fx:id="CurrentRobotType" layoutX="151.0" layoutY="330.0" text="" />
       <Label fx:id="CurrentRobotHealth" layoutX="149.0" layoutY="344.0" text="" />
       <Label layoutX="100.0" layoutY="344.0" text="Health:" />
-      <Label layoutX="101.0" layoutY="358.0" text="Range:" />
-      <Label fx:id="CurrentRobotRange" layoutX="150.0" layoutY="358.0" text="" />
-      <Label layoutX="89.0" layoutY="372.0" text="Damage:" />
-      <Label fx:id="CurrentRobotDamage" layoutX="150.0" layoutY="372.0" text="" />
+      <Label layoutX="101.0" layoutY="356.0" text="Range:" />
+      <Label fx:id="CurrentRobotRange" layoutX="150.0" layoutY="356.0" text="" />
+      <Label layoutX="89.0" layoutY="369.0" text="Damage:" />
+      <Label fx:id="CurrentRobotDamage" layoutX="150.0" layoutY="369.0" text="" />
+      <Label fx:id="CurrentRobotMoves" layoutX="150.0" layoutY="382.0" text="" />
+      <Label layoutX="31.0" layoutY="382.0" text="Remaining Moves:" />
    </children>
 </Pane>
