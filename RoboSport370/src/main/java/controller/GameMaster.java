@@ -24,6 +24,7 @@ public class GameMaster {
     public static final String FOG_COLOUR = "0xddddddff";//grey
     public static final String DEFAULT_COLOUR = "0xffffffff";//white
     public static final String SELECTED_COLOUR = "0xaaaaaaff";//dark grey
+    public static final String RANGE_COLOUR = "0xe6ffe6";//light green
 
     private static Game game;
 
@@ -69,6 +70,7 @@ public class GameMaster {
         initStartTiles();
         makeFoggyOut();
         startPlay();
+        colourRange();
     }
 
     /**
@@ -130,8 +132,11 @@ public class GameMaster {
     public void selectTile(HexNode node) {
         if (!node.getHexagon().getFill().toString().equals(FOG_COLOUR)) {
             //set the previously selected node to white
-            if (selectedNode != null)
+            if (selectedNode != null && getSelectedDistance() > currentRobot.getRange())
                 selectedNode.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
+            else if(selectedNode != null){
+                selectedNode.getHexagon().setFill(Paint.valueOf(RANGE_COLOUR));
+            }
             selectedNode = node;
             selectedNode.getHexagon().setFill(Paint.valueOf(currentRobot.getColour().toString().toUpperCase()));
         }
@@ -349,6 +354,7 @@ public class GameMaster {
             game.getTeam(currentRobot.getColour()).getTank().getRobotImage().setVisible(true);
         }
         updateRobotBox();
+        colourRange();
     }
 
     public Team getNextTeam() {
@@ -426,6 +432,17 @@ public class GameMaster {
                 for (Robot robot : iterator.getCurrentNode().getRobots()) {
                     robot.getRobotImage().setVisible(false);
                 }
+            }
+            iterator.next();
+        }
+    }
+
+    private void colourRange(){
+        selectedNode = null;
+        HexNodeIterator iterator = new HexNodeIterator(currentRobot.getPosition());
+        while (iterator.getCurrentLayer() <= currentRobot.getRange()) {
+            if (iterator.getCurrentNode().canContainRobots()) {
+                iterator.getCurrentNode().getHexagon().setFill(Paint.valueOf(RANGE_COLOUR));
             }
             iterator.next();
         }
