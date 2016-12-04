@@ -1,8 +1,9 @@
 package model;
 
+import org.json.simple.JSONObject;
+
 import model.enums.RobotType;
 import model.enums.TeamColour;
-import org.json.simple.JSONObject;
 
 public class RobotBuilder {
     private Robot r;
@@ -33,6 +34,19 @@ public class RobotBuilder {
                 .setMoves(2)
                 .setRange(3)
                 .setType(RobotType.SNIPER);
+    }
+
+    public RobotBuilder get(RobotType type) {
+        switch (type) {
+            case SNIPER:
+                return getSniper();
+            case SCOUT:
+                return getScout();
+            case TANK:
+                return getTank();
+            default:
+                return this;
+        }
     }
 
     private RobotBuilder setHealth(int health) {

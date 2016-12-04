@@ -3,17 +3,17 @@ package model;
 import org.json.simple.JSONObject;
 
 public class Stats {
-    private int wins;
-    private int matches;
-    private int distanceTraveled;
-    private int damageTaken;
-    private int damageGiven;
-    private int plays;
-    private int kills;
-    private int deaths;
+    private long wins;
+    private long losses;
+    private long died;
+    private long lived;
+    private long executions;
+    private long killed;
+    private long moved;
+    private long matches;
+    private long absorbed;
 
     public Stats() {
-
     }
 
     public Stats(JSONObject json) {
@@ -21,80 +21,107 @@ public class Stats {
         // Don't know what is JSON looks like
     }
 
-    public int getWins() {
+    public long getWins() {
         return wins;
     }
 
-    public int getMatches() {
+    public void setWins(long wins) {
+        this.wins = wins;
+    }
+
+    public long getLosses() {
+        return losses;
+    }
+
+    public void setLosses(long losses) {
+        this.losses = losses;
+    }
+
+    public long getDied() {
+        return died;
+    }
+
+    public void setDied(long died) {
+        this.died = died;
+    }
+
+    public long getLived() {
+        return lived;
+    }
+
+    public void setLived(long lived) {
+        this.lived = lived;
+    }
+
+    public long getExecutions() {
+        return executions;
+    }
+
+    public void setExecutions(long executions) {
+        this.executions = executions;
+    }
+
+    public long getKilled() {
+        return killed;
+    }
+
+    public void setKilled(long killed) {
+        this.killed = killed;
+    }
+
+    public long getMoved() {
+        return moved;
+    }
+
+    public void setMoved(long moved) {
+        this.moved = moved;
+    }
+
+    public long getMatches() {
         return matches;
     }
 
-    public int getDistanceTraveled() {
-        return distanceTraveled;
+    public void setMatches(long matches) {
+        this.matches = matches;
     }
 
-    public int getDamageTaken() {
-        return damageTaken;
+    public long getAbsorbed() {
+        return absorbed;
     }
 
-    public int getDamageGiven() {
-        return damageGiven;
+    public void setAbsorbed(long absorbed) {
+        this.absorbed = absorbed;
     }
 
-    public int getPlays() {
-        return plays;
-    }
-
-    public int getKills() {
-        return kills;
-    }
-
-    public int getDeaths() {
-        return deaths;
-    }
-
-    public int getLosses() {
-        return matches - wins;
-    }
-
-    public void addMatch(boolean wonMatch) {
-        if (wonMatch)
-            wins++;
-        matches++;
-    }
-
-    public void addDistanceTraveled() {
-        distanceTraveled++;
-    }
-
-    public void addDamageTaken(int damage) {
-        damageTaken += damage;
-    }
-
-    public void addDamageGiven(int damage) {
-        damageGiven += damage;
-    }
-
-    public void addPlay() {
-        plays++;
-    }
-
-    public void addKill() {
-        kills++;
-    }
-
-    public void addDeath() {
-        deaths++;
-    }
-
+    /**
+     * Merge other stats with these stats
+     *
+     * @param other the other stats
+     */
     public void mergeStats(Stats other) {
-        this.wins += other.getWins();
-        this.matches += other.getMatches();
-        this.distanceTraveled += other.getDistanceTraveled();
-        this.damageTaken += other.getDamageTaken();
-        this.damageGiven += other.getDamageGiven();
-        this.plays += other.getPlays();
-        this.kills += other.getKills();
-        this.deaths += other.getDeaths();
+        this.absorbed += other.absorbed;
+        this.died += other.died;
+        this.executions += other.executions;
+        this.killed += other.killed;
+        this.lived += other.lived;
+        this.losses += other.losses;
+        this.matches += other.matches;
+        this.moved += other.moved;
+        this.wins += other.wins;
+    }
+
+    @Override
+    public String toString() {
+        return "Stats{" +
+                "absorbed=" + absorbed +
+                ", died=" + died +
+                ", executions=" + executions +
+                ", killed=" + killed +
+                ", lived=" + lived +
+                ", losses=" + losses +
+                ", matches=" + matches +
+                ", moved=" + moved +
+                ", wins=" + wins +
+                '}';
     }
 }

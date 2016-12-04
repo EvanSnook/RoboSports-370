@@ -1,47 +1,40 @@
 package model;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public class RobotAI extends Robot {
-    private Stats previousStats;
-    private JSONObject script;
+    private String name;
+    private String team;
+    private String code;
     private HashMap<String, String> userDefinedWords;
     private HashMap<String, String> userDefinedVariables;
     private LinkedList<String> mail;
 
     public RobotAI() {
-        // TODO RobotAI Constructor
         this.userDefinedVariables = new HashMap<>();
         this.userDefinedVariables = new HashMap<>();
         this.mail = new LinkedList<>();
     }
 
-    public void load(JSONObject script) {
-        // TODO RobotAI.load(JSONObject)
-        // we don't know what his json looks like so we can't do this
-        throw new NotImplementedException();
-    }
-
-    public String getLibTeam() {
-        // TODO RobotAI.getLibTeam()
-        // requires load
-        throw new NotImplementedException();
+    public void load(JSONObject json) {
+        this.code = "";
+        for (Object item : (JSONArray) json.get("code")) {
+            this.code += item;
+        }
     }
 
     public String getPlayCommand() {
-        // TODO RobotAI.getPlayCommand()
-        // requires load
-        throw new NotImplementedException();
+        return userDefinedWords.get("play");
     }
 
-    public String getInitCommand() {
-        // TODO RobotAI.getInitCommand()
-        // requires load
-        throw new NotImplementedException();
+    public String getCode() {
+        return this.code;
     }
 
     public JSONObject toJSON() {
@@ -61,7 +54,19 @@ public class RobotAI extends Robot {
         return mail;
     }
 
-    public Stats getPreviousStats() {
-        return previousStats;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
     }
 }
