@@ -46,10 +46,19 @@ public class GameMaster {
     public TextArea OutputBox;
 
     @FXML
-    public TextArea RobotBox;
+    public Label TurnLabel;
 
     @FXML
-    public Label TurnLabel;
+    public Label CurrentRobotType;
+
+    @FXML
+    public Label CurrentRobotRange;
+
+    @FXML
+    public Label CurrentRobotDamage;
+
+    @FXML
+    public Label CurrentRobotHealth;
 
     public GameMaster() {
     }
@@ -113,7 +122,10 @@ public class GameMaster {
     }
 
     public void updateRobotBox() {
-        RobotBox.setText(currentRobot.toString());
+        CurrentRobotType.setText(currentRobot.getType().toString());
+        CurrentRobotHealth.setText(String.valueOf(currentRobot.getHealth()));
+        CurrentRobotRange.setText(String.valueOf(currentRobot.getRange()));
+        CurrentRobotDamage.setText(String.valueOf(currentRobot.getDamage()));
     }
 
     public void outputTile() {
