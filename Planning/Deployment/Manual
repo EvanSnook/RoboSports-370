@@ -1,0 +1,11 @@
+Main Menu:
+    The Main Menu is the first screen that appears when you start RoboSport370. There are four choices which you can make from this screen: Creating a new game, reading the rules, viewing statistics of robots stored online, or quitting the program. There is always a way to get back to the Main Menu screen from any other game screen since it is the root for all program flow. 
+    
+Create Game:
+    
+Rules:
+    When the Rules screen is opened from the Main Menu or In-Game Screen, a separate window is brought up to read the game rules. This is useful because one can be in a current because you can read the rules while keeping the game screen open. There is no actions to be performed other than scrolling through the text to read all the rules, and closing the window. There is no "Back" button since it is a separate window from the rest of the program. 
+Stats:
+    When the statistics screen is activated via the Main Menu, it will display all of the robots stored on the Moodle Server. There are querying options to find specific robots which can be done by selecting specific teams from the "Teams" column, or by selecting specific robots from the "Robots" column. To select a robot or team, simply left-click the robot or team to query stats for that specific instance. Left-Clicking the "Back" button will return to the Main Menu. 
+Quit:
+    When the 'Quit' button is selected from the Main Menu, In-Game screen, or Post-Game screen, RobotSport370 will close and end the current session. 
