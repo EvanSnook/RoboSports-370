@@ -15,10 +15,6 @@ import model.enums.RobotType;
 public class Librarian {
     private List<RobotAI> robots;
 
-    public static void main(String[] args) {
-        new Librarian();
-    }
-
     public Librarian() {
         robots = new ArrayList<>();
         loadRobots();
@@ -118,5 +114,9 @@ public class Librarian {
         } catch (Exception ex) {
             return null;
         }
+    }
+
+    public List<RobotAI> getRobots() {
+        return robots;
     }
 }

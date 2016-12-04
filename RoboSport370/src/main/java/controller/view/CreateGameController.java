@@ -1,6 +1,13 @@
 package controller.view;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
@@ -9,14 +16,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import model.Game;
 import model.PublicGameMaster;
+import model.PublicLibrarian;
 import model.PublicViewController;
 import model.Robot;
-import model.RobotBuilder;
+import model.RobotAI;
 import model.Team;
 import model.enums.BoardSize;
+import model.enums.RobotType;
 import model.enums.TeamColour;
 
-public class CreateGameController {
+public class CreateGameController implements Initializable {
     @FXML
     public RadioButton teams2RadioButton;
     @FXML
@@ -59,6 +68,84 @@ public class CreateGameController {
     private Slider robotThinkTimeSlider;
     @FXML
     private Label robotThinkTimeValueLabel;
+
+    @FXML
+    private ChoiceBox<RobotAI> team1Scout;
+    @FXML
+    private ChoiceBox<RobotAI> team2Scout;
+    @FXML
+    private ChoiceBox<RobotAI> team3Scout;
+    @FXML
+    private ChoiceBox<RobotAI> team4Scout;
+    @FXML
+    private ChoiceBox<RobotAI> team5Scout;
+    @FXML
+    private ChoiceBox<RobotAI> team6Scout;
+
+    @FXML
+    private ChoiceBox<RobotAI> team1Sniper;
+    @FXML
+    private ChoiceBox<RobotAI> team2Sniper;
+    @FXML
+    private ChoiceBox<RobotAI> team3Sniper;
+    @FXML
+    private ChoiceBox<RobotAI> team4Sniper;
+    @FXML
+    private ChoiceBox<RobotAI> team5Sniper;
+    @FXML
+    private ChoiceBox<RobotAI> team6Sniper;
+
+    @FXML
+    private ChoiceBox<RobotAI> team1Tank;
+    @FXML
+    private ChoiceBox<RobotAI> team2Tank;
+    @FXML
+    private ChoiceBox<RobotAI> team3Tank;
+    @FXML
+    private ChoiceBox<RobotAI> team4Tank;
+    @FXML
+    private ChoiceBox<RobotAI> team5Tank;
+    @FXML
+    private ChoiceBox<RobotAI> team6Tank;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ArrayList<RobotAI> tanks = (ArrayList<RobotAI>) PublicLibrarian.getInstance().getRobots()
+                .stream()
+                .filter(r -> r.getType().equals(RobotType.TANK))
+                .collect(Collectors.toList());
+
+        ArrayList<RobotAI> snipers = (ArrayList<RobotAI>) PublicLibrarian.getInstance().getRobots()
+                .stream()
+                .filter(r -> r.getType().equals(RobotType.SNIPER))
+                .collect(Collectors.toList());
+
+        ArrayList<RobotAI> scouts = (ArrayList<RobotAI>) PublicLibrarian.getInstance().getRobots()
+                .stream()
+                .filter(r -> r.getType().equals(RobotType.SCOUT))
+                .collect(Collectors.toList());
+
+        team1Tank.getItems().addAll(tanks);
+        team2Tank.getItems().addAll(tanks);
+        team3Tank.getItems().addAll(tanks);
+        team4Tank.getItems().addAll(tanks);
+        team5Tank.getItems().addAll(tanks);
+        team6Tank.getItems().addAll(tanks);
+
+        team1Sniper.getItems().addAll(snipers);
+        team2Sniper.getItems().addAll(snipers);
+        team3Sniper.getItems().addAll(snipers);
+        team4Sniper.getItems().addAll(snipers);
+        team5Sniper.getItems().addAll(snipers);
+        team6Sniper.getItems().addAll(snipers);
+
+        team1Scout.getItems().addAll(scouts);
+        team2Scout.getItems().addAll(scouts);
+        team3Scout.getItems().addAll(scouts);
+        team4Scout.getItems().addAll(scouts);
+        team5Scout.getItems().addAll(scouts);
+        team6Scout.getItems().addAll(scouts);
+    }
 
     public void createGame(MouseEvent mouseEvent) {
         PublicViewController.getInstance().createGame(getBoardSize());
