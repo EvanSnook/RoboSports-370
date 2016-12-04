@@ -282,8 +282,23 @@ public class GameMaster {
         return;
     }
 
+    /**
+     * Gets the distance from the selected node to the current robot
+     * Only returns the distance up to 4 spaces away
+     */
+    public int getSelectedDistance(){
+
+        HexNodeIterator iterator = new HexNodeIterator(getCurrentRobot().getPosition());
+
+        while (iterator.getCurrentNode() != getSelectedNode() && iterator.getCurrentLayer() < 4) {
+            iterator.next();
+        }
+        return iterator.getCurrentLayer();
+
+    }
+
     public void robotShoot() {
-        if (getSelectedNode() != null) {
+        if (getSelectedNode() != null && getSelectedDistance() <= currentRobot.getRange()) {
             getSelectedNode().getRobots().forEach(r -> r.takeDamage(getCurrentRobot().getDamage()));
 
             robotShoot.setDisable(true);
@@ -315,6 +330,7 @@ public class GameMaster {
         }
         currentRobot.setRemainingMoves(currentRobot.getMaxMove());
         draw();
+
     }
 
     public void draw() {
