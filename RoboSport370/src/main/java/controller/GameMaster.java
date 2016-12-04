@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import model.Game;
 import model.HexNode;
 import model.HexNodeIterator;
+import model.PublicGameMaster;
 import model.PublicViewController;
 import model.Robot;
 import model.Team;
@@ -303,17 +304,17 @@ public class GameMaster {
     }
 
     public void robotShoot() {
+
         if (getSelectedNode() != null && getSelectedDistance() <= currentRobot.getRange()) {
             getSelectedNode().getRobots().forEach(r -> r.takeDamage(getCurrentRobot().getDamage()));
-
-            robotShoot.setDisable(true);
-        } else {
+            if(currentRobot.getHealth() == 0){
+                robotMove.setDisable(true);
+            }
             robotShoot.setDisable(true);
         }
         if (game.getRemainingTeams() == 1) {
             PublicViewController.getInstance().setScene("END_GAME");
         }
-
         draw();
     }
 
