@@ -7,7 +7,7 @@ public class PublicLibrarian {
         instance = new Librarian();
     }
 
-    public Librarian getInstance() {
+    public static Librarian getInstance() {
         return instance;
     }
 }

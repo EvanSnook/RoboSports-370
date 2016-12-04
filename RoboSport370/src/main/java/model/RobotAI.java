@@ -69,4 +69,9 @@ public class RobotAI extends Robot {
     public void setTeam(String team) {
         this.team = team;
     }
+
+    @Override
+    public String toString() {
+        return name + "(" + team + ")";
+    }
 }
