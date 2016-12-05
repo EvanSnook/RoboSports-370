@@ -29,6 +29,7 @@ public class Start extends Application {
             view.setTitle("RoboSport370");
             view.getIcons().add(new Image(getClass().getResourceAsStream("/images/redScout.PNG")));
             view.show();
+            view.setResizable(false);
 
             fxmlLoader.<ViewController>getController().setStage(view);
         } catch (Exception ex) {
