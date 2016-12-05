@@ -76,7 +76,7 @@ public class RobotAI extends Robot implements Cloneable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() {
         RobotAI clone = null;
         try {
             clone = (RobotAI) super.clone();
