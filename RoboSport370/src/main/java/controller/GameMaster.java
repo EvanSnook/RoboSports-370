@@ -27,6 +27,7 @@ public class GameMaster {
     public static final String DEFAULT_COLOUR = "0xffffffff";//white
     public static final String SELECTED_COLOUR = "0xaaaaaaff";//dark grey
     public static final String RANGE_COLOUR = "0xe6ffe6";//light green
+    public static final String CURRENT_COLOUR = "0xccccff";//light green
 
     private static Game game;
 
@@ -150,8 +151,11 @@ public class GameMaster {
             //set the previously selected node to white
             if (selectedNode != null && getSelectedDistance() > currentRobot.getRange())
                 selectedNode.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
-            else if(selectedNode != null){
+            else if(selectedNode != null && selectedNode != currentRobot.getPosition()){
                 selectedNode.getHexagon().setFill(Paint.valueOf(RANGE_COLOUR));
+            }
+            else if(selectedNode != null){
+                selectedNode.getHexagon().setFill(Paint.valueOf(CURRENT_COLOUR));
             }
             selectedNode = node;
             selectedNode.getHexagon().setFill(Paint.valueOf(currentRobot.getColour().toString().toUpperCase()));
@@ -371,6 +375,7 @@ public class GameMaster {
         }
         updateRobotBox();
         colourRange();
+        currentRobot.getPosition().getHexagon().setFill(Paint.valueOf(CURRENT_COLOUR));
     }
 
     public Team getNextTeam() {
