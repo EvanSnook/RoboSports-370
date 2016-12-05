@@ -2158,9 +2158,17 @@
          <image>
             <Image url="@../images/redScout.PNG" />
          </image></ImageView>
-      <TextArea fx:id="OutputBox" layoutX="14.0" layoutY="37.0" prefHeight="154.0" prefWidth="292.0" />
-      <TextArea fx:id="RobotBox" editable="false" layoutX="14.0" layoutY="213.0" prefHeight="259.0" prefWidth="169.0" />
-      <Label layoutX="14.0" layoutY="196.0" text="Current Robot Information" />
-      <Label layoutX="14.0" layoutY="17.0" text="Tile Information" />
+      <Label layoutX="14.0" layoutY="17.0" text="Tile Information:" />
+      <Label fx:id="CurrentRobotDamage" layoutX="133.0" layoutY="412.0" text="" />
+      <Label layoutX="72.0" layoutY="412.0" text="Damage:" />
+      <Label fx:id="CurrentRobotRange" layoutX="133.0" layoutY="399.0" text="" />
+      <Label layoutX="84.0" layoutY="399.0" text="Range:" />
+      <Label layoutX="83.0" layoutY="386.0" text="Health:" />
+      <Label fx:id="CurrentRobotHealth" layoutX="132.0" layoutY="386.0" text="" />
+      <Label fx:id="CurrentRobotType" layoutX="134.0" layoutY="373.0" text="" />
+      <Label layoutX="36.0" layoutY="373.0" text="Current Robot:" />
+      <Label layoutX="14.0" layoutY="425.0" text="Remaining Moves:" />
+      <Label fx:id="CurrentRobotMoves" layoutX="133.0" layoutY="425.0" text="" />
+      <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="41.0" prefHeight="328.0" prefWidth="213.0" />
    </children>
 </Pane>
