@@ -273,9 +273,46 @@ public class CreateGameController implements Initializable {
         ToggleButton tb = (ToggleButton)mouseEvent.getSource();
         if(tb.isSelected()){
             tb.setText("AI");
+            toggleDropBoxes(tb, false);
         }
         else{
             tb.setText("Human");
+            toggleDropBoxes(tb, true);
         }
     }
+
+    public void toggleDropBoxes(ToggleButton tb, Boolean  state){
+        switch(tb.getId()) {
+            case "toggleButton1":
+                team1Scout.setDisable(state);
+                team1Sniper.setDisable(state);
+                team1Tank.setDisable(state);
+                break;
+            case "toggleButton2":
+                team2Scout.setDisable(state);
+                team2Sniper.setDisable(state);
+                team2Tank.setDisable(state);
+                break;
+            case "toggleButton3":
+                team3Scout.setDisable(state);
+                team3Sniper.setDisable(state);
+                team3Tank.setDisable(state);
+                break;
+            case "toggleButton4":
+                team4Scout.setDisable(state);
+                team4Sniper.setDisable(state);
+                team4Tank.setDisable(state);
+                break;
+            case "toggleButton5":
+                team5Scout.setDisable(state);
+                team5Sniper.setDisable(state);
+                team5Tank.setDisable(state);
+                break;
+            case "toggleButton6":
+                team6Scout.setDisable(state);
+                team6Sniper.setDisable(state);
+                team6Tank.setDisable(state);
+        }
+    }
+
 }
