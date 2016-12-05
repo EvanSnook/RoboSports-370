@@ -21,21 +21,17 @@ public class ViewController {
     private Stage rulesStage;
     private Scene currentScene;
     private Scene previousScene;
-
     private Scene mainMenuScene;
     private Scene createGameScene;
     private Scene statsScene;
     private Scene robotManagerScene;
-    private Scene endGameScene;
     private Scene editRobotsScene;
 
     public ViewController() {
         PublicViewController.setInstance(this);
-
         createGameScene = new Scene(loadFxml("/view/CreateGameView.fxml"));
         statsScene = new Scene(loadFxml("/view/RobotStats.fxml"));
         robotManagerScene = new Scene(loadFxml("/view/RobotManagerView.fxml"));
-        endGameScene = new Scene(loadFxml("/view/EndGameView.fxml"));
         editRobotsScene = new Scene(loadFxml("/view/EditRobotView.fxml"));
     }
 
@@ -93,7 +89,7 @@ public class ViewController {
                 setScene(statsScene);
                 break;
             case "END_GAME":
-                setScene(endGameScene);
+                setScene(new Scene(loadFxml("/view/EndGameView.fxml")));
                 break;
             case "EDIT_ROBOTS":
                 setScene(editRobotsScene);

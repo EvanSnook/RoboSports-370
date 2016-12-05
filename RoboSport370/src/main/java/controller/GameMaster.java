@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import model.Game;
 import model.HexNode;
 import model.HexNodeIterator;
@@ -26,6 +27,7 @@ public class GameMaster {
     public static final String DEFAULT_COLOUR = "0xffffffff";//white
     public static final String SELECTED_COLOUR = "0xaaaaaaff";//dark grey
     public static final String RANGE_COLOUR = "0xe6ffe6";//light green
+    public static final String CURRENT_COLOUR = "0xccccff";//light green
 
     private static Game game;
 
@@ -43,7 +45,7 @@ public class GameMaster {
     public Button robotMove;
 
     @FXML
-    public TextArea OutputBox;
+    public Label OutputLabel;
 
     @FXML
     public Label TurnLabel;
@@ -137,11 +139,9 @@ public class GameMaster {
             if (!selectedNode.isFoggy()) {
                 String output = "";
                 for (Robot r : selectedNode.getRobots()) {
-                    output += r.toOutput() + "\n";
+                    output += r.getColour().toString() + " " + r.getType() + ", Health: " + r.getHealth() + "\n";
                 }
-                OutputBox.setText(output + selectedNode.toString());
-            } else {
-                OutputBox.setText(selectedNode.toString());
+                OutputLabel.setText(output);
             }
         }
     }
@@ -151,8 +151,11 @@ public class GameMaster {
             //set the previously selected node to white
             if (selectedNode != null && getSelectedDistance() > currentRobot.getRange())
                 selectedNode.getHexagon().setFill(Paint.valueOf(DEFAULT_COLOUR));
-            else if(selectedNode != null){
+            else if(selectedNode != null && selectedNode != currentRobot.getPosition()){
                 selectedNode.getHexagon().setFill(Paint.valueOf(RANGE_COLOUR));
+            }
+            else if(selectedNode != null){
+                selectedNode.getHexagon().setFill(Paint.valueOf(CURRENT_COLOUR));
             }
             selectedNode = node;
             selectedNode.getHexagon().setFill(Paint.valueOf(currentRobot.getColour().toString().toUpperCase()));
@@ -192,6 +195,7 @@ public class GameMaster {
     }
 
     private void initRobots() {
+        int i = 0;
         for (Team t : game.getTeams()) {
 
             String colour = t.getColour().toString().toLowerCase();
@@ -208,12 +212,20 @@ public class GameMaster {
                 scoutView.setVisible(false);
                 sniperView.setVisible(false);
                 tankView.setVisible(false);
+                i++;
                 continue;
             }
 
             t.getScout().setRobotImage(scoutView);
+            t.getScout().setFacing(i);
+            t.getScout().getRobotImage().setRotate((t.getScout().getFacing() * 60));
             t.getSniper().setRobotImage(sniperView);
+            t.getSniper().setFacing(i);
+            t.getSniper().getRobotImage().setRotate((t.getSniper().getFacing() * 60));
             t.getTank().setRobotImage(tankView);
+            t.getTank().setFacing(i);
+            t.getTank().getRobotImage().setRotate((t.getTank().getFacing() * 60));
+            i++;
         }
     }
 
@@ -328,8 +340,8 @@ public class GameMaster {
             }
             robotShoot.setDisable(true);
         }
-        if (game.getRemainingTeams() == 1) {
-            PublicViewController.getInstance().setScene("END_GAME");
+        if (game.getRemainingTeams() <= 1) {
+            endMatch();
         }
         draw();
     }
@@ -346,7 +358,8 @@ public class GameMaster {
     public void startPlay() {
         if (currentRobot == null) {
             currentRobot = game.getTeam(TeamColour.RED).getNextRobot();
-        } else {
+        }
+        else {
             Team nextTeam = getNextTeam();
             currentRobot = nextTeam.getNextRobot();
         }
@@ -372,6 +385,7 @@ public class GameMaster {
         }
         updateRobotBox();
         colourRange();
+        currentRobot.getPosition().getHexagon().setFill(Paint.valueOf(CURRENT_COLOUR));
     }
 
     public Team getNextTeam() {

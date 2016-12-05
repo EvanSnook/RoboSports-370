@@ -5,6 +5,7 @@ import model.enums.TeamColour;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Game {
     private Board board;
@@ -22,24 +23,24 @@ public class Game {
         ArrayList<Team> result = new ArrayList<>();
         if (teamCount == 2) {
             result.add(new Team(TeamColour.RED, true));
-            result.add(new Team(TeamColour.GREEN, true));
-            result.add(new Team(TeamColour.YELLOW, false));
-            result.add(new Team(TeamColour.BLUE, false));
             result.add(new Team(TeamColour.ORANGE, false));
+            result.add(new Team(TeamColour.YELLOW, false));
+            result.add(new Team(TeamColour.GREEN, true));
+            result.add(new Team(TeamColour.BLUE, false));
             result.add(new Team(TeamColour.PURPLE, false));
         } else if (teamCount == 3) {
             result.add(new Team(TeamColour.RED, true));
-            result.add(new Team(TeamColour.GREEN, false));
-            result.add(new Team(TeamColour.YELLOW, true));
-            result.add(new Team(TeamColour.BLUE, true));
             result.add(new Team(TeamColour.ORANGE, false));
+            result.add(new Team(TeamColour.YELLOW, true));
+            result.add(new Team(TeamColour.GREEN, false));
+            result.add(new Team(TeamColour.BLUE, true));
             result.add(new Team(TeamColour.PURPLE, false));
         } else if (teamCount == 6) {
             result.add(new Team(TeamColour.RED, true));
-            result.add(new Team(TeamColour.GREEN, true));
-            result.add(new Team(TeamColour.YELLOW, true));
-            result.add(new Team(TeamColour.BLUE, true));
             result.add(new Team(TeamColour.ORANGE, true));
+            result.add(new Team(TeamColour.YELLOW, true));
+            result.add(new Team(TeamColour.GREEN, true));
+            result.add(new Team(TeamColour.BLUE, true));
             result.add(new Team(TeamColour.PURPLE, true));
         } else {
             System.err.println("Team count value is invalid.");
@@ -67,6 +68,20 @@ public class Game {
 
     public List<Team> getTeams() {
         return teams;
+    }
+
+    /**
+     * Get the last remaining team or null if there are no teams remaining
+     * @return a team or null
+     */
+    public Team getWinningTeam(){
+        Optional<Team> team = teams.stream()
+                .sequential()
+                .filter(Team::isEnabled)
+                .filter(t -> t.remainingRobots() > 0)
+                .findFirst();
+
+        return team.orElse(null);
     }
 
     public GameTime getGameTime() {
