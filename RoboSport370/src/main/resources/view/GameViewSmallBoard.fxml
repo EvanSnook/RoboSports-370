@@ -1118,5 +1118,6 @@
       <Label fx:id="CurrentRobotMoves" layoutX="150.0" layoutY="382.0" text="" />
       <Label layoutX="31.0" layoutY="382.0" text="Remaining Moves:" />
       <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="32.0" prefHeight="292.0" prefWidth="270.0" />
+      <Label fx:id="gameTimer" layoutX="1026.0" layoutY="40.0" text="Game Timer" />
    </children>
 </Pane>
