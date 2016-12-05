@@ -1,7 +1,5 @@
 package model;
 
-import model.enums.BoardSize;
-
 import java.util.Iterator;
 
 public class HexNodeIterator implements Iterator {
@@ -25,14 +23,18 @@ public class HexNodeIterator implements Iterator {
         this(root, 0);
     }
 
-    public static void main(String[] args) {
-        Board b = new Board(BoardSize.SMALL);
+    /**
+     * Traverse to a node at specified location from current location.
+     *
+     * @param layer how far away the {@link HexNode} is
+     * @param index the {@code index} of the {@link HexNode} to go to
+     */
+    public void go(int layer, int index) {
+        while (hasNext()) {
+            next();
 
-        HexNodeIterator iterator = new HexNodeIterator(b.getRoot());
-
-        while (iterator.hasNext()) {
-            HexNode current = iterator.next();
-            System.out.println(current.toString());
+            if(currentLayer == layer && currentIndex == index)
+                break;
         }
     }
 
@@ -114,6 +116,10 @@ public class HexNodeIterator implements Iterator {
 
     public int getCurrentLayer() {
         return currentLayer;
+    }
+
+    public int getCurrentIndex(){
+        return currentIndex;
     }
 
     public HexNode getCurrentNode() {

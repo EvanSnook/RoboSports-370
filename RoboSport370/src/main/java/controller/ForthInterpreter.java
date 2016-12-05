@@ -1,12 +1,23 @@
 package controller;
 
-import model.*;
-import model.enums.RobotType;
-import model.enums.TeamColour;
 import sun.plugin.dom.exception.InvalidStateException;
 
 import java.security.InvalidParameterException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EmptyStackException;
+import java.util.Optional;
+import java.util.Random;
+import java.util.Stack;
+
+import model.ForthExecuter;
+import model.HexNode;
+import model.HexNodeIterator;
+import model.Robot;
+import model.RobotAI;
+import model.Word;
+import model.enums.RobotType;
+import model.enums.TeamColour;
 
 public class ForthInterpreter {
     /**
@@ -38,20 +49,25 @@ public class ForthInterpreter {
      *
      * @param commandString command(s) to send to the {@link ForthInterpreter}
      */
-    public void execute(final String commandString) {
+    public void execute(String commandString) {
+        // Remove comments
+        String finalCommandString = commandString.replaceAll("\\(.*?\\)", "");
+        ;
+
         Optional<Word> w = words.stream()
-                .filter(word -> word.isTrigger(commandString))
+                .filter(word -> word.isTrigger(finalCommandString))
                 .findFirst();
 
         if (!w.isPresent()) {
-            if (!commandString.isEmpty())
-                System.err.println("Parsing Error: " + commandString);
+            if (!finalCommandString.isEmpty())
+                System.err.println("Parsing Error: " + finalCommandString);
             return;
         }
 
         w.get().execute();
 
-        String nextCommand = commandString.replaceFirst(w.get().getTrigger() + " *", "");
+        // Remove excessive spaces between words
+        String nextCommand = finalCommandString.replaceFirst(w.get().getTrigger() + " *", "");
         execute(nextCommand);
     }
 
@@ -450,13 +466,17 @@ public class ForthInterpreter {
         //<editor-fold desc="Robot Actions">
         // Turn 1 to the right
         Word robotTurn = new Word("turn!", matches -> {
-            // TODO turn robot
+            gameMaster.setRobotFacing(
+                    (getCurrentRobot().getFacing() + 1) % 6
+            );
         });
 
-        // Move forward 1 space
+        // Move forwa
+        // rd 1 space
         Word robotMove = new Word("move!", matches -> {
-            // TODO move robot
+            gameMaster.robotMove();
         });
+
 
         // shoot! ( id ir -- ) —fires the robot’s weapon at the space which is
         // at distance ir and direction id
@@ -467,7 +487,13 @@ public class ForthInterpreter {
                 // Index
                 int id = Integer.valueOf(stack.pop());
 
-                // TODO shoot tile
+                HexNodeIterator iter =
+                        new HexNodeIterator(
+                                getCurrentRobot().getPosition(), getCurrentRobot().getFacing());
+
+                iter.go(ir, id);
+
+                gameMaster.robotShoot(iter.getCurrentNode());
             }
         });
 
@@ -497,7 +523,6 @@ public class ForthInterpreter {
 
             HexNodeIterator iterator = new HexNodeIterator(getCurrentRobot().getPosition());
 
-            // TODO is this the corrent range?
             while (iterator.hasNext() && iterator.getCurrentLayer() <= range) {
                 HexNode current = iterator.next();
 
@@ -509,16 +534,47 @@ public class ForthInterpreter {
         });
 
         Word robotIdentify = new Word("identify!", matches -> {
-            // TODO identify!
+            if (verifyStack('i')) {
+                int i1 = Integer.valueOf(stack.pop());
+                Robot robot = null;
+
+                HexNodeIterator iterator = new HexNodeIterator(getCurrentRobot().getPosition());
+
+                int cur = -1;
+                while (iterator.hasNext() && robot == null) {
+                    HexNode current = iterator.next();
+
+                    if (!current.canContainRobots())
+                        continue;
+
+                    for (Robot r : current.getRobots()) {
+                        cur++;
+                        if (cur == i1) {
+                            robot = r;
+                            break;
+                        }
+                    }
+                }
+
+                if (robot == null) {
+                    System.err.println("Could not identify robot at specified index");
+                    return;
+                }
+
+                stack.push(String.valueOf(robot.getHealth()));
+                stack.push(String.valueOf(iterator.getCurrentIndex()));
+                stack.push(String.valueOf(iterator.getCurrentLayer()));
+                stack.push(robot.getColour().toString());
+            }
         });
 
         result.add(robotShoot);
+        result.add(robotTurn);
+        result.add(robotMove);
         result.add(robotCheck);
         result.add(robotScan);
         result.add(robotIdentify);
         //</editor-fold>
-
-        // TODO Mailbox
 
         return result;
     }
