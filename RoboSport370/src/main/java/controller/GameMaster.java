@@ -192,6 +192,7 @@ public class GameMaster {
                 outputTile();
             }
         }
+        setRobotFacing();
     }
 
     public Game getGame() {
