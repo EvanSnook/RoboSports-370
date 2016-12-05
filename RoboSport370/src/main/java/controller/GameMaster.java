@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import model.Game;
 import model.HexNode;
 import model.HexNodeIterator;
@@ -43,7 +44,7 @@ public class GameMaster {
     public Button robotMove;
 
     @FXML
-    public TextArea OutputBox;
+    public Label OutputLabel;
 
     @FXML
     public Label TurnLabel;
@@ -137,11 +138,9 @@ public class GameMaster {
             if (!selectedNode.isFoggy()) {
                 String output = "";
                 for (Robot r : selectedNode.getRobots()) {
-                    output += r.toOutput() + "\n";
+                    output += r.getColour().toString() + " " + r.getType() + ", Health: " + r.getHealth() + "\n";
                 }
-                OutputBox.setText(output + selectedNode.toString());
-            } else {
-                OutputBox.setText(selectedNode.toString());
+                OutputLabel.setText(output);
             }
         }
     }

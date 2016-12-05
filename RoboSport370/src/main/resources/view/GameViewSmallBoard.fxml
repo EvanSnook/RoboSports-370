@@ -1106,8 +1106,7 @@
 <image>
 <Image url="@../images/redScout.PNG" />
 </image></ImageView>
-      <TextArea fx:id="OutputBox" editable="false" layoutX="14.0" layoutY="31.0" prefHeight="149.0" prefWidth="322.0" />
-      <Label layoutX="14.0" layoutY="14.0" text="Tile Information" />
+      <Label layoutX="14.0" layoutY="14.0" text="Tile Information:" />
       <Label layoutX="53.0" layoutY="330.0" text="Current Robot:" />
       <Label fx:id="CurrentRobotType" layoutX="151.0" layoutY="330.0" text="" />
       <Label fx:id="CurrentRobotHealth" layoutX="149.0" layoutY="344.0" text="" />
@@ -1118,5 +1117,6 @@
       <Label fx:id="CurrentRobotDamage" layoutX="150.0" layoutY="369.0" text="" />
       <Label fx:id="CurrentRobotMoves" layoutX="150.0" layoutY="382.0" text="" />
       <Label layoutX="31.0" layoutY="382.0" text="Remaining Moves:" />
+      <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="32.0" prefHeight="292.0" prefWidth="270.0" />
    </children>
 </Pane>
