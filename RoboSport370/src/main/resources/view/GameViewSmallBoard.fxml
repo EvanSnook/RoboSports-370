@@ -1024,8 +1024,8 @@
       </Polygon>
       <Button fx:id="robotMove" layoutX="49.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="108.0" text="Move" />
       <Button fx:id="robotShoot" layoutX="52.0" layoutY="523.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="108.0" text="Shoot" />
-      <Button layoutX="52.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="108.0" text="End Turn" />
-      <Label fx:id="TurnLabel" layoutX="477.0" layoutY="1.0" text="RED's Turn">
+      <Button fx:id="endTurnButton" layoutX="52.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="108.0" text="End Turn" />
+      <Label fx:id="TurnLabel" alignment="CENTER" layoutX="477.0" layoutY="1.0" text="RED's Turn">
          <font>
             <Font size="53.0" />
          </font>

@@ -35,6 +35,12 @@ public class GameMaster {
     public Pane gameContainer;
 
     @FXML
+    public Button startTurn;
+
+    @FXML
+    public Button endTurnButton;
+
+    @FXML
     public Button robotShoot;
 
     @FXML
@@ -356,12 +362,24 @@ public class GameMaster {
         selectTile(game.getBoard().getCorner(getNextTeam().getColour()));
         TurnLabel.setText(getNextTeam().getColour().toString() + "'s Turn");
         outputTile();
-        startPlay();
-        robotMove.setDisable(false);
-        robotShoot.setDisable(false);
+        betweenTurn();
+    }
+
+    public void betweenTurn(){
+        makeFoggyOut();
+        endTurnButton.setDisable(true);
+        robotShoot.setDisable(true);
+        robotMove.setDisable(true);
+        startTurn.setVisible(true);
+        startTurn.setDisable(false);
     }
 
     public void startPlay() {
+        endTurnButton.setDisable(false);
+        robotShoot.setDisable(false);
+        robotMove.setDisable(false);
+        startTurn.setVisible(false);
+        startTurn.setDisable(true);
         if (currentRobot == null) {
             currentRobot = game.getTeam(TeamColour.RED).getNextRobot();
         }
