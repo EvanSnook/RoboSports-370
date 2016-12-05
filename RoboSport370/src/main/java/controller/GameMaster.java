@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -61,6 +62,9 @@ public class GameMaster {
     @FXML
     public Label CurrentRobotMoves;
 
+    @FXML
+    public Label gameTimer;
+
     public GameMaster() {
         interpreter = new ForthInterpreter(this);
     }
@@ -73,8 +77,13 @@ public class GameMaster {
     public void setGame(Game game) {
         GameMaster.game = game;
 
-        // TODO set GameTime action listener
+        // TODO update the GameTimer label
         game.getGameTime().getPlayTimer().addActionListener(e -> {
+            Platform.runLater(() -> {
+                gameTimer.setText("?");
+
+                endTurn();
+            });
         });
 
         linkPolygonsToHexNodes();
@@ -364,14 +373,14 @@ public class GameMaster {
     public void startPlay() {
         if (currentRobot == null) {
             currentRobot = game.getTeam(TeamColour.RED).getNextRobot();
-        }
-        else {
+        } else {
             Team nextTeam = getNextTeam();
             currentRobot = nextTeam.getNextRobot();
         }
         currentRobot.setRemainingMoves(currentRobot.getMaxMove());
         draw();
 
+        getGame().getGameTime().resetPlayTimer();
     }
 
     public void draw() {

@@ -2,14 +2,13 @@ package model;
 
 import javax.swing.*;
 
-// TODO GameTime Class
 public class GameTime {
 
     private int robotThinkTime;
     private Timer playTimer;
     private long startGameinMilliS;
 
-    private int playerTimeLimitMilliS = 30000;
+    private int playerTimeLimitMilliS = 30_000;
 
     public GameTime(int think) {
         robotThinkTime = think;
