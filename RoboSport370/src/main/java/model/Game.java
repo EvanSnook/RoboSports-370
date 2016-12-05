@@ -5,6 +5,7 @@ import model.enums.TeamColour;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Game {
     private Board board;
@@ -67,6 +68,20 @@ public class Game {
 
     public List<Team> getTeams() {
         return teams;
+    }
+
+    /**
+     * Get the last remaining team or null if there are no teams remaining
+     * @return a team or null
+     */
+    public Team getWinningTeam(){
+        Optional<Team> team = teams.stream()
+                .sequential()
+                .filter(Team::isEnabled)
+                .filter(t -> t.remainingRobots() > 0)
+                .findFirst();
+
+        return team.orElse(null);
     }
 
     public GameTime getGameTime() {

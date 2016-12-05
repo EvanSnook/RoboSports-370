@@ -313,7 +313,7 @@ public class GameMaster {
             robotShoot.setDisable(true);
         }
         if (game.getRemainingTeams() == 1) {
-            PublicViewController.getInstance().setScene("END_GAME");
+            endMatch();
         }
         draw();
     }
