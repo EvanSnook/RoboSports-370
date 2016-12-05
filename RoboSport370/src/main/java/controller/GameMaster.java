@@ -212,6 +212,7 @@ public class GameMaster {
                 scoutView.setVisible(false);
                 sniperView.setVisible(false);
                 tankView.setVisible(false);
+                i++;
                 continue;
             }
 
