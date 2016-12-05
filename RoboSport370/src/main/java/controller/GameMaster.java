@@ -4,18 +4,14 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import model.Game;
 import model.HexNode;
 import model.HexNodeIterator;
-import model.PublicGameMaster;
 import model.PublicViewController;
 import model.Robot;
 import model.Team;
@@ -66,6 +62,7 @@ public class GameMaster {
     public Label CurrentRobotMoves;
 
     public GameMaster() {
+        interpreter = new ForthInterpreter(this);
     }
 
     /**
@@ -112,18 +109,22 @@ public class GameMaster {
     public void setRobotFacing() {
         //set robot to face selected node
         if (getCurrentRobot().getPosition().getR() == getSelectedNode())
-            getCurrentRobot().setFacing(0);
+            setRobotFacing(0);
         else if (getCurrentRobot().getPosition().getDR() == getSelectedNode())
-            getCurrentRobot().setFacing(1);
+            setRobotFacing(1);
         else if (getCurrentRobot().getPosition().getDL() == getSelectedNode())
-            getCurrentRobot().setFacing(2);
+            setRobotFacing(2);
         else if (getCurrentRobot().getPosition().getL() == getSelectedNode())
-            getCurrentRobot().setFacing(3);
+            setRobotFacing(3);
         else if (getCurrentRobot().getPosition().getUL() == getSelectedNode())
-            getCurrentRobot().setFacing(4);
+            setRobotFacing(4);
         else if (getCurrentRobot().getPosition().getUR() == getSelectedNode())
-            getCurrentRobot().setFacing(5);
-        getCurrentRobot().getRobotImage().setRotate((currentRobot.getFacing() * 60));
+            setRobotFacing(5);
+    }
+
+    public void setRobotFacing(int side) {
+        currentRobot.setFacing(side);
+        getCurrentRobot().getRobotImage().setRotate(side * 60);
     }
 
     public void updateRobotBox() {
@@ -321,20 +322,25 @@ public class GameMaster {
      * Only returns the distance up to 4 spaces away
      */
     public int getSelectedDistance(){
+        return getSelectedDistance(getSelectedNode());
+    }
 
-        HexNodeIterator iterator = new HexNodeIterator(getCurrentRobot().getPosition());
+    private int getSelectedDistance(HexNode node) {
+        HexNodeIterator iterator = new HexNodeIterator(currentRobot.getPosition());
 
-        while (iterator.getCurrentNode() != getSelectedNode() && iterator.getCurrentLayer() < 4) {
+        while (iterator.getCurrentNode() != node && iterator.getCurrentLayer() < 4)
             iterator.next();
-        }
-        return iterator.getCurrentLayer();
 
+        return iterator.getCurrentLayer();
     }
 
     public void robotShoot() {
+        robotShoot(getSelectedNode());
+    }
 
-        if (getSelectedNode() != null && getSelectedDistance() <= currentRobot.getRange()) {
-            getSelectedNode().getRobots().forEach(r -> r.takeDamage(getCurrentRobot().getDamage()));
+    public void robotShoot(HexNode node) {
+        if (node != null && getSelectedDistance(node) <= currentRobot.getRange()) {
+            node.getRobots().forEach(r -> r.takeDamage(currentRobot.getDamage()));
             if(currentRobot.getHealth() == 0){
                 robotMove.setDisable(true);
             }
