@@ -160,6 +160,9 @@ public class GameMaster {
                 OutputLabel.setText(output);
             }
         }
+        else{
+            OutputLabel.setText("");
+        }
     }
 
     public void selectTile(HexNode node) {
@@ -365,6 +368,7 @@ public class GameMaster {
         if (game.getRemainingTeams() <= 1) {
             endMatch();
         }
+        selectedNode = node;
         draw();
     }
 
@@ -374,6 +378,7 @@ public class GameMaster {
         outputTile();
         getGame().getGameTime().getPlayTimer().stop();
         betweenTurn();
+        outputTile();
     }
 
     public void betweenTurn(){
@@ -404,6 +409,7 @@ public class GameMaster {
     }
 
     public void draw() {
+        outputTile();
         makeFoggyOut();
 
         if (game.getTeam(currentRobot.getColour()).getScout().isAlive()) {
