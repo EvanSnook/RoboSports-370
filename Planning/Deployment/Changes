@@ -1,10 +1,15 @@
 Changes since Requirements Document:
     -robomanager
     -upload/reset stats (now automatic)
+    -health bars above robots
+    -no observer view (no fog of war toggle options)
+    -cant create a new game from post-game screen
 Changes since Design Document:
     -robomanager
     -upload/reset stats
     -GameMaster
+    -hexnode
     
 Bugs:
     -
+    
