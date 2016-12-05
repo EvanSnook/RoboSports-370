@@ -2080,7 +2080,7 @@
       <Button fx:id="endTurnButton" layoutX="44.0" layoutY="667.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="108.0" text="End Turn" />
       <Button fx:id="robotShoot" layoutX="44.0" layoutY="578.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="108.0" text="Shoot" />
       <Button fx:id="robotMove" layoutX="41.0" layoutY="489.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="108.0" text="Move" />
-      <Label fx:id="TurnLabel" alignment="CENTER" layoutX="489.0" layoutY="-13.0" text="RED's Turn">
+      <Label fx:id="TurnLabel" alignment="CENTER" layoutX="195.0" layoutY="-13.0" prefHeight="77.0" prefWidth="809.0" text="RED's Turn">
          <font>
             <Font size="53.0" />
          </font>
