@@ -331,7 +331,7 @@ public class GameMaster {
             }
             robotShoot.setDisable(true);
         }
-        if (game.getRemainingTeams() == 1) {
+        if (game.getRemainingTeams() <= 1) {
             endMatch();
         }
         draw();
@@ -349,7 +349,8 @@ public class GameMaster {
     public void startPlay() {
         if (currentRobot == null) {
             currentRobot = game.getTeam(TeamColour.RED).getNextRobot();
-        } else {
+        }
+        else {
             Team nextTeam = getNextTeam();
             currentRobot = nextTeam.getNextRobot();
         }
