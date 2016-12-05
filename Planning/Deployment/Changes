@@ -1,15 +1,8 @@
 Changes since Requirements Document:
-    -robomanager
-    -upload/reset stats (now automatic)
-    -health bars above robots
-    -no observer view (no fog of war toggle options)
-    -cant create a new game from post-game screen
+    Here we will highlight some of the main features that we added/removed in the current build of RoboSport370 that differs from our Requirements Document. First, we decided to not include our RoboManager feature. RoboManager was a way for the user to manage robots stored locally but as a group decided it was a feature that was not as important as some of the others. Statistics from local games are still loaded to the server but nothing is stored locally anymore. The user can query for statistics based on robots and teams but they can no longer reset or upload local stats since they only get published, and not saved locally. We planned for health bars to be set above each robot but concluded that it would not mess with out interface and we would rather have a simple design with full functionality. We had plans for an "Observer" view when there is only AI playing the game which would have given the user some interesting observing features; in the end we decided to cut this to focus on functionality as it was a "luxury" feature. The user will still be able to watch AI vs AI but it doesn't have features such as fog of war filters and changing turn timers in game. Lastly, a small design that we changed is that the user can no longer create a game from the post-game screen. They must go back to the main menu then go to the create game screen to achieve this, we believe this benefits simplicity in our interface and reduces clutter (while sacrificing very little productivity).  
+
 Changes since Design Document:
-    -robomanager
-    -upload/reset stats
-    -GameMaster
-    -hexnode
+    Similar to the Requirements Document, from our Design Document we cut RoboManager and locally stored statistics in our current build of RoboSport370. Originally we designed our Board to be drawn when a game is created, but since we only needed two separate boards it made much more sense to manually create the two boards. It is more efficient this way and required less man hours to code. GameMaster is the main function for controlling the game. Our design did not include enough detail in this method from what we initially thought. As we tried to implement it we decided it was best to revamp GameMaster and it currently includes: several setters and getter functions, HexNodeClicked, , updateRobotBox, outputTile, selectTile, robotClicked, , initRobots, initStartTiles, linkPolygonsToHexNodes, showRules, robotMove, robotShoot, endTurn, betweenTurn, startPlay, draw, endMatch, clearAreaFog, makeFoggyOut, colourRange. After this change, our GameMaster class is a lot easier to understand and easier to modify as well. 
     
 Bugs:
-    -
-    
+    Currently the only bug is an issue with our Game Timer. It does not display and update during a game and we hope to find a solution soon. Other than that there are no other issues that we are currently aware of. Any bug that we encountered was resolved as quickly as possible. 
