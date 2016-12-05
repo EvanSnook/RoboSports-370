@@ -5,7 +5,10 @@ The controllers in our system are split into view controllers in the controllers
 The model is all within the model folder of the project. The Model classes, enums, and interfaces all hold information and functions to manipulate and present themselves. The models get their accessors and mutators called by controllers as well as from JSON files fetched from the university’s servers
 
 Details of tricky/intricate/important bits of the system
-Yup
+ForthInterpreter initializes words defined by the given Forth language using regular expressions that will be used to recognize strings in the json files for the robot AI’s
+ViewController is used to create the stage and scenes and to change the scenes. The publicViewController in the model folder is used  by events to send a message to the view controller to change the scene. 
+Board consists of HexNodes that are all linked to each other by their sides. The important part to note is that the radius of the board is actually 3 nodes more than the actual graphical representation to make scanning and iterating around a robot simpler because it wont have to scan a null node as long as the robot is on the board and so it is less efficient systemwise, but made sense given our time restraints.
+
 
 External libraries being relied on
 Json-simple is being used to read json files from the University’s servers and to send the robot back in json form when we are done with it.
