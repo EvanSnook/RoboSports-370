@@ -1,11 +1,12 @@
 package model;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import javafx.scene.image.ImageView;
 import model.enums.RobotType;
 import model.enums.TeamColour;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public class Robot {
+public class Robot implements Cloneable {
     private int health;
     private int maxHealth;
     private int damage;
@@ -173,5 +174,16 @@ public class Robot {
                 ", range=" + range +
                 ", remainingMoves=" + remainingMoves +
                 '}';
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Robot clone = null;
+        try {
+            clone = (Robot) super.clone();
+        } catch (CloneNotSupportedException ex) {
+            ex.printStackTrace();
+        }
+        return clone;
     }
 }

@@ -8,7 +8,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class RobotAI extends Robot {
+public class RobotAI extends Robot implements Cloneable {
     private String name;
     private String team;
     private String code;
@@ -73,5 +73,16 @@ public class RobotAI extends Robot {
     @Override
     public String toString() {
         return name + "(" + team + ")";
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        RobotAI clone = null;
+        try {
+            clone = (RobotAI) super.clone();
+        } catch (CloneNotSupportedException ex) {
+            ex.printStackTrace();
+        }
+        return clone;
     }
 }
