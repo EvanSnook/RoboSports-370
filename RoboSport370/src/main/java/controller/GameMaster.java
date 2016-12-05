@@ -195,6 +195,7 @@ public class GameMaster {
     }
 
     private void initRobots() {
+        int i = 0;
         for (Team t : game.getTeams()) {
 
             String colour = t.getColour().toString().toLowerCase();
@@ -215,8 +216,15 @@ public class GameMaster {
             }
 
             t.getScout().setRobotImage(scoutView);
+            t.getScout().setFacing(i);
+            t.getScout().getRobotImage().setRotate((t.getScout().getFacing() * 60));
             t.getSniper().setRobotImage(sniperView);
+            t.getSniper().setFacing(i);
+            t.getSniper().getRobotImage().setRotate((t.getSniper().getFacing() * 60));
             t.getTank().setRobotImage(tankView);
+            t.getTank().setFacing(i);
+            t.getTank().getRobotImage().setRotate((t.getTank().getFacing() * 60));
+            i++;
         }
     }
 
