@@ -371,6 +371,7 @@ public class GameMaster {
         selectTile(game.getBoard().getCorner(getNextTeam().getColour()));
         TurnLabel.setText(getNextTeam().getColour().toString() + "'s Turn");
         outputTile();
+        getGame().getGameTime().getPlayTimer().stop();
         betweenTurn();
     }
 

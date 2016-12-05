@@ -1119,5 +1119,10 @@
       <Label layoutX="31.0" layoutY="382.0" text="Remaining Moves:" />
       <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="32.0" prefHeight="292.0" prefWidth="270.0" />
       <Label fx:id="gameTimer" layoutX="1026.0" layoutY="40.0" text="Game Timer" />
+      <Button fx:id="startTurn" layoutX="475.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#startPlay" prefHeight="118.0" prefWidth="226.0" text="Start">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
