@@ -1,0 +1,16 @@
+As-Built Architecture
+	Our system implements a model-view-controller architecture as described in our design document, as we wanted the interface to get data from model, and we wanted the controller to take input from view and to use the input to modify the model and the view.
+The view of our system is contained in resources/view and are all in fxml format. Assets are also held within the resources folder in resources/images and holds all of the .png’s for our robots, health, and start tiles to be used in the views. All others images are generated with JavaFX and the default JDK library. Views can get information from the model and are only accessed and modified by controllers.
+The controllers in our system are split into view controllers in the controllers/view folder and other controllers are just in the controller folder. View controllers are all linked to the fxml files in resources/view and they do event handling for their respective interfaces. Other interfaces include the ForthInterpreter which handles reading Forth code and creating a stack out of it as well as GameMaster to handle events on the game views and enforce the rules of RoboSport370. Lastly, we have ViewController which instantiates scenes and manages showing and hiding them. Some of the controllers have a public model in the model folder that is used to access them via the model because they are driven by events that happen within model classes, and not just user-input like the view controllers.
+The model is all within the model folder of the project. The Model classes, enums, and interfaces all hold information and functions to manipulate and present themselves. The models get their accessors and mutators called by controllers as well as from JSON files fetched from the university’s servers
+
+Details of tricky/intricate/important bits of the system
+Yup
+
+External libraries being relied on
+Json-simple is being used to read json files from the University’s servers and to send the robot back in json form when we are done with it.
+Junit is being used mostly for assert() in unit testing
+
+How to compile and run 
+	The Start class contains main and loads the MainMenuView and sets the view information such as icon and title. From  there the controllers take over and allow the user to navigate the program.
+	To run the tests for a class, navigate to the tests folder and run the main for the test class that you wish to run.
