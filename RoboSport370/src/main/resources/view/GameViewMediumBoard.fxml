@@ -2106,7 +2106,7 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button fx:id="endTurnButton" layoutX="1040.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: yellow;" text="End Turn" textFill="#610d0d">
+      <Button fx:id="endTurnButton" layoutX="1040.0" layoutY="462.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: yellow;" text="End Turn" textFill="#610d0d">
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font>
@@ -2120,7 +2120,7 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button fx:id="robotShoot" layoutX="1040.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Shoot" textFill="#750a0a">
+      <Button fx:id="robotShoot" layoutX="1040.0" layoutY="374.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Shoot" textFill="#750a0a">
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font>
@@ -2134,7 +2134,7 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button fx:id="robotMove" layoutX="1040.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Move" textFill="#750a0a">
+      <Button fx:id="robotMove" layoutX="1040.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Move" textFill="#750a0a">
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font>

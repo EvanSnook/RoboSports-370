@@ -1023,7 +1023,7 @@
             <Double fx:value="-22.5" />
          </points>
       </Polygon>
-      <Button fx:id="robotMove" layoutX="960.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="131.0" style="-fx-background-color: silver;" text="Move" textFill="#720c0c">
+      <Button fx:id="robotMove" layoutX="960.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="131.0" style="-fx-background-color: silver;" text="Move" textFill="#720c0c">
          <font>
             <Font name="Bauhaus 93" size="24.0" />
          </font>
@@ -1037,7 +1037,7 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button fx:id="robotShoot" layoutX="961.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="131.0" style="-fx-background-color: silver;" text="Shoot" textFill="#720c0c">
+      <Button fx:id="robotShoot" layoutX="960.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="131.0" style="-fx-background-color: silver;" text="Shoot" textFill="#720c0c">
          <font>
             <Font name="Bauhaus 93" size="24.0" />
          </font>
@@ -1051,7 +1051,7 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button fx:id="endTurnButton" layoutX="960.0" layoutY="358.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="132.0" style="-fx-background-color: yellow;" text="End Turn" textFill="#540a0a">
+      <Button fx:id="endTurnButton" layoutX="960.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="132.0" style="-fx-background-color: yellow;" text="End Turn" textFill="#540a0a">
          <font>
             <Font name="Bauhaus 93" size="24.0" />
          </font>

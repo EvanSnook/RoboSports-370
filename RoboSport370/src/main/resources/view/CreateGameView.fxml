@@ -154,9 +154,9 @@
                            </light>
                         </Lighting>
                      </effect></ToggleButton>
-                  <ChoiceBox fx:id="team1Scout" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team1Scout" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -165,9 +165,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team1Sniper" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team1Sniper" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -176,9 +176,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team1Tank" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team1Tank" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -229,9 +229,9 @@
                            </light>
                         </Lighting>
                      </effect></ToggleButton>
-                  <ChoiceBox fx:id="team2Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team2Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -240,9 +240,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team2Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team2Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -251,9 +251,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team2Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team2Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -308,9 +308,9 @@
                            </light>
                         </Lighting>
                      </effect></ToggleButton>
-                  <ChoiceBox fx:id="team3Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team3Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -319,9 +319,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team3Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team3Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -330,9 +330,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team3Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team3Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -383,9 +383,9 @@
                            </light>
                         </Lighting>
                      </effect></ToggleButton>
-                  <ChoiceBox fx:id="team4Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team4Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -394,9 +394,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team4Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team4Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -405,9 +405,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team4Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team4Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -462,9 +462,9 @@
                            </light>
                         </Lighting>
                      </effect></ToggleButton>
-                  <ChoiceBox fx:id="team5Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team5Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -473,9 +473,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team5Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team5Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -484,9 +484,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team5Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team5Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -537,9 +537,9 @@
                            </light>
                         </Lighting>
                      </effect></ToggleButton>
-                  <ChoiceBox fx:id="team6Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team6Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -548,9 +548,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team6Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team6Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>
@@ -559,9 +559,9 @@
                            </light>
                         </Lighting>
                      </effect></ChoiceBox>
-                  <ChoiceBox fx:id="team6Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver;">
+                  <ChoiceBox fx:id="team6Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: silver; -fx-font-color: white;">
                      <effect>
-                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                        <Lighting diffuseConstant="2.0" specularConstant="1.42">
                            <bumpInput>
                               <Shadow />
                            </bumpInput>

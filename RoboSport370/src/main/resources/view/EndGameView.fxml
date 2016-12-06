@@ -8,12 +8,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.EndGameController">
    <children>
-         <Label fx:id="resultText" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="592.0" text="Win!" textAlignment="CENTER" textFill="#6b0909" underline="true">
+         <Label fx:id="resultText" alignment="CENTER" contentDisplay="CENTER" layoutX="104.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="592.0" text="Win!" textAlignment="CENTER" textFill="#791010" underline="true">
             <font>
                <Font name="Bauhaus 93" size="55.0" />
             </font>
          <effect>
-            <Lighting diffuseConstant="1.02" specularConstant="0.46" specularExponent="23.26" surfaceScale="3.24">
+            <Lighting diffuseConstant="1.58" specularConstant="0.55" specularExponent="23.26" surfaceScale="2.31">
                <bumpInput>
                   <Shadow />
                </bumpInput>
