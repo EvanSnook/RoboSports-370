@@ -1108,7 +1108,7 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Label fx:id="turnTimer" layoutX="948.0" layoutY="28.0" text="Turn Timer:" textFill="#6f0707">
+      <Label fx:id="turnTimer" layoutX="948.0" layoutY="28.0" text="Turn Timer: 30" textFill="#6f0707">
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font></Label>
