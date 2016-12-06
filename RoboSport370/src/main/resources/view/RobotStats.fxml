@@ -22,21 +22,16 @@
                </light>
             </Lighting>
          </effect></Button>
-         <ListView layoutX="148.0" layoutY="108.0" prefHeight="417.0" prefWidth="126.0" />
-         <Label layoutX="174.0" layoutY="80.0" text="Robots" textFill="#7c0707" underline="true">
+         <ListView layoutX="34.0" layoutY="92.0" prefHeight="417.0" prefWidth="193.0" />
+         <Label layoutX="89.0" layoutY="63.0" text="Robots" textFill="#7c0707" underline="true">
          <font>
             <Font name="Bauhaus 93" size="25.0" />
          </font></Label>
-         <ListView layoutX="24.0" layoutY="107.0" prefHeight="417.0" prefWidth="109.0" />
-         <Label layoutX="41.0" layoutY="78.0" text="Teams" textFill="#7c0707" underline="true">
-         <font>
-            <Font name="Bauhaus 93" size="27.0" />
-         </font></Label>
-         <Label layoutX="451.0" layoutY="23.0" prefHeight="78.0" prefWidth="148.0" text="Stats" textFill="#7c0d0d" underline="true">
+         <Label layoutX="431.0" layoutY="13.0" prefHeight="78.0" prefWidth="148.0" text="Stats" textFill="#7c0d0d" underline="true">
             <font>
                <Font name="Bauhaus 93" size="69.0" />
             </font>
          </Label>
-         <ListView layoutX="309.0" layoutY="94.0" prefHeight="491.0" prefWidth="456.0" />
+         <ListView layoutX="261.0" layoutY="91.0" prefHeight="491.0" prefWidth="487.0" />
    </children>
 </Pane>
