@@ -31,7 +31,7 @@ public class GameMaster {
     private HexNode selectedNode;
     private Robot currentRobot;
     private ForthInterpreter interpreter;
-
+    private int timeLeft = 30;
     @FXML
     public Pane gameContainer;
 
@@ -85,8 +85,13 @@ public class GameMaster {
 
         game.getGameTime().getPlayTimer().addActionListener(e -> {
             Platform.runLater(() -> {
-                turnTimer.setText("?");
-                endTurn();
+                timeLeft --;
+                String s = Integer.toString(timeLeft);
+                turnTimer.setText("Time Left: " + s);
+                if(timeLeft == 0) {
+                    endTurn();
+                    timeLeft = 30;
+                }
             });
         });
 

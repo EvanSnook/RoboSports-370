@@ -1,6 +1,11 @@
 package model;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class GameTime {
 
@@ -8,7 +13,8 @@ public class GameTime {
     private Timer playTimer;
     private long startGameinMilliS;
 
-    private int playerTimeLimitMilliS = 30_000;
+
+    private int playerTimeLimitMilliS = 1_000;
 
     public GameTime(int think) {
         robotThinkTime = think;
