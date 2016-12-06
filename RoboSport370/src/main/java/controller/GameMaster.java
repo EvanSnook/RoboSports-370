@@ -32,7 +32,7 @@ public class GameMaster {
     private HexNode selectedNode;
     private Robot currentRobot;
     private ForthInterpreter interpreter;
-
+    private int timeLeft = 30;
     @FXML
     public Pane gameContainer;
 
@@ -70,7 +70,7 @@ public class GameMaster {
     public Label CurrentRobotMoves;
 
     @FXML
-    public Label gameTimer;
+    public Label turnTimer;
 
     /**
      * The real constructor..
@@ -80,12 +80,14 @@ public class GameMaster {
     public void setGame(Game game) {
         GameMaster.game = game;
 
-        // TODO update the GameTimer label
         game.getGameTime().getPlayTimer().addActionListener(e -> {
             Platform.runLater(() -> {
-                gameTimer.setText("?");
-
-                endTurn();
+                timeLeft --;
+                String s = Integer.toString(timeLeft);
+                turnTimer.setText("Time Left: " + s);
+                if(timeLeft == 0) {
+                    endTurn();
+                }
             });
         });
 
@@ -380,6 +382,7 @@ public class GameMaster {
         getGame().getGameTime().getPlayTimer().stop();
         betweenTurn();
         outputTile();
+        timeLeft = 30;
     }
 
     public void betweenTurn(){

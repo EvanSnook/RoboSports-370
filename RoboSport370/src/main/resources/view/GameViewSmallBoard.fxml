@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
@@ -1022,18 +1023,95 @@
             <Double fx:value="-22.5" />
          </points>
       </Polygon>
-      <Button fx:id="robotMove" layoutX="49.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="108.0" text="Move" />
-      <Button fx:id="robotShoot" layoutX="52.0" layoutY="523.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="108.0" text="Shoot" />
-      <Button fx:id="endTurnButton" layoutX="52.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="108.0" text="End Turn" />
-      <Label fx:id="TurnLabel" alignment="CENTER" layoutX="216.0" layoutY="1.0" prefHeight="77.0" prefWidth="732.0" text="RED's Turn">
+      <Button fx:id="robotMove" layoutX="960.0" layoutY="237.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="131.0" style="-fx-background-color: silver;" text="Move" textFill="#720c0c">
          <font>
-            <Font size="53.0" />
+            <Font name="Bauhaus 93" size="24.0" />
          </font>
+         <effect>
+            <Lighting diffuseConstant="1.3" specularConstant="0.42" specularExponent="18.6" surfaceScale="3.01">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+      <Button fx:id="robotShoot" layoutX="961.0" layoutY="470.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="131.0" style="-fx-background-color: silver;" text="Shoot" textFill="#720c0c">
+         <font>
+            <Font name="Bauhaus 93" size="24.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.3" specularConstant="0.42" specularExponent="18.6" surfaceScale="3.01">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+      <Button fx:id="endTurnButton" layoutX="960.0" layoutY="358.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="132.0" style="-fx-background-color: yellow;" text="End Turn" textFill="#540a0a">
+         <font>
+            <Font name="Bauhaus 93" size="24.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.25" specularExponent="27.44" surfaceScale="2.66">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="#eeeeee" />
+               </light>
+            </Lighting>
+         </effect></Button>
+      <Label fx:id="TurnLabel" alignment="CENTER" layoutX="216.0" layoutY="1.0" prefHeight="77.0" prefWidth="732.0" text="RED's Turn" textFill="#750909">
+         <font>
+            <Font name="Bauhaus 93" size="53.0" />
+         </font>
+         <effect>
+            <Lighting specularConstant="0.58" surfaceScale="1.85">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
       </Label>
-      <Button layoutX="986.0" layoutY="434.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="63.0" prefWidth="108.0" text="Rules" />
-      <Button layoutX="986.0" layoutY="612.0" mnemonicParsing="false" onMouseClicked="#endMatch" prefHeight="63.0" prefWidth="108.0" text="End Match" />
-      <Label layoutX="958.0" layoutY="70.0" text="Turn Timer" />
-      <Label layoutX="954.0" layoutY="40.0" text="Game Timer" />
+      <Button layoutX="16.0" layoutY="702.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Rules" textFill="#720c0c">
+         <font>
+            <Font name="Bauhaus 93" size="24.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.3" specularConstant="0.42" specularExponent="18.6" surfaceScale="3.01">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+      <Button layoutX="1008.0" layoutY="694.0" mnemonicParsing="false" onMouseClicked="#endMatch" prefHeight="63.0" prefWidth="152.0" style="-fx-background-color: silver;" text="End Match" textFill="#720c0c">
+         <font>
+            <Font name="Bauhaus 93" size="24.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.3" specularConstant="0.42" specularExponent="18.6" surfaceScale="3.01">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+      <Label fx:id="turnTimer" layoutX="948.0" layoutY="28.0" text="Turn Timer: 30" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
       <ImageView fx:id="purpleTank" fitHeight="50.0" fitWidth="60.0" layoutX="417.0" layoutY="632.0" onMouseClicked="#robotClicked" pickOnBounds="true" preserveRatio="true">
 <image>
 <Image url="@../images/purpleTank.PNG" />
@@ -1106,23 +1184,68 @@
 <image>
 <Image url="@../images/redScout.PNG" />
 </image></ImageView>
-      <Label layoutX="14.0" layoutY="14.0" text="Tile Information:" />
-      <Label layoutX="53.0" layoutY="330.0" text="Current Robot:" />
-      <Label fx:id="CurrentRobotType" layoutX="151.0" layoutY="330.0" text="" />
-      <Label fx:id="CurrentRobotHealth" layoutX="149.0" layoutY="344.0" text="" />
-      <Label layoutX="100.0" layoutY="344.0" text="Health:" />
-      <Label layoutX="101.0" layoutY="356.0" text="Range:" />
-      <Label fx:id="CurrentRobotRange" layoutX="150.0" layoutY="356.0" text="" />
-      <Label layoutX="89.0" layoutY="369.0" text="Damage:" />
-      <Label fx:id="CurrentRobotDamage" layoutX="150.0" layoutY="369.0" text="" />
-      <Label fx:id="CurrentRobotMoves" layoutX="150.0" layoutY="382.0" text="" />
-      <Label layoutX="31.0" layoutY="382.0" text="Remaining Moves:" />
-      <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="32.0" prefHeight="292.0" prefWidth="270.0" />
-      <Label fx:id="gameTimer" layoutX="1026.0" layoutY="40.0" text="Game Timer" />
-      <Button fx:id="startTurn" layoutX="475.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#startPlay" prefHeight="118.0" prefWidth="226.0" text="Start">
+      <Label layoutX="16.0" layoutY="28.0" prefHeight="28.0" prefWidth="201.0" text="Tile Information:" textFill="#8a0909" underline="true">
          <font>
-            <Font size="48.0" />
+            <Font name="Bauhaus 93" size="23.0" />
+         </font></Label>
+      <Label layoutX="21.0" layoutY="501.0" text="Current Robot:" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label fx:id="CurrentRobotType" layoutX="166.0" layoutY="501.0" prefHeight="24.0" prefWidth="131.0" text="" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label fx:id="CurrentRobotHealth" layoutX="101.0" layoutY="537.0" prefHeight="24.0" prefWidth="131.0" text="" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label layoutX="22.0" layoutY="537.0" text="Health:" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label layoutX="23.0" layoutY="568.0" text="Range:" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label fx:id="CurrentRobotRange" layoutX="100.0" layoutY="568.0" prefHeight="24.0" prefWidth="132.0" text="" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label layoutX="21.0" layoutY="604.0" text="Damage:" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label fx:id="CurrentRobotDamage" layoutX="116.0" layoutY="604.0" prefHeight="24.0" prefWidth="114.0" text="" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label fx:id="CurrentRobotMoves" layoutX="196.0" layoutY="635.0" prefHeight="24.0" prefWidth="161.0" text="" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label layoutX="23.0" layoutY="635.0" text="Remaining Moves:" textFill="#6f0707">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+      <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="18.0" layoutY="62.0" prefHeight="431.0" prefWidth="216.0" textFill="#5e0606" wrapText="true">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font></Label>
+      <Button fx:id="startTurn" layoutX="475.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#startPlay" prefHeight="118.0" prefWidth="226.0" style="-fx-background-color: silver;" text="Start" textFill="#5e0707">
+         <font>
+            <Font name="Bauhaus 93" size="60.0" />
          </font>
+         <effect>
+            <Lighting diffuseConstant="1.3" specularConstant="0.42" specularExponent="18.6" surfaceScale="3.01">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
       </Button>
    </children>
 </Pane>
