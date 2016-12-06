@@ -38,7 +38,7 @@ public class Word {
     public boolean isTrigger(final String string) {
         match = null;
 
-        Matcher m = Pattern.compile("^" + trigger).matcher(string);
+        Matcher m = Pattern.compile("^" + trigger + "( |$)").matcher(string);
 
         if (m.find()) {
             match = new String[m.groupCount() + 1];

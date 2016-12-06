@@ -13,7 +13,7 @@
             <Font name="Bauhaus 93" size="19.0" />
          </font>
          <effect>
-            <Lighting diffuseConstant="1.28" specularConstant="0.44" specularExponent="31.63" surfaceScale="2.9">
+            <Lighting diffuseConstant="0.98" specularConstant="0.44" specularExponent="31.63" surfaceScale="2.9">
                <bumpInput>
                   <Shadow />
                </bumpInput>
@@ -31,6 +31,16 @@
             <font>
                <Font name="Bauhaus 93" size="69.0" />
             </font>
+         <effect>
+            <Lighting diffuseConstant="1.37" specularConstant="0.51" specularExponent="40.0" surfaceScale="1.98">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
          </Label>
          <ListView layoutX="261.0" layoutY="91.0" prefHeight="491.0" prefWidth="487.0" />
    </children>

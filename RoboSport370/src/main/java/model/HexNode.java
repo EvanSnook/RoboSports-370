@@ -224,6 +224,8 @@ public class HexNode {
     }
 
     public boolean isEmpty() {
+        if(!canContainRobots())
+            return true;
         return robots.isEmpty();
     }
 
