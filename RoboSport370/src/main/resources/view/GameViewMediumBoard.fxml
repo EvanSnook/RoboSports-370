@@ -2074,17 +2074,13 @@
             <Double fx:value="-18.75" />
          </points>
       </Polygon>
-      <Label layoutX="975.0" layoutY="17.0" text="Game Timer" textFill="#790909">
+      <Label fx:id="turnTimer" layoutX="972.0" layoutY="13.0" text="Turn Timer:" textFill="#790909">
          <font>
             <Font name="Bauhaus 93" size="25.0" />
          </font></Label>
-      <Label layoutX="983.0" layoutY="63.0" text="Turn Timer" textFill="#790909">
+      <Button layoutX="1079.0" layoutY="737.0" mnemonicParsing="false" onMouseClicked="#endMatch" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="End Match" textFill="#750a0a">
          <font>
-            <Font name="Bauhaus 93" size="25.0" />
-         </font></Label>
-      <Button layoutX="1068.0" layoutY="726.0" mnemonicParsing="false" onMouseClicked="#endMatch" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="End Match" textFill="#750a0a">
-         <font>
-            <Font name="Bauhaus 93" size="16.0" />
+            <Font name="Bauhaus 93" size="17.0" />
          </font>
          <effect>
             <Lighting diffuseConstant="1.16" specularExponent="18.14" surfaceScale="1.85">
@@ -2096,9 +2092,9 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button layoutX="21.0" layoutY="726.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Rules" textFill="#750a0a">
+      <Button layoutX="16.0" layoutY="737.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Rules" textFill="#750a0a">
          <font>
-            <Font name="Bauhaus 93" size="16.0" />
+            <Font name="Bauhaus 93" size="20.0" />
          </font>
          <effect>
             <Lighting diffuseConstant="1.16" specularExponent="18.14" surfaceScale="1.85">
@@ -2110,9 +2106,23 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button fx:id="endTurnButton" layoutX="1068.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="End Turn" textFill="#750a0a">
+      <Button fx:id="endTurnButton" layoutX="1040.0" layoutY="376.0" mnemonicParsing="false" onMouseClicked="#endTurn" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: yellow;" text="End Turn" textFill="#610d0d">
          <font>
-            <Font name="Bauhaus 93" size="16.0" />
+            <Font name="Bauhaus 93" size="20.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.25" specularConstant="0.18" specularExponent="4.65" surfaceScale="1.85">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+      <Button fx:id="robotShoot" layoutX="1040.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Shoot" textFill="#750a0a">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
          </font>
          <effect>
             <Lighting diffuseConstant="1.16" specularExponent="18.14" surfaceScale="1.85">
@@ -2124,9 +2134,9 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button fx:id="robotShoot" layoutX="994.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#robotShoot" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Shoot" textFill="#750a0a">
+      <Button fx:id="robotMove" layoutX="1040.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Move" textFill="#750a0a">
          <font>
-            <Font name="Bauhaus 93" size="16.0" />
+            <Font name="Bauhaus 93" size="20.0" />
          </font>
          <effect>
             <Lighting diffuseConstant="1.16" specularExponent="18.14" surfaceScale="1.85">
@@ -2138,21 +2148,7 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Button fx:id="robotMove" layoutX="994.0" layoutY="266.0" mnemonicParsing="false" onMouseClicked="#robotMove" prefHeight="63.0" prefWidth="108.0" style="-fx-background-color: silver;" text="Move" textFill="#750a0a">
-         <font>
-            <Font name="Bauhaus 93" size="16.0" />
-         </font>
-         <effect>
-            <Lighting diffuseConstant="1.16" specularExponent="18.14" surfaceScale="1.85">
-               <bumpInput>
-                  <Shadow />
-               </bumpInput>
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
-         </effect></Button>
-      <Label fx:id="TurnLabel" alignment="CENTER" layoutX="195.0" layoutY="-10.0" prefHeight="57.0" prefWidth="809.0" text="RED's Turn" textFill="#790808">
+      <Label fx:id="TurnLabel" alignment="CENTER" layoutX="190.0" layoutY="-8.0" prefHeight="58.0" prefWidth="819.0" text="RED's Turn" textFill="#790808">
          <font>
             <Font name="Bauhaus 93" size="50.0" />
          </font>
@@ -2240,7 +2236,7 @@
          <image>
             <Image url="@../images/redScout.PNG" />
          </image></ImageView>
-      <Label layoutX="19.0" layoutY="19.0" text="Tile Information:" textFill="#790909" underline="true">
+      <Label layoutX="11.0" layoutY="19.0" text="Tile Information:" textFill="#790909" underline="true">
          <font>
             <Font name="Bauhaus 93" size="22.0" />
          </font></Label>
@@ -2284,7 +2280,7 @@
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font></Label>
-      <Label fx:id="OutputLabel" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="15.0" layoutY="52.0" prefHeight="387.0" prefWidth="172.0" textFill="#750707">
+      <Label fx:id="OutputLabel" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="49.0" prefHeight="387.0" prefWidth="183.0" textFill="#750707" wrapText="true">
          <font>
             <Font name="Bauhaus 93" size="17.0" />
          </font></Label>
