@@ -83,7 +83,6 @@ public class GameMaster {
     public void setGame(Game game) {
         GameMaster.game = game;
 
-        // TODO update the GameTimer label
         game.getGameTime().getPlayTimer().addActionListener(e -> {
             Platform.runLater(() -> {
                 turnTimer.setText("Turn Timer: " +"?");
