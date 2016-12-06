@@ -22,12 +22,12 @@
                </light>
             </Lighting>
          </effect></Button>
-         <ListView fx:id="robotsListView" layoutX="34.0" layoutY="92.0" prefHeight="417.0" prefWidth="193.0" />
+         <ListView fx:id="robotListView" layoutX="34.0" layoutY="96.0" prefHeight="417.0" prefWidth="193.0" />
          <Label layoutX="89.0" layoutY="63.0" text="Robots" textFill="#7c0707" underline="true">
          <font>
             <Font name="Bauhaus 93" size="25.0" />
          </font></Label>
-         <Label layoutX="431.0" layoutY="13.0" prefHeight="78.0" prefWidth="148.0" text="Stats" textFill="#7c0d0d" underline="true">
+         <Label alignment="CENTER" layoutX="263.0" layoutY="13.0" prefHeight="85.0" prefWidth="487.0" text="Stats" textFill="#7c0d0d" underline="true">
             <font>
                <Font name="Bauhaus 93" size="69.0" />
             </font>
@@ -42,6 +42,40 @@
             </Lighting>
          </effect>
          </Label>
-         <ListView layoutX="261.0" layoutY="91.0" prefHeight="491.0" prefWidth="487.0" />
+      <HBox layoutX="366.0" layoutY="96.0" prefHeight="417.0" prefWidth="282.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="417.0" prefWidth="125.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="110.0" text="Team Name" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="10.0" prefHeight="25.0" prefWidth="110.0" text="Robot Name" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="35.0" prefHeight="25.0" prefWidth="110.0" text="Matches" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="35.0" prefHeight="25.0" prefWidth="110.0" text="Wins" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="60.0" prefHeight="25.0" prefWidth="110.0" text="Losses" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="110.0" prefHeight="25.0" prefWidth="110.0" text="Survived" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="135.0" prefHeight="25.0" prefWidth="110.0" text="Died" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="160.0" prefHeight="25.0" prefWidth="110.0" text="Executions" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="185.0" prefHeight="25.0" prefWidth="110.0" text="Killed" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="210.0" prefHeight="25.0" prefWidth="110.0" text="Distance Moved" />
+                  <Label alignment="CENTER_RIGHT" layoutX="18.0" layoutY="235.0" prefHeight="25.0" prefWidth="110.0" text="Damage Taken" />
+               </children>
+            </VBox>
+            <VBox prefHeight="417.0" prefWidth="39.0" />
+            <VBox layoutX="135.0" layoutY="10.0" prefHeight="417.0" prefWidth="112.0">
+               <children>
+                  <Label fx:id="teamName" prefHeight="25.0" prefWidth="110.0" text="teamName" />
+                  <Label fx:id="robotName" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="110.0" text="robotName" />
+                  <Label fx:id="matches" layoutX="10.0" layoutY="35.0" prefHeight="25.0" prefWidth="110.0" text="matches" />
+                  <Label fx:id="wins" layoutX="10.0" layoutY="60.0" prefHeight="25.0" prefWidth="110.0" text="wins" />
+                  <Label fx:id="losses" layoutX="10.0" layoutY="85.0" prefHeight="25.0" prefWidth="110.0" text="losses" />
+                  <Label fx:id="lived" layoutX="10.0" layoutY="110.0" prefHeight="25.0" prefWidth="110.0" text="lived" />
+                  <Label fx:id="died" layoutX="10.0" layoutY="135.0" prefHeight="25.0" prefWidth="110.0" text="died" />
+                  <Label fx:id="executions" layoutX="10.0" layoutY="160.0" prefHeight="25.0" prefWidth="110.0" text="executions" />
+                  <Label fx:id="killed" layoutX="10.0" layoutY="185.0" prefHeight="25.0" prefWidth="110.0" text="killed" />
+                  <Label fx:id="moved" layoutX="10.0" layoutY="210.0" prefHeight="25.0" prefWidth="110.0" text="moved" />
+                  <Label fx:id="absorbed" layoutX="10.0" layoutY="235.0" prefHeight="25.0" prefWidth="110.0" text="absorbed" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
 </Pane>
