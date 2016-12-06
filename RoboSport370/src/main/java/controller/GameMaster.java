@@ -69,7 +69,7 @@ public class GameMaster {
     public Label CurrentRobotMoves;
 
     @FXML
-    public Label gameTimer;
+    public Label turnTimer;
 
     public GameMaster() {
         interpreter = new ForthInterpreter(this);
@@ -83,11 +83,9 @@ public class GameMaster {
     public void setGame(Game game) {
         GameMaster.game = game;
 
-        // TODO update the GameTimer label
         game.getGameTime().getPlayTimer().addActionListener(e -> {
             Platform.runLater(() -> {
-                gameTimer.setText("?");
-
+                turnTimer.setText("?");
                 endTurn();
             });
         });
