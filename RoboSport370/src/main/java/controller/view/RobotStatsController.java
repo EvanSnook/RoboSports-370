@@ -1,9 +1,26 @@
 package controller.view;
 
-import javafx.scene.input.MouseEvent;
-import model.PublicViewController;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
-public class RobotStatsController {
+import javax.swing.text.html.ListView;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
+import model.PublicLibrarian;
+import model.PublicViewController;
+import model.RobotAI;
+import model.enums.RobotType;
+
+
+
+public class RobotStatsController implements Initializable {
+
+    @FXML
+    ListView robotListView;
 
     public void uploadStats(/*MouseEvent mouseEvent*/) {
 
@@ -15,5 +32,10 @@ public class RobotStatsController {
 
     public void showMainMenu(MouseEvent mouseEvent) {
         PublicViewController.getInstance().setScene("MAIN_MENU");
+    }
+
+    public void initialize(URL location, ResourceBundle resources) {
+
+        //robotListView.setItems(PublicLibrarian.getInstance().getRobots());
     }
 }

@@ -22,7 +22,7 @@
                </light>
             </Lighting>
          </effect></Button>
-         <ListView layoutX="34.0" layoutY="92.0" prefHeight="417.0" prefWidth="193.0" />
+         <ListView fx:id="robotsListView" layoutX="34.0" layoutY="92.0" prefHeight="417.0" prefWidth="193.0" />
          <Label layoutX="89.0" layoutY="63.0" text="Robots" textFill="#7c0707" underline="true">
          <font>
             <Font name="Bauhaus 93" size="25.0" />
