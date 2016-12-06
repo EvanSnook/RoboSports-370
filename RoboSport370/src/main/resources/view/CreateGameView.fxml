@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -16,160 +17,562 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.CreateGameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.CreateGameController">
    <children>
-            <Label layoutX="136.0" layoutY="-15.0" prefHeight="88.0" prefWidth="420.0" text="Game Creation">
+            <Label layoutX="158.0" prefHeight="88.0" prefWidth="523.0" text="Game Creation" textFill="#830d0d">
                <font>
-                  <Font size="47.0" />
+                  <Font name="Bauhaus 93" size="71.0" />
                </font>
+         <effect>
+            <Lighting diffuseConstant="1.28" specularConstant="0.16" surfaceScale="4.41">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
             </Label>
-            <Label layoutX="12.0" layoutY="99.0" text="Number of Teams" />
-            <Label layoutX="15.0" layoutY="200.0" text="Board Radius" />
-            <Label layoutX="15.0" layoutY="268.0" text="Robot Think Time" />
-            <Slider fx:id="robotThinkTimeSlider" layoutX="18.0" layoutY="295.0" majorTickUnit="5.0" max="30.0" minorTickCount="5" onKeyTyped="#updateThinkTimeLabel" onMouseClicked="#updateThinkTimeLabel" onMouseDragged="#updateThinkTimeLabel" prefHeight="14.0" prefWidth="93.0" showTickMarks="true" snapToTicks="true" />
-            <Button layoutX="18.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#showMainMenu" prefHeight="33.0" prefWidth="87.0" text="Back" />
-            <Button layoutX="506.0" layoutY="353.0" mnemonicParsing="false" onMouseClicked="#createGame" prefHeight="33.0" prefWidth="84.0" text="Start" />
-            <Label fx:id="robotThinkTimeValueLabel" layoutX="56.0" layoutY="311.0" text="0s" />
-            <VBox layoutX="15.0" layoutY="117.0" onMouseClicked="#changeVisibleTeams" prefHeight="71.0" prefWidth="93.0">
+            <Label layoutX="209.0" layoutY="66.0" prefHeight="76.0" prefWidth="162.0" text="Number of Teams" textFill="#940c0c" underline="true" wrapText="true">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+            <Label layoutX="470.0" layoutY="92.0" text="Board Radius" textFill="#940c0c" underline="true">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+            <Label layoutX="327.0" layoutY="529.0" prefHeight="24.0" prefWidth="162.0" text="Robot Think Time" textFill="#940c0c">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+            <Slider fx:id="robotThinkTimeSlider" layoutX="333.0" layoutY="559.0" majorTickUnit="5.0" max="30.0" minorTickCount="5" onKeyTyped="#updateThinkTimeLabel" onMouseClicked="#updateThinkTimeLabel" onMouseDragged="#updateThinkTimeLabel" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" snapToTicks="true" />
+            <Button layoutX="14.0" layoutY="553.0" mnemonicParsing="false" onMouseClicked="#showMainMenu" prefHeight="33.0" prefWidth="87.0" style="-fx-background-color: silver;" text="Back" textFill="#971515">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+            <Button layoutX="695.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#createGame" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: silver;" text="Start" textFill="#971515">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+            <Label fx:id="robotThinkTimeValueLabel" layoutX="399.0" layoutY="573.0" text="0s" textFill="#940c0c">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font></Label>
+            <VBox alignment="CENTER" layoutX="252.0" layoutY="125.0" onMouseClicked="#changeVisibleTeams" prefHeight="62.0" prefWidth="87.0">
                <children>
-                        <RadioButton fx:id="teams2RadioButton" mnemonicParsing="false" onAction="#changeVisibleTeams" prefHeight="18.0" prefWidth="95.0" text="2 Teams">
+                        <RadioButton fx:id="teams2RadioButton" mnemonicParsing="false" onAction="#changeVisibleTeams" prefHeight="27.0" prefWidth="95.0" text="2 Teams" textFill="#940c0c">
                            <toggleGroup>
                               <ToggleGroup fx:id="teamGroup" />
                            </toggleGroup>
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font>
                   </RadioButton>
-                        <RadioButton fx:id="teams3RadioButton" mnemonicParsing="false" onAction="#changeVisibleTeams" prefHeight="18.0" prefWidth="101.0" text="3 Teams" toggleGroup="$teamGroup" />
-                        <RadioButton fx:id="teams6RadioButton" mnemonicParsing="false" onAction="#changeVisibleTeams" prefHeight="18.0" prefWidth="106.0" selected="true" text="6 Teams" toggleGroup="$teamGroup" />
+                        <RadioButton fx:id="teams3RadioButton" mnemonicParsing="false" onAction="#changeVisibleTeams" prefHeight="9.0" prefWidth="87.0" text="3 Teams" textFill="#940c0c" toggleGroup="$teamGroup">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font></RadioButton>
+                        <RadioButton fx:id="teams6RadioButton" mnemonicParsing="false" onAction="#changeVisibleTeams" prefHeight="29.0" prefWidth="106.0" selected="true" text="6 Teams" textFill="#940c0c" toggleGroup="$teamGroup">
+               <font>
+                  <Font name="Bauhaus 93" size="14.0" />
+               </font></RadioButton>
                </children>
             </VBox>
-            <VBox layoutX="18.0" layoutY="220.0" prefHeight="46.0" prefWidth="101.0">
+            <VBox layoutX="470.0" layoutY="125.0" prefHeight="35.0" prefWidth="151.0">
                <children>
-                        <RadioButton fx:id="hexagons5RadioButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="121.0" text="5 Hexagons" visible="false">
+                        <RadioButton fx:id="hexagons5RadioButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="121.0" text="5 Hexagons" textFill="#860f0f" visible="false">
                            <toggleGroup>
                               <ToggleGroup fx:id="boardGroup" />
                            </toggleGroup>
+               <font>
+                  <Font name="Bauhaus 93" size="15.0" />
+               </font>
                   </RadioButton>
-                        <RadioButton fx:id="hexagons7RadioButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="121.0" selected="true" text="7 Hexagons" toggleGroup="$boardGroup" />
                </children>
             </VBox>
-      <HBox fx:id="Team1Box" layoutX="111.0" layoutY="69.0" onKeyPressed="#changeVisibleTeams" onMouseClicked="#changeVisibleTeams" prefHeight="131.0" prefWidth="134.0">
+      <HBox fx:id="Team1Box" layoutX="69.0" layoutY="201.0" onKeyPressed="#changeVisibleTeams" onMouseClicked="#changeVisibleTeams" prefHeight="149.0" prefWidth="173.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="155.0" prefWidth="70.0" spacing="18.0">
                <children>
-                        <Label text="Team 1" />
-                        <Label text="Scout" />
-                        <Label text="Sniper" />
-                        <Label text="Tank" />
+                        <Label text="Team 1" textFill="#900a0a" underline="true">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                        <Label text="Scout" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                        <Label text="Sniper" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                        <Label text="Tank" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
                </children>
             </VBox>
             <VBox prefHeight="155.0" prefWidth="64.0" spacing="8.0">
                <children>
-                        <ToggleButton fx:id="toggleButton1" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="14.0" prefWidth="70.0" text="Human" />
-                  <ChoiceBox fx:id="team1Scout" disable="true" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team1Sniper" disable="true" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team1Tank" disable="true" prefHeight="17.0" prefWidth="70.0" />
+                        <ToggleButton fx:id="toggleButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;" text="Human" textFill="#720606">
+                     <font>
+                        <Font name="Bauhaus 93" size="14.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ToggleButton>
+                  <ChoiceBox fx:id="team1Scout" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team1Sniper" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team1Tank" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox fx:id="Team2Box" layoutX="263.0" layoutY="69.0" prefHeight="131.0" prefWidth="134.0">
+      <HBox fx:id="Team2Box" layoutX="307.0" layoutY="204.0" prefHeight="144.0" prefWidth="173.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="155.0" prefWidth="70.0" spacing="18.0">
                <children>
-                  <Label text="Team 2" />
-                  <Label text="Scout" />
-                  <Label text="Sniper" />
-                  <Label text="Tank" />
+                  <Label text="Team 2" textFill="#900a0a" underline="true">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                  <Label text="Scout" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                  <Label text="Sniper" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                  <Label text="Tank" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
                </children>
             </VBox>
             <VBox prefHeight="155.0" prefWidth="64.0" spacing="8.0">
                <children>
-                        <ToggleButton fx:id="toggleButton2" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
-                  <ChoiceBox fx:id="team2Scout" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team2Sniper" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team2Tank" prefHeight="17.0" prefWidth="70.0" />
+                        <ToggleButton fx:id="toggleButton2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="30.0" prefWidth="100.0" selected="true" style="-fx-background-color: silver;" text="AI" textFill="#720606">
+                     <font>
+                        <Font name="Bauhaus 93" size="14.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ToggleButton>
+                  <ChoiceBox fx:id="team2Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team2Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team2Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox fx:id="Team3Box" layoutX="414.0" layoutY="69.0" prefHeight="131.0" prefWidth="134.0">
+      <HBox fx:id="Team3Box" layoutX="545.0" layoutY="204.0" prefHeight="144.0" prefWidth="179.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="155.0" prefWidth="70.0" spacing="18.0">
                <children>
-                  <Label text="Team 3" />
-                  <Label text="Scout" />
-                  <Label text="Sniper" />
-                  <Label text="Tank" />
+                  <Label text="Team 3" textFill="#900a0a" underline="true">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="Scout" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="Sniper" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="Tank" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="155.0" prefWidth="64.0" spacing="8.0">
                <children>
-                  <ToggleButton fx:id="toggleButton3" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
-                  <ChoiceBox fx:id="team3Scout" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team3Sniper" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team3Tank" prefHeight="17.0" prefWidth="70.0" />
+                  <ToggleButton fx:id="toggleButton3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="30.0" prefWidth="100.0" selected="true" style="-fx-background-color: silver;" text="AI" textFill="#720606">
+                     <font>
+                        <Font name="Bauhaus 93" size="14.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ToggleButton>
+                  <ChoiceBox fx:id="team3Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team3Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team3Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox fx:id="Team4Box" layoutX="110.0" layoutY="220.0" prefHeight="131.0" prefWidth="134.0">
+      <HBox fx:id="Team4Box" layoutX="73.0" layoutY="370.0" prefHeight="144.0" prefWidth="179.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="155.0" prefWidth="70.0" spacing="18.0">
                <children>
-                  <Label text="Team 4" />
-                  <Label text="Scout" />
-                  <Label text="Sniper" />
-                  <Label text="Tank" />
+                  <Label text="Team 4" textFill="#900a0a" underline="true">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                  <Label text="Scout" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                  <Label text="Sniper" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                  <Label text="Tank" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
                </children>
             </VBox>
             <VBox prefHeight="155.0" prefWidth="64.0" spacing="8.0">
                <children>
-                  <ToggleButton fx:id="toggleButton4" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
-                  <ChoiceBox fx:id="team4Scout" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team4Sniper" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team4Tank" prefHeight="17.0" prefWidth="70.0" />
+                  <ToggleButton fx:id="toggleButton4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="30.0" prefWidth="100.0" selected="true" style="-fx-background-color: silver;" text="AI" textFill="#720606">
+                     <font>
+                        <Font name="Bauhaus 93" size="14.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ToggleButton>
+                  <ChoiceBox fx:id="team4Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team4Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team4Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox fx:id="Team5Box" layoutX="263.0" layoutY="220.0" prefHeight="131.0" prefWidth="134.0">
+      <HBox fx:id="Team5Box" layoutX="304.0" layoutY="370.0" prefHeight="144.0" prefWidth="173.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="155.0" prefWidth="70.0" spacing="18.0">
                <children>
-                  <Label text="Team 5" />
-                  <Label text="Scout" />
-                  <Label text="Sniper" />
-                  <Label text="Tank" />
+                  <Label text="Team 5" textFill="#900a0a" underline="true">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="Scout" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="Sniper" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label text="Tank" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
             <VBox prefHeight="155.0" prefWidth="64.0" spacing="8.0">
                <children>
-                  <ToggleButton fx:id="toggleButton5" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
-                  <ChoiceBox fx:id="team5Scout" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team5Sniper" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team5Tank" prefHeight="17.0" prefWidth="70.0" />
+                  <ToggleButton fx:id="toggleButton5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="30.0" prefWidth="100.0" selected="true" style="-fx-background-color: silver;" text="AI" textFill="#720606">
+                     <font>
+                        <Font name="Bauhaus 93" size="14.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ToggleButton>
+                  <ChoiceBox fx:id="team5Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team5Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team5Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <HBox fx:id="Team6Box" layoutX="414.0" layoutY="220.0" prefHeight="131.0" prefWidth="134.0">
+      <HBox fx:id="Team6Box" layoutX="546.0" layoutY="370.0" prefHeight="171.0" prefWidth="202.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="155.0" prefWidth="70.0" spacing="18.0">
                <children>
-                  <Label text="Team 6" />
-                  <Label text="Scout" />
-                  <Label text="Sniper" />
-                  <Label text="Tank" />
+                  <Label text="Team 6" textFill="#900a0a" underline="true">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                  <Label text="Scout" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                  <Label text="Sniper" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
+                  <Label text="Tank" textFill="#900a0a">
+                     <font>
+                        <Font name="Bauhaus 93" size="17.0" />
+                     </font></Label>
                </children>
             </VBox>
             <VBox prefHeight="155.0" prefWidth="64.0" spacing="8.0">
                <children>
-                  <ToggleButton fx:id="toggleButton6" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="14.0" prefWidth="70.0" selected="true" text="AI" />
-                  <ChoiceBox fx:id="team6Scout" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team6Sniper" prefHeight="17.0" prefWidth="70.0" />
-                  <ChoiceBox fx:id="team6Tank" prefHeight="17.0" prefWidth="70.0" />
+                  <ToggleButton fx:id="toggleButton6" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#togglePlayer" prefHeight="30.0" prefWidth="100.0" selected="true" style="-fx-background-color: silver;" text="AI" textFill="#720606">
+                     <font>
+                        <Font name="Bauhaus 93" size="14.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ToggleButton>
+                  <ChoiceBox fx:id="team6Scout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team6Sniper" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
+                  <ChoiceBox fx:id="team6Tank" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: silver;">
+                     <effect>
+                        <Lighting diffuseConstant="0.82" specularConstant="0.25" specularExponent="16.28" surfaceScale="2.78">
+                           <bumpInput>
+                              <Shadow />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect></ChoiceBox>
                </children>
             </VBox>
          </children>
       </HBox>
+                  <RadioButton fx:id="hexagons7RadioButton" layoutX="470.0" layoutY="143.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="151.0" selected="true" text="7 Hexagons" textFill="#860f0f" toggleGroup="$boardGroup">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font>
+      </RadioButton>
    </children>
 </Pane>

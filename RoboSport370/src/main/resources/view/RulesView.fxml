@@ -1,18 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/8">
-         <Label layoutX="44.0" text="Game Rules">
-            <font>
-               <Font name="Perpetua" size="58.0" />
-            </font>
-         </Label>
-         <TextArea editable="false" layoutX="12.0" layoutY="85.0" prefHeight="161.0" prefWidth="318.0" text="Robots Types:&#10;Scout - 1 Attack, 1 Health, 3 Movement, 2 Range&#10;Sniper - 2 Attack, 2 Health, 2 Movement, 3 Range&#10;Tank - 3 Attack, 3 Health, 1 Movement, 1 Range&#10;&#10;Teams (2, 3, or 6):&#10;-Red, Orange, Yellow, Green, Blue, and Purple&#10;&#10;Game Flow:&#10;-With two players, red and green are used, and the board has 5 spaces on a side&#10;-With three players, red and yellow and blue are used, the board can have 5 or 7 spaces on a side&#10;-With six players, all colours are used and the board has 7 spaces on a side.&#10;-The colours are assigned randomly&#10;-All robots enter in their home space, facing along the arrow&#10;-Any number of robots, including ones from opposing teams, can occupy the same space&#10;-A turn begins with Red team playing its robot with greatest movement; then orange does the same....finally blue plays its greatest-movement robot - this completes one round&#10;-A second round is played where Red team plays their next highest moving robot, then orange, ... , then up to blue. &#10;-Thus, every robot gets on play per turn, fastest robots move first.&#10;-Note that Red's highest movement robot might not be&#10;-If a team does not have a robot to play during a round, skip to the next colour&#10;-A play consists of moving, shooting, and moving again (if possible).&#10;-It costs no movement points to turn and face any direction (0-5), and one movement point to enter an adjacent space&#10;-Different robots have different attributes as shown above&#10;-At the end of every turn, robots regenerate their movement points&#10;-Shooting at a space means selecting a range and direction causes the shooting-robot's attack-rating to be subtracted from the health of all robots in that space (friendly or enemy)&#10;-If a robot's health drops to zero or less than zero, the robot is dead and removed from play&#10;-Until a robot is dead, its movement and damage ratings are unimpaired&#10;-Note that range=0, direction=0 is invalid&#10;-If more than one team's robots are alive, another turn starts beginning with Red's highest-movement robot&#10;-If only one team's robots are alive, that team is the winner" wrapText="true">
-            <font>
-               <Font name="Perpetua" size="17.0" />
-            </font>
-         </TextArea>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+            <Label layoutX="221.0" text="Game Rules" textFill="#7c1010">
+               <font>
+                  <Font name="Bauhaus 93" size="70.0" />
+               </font>
+         <effect>
+            <Lighting diffuseConstant="1.63" specularConstant="0.35" specularExponent="21.4" surfaceScale="9.29">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant azimuth="53.37" />
+               </light>
+            </Lighting>
+         </effect>
+            </Label>
+            <TextArea editable="false" layoutY="80.0" prefHeight="525.0" prefWidth="800.0" text="Robots Types:&#10;Scout - 1 Attack, 1 Health, 3 Movement, 2 Range&#10;Sniper - 2 Attack, 2 Health, 2 Movement, 3 Range&#10;Tank - 3 Attack, 3 Health, 1 Movement, 1 Range&#10;&#10;Teams (2, 3, or 6):&#10;-Red, Orange, Yellow, Green, Blue, and Purple&#10;&#10;Game Flow:&#10;-With two players, red and green are used, and the board has 5 spaces on a side&#10;-With three players, red and yellow and blue are used, the board can have 5 or 7 spaces on a side&#10;-With six players, all colours are used and the board has 7 spaces on a side.&#10;-The colours are assigned randomly&#10;-All robots enter in their home space, facing along the arrow&#10;-Any number of robots, including ones from opposing teams, can occupy the same space&#10;-A turn begins with Red team playing its robot with greatest movement; then orange does the same....finally blue plays its greatest-movement robot - this completes one round&#10;-A second round is played where Red team plays their next highest moving robot, then orange, ... , then up to blue. &#10;-Thus, every robot gets on play per turn, fastest robots move first.&#10;-Note that Red's highest movement robot might not be&#10;-If a team does not have a robot to play during a round, skip to the next colour&#10;-A play consists of moving, shooting, and moving again (if possible).&#10;-It costs no movement points to turn and face any direction (0-5), and one movement point to enter an adjacent space&#10;-Different robots have different attributes as shown above&#10;-At the end of every turn, robots regenerate their movement points&#10;-Shooting at a space means selecting a range and direction causes the shooting-robot's attack-rating to be subtracted from the health of all robots in that space (friendly or enemy)&#10;-If a robot's health drops to zero or less than zero, the robot is dead and removed from play&#10;-Until a robot is dead, its movement and damage ratings are unimpaired&#10;-Note that range=0, direction=0 is invalid&#10;-If more than one team's robots are alive, another turn starts beginning with Red's highest-movement robot&#10;-If only one team's robots are alive, that team is the winner" wrapText="true">
+               <font>
+                  <Font name="Arial" size="17.0" />
+               </font>
+            </TextArea>
+   </children>
 </Pane>

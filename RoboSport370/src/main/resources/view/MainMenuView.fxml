@@ -23,12 +23,12 @@
             </Lighting>
          </effect>
          </Label>
-         <Button layoutX="150.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: white;" text="Rules" textFill="#831717">
+         <Button layoutX="150.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: silver;" text="Rules" textFill="#831717">
          <font>
             <Font name="Bauhaus 93" size="30.0" />
          </font>
          <effect>
-            <Lighting diffuseConstant="1.32" specularConstant="0.0" specularExponent="34.88" surfaceScale="1.52">
+            <Lighting diffuseConstant="0.89" specularConstant="0.4" specularExponent="23.25" surfaceScale="3.03">
                <bumpInput>
                   <Shadow />
                </bumpInput>
@@ -37,12 +37,12 @@
                </light>
             </Lighting>
          </effect></Button>
-         <Button layoutX="150.0" layoutY="207.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showCreateGame" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: white;" text="Create Game" textAlignment="CENTER" textFill="#831717">
+         <Button layoutX="150.0" layoutY="207.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showCreateGame" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: silver;" text="Create Game" textAlignment="CENTER" textFill="#831717">
          <font>
             <Font name="Bauhaus 93" size="30.0" />
          </font>
          <effect>
-            <Lighting diffuseConstant="1.32" specularConstant="0.0" specularExponent="34.88" surfaceScale="1.52">
+            <Lighting diffuseConstant="0.89" specularConstant="0.4" specularExponent="23.25" surfaceScale="3.03">
                <bumpInput>
                   <Shadow />
                </bumpInput>
@@ -51,12 +51,12 @@
                </light>
             </Lighting>
          </effect></Button>
-         <Button layoutX="150.0" layoutY="434.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: white;" text="Quit" textFill="#831717">
+         <Button layoutX="150.0" layoutY="434.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: silver;" text="Quit" textFill="#831717">
          <font>
             <Font name="Bauhaus 93" size="30.0" />
          </font>
          <effect>
-            <Lighting diffuseConstant="1.32" specularConstant="0.0" specularExponent="34.88" surfaceScale="1.52">
+            <Lighting diffuseConstant="0.89" specularConstant="0.4" specularExponent="23.25" surfaceScale="3.03">
                <bumpInput>
                   <Shadow />
                </bumpInput>
@@ -65,12 +65,12 @@
                </light>
             </Lighting>
          </effect></Button>
-         <Button layoutX="150.0" layoutY="360.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showStats" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: white;" text="Stats" textFill="#831717">
+         <Button layoutX="150.0" layoutY="360.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showStats" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: silver;" text="Stats" textFill="#831717">
          <font>
             <Font name="Bauhaus 93" size="30.0" />
          </font>
          <effect>
-            <Lighting diffuseConstant="1.32" specularConstant="0.0" specularExponent="34.88" surfaceScale="1.52">
+            <Lighting diffuseConstant="0.89" specularConstant="0.4" specularExponent="23.25" surfaceScale="3.03">
                <bumpInput>
                   <Shadow />
                </bumpInput>
