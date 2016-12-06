@@ -2280,9 +2280,9 @@
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font></Label>
-      <Label fx:id="OutputLabel" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="49.0" prefHeight="387.0" prefWidth="183.0" textFill="#750707" wrapText="true">
+      <Label fx:id="OutputLabel" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="49.0" prefHeight="387.0" prefWidth="183.0" textFill="#5b0606" wrapText="true">
          <font>
-            <Font name="Bauhaus 93" size="17.0" />
+            <Font name="Consolas" size="17.0" />
          </font></Label>
       <Label fx:id="gameTimer" layoutX="1106.0" layoutY="51.0" prefHeight="24.0" prefWidth="81.0" textFill="#830808">
          <font>

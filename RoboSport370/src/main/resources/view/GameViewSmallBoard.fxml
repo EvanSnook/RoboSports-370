@@ -1108,7 +1108,7 @@
                </light>
             </Lighting>
          </effect></Button>
-      <Label fx:id="turnTimer" layoutX="927.0" layoutY="66.0" text="Turn Timer" textFill="#6f0707">
+      <Label fx:id="turnTimer" layoutX="948.0" layoutY="28.0" text="Turn Timer:" textFill="#6f0707">
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font></Label>
@@ -1228,9 +1228,9 @@
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font></Label>
-      <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="16.0" layoutY="61.0" prefHeight="406.0" prefWidth="226.0" textFill="#6b0808" wrapText="true">
+      <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="16.0" layoutY="61.0" prefHeight="406.0" prefWidth="226.0" textFill="#4a0202" wrapText="true">
          <font>
-            <Font name="Bauhaus 93" size="17.0" />
+            <Font name="Consolas" size="17.0" />
          </font></Label>
       <Button fx:id="startTurn" layoutX="475.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#startPlay" prefHeight="118.0" prefWidth="226.0" style="-fx-background-color: silver;" text="Start" textFill="#5e0707">
          <font>
