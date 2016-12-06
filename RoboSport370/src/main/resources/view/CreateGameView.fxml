@@ -57,7 +57,7 @@
             <Font name="Bauhaus 93" size="20.0" />
          </font>
          <effect>
-            <Lighting>
+            <Lighting diffuseConstant="1.42" specularConstant="0.35" specularExponent="15.35" surfaceScale="1.38">
                <bumpInput>
                   <Shadow />
                </bumpInput>
@@ -71,7 +71,7 @@
             <Font name="Bauhaus 93" size="20.0" />
          </font>
          <effect>
-            <Lighting>
+            <Lighting diffuseConstant="1.42" specularConstant="0.35" specularExponent="15.35" surfaceScale="1.38">
                <bumpInput>
                   <Shadow />
                </bumpInput>
