@@ -1184,9 +1184,9 @@
 <image>
 <Image url="@../images/redScout.PNG" />
 </image></ImageView>
-      <Label layoutX="15.0" layoutY="28.0" prefHeight="24.0" prefWidth="180.0" text="Tile Information:" textFill="#8a0909" underline="true">
+      <Label layoutX="16.0" layoutY="28.0" prefHeight="28.0" prefWidth="201.0" text="Tile Information:" textFill="#8a0909" underline="true">
          <font>
-            <Font name="Bauhaus 93" size="21.0" />
+            <Font name="Bauhaus 93" size="23.0" />
          </font></Label>
       <Label layoutX="21.0" layoutY="501.0" text="Current Robot:" textFill="#6f0707">
          <font>
@@ -1228,9 +1228,9 @@
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font></Label>
-      <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="16.0" layoutY="61.0" prefHeight="406.0" prefWidth="226.0" textFill="#4a0202" wrapText="true">
+      <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="18.0" layoutY="62.0" prefHeight="431.0" prefWidth="216.0" textFill="#5e0606" wrapText="true">
          <font>
-            <Font name="Consolas" size="17.0" />
+            <Font name="Consolas" size="12.0" />
          </font></Label>
       <Button fx:id="startTurn" layoutX="475.0" layoutY="332.0" mnemonicParsing="false" onMouseClicked="#startPlay" prefHeight="118.0" prefWidth="226.0" style="-fx-background-color: silver;" text="Start" textFill="#5e0707">
          <font>

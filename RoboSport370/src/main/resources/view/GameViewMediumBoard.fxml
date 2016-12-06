@@ -2280,10 +2280,6 @@
          <font>
             <Font name="Bauhaus 93" size="20.0" />
          </font></Label>
-      <Label fx:id="OutputLabel" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="10.0" layoutY="49.0" prefHeight="387.0" prefWidth="183.0" textFill="#5b0606" wrapText="true">
-         <font>
-            <Font name="Consolas" size="17.0" />
-         </font></Label>
       <Label fx:id="gameTimer" layoutX="1106.0" layoutY="51.0" prefHeight="24.0" prefWidth="81.0" textFill="#830808">
          <font>
             <Font name="Bauhaus 93" size="20.0" />
@@ -2303,5 +2299,10 @@
             </Lighting>
          </effect>
       </Button>
+      <Label fx:id="OutputLabel" alignment="TOP_LEFT" layoutX="11.0" layoutY="50.0" prefHeight="464.0" prefWidth="179.0" textFill="#7c1111" wrapText="true">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
