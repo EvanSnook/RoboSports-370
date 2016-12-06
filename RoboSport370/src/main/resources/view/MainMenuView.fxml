@@ -1,20 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewController">
    <children>
-         <Label layoutX="93.0" layoutY="54.0" text="RoboSport  370">
+         <Label layoutX="112.0" layoutY="61.0" text="RoboSport  370" textAlignment="CENTER" textFill="#831717" textOverrun="CENTER_ELLIPSIS">
             <font>
-               <Font size="60.0" />
+               <Font name="Bauhaus 93" size="86.0" />
             </font>
+         <effect>
+            <Lighting bumpInput="$null" diffuseConstant="2.0" specularConstant="1.65" specularExponent="34.88" surfaceScale="2.2">
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
          </Label>
-         <Button layoutX="189.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="25.0" prefWidth="223.0" text="Rules" />
-         <Button layoutX="189.0" layoutY="188.0" mnemonicParsing="false" onMouseClicked="#showCreateGame" prefHeight="3.0" prefWidth="223.0" text="Create Games" />
-         <Button layoutX="189.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="3.0" prefWidth="223.0" text="Quit" />
-         <Button layoutX="189.0" layoutY="261.0" mnemonicParsing="false" onMouseClicked="#showStats" prefHeight="3.0" prefWidth="223.0" text="Stats" />
+         <Button layoutX="150.0" layoutY="288.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showRules" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: white;" text="Rules" textFill="#831717">
+         <font>
+            <Font name="Bauhaus 93" size="30.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.32" specularConstant="0.0" specularExponent="34.88" surfaceScale="1.52">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+         <Button layoutX="150.0" layoutY="207.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showCreateGame" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: white;" text="Create Game" textAlignment="CENTER" textFill="#831717">
+         <font>
+            <Font name="Bauhaus 93" size="30.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.32" specularConstant="0.0" specularExponent="34.88" surfaceScale="1.52">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+         <Button layoutX="150.0" layoutY="434.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#quit" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: white;" text="Quit" textFill="#831717">
+         <font>
+            <Font name="Bauhaus 93" size="30.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.32" specularConstant="0.0" specularExponent="34.88" surfaceScale="1.52">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+         <Button layoutX="150.0" layoutY="360.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#showStats" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: white;" text="Stats" textFill="#831717">
+         <font>
+            <Font name="Bauhaus 93" size="30.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="1.32" specularConstant="0.0" specularExponent="34.88" surfaceScale="1.52">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></Button>
+      <Label layoutX="405.0" layoutY="530.0" prefHeight="70.0" prefWidth="395.0" text="Group B1: Adam Ronellenfitsch, Dylan Prefontaine, Evan Snook, Matthew Frisky, and Wynston Ramsay" textAlignment="CENTER" textFill="#831717" textOverrun="CLIP" wrapText="true">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
    </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <effect>
+      <DisplacementMap>
+         <mapData>
+            <FloatMap />
+         </mapData>
+      </DisplacementMap>
+   </effect>
 </Pane>
