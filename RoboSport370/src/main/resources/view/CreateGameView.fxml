@@ -574,5 +574,10 @@
             <Font name="Bauhaus 93" size="15.0" />
          </font>
       </RadioButton>
+      <Label fx:id="startError" layoutX="557.0" layoutY="517.0" text="*Every AI needs 3 robots*" textFill="#940c0c" visible="false">
+         <font>
+            <Font name="Bauhaus 93" size="20.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

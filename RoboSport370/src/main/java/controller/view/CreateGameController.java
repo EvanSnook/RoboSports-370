@@ -15,6 +15,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import model.Game;
 import model.PublicGameMaster;
 import model.PublicLibrarian;
@@ -27,6 +28,8 @@ import model.enums.RobotType;
 import model.enums.TeamColour;
 
 public class CreateGameController implements Initializable {
+    @FXML
+    public Pane gameCreationContainer;
     @FXML
     public RadioButton teams2RadioButton;
     @FXML
@@ -67,6 +70,8 @@ public class CreateGameController implements Initializable {
 
     @FXML
     private Slider robotThinkTimeSlider;
+    @FXML
+    private Label startError;
     @FXML
     private Label robotThinkTimeValueLabel;
 
@@ -149,35 +154,39 @@ public class CreateGameController implements Initializable {
     }
 
     public void createGame(MouseEvent mouseEvent) {
-        PublicViewController.getInstance().createGame(getBoardSize());
-
-        Game game = new Game(getBoardSize(), getNumTeams());
-
-        Team redTeam = game.getTeam(TeamColour.RED);
-        Team yellowTeam = game.getTeam(TeamColour.YELLOW);
-        Team blueTeam = game.getTeam(TeamColour.BLUE);
-        Team greenTeam = game.getTeam(TeamColour.GREEN);
-        Team purpleTeam = game.getTeam(TeamColour.PURPLE);
-        Team orangeTeam = game.getTeam(TeamColour.ORANGE);
-
         // TODO instantiate all of the robots in the teams
         // TODO Move this to separate functions
-        if(getNumTeams() == 2){
-            createRobotsForTeam(redTeam);
-            createRobotsForTeam(greenTeam);
-        } else if(getNumTeams() == 3){
-            createRobotsForTeam(redTeam);
-            createRobotsForTeam(yellowTeam);
-            createRobotsForTeam(blueTeam);
-        } else if(getNumTeams() == 6){
-            createRobotsForTeam(redTeam);
-            createRobotsForTeam(greenTeam);
-            createRobotsForTeam(yellowTeam);
-            createRobotsForTeam(blueTeam);
-            createRobotsForTeam(orangeTeam);
-            createRobotsForTeam(purpleTeam);
+        if(readyToStart()) {
+            PublicViewController.getInstance().createGame(getBoardSize());
+
+            Game game = new Game(getBoardSize(), getNumTeams());
+
+            Team redTeam = game.getTeam(TeamColour.RED);
+            Team yellowTeam = game.getTeam(TeamColour.YELLOW);
+            Team blueTeam = game.getTeam(TeamColour.BLUE);
+            Team greenTeam = game.getTeam(TeamColour.GREEN);
+            Team purpleTeam = game.getTeam(TeamColour.PURPLE);
+            Team orangeTeam = game.getTeam(TeamColour.ORANGE);
+            if (getNumTeams() == 2) {
+                createRobotsForTeam(redTeam);
+                createRobotsForTeam(greenTeam);
+            } else if (getNumTeams() == 3) {
+                createRobotsForTeam(redTeam);
+                createRobotsForTeam(yellowTeam);
+                createRobotsForTeam(blueTeam);
+            } else if (getNumTeams() == 6) {
+                createRobotsForTeam(redTeam);
+                createRobotsForTeam(greenTeam);
+                createRobotsForTeam(yellowTeam);
+                createRobotsForTeam(blueTeam);
+                createRobotsForTeam(orangeTeam);
+                createRobotsForTeam(purpleTeam);
+            }
+            PublicGameMaster.getInstance().setGame(game);
         }
-        PublicGameMaster.getInstance().setGame(game);
+        else{
+            startError.setVisible(true);
+        }
     }
 
     private void createRobotsForTeam(Team team){
@@ -368,5 +377,61 @@ public class CreateGameController implements Initializable {
                 team6Sniper.setDisable(state);
                 team6Tank.setDisable(state);
         }
+    }
+
+    public boolean readyToStart() {
+
+        ToggleButton[] toggles = new ToggleButton[6];
+        toggles[0] = toggleButton1;
+        toggles[1] = toggleButton2;
+        toggles[2] = toggleButton3;
+        toggles[3] = toggleButton4;
+        toggles[4] = toggleButton5;
+        toggles[5] = toggleButton6;
+        int teams = 2;
+        if(teams3RadioButton.isSelected()){
+            teams = 3;
+        }
+        else if(teams6RadioButton.isSelected()){
+            teams = 6;
+        }
+        boolean isReady = true;
+        for (int i = 0; i < teams; i++) {
+            if (toggles[i].isSelected()) {
+                switch (toggles[i].getId()) {
+                    case "toggleButton1":
+                        if ( team1Scout.getValue() == null | team1Sniper.getValue() == null |team1Tank.getValue() == null){
+                            isReady = false;
+                        }
+                        break;
+                    case "toggleButton2":
+                        if ( team2Scout.getValue() == null | team2Sniper.getValue() == null |team2Tank.getValue() == null){
+                            isReady = false;
+                        }
+                        break;
+                    case "toggleButton3":
+                        if ( team3Scout.getValue() == null | team3Sniper.getValue() == null |team3Tank.getValue() == null){
+                            isReady = false;
+                        }
+                        break;
+                    case "toggleButton4":
+                        if ( team4Scout.getValue() == null | team4Sniper.getValue() == null |team4Tank.getValue() == null){
+                            isReady = false;
+                        }
+                        break;
+                    case "toggleButton5":
+                        if ( team5Scout.getValue() == null | team5Sniper.getValue() == null |team5Tank.getValue() == null){
+                            isReady = false;
+                        }
+                        break;
+                    case "toggleButton6":
+                        if ( team6Scout.getValue() == null | team6Sniper.getValue() == null |team6Tank.getValue() == null){
+                            isReady = false;
+                        }
+                        break;
+                }
+            }
+        }
+        return isReady;
     }
 }
