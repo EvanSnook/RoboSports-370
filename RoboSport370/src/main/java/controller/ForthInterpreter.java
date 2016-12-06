@@ -15,6 +15,7 @@ import model.HexNode;
 import model.HexNodeIterator;
 import model.Robot;
 import model.RobotAI;
+import model.Team;
 import model.Word;
 import model.enums.RobotType;
 import model.enums.TeamColour;
@@ -31,6 +32,7 @@ public class ForthInterpreter {
     private Stack<String> stack;
 
     private GameMaster gameMaster;
+    private RobotAI currentInitRobot;
 
     /**
      * Instantiate a new {@link ForthInterpreter}
@@ -39,6 +41,20 @@ public class ForthInterpreter {
         this.words = initWords();
         this.stack = new Stack<>();
         this.gameMaster = gameMaster;
+        initRobots();
+    }
+
+    private void initRobots(){
+        gameMaster.getGame().getTeams().stream()
+                .filter(Team::isAI)
+                .forEach(t -> {
+                    currentInitRobot = (RobotAI) t.getScout();
+                    this.execute(currentInitRobot.getCode());
+                    currentInitRobot = (RobotAI) t.getSniper();
+                    this.execute(currentInitRobot.getCode());
+                    currentInitRobot = (RobotAI) t.getTank();
+                    this.execute(currentInitRobot.getCode());
+                });
     }
 
     /**
@@ -50,25 +66,54 @@ public class ForthInterpreter {
      * @param commandString command(s) to send to the {@link ForthInterpreter}
      */
     public void execute(String commandString) {
+        commandString = commandString.replaceAll(" pop ", " . ");
+        // Remove starting spaces
+        commandString = commandString.replaceFirst(" *", "");
         // Remove comments
         String finalCommandString = commandString.replaceAll("\\(.*?\\)", "");
-        ;
+
 
         Optional<Word> w = words.stream()
                 .filter(word -> word.isTrigger(finalCommandString))
                 .findFirst();
 
-        if (!w.isPresent()) {
+        String[] splitCommand = finalCommandString.split(" ");
+        String nextCommand;
+
+        if (w.isPresent()) { // If a word is defined
+            w.get().execute();
+            nextCommand = finalCommandString.replaceFirst(w.get().getTrigger(), "");
+        } else if(isVariable(splitCommand[0])){ // If the next word is a Variable
+            // Push the word on the stack
+            stack.push(splitCommand[0]);
+
+            String[] ignoreFirstElement = Arrays.copyOfRange(splitCommand, 1, splitCommand.length);
+            nextCommand = String.join(" ", (CharSequence[]) ignoreFirstElement);
+        } else if(isDefinedWord(splitCommand[0])){ // If the next word is User Defined
+            String userWord = getCurrentRobot().getUserDefinedWords().get(splitCommand[0]);
+            execute(userWord);
+
+            String[] ignoreFirstElement = Arrays.copyOfRange(splitCommand, 1, splitCommand.length);
+            nextCommand = String.join(" ", (CharSequence[]) ignoreFirstElement);
+        } else { // If we reached the end or there is an error
             if (!finalCommandString.isEmpty())
                 System.err.println("Parsing Error: " + finalCommandString);
             return;
         }
 
-        w.get().execute();
 
         // Remove excessive spaces between words
-        String nextCommand = finalCommandString.replaceFirst(w.get().getTrigger() + " *", "");
-        execute(nextCommand);
+//        nextCommand = finalCommandString.replaceFirst(w.get().getTrigger() + " *", "");
+        if(nextCommand != null)
+            execute(nextCommand);
+    }
+
+    private boolean isVariable(String s){
+        return getCurrentRobot().getUserDefinedVariables().containsKey(s);
+    }
+
+    private boolean isDefinedWord(String s){
+        return getCurrentRobot().getUserDefinedWords().containsKey(s);
     }
 
     /**
@@ -109,7 +154,7 @@ public class ForthInterpreter {
         //</editor-fold>
 
         //<editor-fold desc="Defining Words">
-        Word definingWord = new Word(": ((.*?) )(.*?) ;", matches -> {
+        Word definingWord = new Word(": ((.*?) )(.*?);", matches -> {
             getCurrentRobot().getUserDefinedWords().put(matches[2], matches[3]);
         });
 
@@ -319,7 +364,6 @@ public class ForthInterpreter {
         Word logicIfElseThen = new Word("if (.*?) else (.*?) then", matches -> {
             if (verifyStack('b')) {
                 boolean boolCheck = Boolean.valueOf(stack.pop());
-                Arrays.stream(matches).forEach(System.out::println);
                 if (boolCheck)
                     execute(matches[1]);
                 else
@@ -366,32 +410,28 @@ public class ForthInterpreter {
             getCurrentRobot().getUserDefinedVariables().put(matches[1], "0");
         }));
 
-        // TODO Test this.. (Currently Disabled)
         Word variableUsage = new Word("(\\?|!)", (matches -> {
-            if (verifyStack('l')) {
-                ArrayList<String> definedVariables =
-                        new ArrayList<>(getCurrentRobot().getUserDefinedVariables().keySet());
+            String action = matches[1];
 
-                String variable = stack.pop();
-                String action = matches[1];
+            if(action.equals("!")){
+                // Push new value
+                if(verifyStack('v', 'l')){
+                    String newValue = stack.pop();
+                    String variable = stack.pop();
 
-                if (!definedVariables.contains(variable)) {
-                    System.out.println("Variable \"" + variable + "\" is not declared");
-                    return;
+                    getCurrentRobot().getUserDefinedVariables().put(variable, newValue);
                 }
-
-                if (action.equals("?")) {
+            } else if(action.equals("?")){
+                // Pop new value
+                if(verifyStack('l')) {
+                    String variable = stack.pop();
                     stack.push(getCurrentRobot().getUserDefinedVariables().get(variable));
-                } else if (action.equals("!")) {
-                    if (verifyStack('v')) {
-                        getCurrentRobot().getUserDefinedVariables().put(variable, stack.pop());
-                    }
                 }
             }
         }));
 
         result.add(variableDefine);
-//        result.add(variableUsage);
+        result.add(variableUsage);
         //</editor-fold>
 
         //<editor-fold desc="Miscellanea">
@@ -408,8 +448,13 @@ public class ForthInterpreter {
             }
         }));
 
+        Word miscSemicolon = new Word(";", (matches -> {
+            // Do nuffin
+        }));
+
         result.add(miscPrint);
         result.add(miscRandom);
+        result.add(miscSemicolon);
         //</editor-fold>
 
         //<editor-fold desc="Robot Status">
@@ -530,6 +575,8 @@ public class ForthInterpreter {
                     count += current.getRobots().size();
             }
 
+            count--; // remove yourself
+
             stack.push(String.valueOf(count));
         });
 
@@ -548,7 +595,8 @@ public class ForthInterpreter {
                         continue;
 
                     for (Robot r : current.getRobots()) {
-                        cur++;
+                        if(!r.equals(getCurrentRobot()))
+                            cur++;
                         if (cur == i1) {
                             robot = r;
                             break;
@@ -585,6 +633,9 @@ public class ForthInterpreter {
      * @return the current robot
      */
     private RobotAI getCurrentRobot() {
+        if(gameMaster.getCurrentRobot() == null){
+            return currentInitRobot;
+        }
         return (RobotAI) gameMaster.getCurrentRobot();
     }
 
@@ -625,8 +676,7 @@ public class ForthInterpreter {
                         temp.pop(); // Throws EmptyStackException if there is no item
                         break;
                     case 'l':
-                        System.err.println("verifyStack always true for locations");
-                        break;
+                        return getCurrentRobot().getUserDefinedVariables().containsKey(temp.pop());
                     default:
                         throw new InvalidParameterException(current + " is not a valid type");
                 }

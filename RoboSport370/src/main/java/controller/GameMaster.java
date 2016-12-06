@@ -15,6 +15,7 @@ import model.HexNode;
 import model.HexNodeIterator;
 import model.PublicViewController;
 import model.Robot;
+import model.RobotAI;
 import model.Team;
 import model.enums.TeamColour;
 
@@ -71,10 +72,6 @@ public class GameMaster {
     @FXML
     public Label gameTimer;
 
-    public GameMaster() {
-        interpreter = new ForthInterpreter(this);
-    }
-
     /**
      * The real constructor..
      *
@@ -98,6 +95,10 @@ public class GameMaster {
         makeFoggyOut();
         startPlay();
         colourRange();
+    }
+
+    private void initRobotAI() {
+        interpreter = new ForthInterpreter(this);
     }
 
     /**
@@ -404,6 +405,10 @@ public class GameMaster {
         }
         currentRobot.setRemainingMoves(currentRobot.getMaxMove());
         draw();
+
+        if(currentRobot instanceof RobotAI){
+            interpreter.execute(((RobotAI) currentRobot).getPlayCommand());
+        }
 
         getGame().getGameTime().resetPlayTimer();
     }

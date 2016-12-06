@@ -135,6 +135,10 @@ public class Team {
         return colour;
     }
 
+    public boolean isAI(){
+        return scout instanceof RobotAI;
+    }
+
     public boolean isEnabled() {
         return enabled;
     }

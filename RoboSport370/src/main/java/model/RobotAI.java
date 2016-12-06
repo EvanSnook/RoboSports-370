@@ -17,7 +17,7 @@ public class RobotAI extends Robot implements Cloneable {
     private LinkedList<String> mail;
 
     public RobotAI() {
-        this.userDefinedVariables = new HashMap<>();
+        this.userDefinedWords = new HashMap<>();
         this.userDefinedVariables = new HashMap<>();
         this.mail = new LinkedList<>();
     }
