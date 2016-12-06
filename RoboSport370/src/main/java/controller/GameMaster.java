@@ -90,7 +90,6 @@ public class GameMaster {
                 turnTimer.setText("Time Left: " + s);
                 if(timeLeft == 0) {
                     endTurn();
-                    timeLeft = 30;
                 }
             });
         });
@@ -382,6 +381,7 @@ public class GameMaster {
         getGame().getGameTime().getPlayTimer().stop();
         betweenTurn();
         outputTile();
+        timeLeft = 30;
     }
 
     public void betweenTurn(){
