@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.view.EditRobotController">
+      <Button layoutX="14.0" layoutY="349.0" mnemonicParsing="false" onMouseClicked="#showMainMenu" prefHeight="38.0" prefWidth="98.0" text="Back" />
+      <Button layoutX="14.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#createNewRobot" prefHeight="38.0" prefWidth="98.0" text="New Robot" />
+      <Button layoutX="226.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#saveRobot" prefHeight="25.0" prefWidth="98.0" text="Save" />
+      <Button layoutX="402.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#cancelRobot" prefHeight="25.0" prefWidth="98.0" text="Cancel" />
+      <TextField layoutX="275.0" layoutY="100.0" promptText="Robot Name" />
+      <Label layoutX="225.0" layoutY="104.0" text="Name:" />
+      <TextField layoutX="275.0" layoutY="132.0" promptText="Robot Team" />
+      <Label layoutX="227.0" layoutY="136.0" text="Team" />
+      <TextArea layoutX="123.0" layoutY="169.0" prefHeight="164.0" prefWidth="411.0" promptText="Forth Code Here" />
+      <Label layoutX="150.0" layoutY="14.0" text="Edit Robots">
+         <font>
+            <Font size="59.0" />
+         </font>
+      </Label>
+      <Label layoutX="123.0" layoutY="145.0" text="Code" underline="true" />
+      <ListView layoutX="14.0" layoutY="54.0" prefHeight="231.0" prefWidth="98.0" />
+      <Label layoutX="14.0" layoutY="37.0" text="Robots" underline="true" />
+</Pane>

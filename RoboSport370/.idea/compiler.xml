@@ -12,6 +12,7 @@
       <entry name="!?*.kt" />
       <entry name="!?*.clj" />
       <entry name="!?*.aj" />
+      <entry name="!?*.fxml" />
     </wildcardResourcePatterns>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="false">
@@ -26,7 +27,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="RoboSport370" target="1.5" />
+      <module name="RoboSport370" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
